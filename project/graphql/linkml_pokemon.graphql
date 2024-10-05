@@ -1,67 +1,24 @@
-type Address
-  {
-    street: String
-    city: String
-    postalCode: String
-  }
-
-type FamilialRelationship
-  {
-    startedAtTime: Date
-    endedAtTime: Date
-    relatedTo: String
-    type: FamilialRelationshipType!
-    relatedTo: Person!
-  }
-
-interface HasAliases
-  {
-    aliases: [String]
-  }
-
+# metamodel_version: 1.7.0
 type NamedThing
   {
-    id: String!
+    id: Uriorcurie!
     name: String
     description: String
-    image: String
   }
 
-type Organization implements HasAliases
+type Pokemon
   {
-    id: String!
+    id: Uriorcurie!
     name: String
     description: String
-    image: String
-    missionStatement: String
-    foundingDate: String
-    aliases: [String]
-  }
-
-type Person implements HasAliases
-  {
-    id: String!
-    name: String
-    description: String
-    image: String
     primaryEmail: String
-    birthDate: String
+    birthDate: Date
     ageInYears: Integer
-    currentAddress: Address
-    hasFamilialRelationships: [FamilialRelationship]
-    aliases: [String]
+    vitalStatus: PersonStatus
   }
 
-type Registry
+type PokemonCollection
   {
-    persons: [Person]
-    organizations: [Organization]
+    entries: [Pokemon]
   }
 
-type Relationship
-  {
-    startedAtTime: Date
-    endedAtTime: Date
-    relatedTo: String
-    type: String
-  }

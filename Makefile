@@ -57,7 +57,7 @@ endif
 
 
 # basename of a YAML file in model/
-.PHONY: all clean setup gen-project gen-examples gendoc git-init-add git-init git-add git-commit git-status
+.PHONY: all clean setup gen-project gen-examples gendoc 
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -79,7 +79,7 @@ status: check-config
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
 # generate products and add everything to github
-setup: check-config git-init install gen-project gen-examples gendoc git-add git-commit
+setup: check-config install gen-project gen-examples gendoc 
 
 # install any dependencies required for building
 install:
@@ -203,15 +203,6 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-git-init-add: git-init git-add git-commit git-status
-git-init:
-	git init
-git-add: .cruft.json
-	git add .
-git-commit:
-	git commit -m 'chore: make setup was run' -a
-git-status:
-	git status
 
 # only necessary if setting up via cookiecutter
 .cruft.json:
