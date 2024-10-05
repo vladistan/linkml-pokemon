@@ -1,0 +1,27 @@
+{
+  "template": "https://github.com/linkml/linkml-project-cookiecutter",
+  "commit": "21dc84dd378e7aade7affaa329956ce93d38202d",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "linkml-pokemon",
+      "__project_slug": "linkml_pokemon",
+      "github_org": "vladistan",
+      "__source_path": "src/linkml_pokemon/schema/linkml_pokemon.yaml",
+      "project_description": "Pokemon Ontology expressed as LinkML",
+      "full_name": "Vlad Korolev",
+      "email": "vlad@v-lad.org",
+      "__author": "Vlad Korolev <vlad@v-lad.org>",
+      "license": "MIT",
+      "main_schema_class": "Pokemon",
+      "create_python_classes": "Yes",
+      "use_schemasheets": "No",
+      "google_sheet_id": "1wVoaiFg47aT9YWNeRfTZ8tYHN8s8PAuDx5i2HUcDpvQ",
+      "google_sheet_tabs": "personinfo enums",
+      "__google_sheet_module": "personinfo_enums",
+      "github_token_for_pypi_deployment": "PYPI_PASSWORD",
+      "_template": "https://github.com/linkml/linkml-project-cookiecutter"
+    }
+  },
+  "directory": null
+}
