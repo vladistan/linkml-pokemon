@@ -1,6 +1,6 @@
 # linkml-pokemon
 
-Pokemon Ontology expressed as LinkML
+Adaptation of [Pokémon Knowledge Graph Ontology](https://pokemonkg.org/ontology/) to LinkML
 
 ## Website
 
