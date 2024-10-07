@@ -1,90 +1,200 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
-@prefix linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/> .
+@prefix pokemon: <https://pokemonkg.org/ontology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema1: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-schema1:Thing a sh:NodeShape ;
+pokemon:Ability a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A generic grouping for any identifiable entity" ;
-    sh:ignoredProperties ( linkml_pokemon:vital_status schema1:birthDate schema1:email rdf:type linkml_pokemon:age_in_years ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path schema1:description ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path schema1:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path schema1:name ] ;
-    sh:targetClass schema1:Thing .
-
-linkml_pokemon:PokemonCollection a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A holder for Pokemon objects" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class linkml_pokemon:Pokemon ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path linkml_pokemon:entries ] ;
-    sh:targetClass linkml_pokemon:PokemonCollection .
+    sh:targetClass pokemon:Ability .
 
-linkml_pokemon:Pokemon a sh:NodeShape ;
+pokemon:BattleItem a sh:NodeShape ;
     sh:closed true ;
-    sh:description "Represents a Pokemon" ;
+    sh:description "Battle items are items that can be used during battles." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier for a thing" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path schema1:identifier ],
-        [ sh:description "living or dead status" ;
-            sh:in ( PATO:0001421 PATO:0001422 "UNKNOWN" ) ;
-            sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path linkml_pokemon:vital_status ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path schema1:description ],
-        [ sh:datatype xsd:string ;
-            sh:description "The main email address of a person" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path schema1:email ;
-            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date on which a person is born" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path schema1:birthDate ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of years since birth" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path linkml_pokemon:age_in_years ] ;
-    sh:targetClass linkml_pokemon:Pokemon .
+    sh:targetClass pokemon:BattleItem .
+
+pokemon:Berry a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Berry .
+
+pokemon:Colour a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Colour .
+
+pokemon:EggGroup a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:EggGroup .
+
+pokemon:Flavor a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Flavor .
+
+pokemon:Food a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Food .
+
+pokemon:Game a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A game is a type of media that can be played by people." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Game .
+
+pokemon:Generation a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Generation .
+
+pokemon:Gym a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A gym is a location that can be battled at." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Gym .
+
+pokemon:GymLeader a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:GymLeader .
+
+pokemon:HM a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Hidden Machine" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:HM .
+
+pokemon:Habitat a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A habitat is a type of environment that certain Pokemon belong to." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Habitat .
+
+pokemon:HoldItem a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A hold item is an item that can be held by a Pokemon." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:HoldItem .
+
+pokemon:Item a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Item .
+
+pokemon:LearningByLevelingUp a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A move that is learned by leveling up." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:LearningByLevelingUp .
+
+pokemon:LearningThroughBreeding a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A move that is learned by breeding." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:LearningThroughBreeding .
+
+pokemon:Medicine a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A medicine is an item that can be used to heal a Pokemon." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Medicine .
+
+pokemon:Move a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Move .
+
+pokemon:MoveLearning a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A move learning is a way that a Pokemon can learn a move." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:MoveLearning .
+
+pokemon:PhysicalMove a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A physical move is a type of move that can be used during battles." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:PhysicalMove .
+
+pokemon:Place a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Place .
+
+pokemon:Pokeball a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Pokeball .
+
+pokemon:Pokedex a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Pokedex .
+
+pokemon:PokedexEntry a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A pokedex entry is a description of a Pokemon." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:PokedexEntry .
+
+pokemon:Pokemon a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A Pokemon" ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Pokemon .
+
+pokemon:Region a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Region .
+
+pokemon:Shape a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Shape .
+
+pokemon:SpecialMove a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A special move is a type of move that can be used during battles." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:SpecialMove .
+
+pokemon:Species a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A species is a category of Pokemon that share common features." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Species .
+
+pokemon:StatusMove a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A status move is a type of move that can be used during battles." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:StatusMove .
+
+pokemon:TM a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:TM .
+
+pokemon:Town a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A town is a type of place that can be visited." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Town .
+
+pokemon:Trainer a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A trainer is a person who is able to catch Pokemon." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Trainer .
+
+pokemon:Type a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:Type .
 

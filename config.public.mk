@@ -24,7 +24,7 @@ LINKML_GENERATORS_DOC_ARGS=
 
 ## pass args to workaround genowl rdfs config bug (linkml#1453)
 ##   (i.e. --no-type-objects --no-metaclasses --metadata-profile rdfs)
-LINKML_GENERATORS_OWL_ARGS=
+LINKML_GENERATORS_OWL_ARGS= --no-type-objects --metadata-profile rdfs 
 
 ## pass args to trigger experimental java/typescript generation
 LINKML_GENERATORS_JAVA_ARGS=

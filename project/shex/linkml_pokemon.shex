@@ -1,9 +1,8 @@
 # metamodel_version: 1.7.0
-BASE <https://w3id.org/vladistan/linkml-pokemon/>
+BASE <https://pokemonkg.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
 
 
 linkml:String xsd:string
@@ -44,32 +43,259 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
-       )
-    } OR @<Pokemon>
-)
-
-<Pokemon> CLOSED {
-    (  $<Pokemon_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/vladistan/linkml-pokemon/PersonStatus#UNKNOWN> ] ?
-       ) ;
-       rdf:type [ <Pokemon> ]
+<Ability> CLOSED {
+    (  $<Ability_tes> rdf:type . * ;
+       rdf:type [ <Ability> ] ?
     )
 }
 
-<PokemonCollection> CLOSED {
-    (  $<PokemonCollection_tes> <entries> @<Pokemon> * ;
-       rdf:type [ <PokemonCollection> ] ?
+<BattleItem> CLOSED {
+    (  $<BattleItem_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <BattleItem> ] ?
+    )
+}
+
+<Berry> CLOSED {
+    (  $<Berry_tes> (  &<Food_tes> ;
+          rdf:type [ <Food> ] ?
+       ) ;
+       rdf:type [ <Berry> ] ?
+    )
+}
+
+<Colour> CLOSED {
+    (  $<Colour_tes> rdf:type . * ;
+       rdf:type [ <Colour> ] ?
+    )
+}
+
+<EggGroup> CLOSED {
+    (  $<EggGroup_tes> rdf:type . * ;
+       rdf:type [ <EggGroup> ] ?
+    )
+}
+
+<Flavor> CLOSED {
+    (  $<Flavor_tes> rdf:type . * ;
+       rdf:type [ <Flavor> ] ?
+    )
+}
+
+<Food>  (
+    CLOSED {
+       (  $<Food_tes> (  &<Item_tes> ;
+             rdf:type [ <Item> ] ?
+          ) ;
+          rdf:type [ <Food> ] ?
+       )
+    } OR @<Berry>
+)
+
+<Game> CLOSED {
+    (  $<Game_tes> rdf:type . * ;
+       rdf:type [ <Game> ] ?
+    )
+}
+
+<Generation> CLOSED {
+    (  $<Generation_tes> rdf:type . * ;
+       rdf:type [ <Generation> ] ?
+    )
+}
+
+<Gym> CLOSED {
+    (  $<Gym_tes> (  &<Place_tes> ;
+          rdf:type [ <Place> ] ?
+       ) ;
+       rdf:type [ <Gym> ] ?
+    )
+}
+
+<GymLeader> CLOSED {
+    (  $<GymLeader_tes> (  &<Trainer_tes> ;
+          rdf:type [ <Trainer> ] ?
+       ) ;
+       rdf:type [ <GymLeader> ] ?
+    )
+}
+
+<Habitat> CLOSED {
+    (  $<Habitat_tes> rdf:type . * ;
+       rdf:type [ <Habitat> ] ?
+    )
+}
+
+<HM> CLOSED {
+    (  $<HM_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <HM> ] ?
+    )
+}
+
+<HoldItem> CLOSED {
+    (  $<HoldItem_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <HoldItem> ] ?
+    )
+}
+
+<Item>  (
+    CLOSED {
+       (  $<Item_tes> rdf:type . * ;
+          rdf:type [ <Item> ] ?
+       )
+    } OR @<BattleItem> OR @<Food> OR @<HM> OR @<HoldItem> OR @<Medicine> OR @<Pokeball> OR @<TM>
+)
+
+<LearningByLevelingUp> CLOSED {
+    (  $<LearningByLevelingUp_tes> (  &<MoveLearning_tes> ;
+          rdf:type [ <MoveLearning> ] ?
+       ) ;
+       rdf:type [ <LearningByLevelingUp> ] ?
+    )
+}
+
+<LearningThroughBreeding> CLOSED {
+    (  $<LearningThroughBreeding_tes> (  &<MoveLearning_tes> ;
+          rdf:type [ <MoveLearning> ] ?
+       ) ;
+       rdf:type [ <LearningThroughBreeding> ] ?
+    )
+}
+
+<Medicine> CLOSED {
+    (  $<Medicine_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <Medicine> ] ?
+    )
+}
+
+<Move>  (
+    CLOSED {
+       (  $<Move_tes> rdf:type . * ;
+          rdf:type [ <Move> ] ?
+       )
+    } OR @<PhysicalMove> OR @<SpecialMove> OR @<StatusMove>
+)
+
+<MoveLearning>  (
+    CLOSED {
+       (  $<MoveLearning_tes> rdf:type . * ;
+          rdf:type [ <MoveLearning> ] ?
+       )
+    } OR @<LearningByLevelingUp> OR @<LearningThroughBreeding>
+)
+
+<PhysicalMove> CLOSED {
+    (  $<PhysicalMove_tes> (  &<Move_tes> ;
+          rdf:type [ <Move> ] ?
+       ) ;
+       rdf:type [ <PhysicalMove> ] ?
+    )
+}
+
+<Place>  (
+    CLOSED {
+       (  $<Place_tes> rdf:type . * ;
+          rdf:type [ <Place> ] ?
+       )
+    } OR @<Gym> OR @<Region> OR @<Town>
+)
+
+<Pokeball> CLOSED {
+    (  $<Pokeball_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <Pokeball> ] ?
+    )
+}
+
+<Pokedex> CLOSED {
+    (  $<Pokedex_tes> rdf:type . * ;
+       rdf:type [ <Pokedex> ] ?
+    )
+}
+
+<PokedexEntry> CLOSED {
+    (  $<PokedexEntry_tes> rdf:type . * ;
+       rdf:type [ <PokedexEntry> ] ?
+    )
+}
+
+<Pokemon> CLOSED {
+    (  $<Pokemon_tes> rdf:type . * ;
+       rdf:type [ <Pokemon> ] ?
+    )
+}
+
+<Region> CLOSED {
+    (  $<Region_tes> (  &<Place_tes> ;
+          rdf:type [ <Place> ] ?
+       ) ;
+       rdf:type [ <Region> ] ?
+    )
+}
+
+<Shape> CLOSED {
+    (  $<Shape_tes> rdf:type . * ;
+       rdf:type [ <Shape> ] ?
+    )
+}
+
+<SpecialMove> CLOSED {
+    (  $<SpecialMove_tes> (  &<Move_tes> ;
+          rdf:type [ <Move> ] ?
+       ) ;
+       rdf:type [ <SpecialMove> ] ?
+    )
+}
+
+<Species> CLOSED {
+    (  $<Species_tes> rdf:type . * ;
+       rdf:type [ <Species> ] ?
+    )
+}
+
+<StatusMove> CLOSED {
+    (  $<StatusMove_tes> (  &<Move_tes> ;
+          rdf:type [ <Move> ] ?
+       ) ;
+       rdf:type [ <StatusMove> ] ?
+    )
+}
+
+<TM> CLOSED {
+    (  $<TM_tes> (  &<Item_tes> ;
+          rdf:type [ <Item> ] ?
+       ) ;
+       rdf:type [ <TM> ] ?
+    )
+}
+
+<Town> CLOSED {
+    (  $<Town_tes> (  &<Place_tes> ;
+          rdf:type [ <Place> ] ?
+       ) ;
+       rdf:type [ <Town> ] ?
+    )
+}
+
+<Trainer>  (
+    CLOSED {
+       (  $<Trainer_tes> rdf:type . * ;
+          rdf:type [ <Trainer> ] ?
+       )
+    } OR @<GymLeader>
+)
+
+<Type> CLOSED {
+    (  $<Type_tes> rdf:type . * ;
+       rdf:type [ <Type> ] ?
     )
 }
 

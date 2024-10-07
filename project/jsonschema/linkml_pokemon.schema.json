@@ -1,205 +1,220 @@
 {
     "$defs": {
-        "NamedThing": {
+        "Ability": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
-            "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "NamedThing",
+            "description": "",
+            "title": "Ability",
             "type": "object"
         },
-        "PersonStatus": {
+        "BattleItem": {
+            "additionalProperties": false,
+            "description": "Battle items are items that can be used during battles.",
+            "title": "BattleItem",
+            "type": "object"
+        },
+        "Berry": {
+            "additionalProperties": false,
             "description": "",
-            "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
-            ],
-            "title": "PersonStatus",
-            "type": "string"
+            "title": "Berry",
+            "type": "object"
+        },
+        "Colour": {
+            "additionalProperties": false,
+            "description": "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+            "title": "Colour",
+            "type": "object"
+        },
+        "EggGroup": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "EggGroup",
+            "type": "object"
+        },
+        "Flavor": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Flavor",
+            "type": "object"
+        },
+        "Food": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Food",
+            "type": "object"
+        },
+        "Game": {
+            "additionalProperties": false,
+            "description": "A game is a type of media that can be played by people.",
+            "title": "Game",
+            "type": "object"
+        },
+        "Generation": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Generation",
+            "type": "object"
+        },
+        "Gym": {
+            "additionalProperties": false,
+            "description": "A gym is a location that can be battled at.",
+            "title": "Gym",
+            "type": "object"
+        },
+        "GymLeader": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "GymLeader",
+            "type": "object"
+        },
+        "HM": {
+            "additionalProperties": false,
+            "description": "Hidden Machine",
+            "title": "HM",
+            "type": "object"
+        },
+        "Habitat": {
+            "additionalProperties": false,
+            "description": "A habitat is a type of environment that certain Pokemon belong to.",
+            "title": "Habitat",
+            "type": "object"
+        },
+        "HoldItem": {
+            "additionalProperties": false,
+            "description": "A hold item is an item that can be held by a Pokemon.",
+            "title": "HoldItem",
+            "type": "object"
+        },
+        "Item": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Item",
+            "type": "object"
+        },
+        "LearningByLevelingUp": {
+            "additionalProperties": false,
+            "description": "A move that is learned by leveling up.",
+            "title": "LearningByLevelingUp",
+            "type": "object"
+        },
+        "LearningThroughBreeding": {
+            "additionalProperties": false,
+            "description": "A move that is learned by breeding.",
+            "title": "LearningThroughBreeding",
+            "type": "object"
+        },
+        "Medicine": {
+            "additionalProperties": false,
+            "description": "A medicine is an item that can be used to heal a Pokemon.",
+            "title": "Medicine",
+            "type": "object"
+        },
+        "Move": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Move",
+            "type": "object"
+        },
+        "MoveLearning": {
+            "additionalProperties": false,
+            "description": "A move learning is a way that a Pokemon can learn a move.",
+            "title": "MoveLearning",
+            "type": "object"
+        },
+        "PhysicalMove": {
+            "additionalProperties": false,
+            "description": "A physical move is a type of move that can be used during battles.",
+            "title": "PhysicalMove",
+            "type": "object"
+        },
+        "Place": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Place",
+            "type": "object"
+        },
+        "Pokeball": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Pokeball",
+            "type": "object"
+        },
+        "Pokedex": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Pokedex",
+            "type": "object"
+        },
+        "PokedexEntry": {
+            "additionalProperties": false,
+            "description": "A pokedex entry is a description of a Pokemon.",
+            "title": "PokedexEntry",
+            "type": "object"
         },
         "Pokemon": {
             "additionalProperties": false,
-            "description": "Represents a Pokemon",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [
-                "id"
-            ],
+            "description": "A Pokemon",
             "title": "Pokemon",
             "type": "object"
         },
-        "PokemonCollection": {
+        "Region": {
             "additionalProperties": false,
-            "description": "A holder for Pokemon objects",
-            "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Pokemon__identifier_optional"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
-                    "type": [
-                        "object",
-                        "null"
-                    ]
-                }
-            },
-            "title": "PokemonCollection",
+            "description": "",
+            "title": "Region",
             "type": "object"
         },
-        "Pokemon__identifier_optional": {
+        "Shape": {
             "additionalProperties": false,
-            "description": "Represents a Pokemon",
-            "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
-                }
-            },
-            "required": [],
-            "title": "Pokemon",
+            "description": "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+            "title": "Shape",
+            "type": "object"
+        },
+        "SpecialMove": {
+            "additionalProperties": false,
+            "description": "A special move is a type of move that can be used during battles.",
+            "title": "SpecialMove",
+            "type": "object"
+        },
+        "Species": {
+            "additionalProperties": false,
+            "description": "A species is a category of Pokemon that share common features.",
+            "title": "Species",
+            "type": "object"
+        },
+        "StatusMove": {
+            "additionalProperties": false,
+            "description": "A status move is a type of move that can be used during battles.",
+            "title": "StatusMove",
+            "type": "object"
+        },
+        "TM": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "TM",
+            "type": "object"
+        },
+        "Town": {
+            "additionalProperties": false,
+            "description": "A town is a type of place that can be visited.",
+            "title": "Town",
+            "type": "object"
+        },
+        "Trainer": {
+            "additionalProperties": false,
+            "description": "A trainer is a person who is able to catch Pokemon.",
+            "title": "Trainer",
+            "type": "object"
+        },
+        "Type": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "Type",
             "type": "object"
         }
     },
-    "$id": "https://w3id.org/vladistan/linkml-pokemon",
+    "$id": "https://pokemonkg.org/ontology",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
-    "description": "A holder for Pokemon objects",
     "metamodel_version": "1.7.0",
-    "properties": {
-        "entries": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/Pokemon__identifier_optional"
-                    },
-                    {
-                        "type": "null"
-                    }
-                ]
-            },
-            "type": [
-                "object",
-                "null"
-            ]
-        }
-    },
     "title": "linkml-pokemon",
     "type": "object",
     "version": null

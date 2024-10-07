@@ -1,11 +1,13 @@
 {
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
-   "biolink": "https://w3id.org/biolink/",
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "linkml_pokemon": "https://w3id.org/vladistan/linkml-pokemon/",
+   "owl": "http://www.w3.org/2002/07/owl#",
+   "pokemon": "https://pokemonkg.org/ontology#",
+   "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
-   }
+   "xml": "http://www.w3.org/XML/1998/namespace",
+   "xsd": "http://www.w3.org/2001/XMLSchema#"
 }

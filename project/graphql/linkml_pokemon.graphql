@@ -1,24 +1,141 @@
 # metamodel_version: 1.7.0
-type NamedThing
+type Ability
   {
-    id: Uriorcurie!
-    name: String
-    description: String
+  }
+
+type BattleItem
+  {
+  }
+
+type Berry
+  {
+  }
+
+type Colour
+  {
+  }
+
+type EggGroup
+  {
+  }
+
+type Flavor
+  {
+  }
+
+type Food
+  {
+  }
+
+type Game
+  {
+  }
+
+type Generation
+  {
+  }
+
+type Gym
+  {
+  }
+
+type GymLeader
+  {
+  }
+
+type Habitat
+  {
+  }
+
+type HM
+  {
+  }
+
+type HoldItem
+  {
+  }
+
+type Item
+  {
+  }
+
+type LearningByLevelingUp
+  {
+  }
+
+type LearningThroughBreeding
+  {
+  }
+
+type Medicine
+  {
+  }
+
+type Move
+  {
+  }
+
+type MoveLearning
+  {
+  }
+
+type PhysicalMove
+  {
+  }
+
+type Place
+  {
+  }
+
+type Pokeball
+  {
+  }
+
+type Pokedex
+  {
+  }
+
+type PokedexEntry
+  {
   }
 
 type Pokemon
   {
-    id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
   }
 
-type PokemonCollection
+type Region
   {
-    entries: [Pokemon]
+  }
+
+type Shape
+  {
+  }
+
+type SpecialMove
+  {
+  }
+
+type Species
+  {
+  }
+
+type StatusMove
+  {
+  }
+
+type TM
+  {
+  }
+
+type Town
+  {
+  }
+
+type Trainer
+  {
+  }
+
+type Type
+  {
   }
 

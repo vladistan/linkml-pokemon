@@ -1,11 +1,11 @@
 {
   "name": "linkml-pokemon",
-  "description": "Pokemon Ontology expressed as LinkML",
+  "description": "Ontology covering the Pok\u00e9mon world as it is presented in games and anime television series",
   "title": "linkml-pokemon",
   "see_also": [
     "https://vladistan.github.io/linkml-pokemon"
   ],
-  "id": "https://w3id.org/vladistan/linkml-pokemon",
+  "id": "https://pokemonkg.org/ontology",
   "imports": [
     "linkml:types"
   ],
@@ -20,10 +20,6 @@
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "biolink",
-      "prefix_reference": "https://w3id.org/biolink/"
-    },
-    {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
     },
@@ -34,9 +30,33 @@
     {
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "owl",
+      "prefix_reference": "http://www.w3.org/2002/07/owl#"
+    },
+    {
+      "prefix_prefix": "rdf",
+      "prefix_reference": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "prefix_prefix": "xml",
+      "prefix_reference": "http://www.w3.org/XML/1998/namespace"
+    },
+    {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    {
+      "prefix_prefix": "rdfs",
+      "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    {
+      "prefix_prefix": "pokemon",
+      "prefix_reference": "https://pokemonkg.org/ontology#"
     }
   ],
-  "default_prefix": "linkml_pokemon",
+  "default_prefix": "pokemon",
   "default_range": "string",
   "types": [
     {
@@ -348,249 +368,864 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/PersonStatus",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/id",
-      "description": "A unique identifier for a thing",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
+      "name": "containsPlace",
+      "definition_uri": "https://pokemonkg.org/ontology#containsPlace",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A place is contained to some extent in this place.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
-        "http://schema.org/identifier"
+        "https://pokemonkg.org/ontology#contains_place"
       ],
-      "slot_uri": "http://schema.org/identifier",
-      "identifier": true,
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "uriorcurie",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "name",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/name",
-      "description": "A human-readable name for a thing",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "mappings": [
-        "http://schema.org/name"
-      ],
-      "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "description",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/description",
-      "description": "A human-readable description for a thing",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "mappings": [
-        "http://schema.org/description"
-      ],
-      "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "mappings": [
-        "http://schema.org/email"
-      ],
-      "slot_uri": "http://schema.org/email",
-      "owner": "Pokemon",
-      "domain_of": [
-        "Pokemon"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/birth_date",
-      "description": "Date on which a person is born",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Pokemon",
-      "domain_of": [
-        "Pokemon"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "slot_uri": "https://w3id.org/vladistan/linkml-pokemon/age_in_years",
-      "owner": "Pokemon",
-      "domain_of": [
-        "Pokemon"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "slot_uri": "https://w3id.org/vladistan/linkml-pokemon/vital_status",
-      "owner": "Pokemon",
-      "domain_of": [
-        "Pokemon"
-      ],
-      "range": "PersonStatus",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "pokemonCollection__entries",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "slot_uri": "https://w3id.org/vladistan/linkml-pokemon/entries",
-      "alias": "entries",
-      "owner": "PokemonCollection",
-      "domain_of": [
-        "PokemonCollection"
-      ],
-      "range": "Pokemon",
+      "domain": "Place",
+      "slot_uri": "https://pokemonkg.org/ontology#contains_place",
+      "owner": "containsPlace",
+      "asymmetric": true,
+      "transitive": true,
+      "inverse": "locatedIn",
+      "range": "Place",
       "multivalued": true,
       "inlined": true,
       "@type": "SlotDefinition"
     },
     {
-      "name": "Pokemon_primary_email",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
+      "name": "describedInPokedex",
+      "definition_uri": "https://pokemonkg.org/ontology#describedInPokedex",
+      "description": "['A Pokedex entry is described in a Pokedex@en', 'Ein Pokedex-Eintrag ist in einem Pokedex beschrieben@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
-        "http://schema.org/email"
+        "https://pokemonkg.org/ontology#describedInPokedex"
       ],
-      "is_a": "primary_email",
-      "domain": "Pokemon",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
-      "owner": "Pokemon",
-      "domain_of": [
-        "Pokemon"
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#describedInPokedex",
+      "owner": "describedInPokedex",
+      "inverse": "describesPokemon",
+      "range": "PokedexEntry",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "describesPokemon",
+      "definition_uri": "https://pokemonkg.org/ontology#describesPokemon",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A Pokemon that is described by this Pokedex entry.",
+          "@type": "Annotation"
+        }
       ],
-      "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#describesPokemon"
+      ],
+      "domain": "PokedexEntry",
+      "slot_uri": "https://pokemonkg.org/ontology#describesPokemon",
+      "owner": "describesPokemon",
+      "inverse": "describedInPokedex",
+      "range": "Species",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "featuresSpecies",
+      "definition_uri": "https://pokemonkg.org/ontology#featuresSpecies",
+      "description": "['A Pokedex entry features a species@en', 'Ein Pokedex-Eintrag zeigt eine Art@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#featuresSpecies"
+      ],
+      "domain": "PokedexEntry",
+      "slot_uri": "https://pokemonkg.org/ontology#featuresSpecies",
+      "owner": "featuresSpecies",
+      "range": "Species",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasPokedexEntry",
+      "definition_uri": "https://pokemonkg.org/ontology#hasPokedexEntry",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A Pokedex entry in which this Pokemon is described.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasPokedexEntry"
+      ],
+      "domain": "Pokedex",
+      "slot_uri": "https://pokemonkg.org/ontology#hasPokedexEntry",
+      "owner": "hasPokedexEntry",
+      "range": "PokedexEntry",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evolvesFrom",
+      "definition_uri": "https://pokemonkg.org/ontology#evolvesFrom",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "This species evolves the other species.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#evolvesFrom"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#evolvesFrom",
+      "owner": "evolvesFrom",
+      "inverse": "evolvesTo",
+      "range": "Species",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "evolvesTo",
+      "definition_uri": "https://pokemonkg.org/ontology#evolvesTo",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A Pokemon evolves to another Pokemon.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#evolvesTo"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#evolvesTo",
+      "owner": "evolvesTo",
+      "inverse": "evolvesFrom",
+      "range": "Species",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "foundIn",
+      "definition_uri": "https://pokemonkg.org/ontology#foundIn",
+      "description": "['A place is found in a location@en', 'Ein Ort ist in einem Ort gefunden@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#foundIn"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#foundIn",
+      "owner": "foundIn",
+      "range": "Habitat",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasColour",
+      "definition_uri": "https://pokemonkg.org/ontology#hasColour",
+      "description": "['A Pokemon has a color@en', 'Ein Pokemon hat eine Farbe@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasColour"
+      ],
+      "slot_uri": "https://pokemonkg.org/ontology#hasColour",
+      "range": "Colour",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasFlavor",
+      "definition_uri": "https://pokemonkg.org/ontology#hasFlavor",
+      "description": "['A Pokemon has a flavor@en', 'Ein Pokemon hat eine Geschmacksrichtung@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasFlavor"
+      ],
+      "domain": "Food",
+      "slot_uri": "https://pokemonkg.org/ontology#hasFlavor",
+      "owner": "hasFlavor",
+      "range": "Flavor",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasType",
+      "definition_uri": "https://pokemonkg.org/ontology#hasType",
+      "description": "['A Pokemon has a type@en', 'Ein Pokemon hat eine Art@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasType"
+      ],
+      "slot_uri": "https://pokemonkg.org/ontology#hasType",
+      "range": "Type",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasSize",
+      "definition_uri": "https://pokemonkg.org/ontology#hasSize",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasSize"
+      ],
+      "slot_uri": "https://pokemonkg.org/ontology#hasSize",
       "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasShape",
+      "definition_uri": "https://pokemonkg.org/ontology#hasShape",
+      "description": "The shape of a berry is a measure of how good it is for making a Potion.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasShape"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#hasShape",
+      "owner": "hasShape",
+      "range": "Shape",
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "learnsMove",
+      "definition_uri": "https://pokemonkg.org/ontology#learnsMove",
+      "description": "['A move learning learns a move@en', 'Ein Lernen von Bewegungen lernt eine Bewegung@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#learnsMove"
+      ],
+      "domain": "MoveLearning",
+      "slot_uri": "https://pokemonkg.org/ontology#learnsMove",
+      "owner": "learnsMove",
+      "range": "Move",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "locatedIn",
+      "definition_uri": "https://pokemonkg.org/ontology#locatedIn",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "This place is located to some extent in another place.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#locatedIn"
+      ],
+      "domain": "Place",
+      "slot_uri": "https://pokemonkg.org/ontology#locatedIn",
+      "owner": "locatedIn",
+      "asymmetric": true,
+      "transitive": true,
+      "inverse": "containsPlace",
+      "range": "Place",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "inEggGroup",
+      "definition_uri": "https://pokemonkg.org/ontology#inEggGroup",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#inEggGroup"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#inEggGroup",
+      "owner": "inEggGroup",
+      "range": "EggGroup",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mayHaveAbility",
+      "definition_uri": "https://pokemonkg.org/ontology#mayHaveAbility",
+      "description": "['A Pokemon may have an ability@en', 'Ein Pokemon kann eine F\u00e4higkeit haben@de']",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#mayHaveAbility"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#mayHaveAbility",
+      "owner": "mayHaveAbility",
+      "range": "Ability",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "mayHaveHiddenAbility",
+      "definition_uri": "https://pokemonkg.org/ontology#mayHaveHiddenAbility",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#mayHaveHiddenAbility"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#mayHaveHiddenAbility",
+      "owner": "mayHaveHiddenAbility",
+      "subproperty_of": "mayHaveAbility",
+      "range": "Ability",
+      "multivalued": true,
+      "inlined": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "firmness",
+      "definition_uri": "https://pokemonkg.org/ontology#firmness",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Food",
+      "slot_uri": "https://pokemonkg.org/ontology#firmness",
+      "owner": "firmness",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "accuracy",
+      "definition_uri": "https://pokemonkg.org/ontology#accuracy",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Move",
+      "slot_uri": "https://pokemonkg.org/ontology#accuracy",
+      "owner": "accuracy",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "basePower",
+      "definition_uri": "https://pokemonkg.org/ontology#basePower",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Move",
+      "slot_uri": "https://pokemonkg.org/ontology#basePower",
+      "owner": "basePower",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "basePowerPoints",
+      "definition_uri": "https://pokemonkg.org/ontology#basePowerPoints",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Move",
+      "slot_uri": "https://pokemonkg.org/ontology#basePowerPoints",
+      "owner": "basePowerPoints",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "entryNumber",
+      "definition_uri": "https://pokemonkg.org/ontology#entryNumber",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "PokedexEntry",
+      "slot_uri": "https://pokemonkg.org/ontology#entryNumber",
+      "owner": "entryNumber",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasGenus",
+      "definition_uri": "https://pokemonkg.org/ontology#hasGenus",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#hasGenus",
+      "owner": "hasGenus",
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "maxPowerPoints",
+      "definition_uri": "https://pokemonkg.org/ontology#maxPowerPoints",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Move",
+      "slot_uri": "https://pokemonkg.org/ontology#maxPowerPoints",
+      "owner": "maxPowerPoints",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "minLevelToLearn",
+      "definition_uri": "https://pokemonkg.org/ontology#minLevelToLearn",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_uri": "https://pokemonkg.org/ontology#minLevelToLearn",
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "smoothness",
+      "definition_uri": "https://pokemonkg.org/ontology#smoothness",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "domain": "Food",
+      "slot_uri": "https://pokemonkg.org/ontology#smoothness",
+      "owner": "smoothness",
+      "range": "integer",
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
     {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "mappings": [
-        "schema:Thing"
+      "name": "Ability",
+      "definition_uri": "https://pokemonkg.org/ontology#Ability",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon.",
+          "@type": "Annotation"
+        }
       ],
-      "slots": [
-        "id",
-        "name",
-        "description"
-      ],
+      "from_schema": "https://pokemonkg.org/ontology",
       "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
+      "class_uri": "https://pokemonkg.org/ontology#Ability",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "BattleItem",
+      "definition_uri": "https://pokemonkg.org/ontology#BattleItem",
+      "description": "Battle items are items that can be used during battles.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#BattleItem",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Berry",
+      "definition_uri": "https://pokemonkg.org/ontology#Berry",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pok\u00e9mon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Food",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Berry",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "EggGroup",
+      "definition_uri": "https://pokemonkg.org/ontology#EggGroup",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pok\u00e9mon may belong to either one or two egg groups.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#EggGroup",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Colour",
+      "definition_uri": "https://pokemonkg.org/ontology#Colour",
+      "description": "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Colour",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Flavor",
+      "definition_uri": "https://pokemonkg.org/ontology#Flavor",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Flavor is a special set of attributes that certain foods in the Pok\u00e9mon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Flavor",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Food",
+      "definition_uri": "https://pokemonkg.org/ontology#Food",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Food",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Game",
+      "definition_uri": "https://pokemonkg.org/ontology#Game",
+      "description": "A game is a type of media that can be played by people.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Game",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Generation",
+      "definition_uri": "https://pokemonkg.org/ontology#Generation",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Generation",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Gym",
+      "definition_uri": "https://pokemonkg.org/ontology#Gym",
+      "description": "A gym is a location that can be battled at.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Place",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Gym",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "GymLeader",
+      "definition_uri": "https://pokemonkg.org/ontology#GymLeader",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A gym leader is a highest ranking member and owner of an official Pok\u00e9mon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Trainer",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#GymLeader",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "HM",
+      "definition_uri": "https://pokemonkg.org/ontology#HM",
+      "description": "Hidden Machine",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#HM",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Habitat",
+      "definition_uri": "https://pokemonkg.org/ontology#Habitat",
+      "description": "A habitat is a type of environment that certain Pokemon belong to.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Habitat",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "HoldItem",
+      "definition_uri": "https://pokemonkg.org/ontology#HoldItem",
+      "description": "A hold item is an item that can be held by a Pokemon.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#HoldItem",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Item",
+      "definition_uri": "https://pokemonkg.org/ontology#Item",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "An item is an object in the Pok\u00e9mon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pok\u00e9mon, or to access a new area.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Item",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Pokedex",
+      "definition_uri": "https://pokemonkg.org/ontology#Pokedex",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "The Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokemon featured in the Pokemon video game, anime and manga series.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Pokedex",
       "@type": "ClassDefinition"
     },
     {
       "name": "Pokemon",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/Pokemon",
-      "description": "Represents a Pokemon",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "Pokemon_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
+      "definition_uri": "https://pokemonkg.org/ontology#Pokemon",
+      "annotations": [
+        {
+          "tag": "rdfs:seeAlso",
+          "value": "<https://dbpedia.org/resource/Pok\u00e9mon>",
+          "@type": "Annotation"
+        }
       ],
+      "description": "A Pokemon",
+      "from_schema": "https://pokemonkg.org/ontology",
       "slot_usage": {},
-      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/Pokemon",
+      "class_uri": "https://pokemonkg.org/ontology#Pokemon",
+      "union_of": [
+        "Pokedex",
+        "Type"
+      ],
       "@type": "ClassDefinition"
     },
     {
-      "name": "PokemonCollection",
-      "definition_uri": "https://w3id.org/vladistan/linkml-pokemon/PokemonCollection",
-      "description": "A holder for Pokemon objects",
-      "from_schema": "https://w3id.org/vladistan/linkml-pokemon",
-      "slots": [
-        "pokemonCollection__entries"
-      ],
+      "name": "PokedexEntry",
+      "definition_uri": "https://pokemonkg.org/ontology#PokedexEntry",
+      "description": "A pokedex entry is a description of a Pokemon.",
+      "from_schema": "https://pokemonkg.org/ontology",
       "slot_usage": {},
-      "attributes": [
+      "class_uri": "https://pokemonkg.org/ontology#PokedexEntry",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Pokeball",
+      "definition_uri": "https://pokemonkg.org/ontology#Pokeball",
+      "annotations": [
         {
-          "name": "entries",
-          "range": "Pokemon",
-          "multivalued": true,
-          "inlined": true,
-          "@type": "SlotDefinition"
+          "tag": "rdfs:comment",
+          "value": "A Pok\u00e9 Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pok\u00e9mon.",
+          "@type": "Annotation"
         }
       ],
-      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/PokemonCollection",
-      "tree_root": true,
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Pokeball",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Place",
+      "definition_uri": "https://pokemonkg.org/ontology#Place",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Entities that have a somewhat fixed, physical extension.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Place",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Shape",
+      "definition_uri": "https://pokemonkg.org/ontology#Shape",
+      "description": "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Shape",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Region",
+      "definition_uri": "https://pokemonkg.org/ontology#Region",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Regions are areas in the Pok\u00e9mon universe that are smaller parts of a nation.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Place",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Region",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Species",
+      "definition_uri": "https://pokemonkg.org/ontology#Species",
+      "description": "A species is a category of Pokemon that share common features.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Species",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Move",
+      "definition_uri": "https://pokemonkg.org/ontology#Move",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A move is a special ability of a Pokemon.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Move",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "MoveLearning",
+      "definition_uri": "https://pokemonkg.org/ontology#MoveLearning",
+      "description": "A move learning is a way that a Pokemon can learn a move.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#MoveLearning",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "LearningByLevelingUp",
+      "definition_uri": "https://pokemonkg.org/ontology#LearningByLevelingUp",
+      "description": "A move that is learned by leveling up.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "MoveLearning",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#LearningByLevelingUp",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "LearningThroughBreeding",
+      "definition_uri": "https://pokemonkg.org/ontology#LearningThroughBreeding",
+      "description": "A move that is learned by breeding.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "MoveLearning",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#LearningThroughBreeding",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Medicine",
+      "definition_uri": "https://pokemonkg.org/ontology#Medicine",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "Medicine items can heal various afflictions of a Pokemon.",
+          "@type": "Annotation"
+        }
+      ],
+      "description": "A medicine is an item that can be used to heal a Pokemon.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Medicine",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "SpecialMove",
+      "definition_uri": "https://pokemonkg.org/ontology#SpecialMove",
+      "description": "A special move is a type of move that can be used during battles.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Move",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#SpecialMove",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PhysicalMove",
+      "definition_uri": "https://pokemonkg.org/ontology#PhysicalMove",
+      "description": "A physical move is a type of move that can be used during battles.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Move",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#PhysicalMove",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "StatusMove",
+      "definition_uri": "https://pokemonkg.org/ontology#StatusMove",
+      "description": "A status move is a type of move that can be used during battles.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Move",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#StatusMove",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "TM",
+      "definition_uri": "https://pokemonkg.org/ontology#TM",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "A Technical Machine is an item that can be used to teach a Pokemon a move.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Item",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#TM",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Town",
+      "definition_uri": "https://pokemonkg.org/ontology#Town",
+      "description": "A town is a type of place that can be visited.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Place",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Town",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Trainer",
+      "definition_uri": "https://pokemonkg.org/ontology#Trainer",
+      "description": "A trainer is a person who is able to catch Pokemon.",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Trainer",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Type",
+      "definition_uri": "https://pokemonkg.org/ontology#Type",
+      "annotations": [
+        {
+          "tag": "rdfs:comment",
+          "value": "All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.",
+          "@type": "Annotation"
+        }
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_usage": {},
+      "class_uri": "https://pokemonkg.org/ontology#Type",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2024-10-05T14:42:17",
-  "source_file_size": 2208,
-  "generation_date": "2024-10-05T15:11:18",
+  "source_file_date": "2024-10-07T00:42:15",
+  "source_file_size": 10868,
+  "generation_date": "2024-10-07T00:42:23",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     {
-      "@base": "https://w3id.org/vladistan/linkml-pokemon/"
+      "@base": "https://pokemonkg.org/ontology#"
     }
   ]
 }
