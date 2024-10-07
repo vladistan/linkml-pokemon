@@ -3,6 +3,8 @@
 
 STARTUP_DIR=$(pwd)
 
+set -e # Exit on error
+
 
 python -m pip install -U pip
 
@@ -28,11 +30,12 @@ elif [[ "$PWD" == *"/IdeaProjects/"* ]]; then
 fi
 
 # Configure LinkML
+cd ../linkml
 pre-commit install || true
-poetry install --with-extras
+poetry install --all-extras
 pre-commit run -a || true
 # Configure Pokemon
 cd "${STARTUP_DIR}"
-poetry install --with-extras
+poetry install --all-extras
 pip install -e ../linkml
 
