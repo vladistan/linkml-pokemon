@@ -16,6 +16,9 @@ fi
 pipx install pre-commit
 pipx install poetry
 
+poetry config virtualenvs.in-project true
+
+
 echo "PWD: $PWD"
 
 if [[ "$PWD" == *"/workspaces/"* ]]; then
