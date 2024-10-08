@@ -16,7 +16,10 @@
       "yqVersion": "latest",
       "gojqVersion": "latest",
       "xqVersion": "latest"
-    }
+    },
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {},
+    "ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "customizations": {
     "codespaces": {
