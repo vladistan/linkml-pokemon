@@ -282,7 +282,6 @@ slots:
       - "Ein Pokemon hat eine Farbe@de"
 
   hasFlavor:
-    name: has flavor
     slot_uri: pokemon:hasFlavor
     range: Flavor
     domain: Food

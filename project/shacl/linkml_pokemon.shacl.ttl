@@ -99,7 +99,7 @@ pokemon:LearningThroughBreeding a sh:NodeShape ;
 
 pokemon:Medicine a sh:NodeShape ;
     sh:closed true ;
-    sh:description "A medicine is an item that can be used to heal a Pokemon." ;
+    sh:description "Medicine items can heal various afflictions of a Pokemon." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:targetClass pokemon:Medicine .
 

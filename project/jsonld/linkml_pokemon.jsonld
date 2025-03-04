@@ -606,7 +606,6 @@
     {
       "name": "learnsMove",
       "definition_uri": "https://pokemonkg.org/ontology#learnsMove",
-      "description": "['A move learning learns a move@en', 'Ein Lernen von Bewegungen lernt eine Bewegung@de']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#learnsMove"
@@ -1120,14 +1119,7 @@
     {
       "name": "Medicine",
       "definition_uri": "https://pokemonkg.org/ontology#Medicine",
-      "annotations": [
-        {
-          "tag": "rdfs:comment",
-          "value": "Medicine items can heal various afflictions of a Pokemon.",
-          "@type": "Annotation"
-        }
-      ],
-      "description": "A medicine is an item that can be used to heal a Pokemon.",
+      "description": "Medicine items can heal various afflictions of a Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slot_usage": {},

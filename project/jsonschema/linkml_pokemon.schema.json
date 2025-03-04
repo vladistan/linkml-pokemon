@@ -104,7 +104,7 @@
         },
         "Medicine": {
             "additionalProperties": false,
-            "description": "A medicine is an item that can be used to heal a Pokemon.",
+            "description": "Medicine items can heal various afflictions of a Pokemon.",
             "title": "Medicine",
             "type": "object"
         },
