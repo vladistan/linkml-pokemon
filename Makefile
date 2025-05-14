@@ -126,6 +126,12 @@ gen-examples:
 gen-project: $(PYMODEL)
 	$(RUN) gen-project ${CONFIG_YAML} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
+gen-pydantic:
+	mkdir -p ${DEST}/pydantic
+	$(RUN) gen-pydantic   $(SOURCE_SCHEMA_PATH) > ${DEST}/pydantic/$(SCHEMA_NAME).py
+
+gen-proto:
+	$(RUN) gen-proto  $(SOURCE_SCHEMA_PATH)
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)
