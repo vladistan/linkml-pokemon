@@ -7,7 +7,8 @@
   ],
   "id": "https://pokemonkg.org/ontology",
   "imports": [
-    "linkml:types"
+    "linkml:types",
+    "./foaf"
   ],
   "license": "MIT",
   "prefixes": [
@@ -54,6 +55,10 @@
     {
       "prefix_prefix": "rdfs",
       "prefix_reference": "http://www.w3.org/2000/01/rdf-schema#"
+    },
+    {
+      "prefix_prefix": "foaf",
+      "prefix_reference": "http://xmlns.com/foaf/0.1/"
     },
     {
       "prefix_prefix": "pokemon",
@@ -468,7 +473,7 @@
     {
       "name": "describedInPokedex",
       "definition_uri": "https://pokemonkg.org/ontology#describedInPokedex",
-      "description": "['A Pokedex entry is described in a Pokedex@en', 'Ein Pokedex-Eintrag ist in einem Pokedex beschrieben@de']",
+      "description": "['A Pokedex entry is described in a Pokedex']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#describedInPokedex"
@@ -502,13 +507,12 @@
       "inverse": "describedInPokedex",
       "range": "Species",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "featuresSpecies",
       "definition_uri": "https://pokemonkg.org/ontology#featuresSpecies",
-      "description": "['A Pokedex entry features a species@en', 'Ein Pokedex-Eintrag zeigt eine Art@de']",
+      "description": "['A Pokedex entry features a species']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#featuresSpecies"
@@ -520,7 +524,6 @@
       ],
       "range": "Species",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -564,7 +567,6 @@
       "owner": "evolvesFrom",
       "inverse": "evolvesTo",
       "range": "Species",
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -587,20 +589,22 @@
       "inverse": "evolvesFrom",
       "range": "Species",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "foundIn",
       "definition_uri": "https://pokemonkg.org/ontology#foundIn",
-      "description": "['A place is found in a location@en', 'Ein Ort ist in einem Ort gefunden@de']",
+      "description": "['A place is found in a location']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#foundIn"
       ],
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#foundIn",
-      "owner": "foundIn",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "Habitat",
       "multivalued": true,
       "inlined": true,
@@ -609,12 +613,16 @@
     {
       "name": "hasColour",
       "definition_uri": "https://pokemonkg.org/ontology#hasColour",
-      "description": "['A Pokemon has a color@en', 'Ein Pokemon hat eine Farbe@de']",
+      "description": "['A Pokemon has a color']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasColour"
       ],
       "slot_uri": "https://pokemonkg.org/ontology#hasColour",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "Colour",
       "multivalued": true,
       "inlined": true,
@@ -623,7 +631,7 @@
     {
       "name": "hasFlavor",
       "definition_uri": "https://pokemonkg.org/ontology#hasFlavor",
-      "description": "['A Pokemon has a flavor@en', 'Ein Pokemon hat eine Geschmacksrichtung@de']",
+      "description": "['A Pokemon has a flavor']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasFlavor"
@@ -639,12 +647,17 @@
     {
       "name": "hasType",
       "definition_uri": "https://pokemonkg.org/ontology#hasType",
-      "description": "['A Pokemon has a type@en', 'Ein Pokemon hat eine Art@de']",
+      "description": "['A Pokemon has a type']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasType"
       ],
       "slot_uri": "https://pokemonkg.org/ontology#hasType",
+      "owner": "Move",
+      "domain_of": [
+        "Species",
+        "Move"
+      ],
       "range": "Type",
       "multivalued": true,
       "inlined": true,
@@ -666,6 +679,54 @@
       "@type": "SlotDefinition"
     },
     {
+      "name": "hasHeight",
+      "definition_uri": "https://pokemonkg.org/ontology#hasHeight",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasHeight"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#hasHeight",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasWeight",
+      "definition_uri": "https://pokemonkg.org/ontology#hasWeight",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasWeight"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#hasWeight",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasCatchRate",
+      "definition_uri": "https://pokemonkg.org/ontology#hasCatchRate",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#hasCatchRate"
+      ],
+      "domain": "Species",
+      "slot_uri": "https://pokemonkg.org/ontology#hasCatchRate",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "hasShape",
       "definition_uri": "https://pokemonkg.org/ontology#hasShape",
       "description": "The shape of a berry is a measure of how good it is for making a Potion.",
@@ -675,7 +736,10 @@
       ],
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#hasShape",
-      "owner": "hasShape",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "Shape",
       "inlined": true,
       "@type": "SlotDefinition"
@@ -728,7 +792,10 @@
       ],
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#inEggGroup",
-      "owner": "inEggGroup",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "EggGroup",
       "multivalued": true,
       "inlined": true,
@@ -737,14 +804,17 @@
     {
       "name": "mayHaveAbility",
       "definition_uri": "https://pokemonkg.org/ontology#mayHaveAbility",
-      "description": "['A Pokemon may have an ability@en', 'Ein Pokemon kann eine F\u00e4higkeit haben@de']",
+      "description": "['A Pokemon may have an ability']",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#mayHaveAbility"
       ],
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#mayHaveAbility",
-      "owner": "mayHaveAbility",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "Ability",
       "multivalued": true,
       "@type": "SlotDefinition"
@@ -758,9 +828,28 @@
       ],
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#mayHaveHiddenAbility",
-      "owner": "mayHaveHiddenAbility",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "subproperty_of": "mayHaveAbility",
       "range": "Ability",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "isAbleToApply",
+      "definition_uri": "https://pokemonkg.org/ontology#isAbleToApply",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#isAbleToApply"
+      ],
+      "slot_uri": "https://pokemonkg.org/ontology#isAbleToApply",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
+      "range": "Move",
       "multivalued": true,
       "@type": "SlotDefinition"
     },
@@ -820,7 +909,10 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "domain": "Species",
       "slot_uri": "https://pokemonkg.org/ontology#hasGenus",
-      "owner": "hasGenus",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -850,6 +942,22 @@
       "slot_uri": "https://pokemonkg.org/ontology#smoothness",
       "owner": "smoothness",
       "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "depiction",
+      "definition_uri": "https://w3id.org/linkml/foaf/depiction",
+      "description": "A depiction of the person",
+      "from_schema": "https://w3id.org/linkml/foaf",
+      "mappings": [
+        "http://xmlns.com/foaf/0.1/depiction"
+      ],
+      "slot_uri": "http://xmlns.com/foaf/0.1/depiction",
+      "owner": "Species",
+      "domain_of": [
+        "Species"
+      ],
+      "range": "string",
       "@type": "SlotDefinition"
     },
     {
@@ -1235,6 +1343,25 @@
       "definition_uri": "https://pokemonkg.org/ontology#Species",
       "description": "A species is a category of Pokemon that share common features.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "hasColour",
+        "mayHaveHiddenAbility",
+        "mayHaveAbility",
+        "isAbleToApply",
+        "hasHeight",
+        "hasWeight",
+        "depiction",
+        "inEggGroup",
+        "hasType",
+        "hasShape",
+        "hasGenus",
+        "hasCatchRate",
+        "foundIn"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Species",
       "@type": "ClassDefinition"
@@ -1258,7 +1385,8 @@
         "name",
         "description",
         "entity__id",
-        "effectDescription"
+        "effectDescription",
+        "hasType"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Move",
@@ -1313,7 +1441,8 @@
         "name",
         "description",
         "entity__id",
-        "effectDescription"
+        "effectDescription",
+        "hasType"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#SpecialMove",
@@ -1329,7 +1458,8 @@
         "name",
         "description",
         "entity__id",
-        "effectDescription"
+        "effectDescription",
+        "hasType"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#PhysicalMove",
@@ -1345,7 +1475,8 @@
         "name",
         "description",
         "entity__id",
-        "effectDescription"
+        "effectDescription",
+        "hasType"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#StatusMove",
@@ -1404,13 +1535,14 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2025-05-14T22:23:01",
-  "source_file_size": 12134,
-  "generation_date": "2025-05-14T22:28:23",
+  "source_file_date": "2025-05-14T23:25:51",
+  "source_file_size": 12586,
+  "generation_date": "2025-05-14T23:25:57",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
+    "./foaf.context.jsonld",
     {
       "@base": "https://pokemonkg.org/ontology#"
     }

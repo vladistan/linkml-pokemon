@@ -90,6 +90,7 @@ type Move
     description: String
     id: Uri!
     effectDescription: [String]
+    hasType: [Type]
   }
 
 type MoveLearning
@@ -109,6 +110,7 @@ type PhysicalMove
     description: String
     id: Uri!
     effectDescription: [String]
+    hasType: [Type]
   }
 
 type Place
@@ -145,10 +147,27 @@ type SpecialMove
     description: String
     id: Uri!
     effectDescription: [String]
+    hasType: [Type]
   }
 
 type Species
   {
+    id: Uri!
+    name: String
+    description: String
+    hasColour: [Colour]
+    mayHaveHiddenAbility: [Ability]
+    mayHaveAbility: [Ability]
+    isAbleToApply: [Move]
+    hasHeight: String
+    hasWeight: String
+    depiction: String
+    inEggGroup: [EggGroup]
+    hasType: [Type]
+    hasShape: Shape
+    hasGenus: String
+    hasCatchRate: Integer
+    foundIn: [Habitat]
   }
 
 type StatusMove
@@ -157,6 +176,7 @@ type StatusMove
     description: String
     id: Uri!
     effectDescription: [String]
+    hasType: [Type]
   }
 
 type Thing

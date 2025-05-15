@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-05-14T22:28:23
+# Generation date: 2025-05-14T23:25:58
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -65,6 +65,7 @@ version = None
 # Namespaces
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
+FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 LINKML_COMMON = CurieNamespace('linkml_common', 'https://w3id.org/linkml/common/')
 LINKML_POKEMON = CurieNamespace('linkml_pokemon', 'https://w3id.org/vladistan/linkml-pokemon/')
@@ -94,6 +95,10 @@ class EntityId(URI):
 
 
 class AbilityId(EntityId):
+    pass
+
+
+class SpeciesId(NamedThingId):
     pass
 
 
@@ -274,12 +279,12 @@ class Generation(YAMLRoot):
     class_name: ClassVar[str] = "Generation"
     class_model_uri: ClassVar[URIRef] = POKEMON.Generation
 
-    featuresSpecies: Optional[Union[Union[dict, "Species"], list[Union[dict, "Species"]]]] = empty_list()
+    featuresSpecies: Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if not isinstance(self.featuresSpecies, list):
             self.featuresSpecies = [self.featuresSpecies] if self.featuresSpecies is not None else []
-        self.featuresSpecies = [v if isinstance(v, Species) else Species(**as_dict(v)) for v in self.featuresSpecies]
+        self.featuresSpecies = [v if isinstance(v, SpeciesId) else SpeciesId(v) for v in self.featuresSpecies]
 
         super().__post_init__(**kwargs)
 
@@ -452,7 +457,8 @@ class Region(Place):
     class_model_uri: ClassVar[URIRef] = POKEMON.Region
 
 
-class Species(YAMLRoot):
+@dataclass(repr=False)
+class Species(NamedThing):
     """
     A species is a category of Pokemon that share common features.
     """
@@ -462,6 +468,75 @@ class Species(YAMLRoot):
     class_class_curie: ClassVar[str] = "pokemon:Species"
     class_name: ClassVar[str] = "Species"
     class_model_uri: ClassVar[URIRef] = POKEMON.Species
+
+    id: Union[str, SpeciesId] = None
+    hasColour: Optional[Union[Union[dict, Colour], list[Union[dict, Colour]]]] = empty_list()
+    mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
+    mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
+    isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
+    hasHeight: Optional[str] = None
+    hasWeight: Optional[str] = None
+    depiction: Optional[str] = None
+    inEggGroup: Optional[Union[Union[dict, EggGroup], list[Union[dict, EggGroup]]]] = empty_list()
+    hasType: Optional[Union[Union[dict, "Type"], list[Union[dict, "Type"]]]] = empty_list()
+    hasShape: Optional[Union[dict, Shape]] = None
+    hasGenus: Optional[str] = None
+    hasCatchRate: Optional[int] = None
+    foundIn: Optional[Union[Union[dict, Habitat], list[Union[dict, Habitat]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SpeciesId):
+            self.id = SpeciesId(self.id)
+
+        if not isinstance(self.hasColour, list):
+            self.hasColour = [self.hasColour] if self.hasColour is not None else []
+        self.hasColour = [v if isinstance(v, Colour) else Colour(**as_dict(v)) for v in self.hasColour]
+
+        if not isinstance(self.mayHaveHiddenAbility, list):
+            self.mayHaveHiddenAbility = [self.mayHaveHiddenAbility] if self.mayHaveHiddenAbility is not None else []
+        self.mayHaveHiddenAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveHiddenAbility]
+
+        if not isinstance(self.mayHaveAbility, list):
+            self.mayHaveAbility = [self.mayHaveAbility] if self.mayHaveAbility is not None else []
+        self.mayHaveAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveAbility]
+
+        if not isinstance(self.isAbleToApply, list):
+            self.isAbleToApply = [self.isAbleToApply] if self.isAbleToApply is not None else []
+        self.isAbleToApply = [v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply]
+
+        if self.hasHeight is not None and not isinstance(self.hasHeight, str):
+            self.hasHeight = str(self.hasHeight)
+
+        if self.hasWeight is not None and not isinstance(self.hasWeight, str):
+            self.hasWeight = str(self.hasWeight)
+
+        if self.depiction is not None and not isinstance(self.depiction, str):
+            self.depiction = str(self.depiction)
+
+        if not isinstance(self.inEggGroup, list):
+            self.inEggGroup = [self.inEggGroup] if self.inEggGroup is not None else []
+        self.inEggGroup = [v if isinstance(v, EggGroup) else EggGroup(**as_dict(v)) for v in self.inEggGroup]
+
+        if not isinstance(self.hasType, list):
+            self.hasType = [self.hasType] if self.hasType is not None else []
+        self.hasType = [v if isinstance(v, Type) else Type(**as_dict(v)) for v in self.hasType]
+
+        if self.hasShape is not None and not isinstance(self.hasShape, Shape):
+            self.hasShape = Shape()
+
+        if self.hasGenus is not None and not isinstance(self.hasGenus, str):
+            self.hasGenus = str(self.hasGenus)
+
+        if self.hasCatchRate is not None and not isinstance(self.hasCatchRate, int):
+            self.hasCatchRate = int(self.hasCatchRate)
+
+        if not isinstance(self.foundIn, list):
+            self.foundIn = [self.foundIn] if self.foundIn is not None else []
+        self.foundIn = [v if isinstance(v, Habitat) else Habitat(**as_dict(v)) for v in self.foundIn]
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -475,6 +550,7 @@ class Move(Entity):
 
     id: Union[str, MoveId] = None
     effectDescription: Optional[Union[str, list[str]]] = empty_list()
+    hasType: Optional[Union[Union[dict, "Type"], list[Union[dict, "Type"]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -485,6 +561,10 @@ class Move(Entity):
         if not isinstance(self.effectDescription, list):
             self.effectDescription = [self.effectDescription] if self.effectDescription is not None else []
         self.effectDescription = [v if isinstance(v, str) else str(v) for v in self.effectDescription]
+
+        if not isinstance(self.hasType, list):
+            self.hasType = [self.hasType] if self.hasType is not None else []
+        self.hasType = [v if isinstance(v, Type) else Type(**as_dict(v)) for v in self.hasType]
 
         super().__post_init__(**kwargs)
 
@@ -683,19 +763,19 @@ slots.describedInPokedex = Slot(uri=POKEMON.describedInPokedex, name="describedI
                    model_uri=POKEMON.describedInPokedex, domain=Species, range=Optional[Union[Union[dict, PokedexEntry], list[Union[dict, PokedexEntry]]]])
 
 slots.describesPokemon = Slot(uri=POKEMON.describesPokemon, name="describesPokemon", curie=POKEMON.curie('describesPokemon'),
-                   model_uri=POKEMON.describesPokemon, domain=PokedexEntry, range=Optional[Union[Union[dict, "Species"], list[Union[dict, "Species"]]]])
+                   model_uri=POKEMON.describesPokemon, domain=PokedexEntry, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
 
 slots.featuresSpecies = Slot(uri=POKEMON.featuresSpecies, name="featuresSpecies", curie=POKEMON.curie('featuresSpecies'),
-                   model_uri=POKEMON.featuresSpecies, domain=None, range=Optional[Union[Union[dict, Species], list[Union[dict, Species]]]])
+                   model_uri=POKEMON.featuresSpecies, domain=None, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
 
 slots.hasPokedexEntry = Slot(uri=POKEMON.hasPokedexEntry, name="hasPokedexEntry", curie=POKEMON.curie('hasPokedexEntry'),
                    model_uri=POKEMON.hasPokedexEntry, domain=Pokedex, range=Optional[Union[Union[dict, "PokedexEntry"], list[Union[dict, "PokedexEntry"]]]])
 
 slots.evolvesFrom = Slot(uri=POKEMON.evolvesFrom, name="evolvesFrom", curie=POKEMON.curie('evolvesFrom'),
-                   model_uri=POKEMON.evolvesFrom, domain=Species, range=Optional[Union[dict, "Species"]])
+                   model_uri=POKEMON.evolvesFrom, domain=Species, range=Optional[Union[str, SpeciesId]])
 
 slots.evolvesTo = Slot(uri=POKEMON.evolvesTo, name="evolvesTo", curie=POKEMON.curie('evolvesTo'),
-                   model_uri=POKEMON.evolvesTo, domain=Species, range=Optional[Union[Union[dict, "Species"], list[Union[dict, "Species"]]]])
+                   model_uri=POKEMON.evolvesTo, domain=Species, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
 
 slots.foundIn = Slot(uri=POKEMON.foundIn, name="foundIn", curie=POKEMON.curie('foundIn'),
                    model_uri=POKEMON.foundIn, domain=Species, range=Optional[Union[Union[dict, Habitat], list[Union[dict, Habitat]]]])
@@ -711,6 +791,15 @@ slots.hasType = Slot(uri=POKEMON.hasType, name="hasType", curie=POKEMON.curie('h
 
 slots.hasSize = Slot(uri=POKEMON.hasSize, name="hasSize", curie=POKEMON.curie('hasSize'),
                    model_uri=POKEMON.hasSize, domain=None, range=Optional[str])
+
+slots.hasHeight = Slot(uri=POKEMON.hasHeight, name="hasHeight", curie=POKEMON.curie('hasHeight'),
+                   model_uri=POKEMON.hasHeight, domain=Species, range=Optional[str])
+
+slots.hasWeight = Slot(uri=POKEMON.hasWeight, name="hasWeight", curie=POKEMON.curie('hasWeight'),
+                   model_uri=POKEMON.hasWeight, domain=Species, range=Optional[str])
+
+slots.hasCatchRate = Slot(uri=POKEMON.hasCatchRate, name="hasCatchRate", curie=POKEMON.curie('hasCatchRate'),
+                   model_uri=POKEMON.hasCatchRate, domain=Species, range=Optional[int])
 
 slots.hasShape = Slot(uri=POKEMON.hasShape, name="hasShape", curie=POKEMON.curie('hasShape'),
                    model_uri=POKEMON.hasShape, domain=Species, range=Optional[Union[dict, Shape]])
@@ -729,6 +818,9 @@ slots.mayHaveAbility = Slot(uri=POKEMON.mayHaveAbility, name="mayHaveAbility", c
 
 slots.mayHaveHiddenAbility = Slot(uri=POKEMON.mayHaveHiddenAbility, name="mayHaveHiddenAbility", curie=POKEMON.curie('mayHaveHiddenAbility'),
                    model_uri=POKEMON.mayHaveHiddenAbility, domain=Species, range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]])
+
+slots.isAbleToApply = Slot(uri=POKEMON.isAbleToApply, name="isAbleToApply", curie=POKEMON.curie('isAbleToApply'),
+                   model_uri=POKEMON.isAbleToApply, domain=None, range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]])
 
 slots.firmness = Slot(uri=POKEMON.firmness, name="firmness", curie=POKEMON.curie('firmness'),
                    model_uri=POKEMON.firmness, domain=Food, range=Optional[int])
@@ -756,6 +848,9 @@ slots.minLevelToLearn = Slot(uri=POKEMON.minLevelToLearn, name="minLevelToLearn"
 
 slots.smoothness = Slot(uri=POKEMON.smoothness, name="smoothness", curie=POKEMON.curie('smoothness'),
                    model_uri=POKEMON.smoothness, domain=Food, range=Optional[int])
+
+slots.depiction = Slot(uri=FOAF.depiction, name="depiction", curie=FOAF.curie('depiction'),
+                   model_uri=POKEMON.depiction, domain=None, range=Optional[str])
 
 slots.entity__id = Slot(uri=LINKML_COMMON.identifier, name="entity__id", curie=LINKML_COMMON.curie('identifier'),
                    model_uri=POKEMON.entity__id, domain=None, range=URIRef)

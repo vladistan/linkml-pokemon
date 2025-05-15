@@ -20,6 +20,7 @@ prefixes:
   xml: http://www.w3.org/XML/1998/namespace
   xsd: http://www.w3.org/2001/XMLSchema#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
+  foaf: http://xmlns.com/foaf/0.1/
   pokemon: https://pokemonkg.org/ontology#
 
 default_prefix: pokemon
@@ -27,6 +28,7 @@ default_range: string
 
 imports:
   - linkml:types
+  - ./foaf
 
 classes:
 
@@ -173,12 +175,29 @@ classes:
   Species:
     description: >-
       A species is a category of Pokemon that share common features.
+    slots:
+      - hasColour
+      - mayHaveHiddenAbility
+      - mayHaveAbility
+      - isAbleToApply
+      - hasHeight
+      - hasWeight
+      - depiction
+      - inEggGroup
+      - hasType
+      - hasShape
+      - hasGenus
+      - hasCatchRate
+      - foundIn
+    is_a: NamedThing
+      
 
   Move:
     annotations:
       rdfs:comment: A move is a special ability of a Pokemon.
     slots:
       - effectDescription
+      - hasType
     class_uri: pokemon:Move
     is_a: Entity
 
@@ -283,8 +302,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokedex entry is described in a Pokedex@en"
-      - "Ein Pokedex-Eintrag ist in einem Pokedex beschrieben@de"
+      - "A Pokedex entry is described in a Pokedex"
 
   describesPokemon:
     slot_uri: pokemon:describesPokemon
@@ -301,8 +319,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokedex entry features a species@en"
-      - "Ein Pokedex-Eintrag zeigt eine Art@de"
+      - "A Pokedex entry features a species"
 
   hasPokedexEntry:
     slot_uri: pokemon:hasPokedexEntry
@@ -340,8 +357,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A place is found in a location@en"
-      - "Ein Ort ist in einem Ort gefunden@de"
+      - "A place is found in a location"
 
   hasColour:
     slot_uri: pokemon:hasColour
@@ -349,8 +365,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokemon has a color@en"
-      - "Ein Pokemon hat eine Farbe@de"
+      - "A Pokemon has a color"
 
   hasFlavor:
     slot_uri: pokemon:hasFlavor
@@ -359,8 +374,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokemon has a flavor@en"
-      - "Ein Pokemon hat eine Geschmacksrichtung@de"
+      - "A Pokemon has a flavor"
 
   hasType:
     slot_uri: pokemon:hasType
@@ -368,11 +382,29 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokemon has a type@en"
-      - "Ein Pokemon hat eine Art@de"
+      - "A Pokemon has a type"
 
   hasSize:
     slot_uri: pokemon:hasSize
+    multivalued: false
+    required: false
+
+  hasHeight:
+    slot_uri: pokemon:hasHeight
+    domain: Species
+    multivalued: false
+    required: false
+
+  hasWeight:
+    slot_uri: pokemon:hasWeight
+    domain: Species
+    multivalued: false
+    required: false
+
+  hasCatchRate:
+    slot_uri: pokemon:hasCatchRate
+    range: integer
+    domain: Species
     multivalued: false
     required: false
 
@@ -416,8 +448,7 @@ slots:
     domain: Species
     multivalued: true
     description:
-      - "A Pokemon may have an ability@en"
-      - "Ein Pokemon kann eine Fähigkeit haben@de"
+      - "A Pokemon may have an ability"
 
   mayHaveHiddenAbility:
     slot_uri: pokemon:mayHaveHiddenAbility
@@ -425,6 +456,12 @@ slots:
     domain: Species
     multivalued: true
     subproperty_of: mayHaveAbility
+
+  isAbleToApply:
+    slot_uri: pokemon:isAbleToApply
+    range: Move
+    multivalued: true
+    required: false
 
   firmness:
     range: integer

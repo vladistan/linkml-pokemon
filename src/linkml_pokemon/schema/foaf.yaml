@@ -1,0 +1,17 @@
+---
+id: https://w3id.org/linkml/foaf
+name: foaf
+title: FOAF Vocabulary
+description: FOAF Vocabulary
+license: MIT
+
+prefixes:
+  foaf: http://xmlns.com/foaf/0.1/
+
+classes:
+
+slots:
+ depiction:
+    range: string
+    slot_uri: foaf:depiction
+    description: A depiction of the person

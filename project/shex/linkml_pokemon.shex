@@ -1,5 +1,6 @@
 # metamodel_version: 1.7.0
 BASE <https://pokemonkg.org/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -195,7 +196,8 @@ linkml:Sparqlpath xsd:string
     CLOSED {
        (  $<Move_tes> (  &<Entity_tes> ;
              rdf:type [ linkml_pokemon:Entity ] ? ;
-             <effectDescription> @linkml:String *
+             <effectDescription> @linkml:String * ;
+             <hasType> @<Type> *
           ) ;
           rdf:type [ <Move> ]
        )
@@ -210,15 +212,17 @@ linkml:Sparqlpath xsd:string
     } OR @<LearningByLevelingUp> OR @<LearningThroughBreeding>
 )
 
-<NamedThing> CLOSED {
-    (  $<NamedThing_tes> (  &<Thing_tes> ;
-          rdf:type [ linkml_pokemon:Thing ] ? ;
-          rdfs:label @linkml:String ? ;
-          rdfs:comment @linkml:String ?
-       ) ;
-       rdf:type [ linkml_pokemon:NamedThing ]
-    )
-}
+<NamedThing>  (
+    CLOSED {
+       (  $<NamedThing_tes> (  &<Thing_tes> ;
+             rdf:type [ linkml_pokemon:Thing ] ? ;
+             rdfs:label @linkml:String ? ;
+             rdfs:comment @linkml:String ?
+          ) ;
+          rdf:type [ linkml_pokemon:NamedThing ]
+       )
+    } OR @<Species>
+)
 
 <PhysicalMove> CLOSED {
     (  $<PhysicalMove_tes> (  &<Move_tes> ;
@@ -285,8 +289,23 @@ linkml:Sparqlpath xsd:string
 }
 
 <Species> CLOSED {
-    (  $<Species_tes> rdf:type . * ;
-       rdf:type [ <Species> ] ?
+    (  $<Species_tes> (  &<NamedThing_tes> ;
+          rdf:type [ linkml_pokemon:NamedThing ] ? ;
+          <hasColour> @<Colour> * ;
+          <mayHaveHiddenAbility> @<Ability> * ;
+          <mayHaveAbility> @<Ability> * ;
+          <isAbleToApply> @<Move> * ;
+          <hasHeight> @linkml:String ? ;
+          <hasWeight> @linkml:String ? ;
+          foaf:depiction @linkml:String ? ;
+          <inEggGroup> @<EggGroup> * ;
+          <hasType> @<Type> * ;
+          <hasShape> @<Shape> ? ;
+          <hasGenus> @linkml:String ? ;
+          <hasCatchRate> @linkml:Integer ? ;
+          <foundIn> @<Habitat> *
+       ) ;
+       rdf:type [ <Species> ]
     )
 }
 

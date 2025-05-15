@@ -1,4 +1,5 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
 @prefix linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pokemon: <https://pokemonkg.org/ontology#> .
@@ -85,31 +86,6 @@ pokemon:Medicine a owl:Class ;
     rdfs:subClassOf pokemon:Item ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:NamedThing a owl:Class ;
-    rdfs:label "NamedThing" ;
-    rdfs:comment "A generic grouping for any identifiable entity that has a name" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:description ],
-        pokemon:Thing ;
-    skos:exactMatch linkml_pokemon:NamedThing ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
 pokemon:PhysicalMove a owl:Class ;
     rdfs:label "PhysicalMove" ;
     rdfs:comment "A physical move is a type of move that can be used during battles." ;
@@ -188,7 +164,7 @@ pokemon:containsPlace a owl:AsymmetricProperty,
 
 pokemon:describedInPokedex a owl:ObjectProperty ;
     rdfs:label "describedInPokedex" ;
-    rdfs:comment "['A Pokedex entry is described in a Pokedex@en', 'Ein Pokedex-Eintrag ist in einem Pokedex beschrieben@de']" ;
+    rdfs:comment "['A Pokedex entry is described in a Pokedex']" ;
     rdfs:domain pokemon:Species ;
     rdfs:range pokemon:PokedexEntry ;
     owl:inverseOf pokemon:describesPokemon ;
@@ -206,30 +182,11 @@ pokemon:firmness a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:foundIn a owl:ObjectProperty ;
-    rdfs:label "foundIn" ;
-    rdfs:comment "['A place is found in a location@en', 'Ein Ort ist in einem Ort gefunden@de']" ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range pokemon:Habitat ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:hasColour a owl:ObjectProperty ;
-    rdfs:label "hasColour" ;
-    rdfs:comment "['A Pokemon has a color@en', 'Ein Pokemon hat eine Farbe@de']" ;
-    rdfs:range pokemon:Colour ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
 pokemon:hasFlavor a owl:ObjectProperty ;
     rdfs:label "hasFlavor" ;
-    rdfs:comment "['A Pokemon has a flavor@en', 'Ein Pokemon hat eine Geschmacksrichtung@de']" ;
+    rdfs:comment "['A Pokemon has a flavor']" ;
     rdfs:domain pokemon:Food ;
     rdfs:range pokemon:Flavor ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:hasGenus a owl:DatatypeProperty ;
-    rdfs:label "hasGenus" ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range xsd:string ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:hasPokedexEntry a owl:ObjectProperty ;
@@ -237,25 +194,6 @@ pokemon:hasPokedexEntry a owl:ObjectProperty ;
     rdfs:comment "A Pokedex entry in which this Pokemon is described." ;
     rdfs:domain pokemon:Pokedex ;
     rdfs:range pokemon:PokedexEntry ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:hasShape a owl:ObjectProperty ;
-    rdfs:label "hasShape" ;
-    rdfs:comment "The shape of a berry is a measure of how good it is for making a Potion." ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range pokemon:Shape ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:hasType a owl:ObjectProperty ;
-    rdfs:label "hasType" ;
-    rdfs:comment "['A Pokemon has a type@en', 'Ein Pokemon hat eine Art@de']" ;
-    rdfs:range pokemon:Type ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:inEggGroup a owl:ObjectProperty ;
-    rdfs:label "inEggGroup" ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range pokemon:EggGroup ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:learnsMove a owl:ObjectProperty ;
@@ -268,19 +206,6 @@ pokemon:maxPowerPoints a owl:DatatypeProperty ;
     rdfs:label "maxPowerPoints" ;
     rdfs:domain pokemon:Move ;
     rdfs:range xsd:integer ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:mayHaveAbility a owl:ObjectProperty ;
-    rdfs:label "mayHaveAbility" ;
-    rdfs:comment "['A Pokemon may have an ability@en', 'Ein Pokemon kann eine Fähigkeit haben@de']" ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range pokemon:Ability ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:mayHaveHiddenAbility a owl:ObjectProperty ;
-    rdfs:label "mayHaveHiddenAbility" ;
-    rdfs:domain pokemon:Species ;
-    rdfs:range pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:minLevelToLearn a owl:DatatypeProperty ;
@@ -301,24 +226,34 @@ pokemon:smoothness a owl:DatatypeProperty ;
     rdfs:comment "Ontology covering the Pokémon world as it is presented in games and anime television series" ;
     rdfs:seeAlso <https://vladistan.github.io/linkml-pokemon> .
 
-pokemon:Colour a owl:Class ;
-    rdfs:label "Colour" ;
-    rdfs:comment "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:EggGroup a owl:Class ;
-    rdfs:label "EggGroup" ;
-    rdfs:comment "Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups." ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
 pokemon:Flavor a owl:Class ;
     rdfs:label "Flavor" ;
     rdfs:comment "Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:Habitat a owl:Class ;
-    rdfs:label "Habitat" ;
-    rdfs:comment "A habitat is a type of environment that certain Pokemon belong to." ;
+pokemon:NamedThing a owl:Class ;
+    rdfs:label "NamedThing" ;
+    rdfs:comment "A generic grouping for any identifiable entity that has a name" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:name ],
+        pokemon:Thing ;
+    skos:exactMatch linkml_pokemon:NamedThing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Pokedex a owl:Class ;
@@ -326,22 +261,17 @@ pokemon:Pokedex a owl:Class ;
     rdfs:comment "The Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokemon featured in the Pokemon video game, anime and manga series." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:Shape a owl:Class ;
-    rdfs:label "Shape" ;
-    rdfs:comment "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
 pokemon:Thing a owl:Class ;
     rdfs:label "Thing" ;
     rdfs:comment "A generic grouping for any identifiable attributes with an id" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:id ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty pokemon:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
+            owl:onProperty pokemon:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:id ] ;
     skos:exactMatch linkml_pokemon:Thing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -349,11 +279,6 @@ pokemon:Thing a owl:Class ;
 pokemon:Trainer a owl:Class ;
     rdfs:label "Trainer" ;
     rdfs:comment "A trainer is a person who is able to catch Pokemon." ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:Type a owl:Class ;
-    rdfs:label "Type" ;
-    rdfs:comment "All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:describesPokemon a owl:ObjectProperty ;
@@ -388,30 +313,40 @@ pokemon:locatedIn a owl:AsymmetricProperty,
     rdfs:range pokemon:Place ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+pokemon:Colour a owl:Class ;
+    rdfs:label "Colour" ;
+    rdfs:comment "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:EggGroup a owl:Class ;
+    rdfs:label "EggGroup" ;
+    rdfs:comment "Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups." ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
 pokemon:Entity a owl:Class ;
     rdfs:label "Entity" ;
     rdfs:comment "A grouping of attributes that can be reffered to" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
             owl:onProperty pokemon:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:name ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:description ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty pokemon:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty pokemon:description ],
+            owl:onProperty pokemon:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:name ],
@@ -421,23 +356,57 @@ pokemon:Entity a owl:Class ;
     skos:exactMatch linkml_pokemon:Entity ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+pokemon:Habitat a owl:Class ;
+    rdfs:label "Habitat" ;
+    rdfs:comment "A habitat is a type of environment that certain Pokemon belong to." ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:Shape a owl:Class ;
+    rdfs:label "Shape" ;
+    rdfs:comment "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
 pokemon:featuresSpecies a owl:ObjectProperty ;
     rdfs:label "featuresSpecies" ;
-    rdfs:comment "['A Pokedex entry features a species@en', 'Ein Pokedex-Eintrag zeigt eine Art@de']" ;
+    rdfs:comment "['A Pokedex entry features a species']" ;
     rdfs:range pokemon:Species ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:Ability a owl:Class ;
-    rdfs:label "Ability" ;
-    rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:effectDescription ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:effectDescription ],
-        pokemon:Entity ;
-    skos:exactMatch pokemon:Ability ;
+pokemon:foundIn a owl:ObjectProperty ;
+    rdfs:label "foundIn" ;
+    rdfs:comment "['A place is found in a location']" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range pokemon:Habitat ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasColour a owl:ObjectProperty ;
+    rdfs:label "hasColour" ;
+    rdfs:comment "['A Pokemon has a color']" ;
+    rdfs:range pokemon:Colour ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:inEggGroup a owl:ObjectProperty ;
+    rdfs:label "inEggGroup" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range pokemon:EggGroup ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:isAbleToApply a owl:ObjectProperty ;
+    rdfs:label "isAbleToApply" ;
+    rdfs:range pokemon:Move ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:mayHaveAbility a owl:ObjectProperty ;
+    rdfs:label "mayHaveAbility" ;
+    rdfs:comment "['A Pokemon may have an ability']" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range pokemon:Ability ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:mayHaveHiddenAbility a owl:ObjectProperty ;
+    rdfs:label "mayHaveHiddenAbility" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:MoveLearning a owl:Class ;
@@ -445,9 +414,49 @@ pokemon:MoveLearning a owl:Class ;
     rdfs:comment "A move learning is a way that a Pokemon can learn a move." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+pokemon:Type a owl:Class ;
+    rdfs:label "Type" ;
+    rdfs:comment "All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense." ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasCatchRate a owl:DatatypeProperty ;
+    rdfs:label "hasCatchRate" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range xsd:integer ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasGenus a owl:DatatypeProperty ;
+    rdfs:label "hasGenus" ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range xsd:string ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasHeight a owl:DatatypeProperty ;
+    rdfs:label "hasHeight" ;
+    rdfs:domain pokemon:Species ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasShape a owl:ObjectProperty ;
+    rdfs:label "hasShape" ;
+    rdfs:comment "The shape of a berry is a measure of how good it is for making a Potion." ;
+    rdfs:domain pokemon:Species ;
+    rdfs:range pokemon:Shape ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
 pokemon:hasSize a owl:DatatypeProperty ;
     rdfs:label "hasSize" ;
     skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasWeight a owl:DatatypeProperty ;
+    rdfs:label "hasWeight" ;
+    rdfs:domain pokemon:Species ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+<https://w3id.org/linkml/foaf/depiction> a owl:DatatypeProperty ;
+    rdfs:label "depiction" ;
+    rdfs:comment "A depiction of the person" ;
+    rdfs:range xsd:string ;
+    skos:inScheme linkml:foaf .
 
 pokemon:Food a owl:Class ;
     rdfs:label "Food" ;
@@ -463,6 +472,25 @@ pokemon:effectDescription a owl:DatatypeProperty ;
     rdfs:label "effectDescription" ;
     rdfs:comment "A description of the effect of the entity" ;
     rdfs:range xsd:string ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:hasType a owl:ObjectProperty ;
+    rdfs:label "hasType" ;
+    rdfs:comment "['A Pokemon has a type']" ;
+    rdfs:range pokemon:Type ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:Ability a owl:Class ;
+    rdfs:label "Ability" ;
+    rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:effectDescription ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:effectDescription ],
+        pokemon:Entity ;
+    skos:exactMatch pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:description a owl:DatatypeProperty ;
@@ -500,8 +528,14 @@ pokemon:Move a owl:Class ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:effectDescription ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:effectDescription ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Type ;
+            owl:onProperty pokemon:hasType ],
         pokemon:Entity ;
     skos:exactMatch pokemon:Move ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -509,6 +543,103 @@ pokemon:Move a owl:Class ;
 pokemon:Species a owl:Class ;
     rdfs:label "Species" ;
     rdfs:comment "A species is a category of Pokemon that share common features." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Shape ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Type ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:inEggGroup ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isAbleToApply ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:EggGroup ;
+            owl:onProperty pokemon:inEggGroup ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Move ;
+            owl:onProperty pokemon:isAbleToApply ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Habitat ;
+            owl:onProperty pokemon:foundIn ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Colour ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:foundIn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasColour ],
+        pokemon:NamedThing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 

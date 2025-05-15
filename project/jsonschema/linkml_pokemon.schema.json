@@ -121,9 +121,9 @@
             "description": "",
             "properties": {
                 "featuresSpecies": {
-                    "description": "['A Pokedex entry features a species@en', 'Ein Pokedex-Eintrag zeigt eine Art@de']",
+                    "description": "['A Pokedex entry features a species']",
                     "items": {
-                        "$ref": "#/$defs/Species"
+                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -209,6 +209,16 @@
                         "null"
                     ]
                 },
+                "hasType": {
+                    "description": "['A Pokemon has a type']",
+                    "items": {
+                        "$ref": "#/$defs/Type"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "type": "string"
                 },
@@ -276,6 +286,16 @@
                     "description": "A description of the effect of the entity",
                     "items": {
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasType": {
+                    "description": "['A Pokemon has a type']",
+                    "items": {
+                        "$ref": "#/$defs/Type"
                     },
                     "type": [
                         "array",
@@ -362,6 +382,16 @@
                         "null"
                     ]
                 },
+                "hasType": {
+                    "description": "['A Pokemon has a type']",
+                    "items": {
+                        "$ref": "#/$defs/Type"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
                     "type": "string"
                 },
@@ -382,6 +412,138 @@
         "Species": {
             "additionalProperties": false,
             "description": "A species is a category of Pokemon that share common features.",
+            "properties": {
+                "depiction": {
+                    "description": "A depiction of the person",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "foundIn": {
+                    "description": "['A place is found in a location']",
+                    "items": {
+                        "$ref": "#/$defs/Habitat"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasCatchRate": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "hasColour": {
+                    "description": "['A Pokemon has a color']",
+                    "items": {
+                        "$ref": "#/$defs/Colour"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasGenus": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasHeight": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasShape": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Shape"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The shape of a berry is a measure of how good it is for making a Potion."
+                },
+                "hasType": {
+                    "description": "['A Pokemon has a type']",
+                    "items": {
+                        "$ref": "#/$defs/Type"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasWeight": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "inEggGroup": {
+                    "items": {
+                        "$ref": "#/$defs/EggGroup"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "isAbleToApply": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "mayHaveAbility": {
+                    "description": "['A Pokemon may have an ability']",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "mayHaveHiddenAbility": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Species",
             "type": "object"
         },
@@ -400,6 +562,16 @@
                     "description": "A description of the effect of the entity",
                     "items": {
                         "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "hasType": {
+                    "description": "['A Pokemon has a type']",
+                    "items": {
+                        "$ref": "#/$defs/Type"
                     },
                     "type": [
                         "array",

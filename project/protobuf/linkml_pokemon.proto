@@ -29,6 +29,7 @@ message Move
   string description = 0
   uri id = 0
  repeated  string effectDescription = 0
+ repeated  type hasType = 0
  }
 // A generic grouping for any identifiable entity that has a name
 message NamedThing
@@ -44,6 +45,7 @@ message PhysicalMove
   string description = 0
   uri id = 0
  repeated  string effectDescription = 0
+ repeated  type hasType = 0
  }
 // A special move is a type of move that can be used during battles.
 message SpecialMove
@@ -52,6 +54,27 @@ message SpecialMove
   string description = 0
   uri id = 0
  repeated  string effectDescription = 0
+ repeated  type hasType = 0
+ }
+// A species is a category of Pokemon that share common features.
+message Species
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
+ repeated  colour hasColour = 0
+ repeated  ability mayHaveHiddenAbility = 0
+ repeated  ability mayHaveAbility = 0
+ repeated  move isAbleToApply = 0
+  string hasHeight = 0
+  string hasWeight = 0
+  string depiction = 0
+ repeated  eggGroup inEggGroup = 0
+ repeated  type hasType = 0
+  shape hasShape = 0
+  string hasGenus = 0
+  integer hasCatchRate = 0
+ repeated  habitat foundIn = 0
  }
 // A status move is a type of move that can be used during battles.
 message StatusMove
@@ -60,6 +83,7 @@ message StatusMove
   string description = 0
   uri id = 0
  repeated  string effectDescription = 0
+ repeated  type hasType = 0
  }
 // A generic grouping for any identifiable attributes with an id
 message Thing

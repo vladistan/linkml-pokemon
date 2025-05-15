@@ -1,6 +1,7 @@
 {
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
    "example": "https://example.org/",
+   "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
    "linkml_common": "https://w3id.org/linkml/common/",
    "linkml_pokemon": "https://w3id.org/vladistan/linkml-pokemon/",
