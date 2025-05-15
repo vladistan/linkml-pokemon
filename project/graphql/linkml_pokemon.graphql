@@ -1,6 +1,10 @@
 # metamodel_version: 1.7.0
 type Ability
   {
+    name: String
+    description: String
+    id: Uri!
+    effectDescription: [String]
   }
 
 type BattleItem
@@ -9,6 +13,7 @@ type BattleItem
 
 type Berry
   {
+    hasSize: String
   }
 
 type Colour
@@ -17,6 +22,13 @@ type Colour
 
 type EggGroup
   {
+  }
+
+type Entity
+  {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Flavor
@@ -33,6 +45,7 @@ type Game
 
 type Generation
   {
+    featuresSpecies: [Species]
   }
 
 type Gym
@@ -73,14 +86,29 @@ type Medicine
 
 type Move
   {
+    name: String
+    description: String
+    id: Uri!
+    effectDescription: [String]
   }
 
 type MoveLearning
   {
   }
 
+type NamedThing
+  {
+    id: Uri!
+    name: String
+    description: String
+  }
+
 type PhysicalMove
   {
+    name: String
+    description: String
+    id: Uri!
+    effectDescription: [String]
   }
 
 type Place
@@ -113,6 +141,10 @@ type Shape
 
 type SpecialMove
   {
+    name: String
+    description: String
+    id: Uri!
+    effectDescription: [String]
   }
 
 type Species
@@ -121,6 +153,15 @@ type Species
 
 type StatusMove
   {
+    name: String
+    description: String
+    id: Uri!
+    effectDescription: [String]
+  }
+
+type Thing
+  {
+    id: Uri!
   }
 
 type TM

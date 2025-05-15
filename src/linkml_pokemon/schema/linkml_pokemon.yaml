@@ -11,6 +11,7 @@ see_also:
 prefixes:
   linkml_pokemon: https://w3id.org/vladistan/linkml-pokemon/
   linkml: https://w3id.org/linkml/
+  linkml_common: https://w3id.org/linkml/common/
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
@@ -28,9 +29,45 @@ imports:
   - linkml:types
 
 classes:
+
+  Thing:
+    description: >-
+      A generic grouping for any identifiable attributes with an id
+    slots:
+      - id
+    class_uri: linkml_pokemon:Thing
+
+  NamedThing:
+    is_a: Thing
+    description: >-
+      A generic grouping for any identifiable entity that has a name
+    slots:
+      - name
+      - description
+    class_uri: linkml_pokemon:NamedThing
+
+  Entity:
+    description: >-
+      A grouping of attributes that can be reffered to
+    attributes:
+      id:
+        slot_uri: linkml_common:identifier
+        multivalued: false
+        required: true
+        identifier: true
+        range: uri
+    slots:
+      - name
+      - description
+    class_uri: linkml_pokemon:Entity
+
   Ability:
     annotations:
       rdfs:comment: Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon.
+    class_uri: pokemon:Ability
+    is_a: Entity
+    slots:
+      - effectDescription
 
   BattleItem:
     description: >-
@@ -40,6 +77,8 @@ classes:
   Berry:
     annotations:
       rdfs:comment: Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.
+    slots:
+      - hasSize
     is_a: Food
 
   EggGroup:
@@ -58,7 +97,6 @@ classes:
   Food:
     is_a: Item
 
-
   Game:
     description: >-
       A game is a type of media that can be played by people.
@@ -66,6 +104,8 @@ classes:
   Generation:
     annotations:
       rdfs:comment: Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned.
+    slots:
+      - featuresSpecies
 
   Gym:
     is_a: Place
@@ -137,6 +177,10 @@ classes:
   Move:
     annotations:
       rdfs:comment: A move is a special ability of a Pokemon.
+    slots:
+      - effectDescription
+    class_uri: pokemon:Move
+    is_a: Entity
 
   MoveLearning:
     description: >-
@@ -191,6 +235,34 @@ classes:
       rdfs:comment: All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
 
 slots:
+
+  id:
+    identifier: true
+    required: true
+    range: uri
+    description: >-
+      A unique identifier
+
+  name:
+    range: string
+    slot_uri: rdfs:label
+    description: >-
+      Unique human-readable label for the entity
+
+  description:
+    range: string
+    slot_uri: rdfs:comment
+    description: >-
+      A description of the entity
+
+  effectDescription:
+    range: string
+    slot_uri: pokemon:effectDescription
+    description: >-
+      A description of the effect of the entity
+    multivalued: true
+    required: false
+
   containsPlace:
     slot_uri: pokemon:contains_place
     range: Place
@@ -226,7 +298,6 @@ slots:
   featuresSpecies:
     slot_uri: pokemon:featuresSpecies
     range: Species
-    domain: PokedexEntry
     multivalued: true
     required: false
     description:

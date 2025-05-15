@@ -126,23 +126,23 @@ gen-examples:
 gen-project: $(PYMODEL)
 	$(RUN) gen-project ${CONFIG_YAML} -d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 
-gen-pydantic:
 	mkdir -p ${DEST}/pydantic
 	$(RUN) gen-pydantic   $(SOURCE_SCHEMA_PATH) > ${DEST}/pydantic/$(SCHEMA_NAME).py
 
-gen-proto:
-	$(RUN) gen-proto  $(SOURCE_SCHEMA_PATH)
+	mkdir -p ${DEST}/protobuf
+	$(RUN) gen-proto  $(SOURCE_SCHEMA_PATH) > ${DEST}/protobuf/$(SCHEMA_NAME).proto
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)
 	mkdir -p ${DEST}/owl || true
-	$(RUN) gen-owl ${GEN_OWL_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/owl/${SCHEMA_NAME}.owl.ttl
+	$(RUN) gen-owl --add-ols-annotations ${GEN_OWL_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/owl/${SCHEMA_NAME}.owl.ttl
 endif
+
 # non-empty arg triggers java
 ifneq ($(strip ${GEN_JAVA_ARGS}),)
 	$(RUN) gen-java ${GEN_JAVA_ARGS} --output-directory ${DEST}/java/ $(SOURCE_SCHEMA_PATH)
 endif
-# non-empty arg triggers typescript
+
 ifneq ($(strip ${GEN_TS_ARGS}),)
 	mkdir -p ${DEST}/typescript || true
 	$(RUN) gen-typescript ${GEN_TS_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/typescript/${SCHEMA_NAME}.ts

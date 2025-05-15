@@ -20,6 +20,10 @@
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
+      "prefix_prefix": "linkml_common",
+      "prefix_reference": "https://w3id.org/linkml/common/"
+    },
+    {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
     },
@@ -370,6 +374,73 @@
   ],
   "slots": [
     {
+      "name": "id",
+      "definition_uri": "https://pokemonkg.org/ontology#id",
+      "description": "A unique identifier",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "slot_uri": "https://pokemonkg.org/ontology#id",
+      "identifier": true,
+      "owner": "Thing",
+      "domain_of": [
+        "Thing"
+      ],
+      "range": "uri",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "https://pokemonkg.org/ontology#name",
+      "description": "Unique human-readable label for the entity",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "owner": "Entity",
+      "domain_of": [
+        "NamedThing",
+        "Entity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "https://pokemonkg.org/ontology#description",
+      "description": "A description of the entity",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "owner": "Entity",
+      "domain_of": [
+        "NamedThing",
+        "Entity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "effectDescription",
+      "definition_uri": "https://pokemonkg.org/ontology#effectDescription",
+      "description": "A description of the effect of the entity",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://pokemonkg.org/ontology#effectDescription"
+      ],
+      "slot_uri": "https://pokemonkg.org/ontology#effectDescription",
+      "owner": "Move",
+      "domain_of": [
+        "Ability",
+        "Move"
+      ],
+      "range": "string",
+      "multivalued": true,
+      "@type": "SlotDefinition"
+    },
+    {
       "name": "containsPlace",
       "definition_uri": "https://pokemonkg.org/ontology#containsPlace",
       "annotations": [
@@ -442,9 +513,11 @@
       "mappings": [
         "https://pokemonkg.org/ontology#featuresSpecies"
       ],
-      "domain": "PokedexEntry",
       "slot_uri": "https://pokemonkg.org/ontology#featuresSpecies",
-      "owner": "featuresSpecies",
+      "owner": "Generation",
+      "domain_of": [
+        "Generation"
+      ],
       "range": "Species",
       "multivalued": true,
       "inlined": true,
@@ -585,6 +658,10 @@
         "https://pokemonkg.org/ontology#hasSize"
       ],
       "slot_uri": "https://pokemonkg.org/ontology#hasSize",
+      "owner": "Berry",
+      "domain_of": [
+        "Berry"
+      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -615,7 +692,6 @@
       "owner": "learnsMove",
       "range": "Move",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -671,7 +747,6 @@
       "owner": "mayHaveAbility",
       "range": "Ability",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -687,7 +762,6 @@
       "subproperty_of": "mayHaveAbility",
       "range": "Ability",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -777,9 +851,86 @@
       "owner": "smoothness",
       "range": "integer",
       "@type": "SlotDefinition"
+    },
+    {
+      "name": "entity__id",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "https://w3id.org/linkml/common/identifier"
+      ],
+      "slot_uri": "https://w3id.org/linkml/common/identifier",
+      "identifier": true,
+      "alias": "id",
+      "owner": "Entity",
+      "domain_of": [
+        "Entity"
+      ],
+      "range": "uri",
+      "required": true,
+      "@type": "SlotDefinition"
     }
   ],
   "classes": [
+    {
+      "name": "Thing",
+      "definition_uri": "https://pokemonkg.org/ontology#Thing",
+      "description": "A generic grouping for any identifiable attributes with an id",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "linkml_pokemon:Thing"
+      ],
+      "slots": [
+        "id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/Thing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NamedThing",
+      "definition_uri": "https://pokemonkg.org/ontology#NamedThing",
+      "description": "A generic grouping for any identifiable entity that has a name",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "linkml_pokemon:NamedThing"
+      ],
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/NamedThing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Entity",
+      "definition_uri": "https://pokemonkg.org/ontology#Entity",
+      "description": "A grouping of attributes that can be reffered to",
+      "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "linkml_pokemon:Entity"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
+      "slot_usage": {},
+      "attributes": [
+        {
+          "name": "id",
+          "slot_uri": "linkml_common:identifier",
+          "identifier": true,
+          "range": "uri",
+          "required": true,
+          "@type": "SlotDefinition"
+        }
+      ],
+      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/Entity",
+      "@type": "ClassDefinition"
+    },
     {
       "name": "Ability",
       "definition_uri": "https://pokemonkg.org/ontology#Ability",
@@ -791,6 +942,16 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "pokemon:Ability"
+      ],
+      "is_a": "Entity",
+      "slots": [
+        "name",
+        "description",
+        "entity__id",
+        "effectDescription"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Ability",
       "@type": "ClassDefinition"
@@ -817,6 +978,9 @@
       ],
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Food",
+      "slots": [
+        "hasSize"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Berry",
       "@type": "ClassDefinition"
@@ -889,6 +1053,9 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "slots": [
+        "featuresSpecies"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Generation",
       "@type": "ClassDefinition"
@@ -1083,6 +1250,16 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "pokemon:Move"
+      ],
+      "is_a": "Entity",
+      "slots": [
+        "name",
+        "description",
+        "entity__id",
+        "effectDescription"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Move",
       "@type": "ClassDefinition"
@@ -1132,6 +1309,12 @@
       "description": "A special move is a type of move that can be used during battles.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
+      "slots": [
+        "name",
+        "description",
+        "entity__id",
+        "effectDescription"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#SpecialMove",
       "@type": "ClassDefinition"
@@ -1142,6 +1325,12 @@
       "description": "A physical move is a type of move that can be used during battles.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
+      "slots": [
+        "name",
+        "description",
+        "entity__id",
+        "effectDescription"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#PhysicalMove",
       "@type": "ClassDefinition"
@@ -1152,6 +1341,12 @@
       "description": "A status move is a type of move that can be used during battles.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
+      "slots": [
+        "name",
+        "description",
+        "entity__id",
+        "effectDescription"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#StatusMove",
       "@type": "ClassDefinition"
@@ -1209,9 +1404,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2024-10-07T00:42:15",
-  "source_file_size": 10868,
-  "generation_date": "2024-10-07T00:42:23",
+  "source_file_date": "2025-05-14T22:23:01",
+  "source_file_size": 12134,
+  "generation_date": "2025-05-14T22:28:23",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",

@@ -3,6 +3,38 @@
         "Ability": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effectDescription": {
+                    "description": "A description of the effect of the entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Ability",
             "type": "object"
         },
@@ -15,6 +47,14 @@
         "Berry": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "hasSize": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
             "title": "Berry",
             "type": "object"
         },
@@ -28,6 +68,34 @@
             "additionalProperties": false,
             "description": "",
             "title": "EggGroup",
+            "type": "object"
+        },
+        "Entity": {
+            "additionalProperties": false,
+            "description": "A grouping of attributes that can be reffered to",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Entity",
             "type": "object"
         },
         "Flavor": {
@@ -51,6 +119,18 @@
         "Generation": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "featuresSpecies": {
+                    "description": "['A Pokedex entry features a species@en', 'Ein Pokedex-Eintrag zeigt eine Art@de']",
+                    "items": {
+                        "$ref": "#/$defs/Species"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
             "title": "Generation",
             "type": "object"
         },
@@ -111,6 +191,38 @@
         "Move": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effectDescription": {
+                    "description": "A description of the effect of the entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Move",
             "type": "object"
         },
@@ -120,9 +232,70 @@
             "title": "MoveLearning",
             "type": "object"
         },
+        "NamedThing": {
+            "additionalProperties": false,
+            "description": "A generic grouping for any identifiable entity that has a name",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "NamedThing",
+            "type": "object"
+        },
         "PhysicalMove": {
             "additionalProperties": false,
             "description": "A physical move is a type of move that can be used during battles.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effectDescription": {
+                    "description": "A description of the effect of the entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "PhysicalMove",
             "type": "object"
         },
@@ -171,6 +344,38 @@
         "SpecialMove": {
             "additionalProperties": false,
             "description": "A special move is a type of move that can be used during battles.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effectDescription": {
+                    "description": "A description of the effect of the entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "SpecialMove",
             "type": "object"
         },
@@ -183,6 +388,38 @@
         "StatusMove": {
             "additionalProperties": false,
             "description": "A status move is a type of move that can be used during battles.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "effectDescription": {
+                    "description": "A description of the effect of the entity",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "StatusMove",
             "type": "object"
         },
@@ -190,6 +427,21 @@
             "additionalProperties": false,
             "description": "",
             "title": "TM",
+            "type": "object"
+        },
+        "Thing": {
+            "additionalProperties": false,
+            "description": "A generic grouping for any identifiable attributes with an id",
+            "properties": {
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Thing",
             "type": "object"
         },
         "Town": {

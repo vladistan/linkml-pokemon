@@ -1,7 +1,9 @@
 # metamodel_version: 1.7.0
 BASE <https://pokemonkg.org/ontology#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/>
 PREFIX linkml: <https://w3id.org/linkml/>
 
 
@@ -44,8 +46,11 @@ linkml:Jsonpath xsd:string
 linkml:Sparqlpath xsd:string
 
 <Ability> CLOSED {
-    (  $<Ability_tes> rdf:type . * ;
-       rdf:type [ <Ability> ] ?
+    (  $<Ability_tes> (  &<Entity_tes> ;
+          rdf:type [ linkml_pokemon:Entity ] ? ;
+          <effectDescription> @linkml:String *
+       ) ;
+       rdf:type [ <Ability> ]
     )
 }
 
@@ -59,7 +64,8 @@ linkml:Sparqlpath xsd:string
 
 <Berry> CLOSED {
     (  $<Berry_tes> (  &<Food_tes> ;
-          rdf:type [ <Food> ] ?
+          rdf:type [ <Food> ] ? ;
+          <hasSize> @linkml:String ?
        ) ;
        rdf:type [ <Berry> ] ?
     )
@@ -76,6 +82,16 @@ linkml:Sparqlpath xsd:string
        rdf:type [ <EggGroup> ] ?
     )
 }
+
+<Entity>  (
+    CLOSED {
+       (  $<Entity_tes> (  rdfs:label @linkml:String ? ;
+             rdfs:comment @linkml:String ?
+          ) ;
+          rdf:type [ linkml_pokemon:Entity ]
+       )
+    } OR @<Ability> OR @<Move>
+)
 
 <Flavor> CLOSED {
     (  $<Flavor_tes> rdf:type . * ;
@@ -100,7 +116,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <Generation> CLOSED {
-    (  $<Generation_tes> rdf:type . * ;
+    (  $<Generation_tes> <featuresSpecies> @<Species> * ;
        rdf:type [ <Generation> ] ?
     )
 }
@@ -177,8 +193,11 @@ linkml:Sparqlpath xsd:string
 
 <Move>  (
     CLOSED {
-       (  $<Move_tes> rdf:type . * ;
-          rdf:type [ <Move> ] ?
+       (  $<Move_tes> (  &<Entity_tes> ;
+             rdf:type [ linkml_pokemon:Entity ] ? ;
+             <effectDescription> @linkml:String *
+          ) ;
+          rdf:type [ <Move> ]
        )
     } OR @<PhysicalMove> OR @<SpecialMove> OR @<StatusMove>
 )
@@ -191,11 +210,21 @@ linkml:Sparqlpath xsd:string
     } OR @<LearningByLevelingUp> OR @<LearningThroughBreeding>
 )
 
+<NamedThing> CLOSED {
+    (  $<NamedThing_tes> (  &<Thing_tes> ;
+          rdf:type [ linkml_pokemon:Thing ] ? ;
+          rdfs:label @linkml:String ? ;
+          rdfs:comment @linkml:String ?
+       ) ;
+       rdf:type [ linkml_pokemon:NamedThing ]
+    )
+}
+
 <PhysicalMove> CLOSED {
     (  $<PhysicalMove_tes> (  &<Move_tes> ;
           rdf:type [ <Move> ] ?
        ) ;
-       rdf:type [ <PhysicalMove> ] ?
+       rdf:type [ <PhysicalMove> ]
     )
 }
 
@@ -251,7 +280,7 @@ linkml:Sparqlpath xsd:string
     (  $<SpecialMove_tes> (  &<Move_tes> ;
           rdf:type [ <Move> ] ?
        ) ;
-       rdf:type [ <SpecialMove> ] ?
+       rdf:type [ <SpecialMove> ]
     )
 }
 
@@ -265,9 +294,17 @@ linkml:Sparqlpath xsd:string
     (  $<StatusMove_tes> (  &<Move_tes> ;
           rdf:type [ <Move> ] ?
        ) ;
-       rdf:type [ <StatusMove> ] ?
+       rdf:type [ <StatusMove> ]
     )
 }
+
+<Thing>  (
+    CLOSED {
+       (  $<Thing_tes> rdf:type . * ;
+          rdf:type [ linkml_pokemon:Thing ]
+       )
+    } OR @<NamedThing>
+)
 
 <TM> CLOSED {
     (  $<TM_tes> (  &<Item_tes> ;
