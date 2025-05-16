@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-05-14T23:25:58
+# Generation date: 2025-05-15T23:18:47
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -64,6 +64,7 @@ version = None
 
 # Namespaces
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
+DBPEDIA = CurieNamespace('dbpedia', 'http://dbpedia.org/ontology/')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
 FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -98,11 +99,43 @@ class AbilityId(EntityId):
     pass
 
 
+class ItemId(EntityId):
+    pass
+
+
+class BattleItemId(ItemId):
+    pass
+
+
+class FoodId(ItemId):
+    pass
+
+
+class BerryId(FoodId):
+    pass
+
+
+class HMId(ItemId):
+    pass
+
+
+class HoldItemId(ItemId):
+    pass
+
+
+class PokeballId(ItemId):
+    pass
+
+
 class SpeciesId(NamedThingId):
     pass
 
 
 class MoveId(EntityId):
+    pass
+
+
+class MedicineId(ItemId):
     pass
 
 
@@ -115,6 +148,10 @@ class PhysicalMoveId(MoveId):
 
 
 class StatusMoveId(MoveId):
+    pass
+
+
+class TMId(ItemId):
     pass
 
 
@@ -237,18 +274,6 @@ class EggGroup(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = POKEMON.EggGroup
 
 
-class Colour(YAMLRoot):
-    """
-    Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["Colour"]
-    class_class_curie: ClassVar[str] = "pokemon:Colour"
-    class_name: ClassVar[str] = "Colour"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Colour
-
-
 class Flavor(YAMLRoot):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -301,7 +326,8 @@ class Habitat(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = POKEMON.Habitat
 
 
-class Item(YAMLRoot):
+@dataclass(repr=False)
+class Item(Entity):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Item"]
@@ -309,7 +335,18 @@ class Item(YAMLRoot):
     class_name: ClassVar[str] = "Item"
     class_model_uri: ClassVar[URIRef] = POKEMON.Item
 
+    id: Union[str, ItemId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ItemId):
+            self.id = ItemId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class BattleItem(Item):
     """
     Battle items are items that can be used during battles.
@@ -321,7 +358,18 @@ class BattleItem(Item):
     class_name: ClassVar[str] = "BattleItem"
     class_model_uri: ClassVar[URIRef] = POKEMON.BattleItem
 
+    id: Union[str, BattleItemId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BattleItemId):
+            self.id = BattleItemId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Food(Item):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -329,6 +377,16 @@ class Food(Item):
     class_class_curie: ClassVar[str] = "pokemon:Food"
     class_name: ClassVar[str] = "Food"
     class_model_uri: ClassVar[URIRef] = POKEMON.Food
+
+    id: Union[str, FoodId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FoodId):
+            self.id = FoodId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -340,15 +398,22 @@ class Berry(Food):
     class_name: ClassVar[str] = "Berry"
     class_model_uri: ClassVar[URIRef] = POKEMON.Berry
 
+    id: Union[str, BerryId] = None
     hasSize: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, BerryId):
+            self.id = BerryId(self.id)
+
         if self.hasSize is not None and not isinstance(self.hasSize, str):
             self.hasSize = str(self.hasSize)
 
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class HM(Item):
     """
     Hidden Machine
@@ -360,7 +425,18 @@ class HM(Item):
     class_name: ClassVar[str] = "HM"
     class_model_uri: ClassVar[URIRef] = POKEMON.HM
 
+    id: Union[str, HMId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HMId):
+            self.id = HMId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class HoldItem(Item):
     """
     A hold item is an item that can be held by a Pokemon.
@@ -371,6 +447,16 @@ class HoldItem(Item):
     class_class_curie: ClassVar[str] = "pokemon:HoldItem"
     class_name: ClassVar[str] = "HoldItem"
     class_model_uri: ClassVar[URIRef] = POKEMON.HoldItem
+
+    id: Union[str, HoldItemId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HoldItemId):
+            self.id = HoldItemId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 class Pokedex(YAMLRoot):
@@ -406,6 +492,7 @@ class PokedexEntry(YAMLRoot):
     class_model_uri: ClassVar[URIRef] = POKEMON.PokedexEntry
 
 
+@dataclass(repr=False)
 class Pokeball(Item):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -413,6 +500,16 @@ class Pokeball(Item):
     class_class_curie: ClassVar[str] = "pokemon:Pokeball"
     class_name: ClassVar[str] = "Pokeball"
     class_model_uri: ClassVar[URIRef] = POKEMON.Pokeball
+
+    id: Union[str, PokeballId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PokeballId):
+            self.id = PokeballId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 class Place(YAMLRoot):
@@ -470,7 +567,7 @@ class Species(NamedThing):
     class_model_uri: ClassVar[URIRef] = POKEMON.Species
 
     id: Union[str, SpeciesId] = None
-    hasColour: Optional[Union[Union[dict, Colour], list[Union[dict, Colour]]]] = empty_list()
+    hasColour: Optional[Union[Union[dict, "Colour"], list[Union[dict, "Colour"]]]] = empty_list()
     mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
     mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
     isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
@@ -605,6 +702,7 @@ class LearningThroughBreeding(MoveLearning):
     class_model_uri: ClassVar[URIRef] = POKEMON.LearningThroughBreeding
 
 
+@dataclass(repr=False)
 class Medicine(Item):
     """
     Medicine items can heal various afflictions of a Pokemon.
@@ -615,6 +713,16 @@ class Medicine(Item):
     class_class_curie: ClassVar[str] = "pokemon:Medicine"
     class_name: ClassVar[str] = "Medicine"
     class_model_uri: ClassVar[URIRef] = POKEMON.Medicine
+
+    id: Union[str, MedicineId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MedicineId):
+            self.id = MedicineId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -686,6 +794,7 @@ class StatusMove(Move):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class TM(Item):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -693,6 +802,16 @@ class TM(Item):
     class_class_curie: ClassVar[str] = "pokemon:TM"
     class_name: ClassVar[str] = "TM"
     class_model_uri: ClassVar[URIRef] = POKEMON.TM
+
+    id: Union[str, TMId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TMId):
+            self.id = TMId(self.id)
+
+        super().__post_init__(**kwargs)
 
 
 class Town(Place):
@@ -707,7 +826,28 @@ class Town(Place):
     class_model_uri: ClassVar[URIRef] = POKEMON.Town
 
 
-class Trainer(YAMLRoot):
+class Type(YAMLRoot):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["Type"]
+    class_class_curie: ClassVar[str] = "pokemon:Type"
+    class_name: ClassVar[str] = "Type"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Type
+
+
+class Person(YAMLRoot):
+    """
+    A person is a human being
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FOAF["Person"]
+    class_class_curie: ClassVar[str] = "foaf:Person"
+    class_name: ClassVar[str] = "Person"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Person
+
+
+class Trainer(Person):
     """
     A trainer is a person who is able to catch Pokemon.
     """
@@ -728,17 +868,34 @@ class GymLeader(Trainer):
     class_model_uri: ClassVar[URIRef] = POKEMON.GymLeader
 
 
-class Type(YAMLRoot):
+class Colour(YAMLRoot):
+    """
+    A colour is a visual property of an object
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = POKEMON["Type"]
-    class_class_curie: ClassVar[str] = "pokemon:Type"
-    class_name: ClassVar[str] = "Type"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Type
+    class_class_uri: ClassVar[URIRef] = DBPEDIA["Colour"]
+    class_class_curie: ClassVar[str] = "dbpedia:Colour"
+    class_name: ClassVar[str] = "Colour"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Colour
 
 
 # Enumerations
+class HabitatEnum(EnumDefinitionImpl):
 
+    Cave = PermissibleValue(
+        text="Cave",
+        meaning=POKEMON["Habitat_Cave"])
+    Forest = PermissibleValue(
+        text="Forest",
+        meaning=POKEMON["Habitat_Forest"])
+    Grassland = PermissibleValue(
+        text="Grassland",
+        meaning=POKEMON["Habitat_Grassland"])
+
+    _defn = EnumDefinition(
+        name="HabitatEnum",
+    )
 
 # Slots
 class slots:

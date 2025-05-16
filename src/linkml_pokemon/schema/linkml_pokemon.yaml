@@ -1,12 +1,16 @@
 ---
 id: https://pokemonkg.org/ontology
 name: linkml-pokemon
-title: linkml-pokemon
+title: Pokemon Ontology
 description: |-
   Ontology covering the Pokémon world as it is presented in games and anime television series
 license: MIT
 see_also:
   - https://vladistan.github.io/linkml-pokemon
+created_on: 2019-07-27 00:00:00
+annotations:
+  dcterms:description: Ontology covering the Pokemon world as it is presented in games and anime television series.
+  dcterms:issued: 2019-07-27^^xsd:date
 
 prefixes:
   linkml_pokemon: https://w3id.org/vladistan/linkml-pokemon/
@@ -29,6 +33,7 @@ default_range: string
 imports:
   - linkml:types
   - ./foaf
+  - ./dbpedia
 
 classes:
 
@@ -87,11 +92,6 @@ classes:
     annotations:
       rdfs:comment: Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
 
-  Colour:
-    description: >-
-      Colors are categories that certain Pokemon belong to,
-      which determine which Pokemon they can breed with.
-
   Flavor:
     annotations:
       rdfs:comment: Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them.
@@ -117,7 +117,7 @@ classes:
   GymLeader:
     is_a: Trainer
     annotations:
-      rdfs:comment: A gym leader is a highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
+      rdfs:comment: A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
 
   HM:
     is_a: Item
@@ -136,6 +136,7 @@ classes:
   Item:
     annotations:
       rdfs:comment: An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
+    is_a: Entity
  
   Pokedex:
     annotations:
@@ -237,6 +238,8 @@ classes:
 
   TM:
     is_a: Item
+    mixins:
+     - MoveLearning
     annotations:
       rdfs:comment: A Technical Machine is an item that can be used to teach a Pokemon a move.
 
@@ -246,6 +249,7 @@ classes:
       A town is a type of place that can be visited.
 
   Trainer:
+    is_a: Person
     description: >-
       A trainer is a person who is able to catch Pokemon.
 
@@ -499,3 +503,14 @@ slots:
     domain: Food
 
 enums:
+
+  HabitatEnum:
+   implements:
+     - owl:NamedIndividual
+   permissible_values:
+     Cave:
+       meaning: pokemon:Habitat_Cave
+     Forest:
+       meaning: pokemon:Habitat_Forest
+     Grassland:
+       meaning: pokemon:Habitat_Grassland

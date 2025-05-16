@@ -135,7 +135,7 @@ gen-project: $(PYMODEL)
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)
 	mkdir -p ${DEST}/owl || true
-	$(RUN) gen-owl --add-ols-annotations ${GEN_OWL_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/owl/${SCHEMA_NAME}.owl.ttl
+	$(RUN) gen-owl --metadata --add-ols-annotations --ontology-uri-suffix '' --metadata-profile rdfs ${GEN_OWL_ARGS} $(SOURCE_SCHEMA_PATH) >${DEST}/owl/${SCHEMA_NAME}.owl.ttl
 endif
 
 # non-empty arg triggers java

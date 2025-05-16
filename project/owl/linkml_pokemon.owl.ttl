@@ -1,8 +1,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
 @prefix pokemon: <https://pokemonkg.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -20,10 +23,10 @@ pokemon:Berry a owl:Class ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasSize ],
         pokemon:Food ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -37,10 +40,10 @@ pokemon:Generation a owl:Class ;
     rdfs:label "Generation" ;
     rdfs:comment "Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Species ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:featuresSpecies ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom pokemon:Species ;
             owl:onProperty pokemon:featuresSpecies ] ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -52,7 +55,7 @@ pokemon:Gym a owl:Class ;
 
 pokemon:GymLeader a owl:Class ;
     rdfs:label "GymLeader" ;
-    rdfs:comment "A gym leader is a highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym." ;
+    rdfs:comment "A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym." ;
     rdfs:subClassOf pokemon:Trainer ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -125,7 +128,8 @@ pokemon:StatusMove a owl:Class ;
 pokemon:TM a owl:Class ;
     rdfs:label "TM" ;
     rdfs:comment "A Technical Machine is an item that can be used to teach a Pokemon a move." ;
-    rdfs:subClassOf pokemon:Item ;
+    rdfs:subClassOf pokemon:Item,
+        pokemon:MoveLearning ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Town a owl:Class ;
@@ -219,13 +223,6 @@ pokemon:smoothness a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-<https://pokemonkg.org/ontology.owl.ttl> a owl:Ontology ;
-    rdfs:label "linkml-pokemon" ;
-    dcterms:license "MIT" ;
-    dcterms:title "linkml-pokemon" ;
-    rdfs:comment "Ontology covering the Pokémon world as it is presented in games and anime television series" ;
-    rdfs:seeAlso <https://vladistan.github.io/linkml-pokemon> .
-
 pokemon:Flavor a owl:Class ;
     rdfs:label "Flavor" ;
     rdfs:comment "Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them." ;
@@ -235,22 +232,22 @@ pokemon:NamedThing a owl:Class ;
     rdfs:label "NamedThing" ;
     rdfs:comment "A generic grouping for any identifiable entity that has a name" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:name ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:description ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:description ],
+            owl:onProperty pokemon:name ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:name ],
         pokemon:Thing ;
     skos:exactMatch linkml_pokemon:NamedThing ;
@@ -265,10 +262,10 @@ pokemon:Thing a owl:Class ;
     rdfs:label "Thing" ;
     rdfs:comment "A generic grouping for any identifiable attributes with an id" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
+            owl:minCardinality 1 ;
             owl:onProperty pokemon:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:allValuesFrom xsd:anyURI ;
             owl:onProperty pokemon:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -279,6 +276,7 @@ pokemon:Thing a owl:Class ;
 pokemon:Trainer a owl:Class ;
     rdfs:label "Trainer" ;
     rdfs:comment "A trainer is a person who is able to catch Pokemon." ;
+    rdfs:subClassOf foaf:Person ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:describesPokemon a owl:ObjectProperty ;
@@ -313,53 +311,39 @@ pokemon:locatedIn a owl:AsymmetricProperty,
     rdfs:range pokemon:Place ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:Colour a owl:Class ;
+foaf:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "A person is a human being" ;
+    skos:exactMatch foaf:Person ;
+    skos:inScheme foaf: .
+
+<https://dbpedia.org/ontology/Colour> a owl:Class ;
     rdfs:label "Colour" ;
-    rdfs:comment "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
+    rdfs:comment "A colour is a visual property of an object" ;
+    skos:exactMatch <http://dbpedia.org/ontology/Colour> ;
+    skos:inScheme <https://dbpedia.org/ontology/> .
 
 pokemon:EggGroup a owl:Class ;
     rdfs:label "EggGroup" ;
     rdfs:comment "Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:Entity a owl:Class ;
-    rdfs:label "Entity" ;
-    rdfs:comment "A grouping of attributes that can be reffered to" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty pokemon:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty pokemon:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:id ] ;
-    skos:exactMatch linkml_pokemon:Entity ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
 pokemon:Habitat a owl:Class ;
     rdfs:label "Habitat" ;
     rdfs:comment "A habitat is a type of environment that certain Pokemon belong to." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:Habitat_Cave a owl:NamedIndividual,
+        pokemon:HabitatEnum ;
+    rdfs:label "Cave" .
+
+pokemon:Habitat_Forest a owl:NamedIndividual,
+        pokemon:HabitatEnum ;
+    rdfs:label "Forest" .
+
+pokemon:Habitat_Grassland a owl:NamedIndividual,
+        pokemon:HabitatEnum ;
+    rdfs:label "Grassland" .
 
 pokemon:Shape a owl:Class ;
     rdfs:label "Shape" ;
@@ -382,7 +366,7 @@ pokemon:foundIn a owl:ObjectProperty ;
 pokemon:hasColour a owl:ObjectProperty ;
     rdfs:label "hasColour" ;
     rdfs:comment "['A Pokemon has a color']" ;
-    rdfs:range pokemon:Colour ;
+    rdfs:range <https://dbpedia.org/ontology/Colour> ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:inEggGroup a owl:ObjectProperty ;
@@ -409,10 +393,50 @@ pokemon:mayHaveHiddenAbility a owl:ObjectProperty ;
     rdfs:range pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-pokemon:MoveLearning a owl:Class ;
-    rdfs:label "MoveLearning" ;
-    rdfs:comment "A move learning is a way that a Pokemon can learn a move." ;
+foaf:depiction a owl:DatatypeProperty ;
+    rdfs:label "depiction" ;
+    rdfs:comment "A depiction of the person" ;
+    rdfs:range xsd:string ;
+    skos:inScheme foaf: .
+
+pokemon:Entity a owl:Class ;
+    rdfs:label "Entity" ;
+    rdfs:comment "A grouping of attributes that can be reffered to" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty pokemon:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:name ] ;
+    skos:exactMatch linkml_pokemon:Entity ;
     skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:HabitatEnum a owl:Class ;
+    owl:oneOf ( pokemon:Habitat_Cave pokemon:Habitat_Forest pokemon:Habitat_Grassland ) ;
+    linkml:permissible_values pokemon:Habitat_Cave,
+        pokemon:Habitat_Forest,
+        pokemon:Habitat_Grassland .
 
 pokemon:Type a owl:Class ;
     rdfs:label "Type" ;
@@ -452,15 +476,14 @@ pokemon:hasWeight a owl:DatatypeProperty ;
     rdfs:domain pokemon:Species ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-<https://w3id.org/linkml/foaf/depiction> a owl:DatatypeProperty ;
-    rdfs:label "depiction" ;
-    rdfs:comment "A depiction of the person" ;
-    rdfs:range xsd:string ;
-    skos:inScheme linkml:foaf .
-
 pokemon:Food a owl:Class ;
     rdfs:label "Food" ;
     rdfs:subClassOf pokemon:Item ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+pokemon:MoveLearning a owl:Class ;
+    rdfs:label "MoveLearning" ;
+    rdfs:comment "A move learning is a way that a Pokemon can learn a move." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:PokedexEntry a owl:Class ;
@@ -514,6 +537,7 @@ pokemon:name a owl:DatatypeProperty ;
 pokemon:Item a owl:Class ;
     rdfs:label "Item" ;
     rdfs:comment "An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area." ;
+    rdfs:subClassOf pokemon:Entity ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Place a owl:Class ;
@@ -526,12 +550,12 @@ pokemon:Move a owl:Class ;
     rdfs:comment "A move is a special ability of a Pokemon." ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:effectDescription ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty pokemon:hasType ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:effectDescription ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:effectDescription ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Type ;
@@ -544,85 +568,79 @@ pokemon:Species a owl:Class ;
     rdfs:label "Species" ;
     rdfs:comment "A species is a category of Pokemon that share common features." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty pokemon:hasCatchRate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasWeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasGenus ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:mayHaveHiddenAbility ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasWeight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Shape ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasCatchRate ],
+            owl:onProperty pokemon:isAbleToApply ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Type ;
             owl:onProperty pokemon:hasType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:inEggGroup ],
+            owl:onProperty foaf:depiction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Move ;
             owl:onProperty pokemon:isAbleToApply ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasShape ],
+            owl:allValuesFrom <https://dbpedia.org/ontology/Colour> ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasHeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:EggGroup ;
             owl:onProperty pokemon:inEggGroup ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasCatchRate ],
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Move ;
-            owl:onProperty pokemon:isAbleToApply ],
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasCatchRate ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasGenus ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
+            owl:onProperty pokemon:hasHeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasHeight ],
+            owl:onProperty pokemon:hasWeight ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Habitat ;
             owl:onProperty pokemon:foundIn ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Colour ;
-            owl:onProperty pokemon:hasColour ],
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:inEggGroup ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasGenus ],
+            owl:allValuesFrom pokemon:Shape ;
+            owl:onProperty pokemon:hasShape ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:mayHaveHiddenAbility ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -631,15 +649,29 @@ pokemon:Species a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasWeight ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://w3id.org/linkml/foaf/depiction> ],
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveAbility ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:hasHeight ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasColour ],
+            owl:onProperty pokemon:hasGenus ],
         pokemon:NamedThing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
+
+<https://pokemonkg.org/ontology> a owl:Ontology ;
+    rdfs:label "linkml-pokemon" ;
+    dcterms:license "MIT" ;
+    dcterms:title "Pokemon Ontology" ;
+    pav:createdOn "2019-07-27T00:00:00" ;
+    rdfs:comment "Ontology covering the Pokémon world as it is presented in games and anime television series" ;
+    rdfs:seeAlso <https://vladistan.github.io/linkml-pokemon> .
 
 

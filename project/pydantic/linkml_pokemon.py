@@ -61,12 +61,20 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'pokemon',
+linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterms:description',
+                                             'value': 'Ontology covering the '
+                                                      'Pokemon world as it is '
+                                                      'presented in games and '
+                                                      'anime television series.'},
+                     'dcterms:issued': {'tag': 'dcterms:issued',
+                                        'value': '2019-07-27^^xsd:date'}},
+     'created_on': '2019-07-27T00:00:00',
+     'default_prefix': 'pokemon',
      'default_range': 'string',
      'description': 'Ontology covering the Pokémon world as it is presented in '
                     'games and anime television series',
      'id': 'https://pokemonkg.org/ontology',
-     'imports': ['linkml:types', './foaf'],
+     'imports': ['linkml:types', './foaf', './dbpedia'],
      'license': 'MIT',
      'name': 'linkml-pokemon',
      'prefixes': {'PATO': {'prefix_prefix': 'PATO',
@@ -97,7 +105,31 @@ linkml_meta = LinkMLMeta({'default_prefix': 'pokemon',
                           'prefix_reference': 'http://www.w3.org/2001/XMLSchema#'}},
      'see_also': ['https://vladistan.github.io/linkml-pokemon'],
      'source_file': 'src/linkml_pokemon/schema/linkml_pokemon.yaml',
-     'title': 'linkml-pokemon'} )
+     'title': 'Pokemon Ontology'} )
+
+class HabitatEnum(str, Enum):
+    Cave = "Cave"
+    Forest = "Forest"
+    Grassland = "Grassland"
+
+
+
+class Person(ConfiguredBaseModel):
+    """
+    A person is a human being
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Person', 'from_schema': 'http://xmlns.com/foaf/0.1/'})
+
+    pass
+
+
+class Colour(ConfiguredBaseModel):
+    """
+    A colour is a visual property of an object
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dbpedia:Colour', 'from_schema': 'https://dbpedia.org/ontology/'})
+
+    pass
 
 
 class Thing(ConfiguredBaseModel):
@@ -185,15 +217,6 @@ class EggGroup(ConfiguredBaseModel):
     pass
 
 
-class Colour(ConfiguredBaseModel):
-    """
-    Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
-
-    pass
-
-
 class Flavor(ConfiguredBaseModel):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'Flavor is a special set of '
@@ -243,7 +266,7 @@ class Habitat(ConfiguredBaseModel):
     pass
 
 
-class Item(ConfiguredBaseModel):
+class Item(Entity):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'An item is an object in the '
                                                    'Pokémon games which the player can '
@@ -255,7 +278,15 @@ class Item(ConfiguredBaseModel):
                                                    'area.'}},
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class BattleItem(Item):
@@ -264,13 +295,29 @@ class BattleItem(Item):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class Food(Item):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class Berry(Food):
@@ -291,6 +338,15 @@ class Berry(Food):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     hasSize: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'hasSize', 'domain_of': ['Berry'], 'slot_uri': 'pokemon:hasSize'} })
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class HM(Item):
@@ -299,7 +355,15 @@ class HM(Item):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class HoldItem(Item):
@@ -308,7 +372,15 @@ class HoldItem(Item):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class Pokedex(ConfiguredBaseModel):
@@ -353,7 +425,15 @@ class Pokeball(Item):
                                                    'Pokémon.'}},
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class Place(ConfiguredBaseModel):
@@ -509,7 +589,15 @@ class Medicine(Item):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class SpecialMove(Move):
@@ -581,14 +669,23 @@ class StatusMove(Move):
          'slot_uri': 'linkml_common:identifier'} })
 
 
-class TM(Item):
+class TM(MoveLearning, Item):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'A Technical Machine is an item '
                                                    'that can be used to teach a '
                                                    'Pokemon a move.'}},
-         'from_schema': 'https://pokemonkg.org/ontology'})
+         'from_schema': 'https://pokemonkg.org/ontology',
+         'mixins': ['MoveLearning']})
 
-    pass
+    name: Optional[str] = Field(default=None, description="""Unique human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['NamedThing', 'Entity'],
+         'slot_uri': 'rdfs:comment'} })
+    id: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['Thing', 'Entity'],
+         'slot_uri': 'linkml_common:identifier'} })
 
 
 class Town(Place):
@@ -600,7 +697,7 @@ class Town(Place):
     pass
 
 
-class Trainer(ConfiguredBaseModel):
+class Trainer(Person):
     """
     A trainer is a person who is able to catch Pokemon.
     """
@@ -611,15 +708,16 @@ class Trainer(ConfiguredBaseModel):
 
 class GymLeader(Trainer):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
-                                          'value': 'A gym leader is a highest ranking '
-                                                   'member and owner of an official '
-                                                   'Pokémon gym. Gym leaders use their '
-                                                   'gym and their Pokemon to test the '
-                                                   'skills of trainers that challenge '
-                                                   'them, and if said trainers win a '
-                                                   'battle, the gym leader will gift '
-                                                   "them a badge that's unique to that "
-                                                   'specific gym.'}},
+                                          'value': 'A gym leader is the highest '
+                                                   'ranking member and owner of an '
+                                                   'official Pokémon gym. Gym leaders '
+                                                   'use their gym and their Pokemon to '
+                                                   'test the skills of trainers that '
+                                                   'challenge them, and if said '
+                                                   'trainers win a battle, the gym '
+                                                   'leader will gift them a badge '
+                                                   "that's unique to that specific "
+                                                   'gym.'}},
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     pass
@@ -639,12 +737,13 @@ class Type(ConfiguredBaseModel):
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
+Person.model_rebuild()
+Colour.model_rebuild()
 Thing.model_rebuild()
 NamedThing.model_rebuild()
 Entity.model_rebuild()
 Ability.model_rebuild()
 EggGroup.model_rebuild()
-Colour.model_rebuild()
 Flavor.model_rebuild()
 Game.model_rebuild()
 Generation.model_rebuild()

@@ -1,5 +1,6 @@
 {
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
+   "dbpedia": "http://dbpedia.org/ontology/",
    "example": "https://example.org/",
    "foaf": "http://xmlns.com/foaf/0.1/",
    "linkml": "https://w3id.org/linkml/",
@@ -12,11 +13,17 @@
    "schema": "http://schema.org/",
    "xml": "http://www.w3.org/XML/1998/namespace",
    "xsd": "http://www.w3.org/2001/XMLSchema#",
+   "Colour": {
+      "@id": "dbpedia:Colour"
+   },
    "Entity": {
       "@id": "linkml_pokemon:Entity"
    },
    "NamedThing": {
       "@id": "linkml_pokemon:NamedThing"
+   },
+   "Person": {
+      "@id": "foaf:Person"
    },
    "Thing": {
       "@id": "linkml_pokemon:Thing"

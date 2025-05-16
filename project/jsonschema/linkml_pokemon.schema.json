@@ -41,6 +41,28 @@
         "BattleItem": {
             "additionalProperties": false,
             "description": "Battle items are items that can be used during battles.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "BattleItem",
             "type": "object"
         },
@@ -48,19 +70,39 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "hasSize": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Berry",
             "type": "object"
         },
         "Colour": {
             "additionalProperties": false,
-            "description": "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+            "description": "A colour is a visual property of an object",
             "title": "Colour",
             "type": "object"
         },
@@ -107,6 +149,28 @@
         "Food": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Food",
             "type": "object"
         },
@@ -149,6 +213,28 @@
         "HM": {
             "additionalProperties": false,
             "description": "Hidden Machine",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "HM",
             "type": "object"
         },
@@ -158,15 +244,69 @@
             "title": "Habitat",
             "type": "object"
         },
+        "HabitatEnum": {
+            "description": "",
+            "enum": [
+                "Cave",
+                "Forest",
+                "Grassland"
+            ],
+            "title": "HabitatEnum",
+            "type": "string"
+        },
         "HoldItem": {
             "additionalProperties": false,
             "description": "A hold item is an item that can be held by a Pokemon.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "HoldItem",
             "type": "object"
         },
         "Item": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Item",
             "type": "object"
         },
@@ -185,6 +325,28 @@
         "Medicine": {
             "additionalProperties": false,
             "description": "Medicine items can heal various afflictions of a Pokemon.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Medicine",
             "type": "object"
         },
@@ -271,6 +433,12 @@
             "title": "NamedThing",
             "type": "object"
         },
+        "Person": {
+            "additionalProperties": false,
+            "description": "A person is a human being",
+            "title": "Person",
+            "type": "object"
+        },
         "PhysicalMove": {
             "additionalProperties": false,
             "description": "A physical move is a type of move that can be used during battles.",
@@ -328,6 +496,28 @@
         "Pokeball": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Pokeball",
             "type": "object"
         },
@@ -598,6 +788,28 @@
         "TM": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Unique human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "TM",
             "type": "object"
         },

@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/linkml/foaf
+id: http://xmlns.com/foaf/0.1/
 name: foaf
 title: FOAF Vocabulary
 description: FOAF Vocabulary
@@ -9,6 +9,9 @@ prefixes:
   foaf: http://xmlns.com/foaf/0.1/
 
 classes:
+  Person:
+    description: A person is a human being
+    class_uri: foaf:Person
 
 slots:
  depiction:

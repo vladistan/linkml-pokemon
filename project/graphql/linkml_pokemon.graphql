@@ -1,4 +1,11 @@
 # metamodel_version: 1.7.0
+enum HabitatEnum
+  {
+    Cave
+    Forest
+    Grassland
+  }
+
 type Ability
   {
     name: String
@@ -9,10 +16,16 @@ type Ability
 
 type BattleItem
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Berry
   {
+    name: String
+    description: String
+    id: Uri!
     hasSize: String
   }
 
@@ -37,6 +50,9 @@ type Flavor
 
 type Food
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Game
@@ -62,14 +78,23 @@ type Habitat
 
 type HM
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type HoldItem
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Item
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type LearningByLevelingUp
@@ -82,6 +107,9 @@ type LearningThroughBreeding
 
 type Medicine
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Move
@@ -104,6 +132,10 @@ type NamedThing
     description: String
   }
 
+type Person
+  {
+  }
+
 type PhysicalMove
   {
     name: String
@@ -119,6 +151,9 @@ type Place
 
 type Pokeball
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Pokedex
@@ -184,8 +219,11 @@ type Thing
     id: Uri!
   }
 
-type TM
+type TM implements MoveLearning
   {
+    name: String
+    description: String
+    id: Uri!
   }
 
 type Town

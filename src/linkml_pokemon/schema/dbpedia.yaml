@@ -1,0 +1,14 @@
+---
+id: https://dbpedia.org/ontology/
+name: dbpedia
+title: DBpedia Ontology
+description: DBpedia Ontology
+license: CC-BY-SA-3.0
+
+prefixes:
+  dbpedia: http://dbpedia.org/ontology/
+
+classes:
+  Colour:
+    description: A colour is a visual property of an object
+    class_uri: dbpedia:Colour

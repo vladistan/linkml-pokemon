@@ -6,6 +6,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/>
 PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
 
 
 linkml:String xsd:string
@@ -59,7 +60,7 @@ linkml:Sparqlpath xsd:string
     (  $<BattleItem_tes> (  &<Item_tes> ;
           rdf:type [ <Item> ] ?
        ) ;
-       rdf:type [ <BattleItem> ] ?
+       rdf:type [ <BattleItem> ]
     )
 }
 
@@ -68,13 +69,13 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Food> ] ? ;
           <hasSize> @linkml:String ?
        ) ;
-       rdf:type [ <Berry> ] ?
+       rdf:type [ <Berry> ]
     )
 }
 
-<Colour> CLOSED {
-    (  $<Colour_tes> rdf:type . * ;
-       rdf:type [ <Colour> ] ?
+<https://dbpedia.org/ontology/Colour> CLOSED {
+    (  $<https://dbpedia.org/ontology/Colour_tes> rdf:type . * ;
+       rdf:type [ dbpedia:Colour ] ?
     )
 }
 
@@ -91,7 +92,7 @@ linkml:Sparqlpath xsd:string
           ) ;
           rdf:type [ linkml_pokemon:Entity ]
        )
-    } OR @<Ability> OR @<Move>
+    } OR @<Ability> OR @<Item> OR @<Move>
 )
 
 <Flavor> CLOSED {
@@ -105,7 +106,7 @@ linkml:Sparqlpath xsd:string
        (  $<Food_tes> (  &<Item_tes> ;
              rdf:type [ <Item> ] ?
           ) ;
-          rdf:type [ <Food> ] ?
+          rdf:type [ <Food> ]
        )
     } OR @<Berry>
 )
@@ -148,7 +149,7 @@ linkml:Sparqlpath xsd:string
     (  $<HM_tes> (  &<Item_tes> ;
           rdf:type [ <Item> ] ?
        ) ;
-       rdf:type [ <HM> ] ?
+       rdf:type [ <HM> ]
     )
 }
 
@@ -156,14 +157,16 @@ linkml:Sparqlpath xsd:string
     (  $<HoldItem_tes> (  &<Item_tes> ;
           rdf:type [ <Item> ] ?
        ) ;
-       rdf:type [ <HoldItem> ] ?
+       rdf:type [ <HoldItem> ]
     )
 }
 
 <Item>  (
     CLOSED {
-       (  $<Item_tes> rdf:type . * ;
-          rdf:type [ <Item> ] ?
+       (  $<Item_tes> (  &<Entity_tes> ;
+             rdf:type [ linkml_pokemon:Entity ] ?
+          ) ;
+          rdf:type [ <Item> ]
        )
     } OR @<BattleItem> OR @<Food> OR @<HM> OR @<HoldItem> OR @<Medicine> OR @<Pokeball> OR @<TM>
 )
@@ -188,7 +191,7 @@ linkml:Sparqlpath xsd:string
     (  $<Medicine_tes> (  &<Item_tes> ;
           rdf:type [ <Item> ] ?
        ) ;
-       rdf:type [ <Medicine> ] ?
+       rdf:type [ <Medicine> ]
     )
 }
 
@@ -224,6 +227,14 @@ linkml:Sparqlpath xsd:string
     } OR @<Species>
 )
 
+foaf:Person  (
+    CLOSED {
+       (  $foaf:Person_tes rdf:type . * ;
+          rdf:type [ foaf:Person ] ?
+       )
+    } OR @<Trainer>
+)
+
 <PhysicalMove> CLOSED {
     (  $<PhysicalMove_tes> (  &<Move_tes> ;
           rdf:type [ <Move> ] ?
@@ -244,7 +255,7 @@ linkml:Sparqlpath xsd:string
     (  $<Pokeball_tes> (  &<Item_tes> ;
           rdf:type [ <Item> ] ?
        ) ;
-       rdf:type [ <Pokeball> ] ?
+       rdf:type [ <Pokeball> ]
     )
 }
 
@@ -291,7 +302,7 @@ linkml:Sparqlpath xsd:string
 <Species> CLOSED {
     (  $<Species_tes> (  &<NamedThing_tes> ;
           rdf:type [ linkml_pokemon:NamedThing ] ? ;
-          <hasColour> @<Colour> * ;
+          <hasColour> @<https://dbpedia.org/ontology/Colour> * ;
           <mayHaveHiddenAbility> @<Ability> * ;
           <mayHaveAbility> @<Ability> * ;
           <isAbleToApply> @<Move> * ;
@@ -327,9 +338,11 @@ linkml:Sparqlpath xsd:string
 
 <TM> CLOSED {
     (  $<TM_tes> (  &<Item_tes> ;
-          rdf:type [ <Item> ] ?
+          rdf:type [ <Item> ] ? ;
+          &<MoveLearning_tes> ;
+          rdf:type [ <MoveLearning> ] ?
        ) ;
-       rdf:type [ <TM> ] ?
+       rdf:type [ <TM> ]
     )
 }
 
@@ -343,7 +356,9 @@ linkml:Sparqlpath xsd:string
 
 <Trainer>  (
     CLOSED {
-       (  $<Trainer_tes> rdf:type . * ;
+       (  $<Trainer_tes> (  &foaf:Person_tes ;
+             rdf:type [ foaf:Person ] ?
+          ) ;
           rdf:type [ <Trainer> ] ?
        )
     } OR @<GymLeader>
