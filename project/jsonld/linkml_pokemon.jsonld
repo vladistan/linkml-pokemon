@@ -1,14 +1,26 @@
 {
   "name": "linkml-pokemon",
+  "annotations": [
+    {
+      "tag": "dcterms:description",
+      "value": "Ontology covering the Pokemon world as it is presented in games and anime television series."
+    },
+    {
+      "tag": "dcterms:issued",
+      "value": "2019-07-27^^xsd:date"
+    }
+  ],
   "description": "Ontology covering the Pok\u00e9mon world as it is presented in games and anime television series",
-  "title": "linkml-pokemon",
+  "title": "Pokemon Ontology",
   "see_also": [
     "https://vladistan.github.io/linkml-pokemon"
   ],
+  "created_on": "2019-07-27T00:00:00",
   "id": "https://pokemonkg.org/ontology",
   "imports": [
     "linkml:types",
-    "./foaf"
+    "./foaf",
+    "./dbpedia"
   ],
   "license": "MIT",
   "prefixes": [
@@ -375,6 +387,30 @@
       "uri": "http://www.w3.org/2001/XMLSchema#string",
       "repr": "str",
       "@type": "TypeDefinition"
+    }
+  ],
+  "enums": [
+    {
+      "name": "HabitatEnum",
+      "definition_uri": "https://pokemonkg.org/ontology#HabitatEnum",
+      "implements": [
+        "owl:NamedIndividual"
+      ],
+      "from_schema": "https://pokemonkg.org/ontology",
+      "permissible_values": [
+        {
+          "text": "Cave",
+          "meaning": "pokemon:Habitat_Cave"
+        },
+        {
+          "text": "Forest",
+          "meaning": "pokemon:Habitat_Forest"
+        },
+        {
+          "text": "Grassland",
+          "meaning": "pokemon:Habitat_Grassland"
+        }
+      ]
     }
   ],
   "slots": [
@@ -946,9 +982,9 @@
     },
     {
       "name": "depiction",
-      "definition_uri": "https://w3id.org/linkml/foaf/depiction",
+      "definition_uri": "http://xmlns.com/foaf/0.1//depiction",
       "description": "A depiction of the person",
-      "from_schema": "https://w3id.org/linkml/foaf",
+      "from_schema": "http://xmlns.com/foaf/0.1/",
       "mappings": [
         "http://xmlns.com/foaf/0.1/depiction"
       ],
@@ -1070,6 +1106,11 @@
       "description": "Battle items are items that can be used during battles.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#BattleItem",
       "@type": "ClassDefinition"
@@ -1087,6 +1128,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Food",
       "slots": [
+        "name",
+        "description",
+        "entity__id",
         "hasSize"
       ],
       "slot_usage": {},
@@ -1109,15 +1153,6 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "Colour",
-      "definition_uri": "https://pokemonkg.org/ontology#Colour",
-      "description": "Colors are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "slot_usage": {},
-      "class_uri": "https://pokemonkg.org/ontology#Colour",
-      "@type": "ClassDefinition"
-    },
-    {
       "name": "Flavor",
       "definition_uri": "https://pokemonkg.org/ontology#Flavor",
       "annotations": [
@@ -1137,6 +1172,11 @@
       "definition_uri": "https://pokemonkg.org/ontology#Food",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Food",
       "@type": "ClassDefinition"
@@ -1184,7 +1224,7 @@
       "annotations": [
         {
           "tag": "rdfs:comment",
-          "value": "A gym leader is a highest ranking member and owner of an official Pok\u00e9mon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.",
+          "value": "A gym leader is the highest ranking member and owner of an official Pok\u00e9mon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.",
           "@type": "Annotation"
         }
       ],
@@ -1200,6 +1240,11 @@
       "description": "Hidden Machine",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#HM",
       "@type": "ClassDefinition"
@@ -1219,6 +1264,11 @@
       "description": "A hold item is an item that can be held by a Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#HoldItem",
       "@type": "ClassDefinition"
@@ -1234,6 +1284,12 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Entity",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Item",
       "@type": "ClassDefinition"
@@ -1294,6 +1350,11 @@
       ],
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Pokeball",
       "@type": "ClassDefinition"
@@ -1427,6 +1488,11 @@
       "description": "Medicine items can heal various afflictions of a Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Medicine",
       "@type": "ClassDefinition"
@@ -1494,6 +1560,14 @@
       ],
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
+      "mixins": [
+        "MoveLearning"
+      ],
+      "slots": [
+        "name",
+        "description",
+        "entity__id"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#TM",
       "@type": "ClassDefinition"
@@ -1513,6 +1587,7 @@
       "definition_uri": "https://pokemonkg.org/ontology#Trainer",
       "description": "A trainer is a person who is able to catch Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Person",
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Trainer",
       "@type": "ClassDefinition"
@@ -1531,18 +1606,43 @@
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Type",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "Person",
+      "definition_uri": "http://xmlns.com/foaf/0.1//Person",
+      "description": "A person is a human being",
+      "from_schema": "http://xmlns.com/foaf/0.1/",
+      "mappings": [
+        "foaf:Person"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://xmlns.com/foaf/0.1/Person",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Colour",
+      "definition_uri": "https://dbpedia.org/ontology//Colour",
+      "description": "A colour is a visual property of an object",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "dbpedia:Colour"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://dbpedia.org/ontology/Colour",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2025-05-14T23:25:51",
-  "source_file_size": 12586,
-  "generation_date": "2025-05-14T23:25:57",
+  "source_file_date": "2025-05-15T23:02:40",
+  "source_file_size": 12962,
+  "generation_date": "2025-05-15T23:18:46",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     "./foaf.context.jsonld",
+    "./dbpedia.context.jsonld",
     {
       "@base": "https://pokemonkg.org/ontology#"
     }

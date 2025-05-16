@@ -8,8 +8,18 @@ message Ability
   uri id = 0
  repeated  string effectDescription = 0
  }
+// Battle items are items that can be used during battles.
+message BattleItem
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
+ }
 message Berry
  {
+  string name = 0
+  string description = 0
+  uri id = 0
   string hasSize = 0
  }
 // A grouping of attributes that can be reffered to
@@ -19,9 +29,42 @@ message Entity
   string description = 0
   uri id = 0
  }
+message Food
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
+ }
 message Generation
  {
  repeated  species featuresSpecies = 0
+ }
+// Hidden Machine
+message HM
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
+ }
+// A hold item is an item that can be held by a Pokemon.
+message HoldItem
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
+ }
+message Item
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
+ }
+// Medicine items can heal various afflictions of a Pokemon.
+message Medicine
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
  }
 message Move
  {
@@ -46,6 +89,12 @@ message PhysicalMove
   uri id = 0
  repeated  string effectDescription = 0
  repeated  type hasType = 0
+ }
+message Pokeball
+ {
+  string name = 0
+  string description = 0
+  uri id = 0
  }
 // A special move is a type of move that can be used during battles.
 message SpecialMove
@@ -88,6 +137,12 @@ message StatusMove
 // A generic grouping for any identifiable attributes with an id
 message Thing
  {
+  uri id = 0
+ }
+message TM
+ {
+  string name = 0
+  string description = 0
   uri id = 0
  }
 
