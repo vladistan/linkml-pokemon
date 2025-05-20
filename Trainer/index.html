@@ -205,15 +205,23 @@
 <div class="mermaid"> classDiagram
     class Trainer
     click Trainer href "../Trainer"
+      Person &lt;|-- Trainer
+        click Person href "../Person"
+
+
       Trainer &lt;|-- GymLeader
         click GymLeader href "../GymLeader"
+
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
+<li><a href="../Person/">Person</a><ul>
 <li><strong>Trainer</strong><ul>
 <li><a href="../GymLeader/">GymLeader</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -267,6 +275,7 @@
 <pre><code class="language-yaml">name: Trainer
 description: A trainer is a person who is able to catch Pokemon.
 from_schema: https://pokemonkg.org/ontology
+is_a: Person
 
 </code></pre>
 </details>
@@ -275,6 +284,7 @@ from_schema: https://pokemonkg.org/ontology
 <pre><code class="language-yaml">name: Trainer
 description: A trainer is a person who is able to catch Pokemon.
 from_schema: https://pokemonkg.org/ontology
+is_a: Person
 
 </code></pre>
 </details>

@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -317,10 +324,28 @@
 
 
 <h1 id="slot-mayhaveability">Slot: mayHaveAbility</h1>
-<p><em>['A Pokemon may have an ability@en', 'Ein Pokemon kann eine Fähigkeit haben@de']</em></p>
-<p>URI: <a href="https://pokemonkg.org/ontology#mayHaveAbility">pokemon:mayHaveAbility</a></p>
+<p><em>['A Pokemon may have an ability']</em></p>
+<p>URI: <a href="https://pokemonkg.org/ontology#mayHaveAbility">pokemon:mayHaveAbility</a>
+Alias: mayHaveAbility</p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Species/">Species</a></td>
+<td>A species is a category of Pokemon that share common features</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
@@ -358,13 +383,14 @@
 <details>
 
 <pre><code class="language-yaml">name: mayHaveAbility
-description: '[''A Pokemon may have an ability@en'', ''Ein Pokemon kann eine Fähigkeit
-  haben@de'']'
+description: '[''A Pokemon may have an ability'']'
 from_schema: https://pokemonkg.org/ontology
 rank: 1000
 domain: Species
 slot_uri: pokemon:mayHaveAbility
 alias: mayHaveAbility
+domain_of:
+- Species
 range: Ability
 multivalued: true
 

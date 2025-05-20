@@ -208,12 +208,32 @@
       Move &lt;|-- SpecialMove
         click Move href "../Move"
 
+      SpecialMove : description
+
+      SpecialMove : effectDescription
+
+      SpecialMove : hasType
+
+
+
+
+    SpecialMove --&gt; "*" Type : hasType
+    click Type href "../Type"
+
+
+      SpecialMove : id
+
+      SpecialMove : name
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
+<li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Move/">Move</a><ul>
 <li><strong>SpecialMove</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -229,10 +249,34 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../effectDescription/">effectDescription</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A description of the effect of the entity</td>
+<td><a href="../Move/">Move</a></td>
+</tr>
+<tr>
+<td><a href="../hasType/">hasType</a></td>
+<td>* <br/> <a href="../Type/">Type</a></td>
+<td>['A Pokemon has a type']</td>
+<td><a href="../Move/">Move</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Unique human-readable label for the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A description of the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uri/">Uri</a></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 </tbody>
 </table>
@@ -277,6 +321,72 @@ is_a: Move
 description: A special move is a type of move that can be used during battles.
 from_schema: https://pokemonkg.org/ontology
 is_a: Move
+attributes:
+  effectDescription:
+    name: effectDescription
+    description: A description of the effect of the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: pokemon:effectDescription
+    alias: effectDescription
+    owner: SpecialMove
+    domain_of:
+    - Ability
+    - Move
+    range: string
+    required: false
+    multivalued: true
+  hasType:
+    name: hasType
+    description: '[''A Pokemon has a type'']'
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: pokemon:hasType
+    alias: hasType
+    owner: SpecialMove
+    domain_of:
+    - Species
+    - Move
+    range: Type
+    required: false
+    multivalued: true
+  name:
+    name: name
+    description: Unique human-readable label for the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:label
+    alias: name
+    owner: SpecialMove
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  description:
+    name: description
+    description: A description of the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:comment
+    alias: description
+    owner: SpecialMove
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  id:
+    name: id
+    from_schema: https://pokemonkg.org/ontology
+    slot_uri: linkml_common:identifier
+    identifier: true
+    alias: id
+    owner: SpecialMove
+    domain_of:
+    - Thing
+    - Entity
+    range: uri
+    required: true
+    multivalued: false
 
 </code></pre>
 </details>

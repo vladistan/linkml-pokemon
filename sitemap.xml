@@ -2,338 +2,394 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Ability/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/BattleItem/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Berry/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Boolean/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Colour/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Curie/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Date/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/DateOrDatetime/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Datetime/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Decimal/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Double/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/EggGroup/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/Entity/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Flavor/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Float/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Food/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Game/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Generation/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Gym/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/GymLeader/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/HM/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Habitat/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/HabitatEnum/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/HoldItem/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Integer/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Item/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Jsonpath/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Jsonpointer/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/LearningByLevelingUp/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/LearningThroughBreeding/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Medicine/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Move/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/MoveLearning/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/NamedThing/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Ncname/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Nodeidentifier/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Objectidentifier/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/Person/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/PhysicalMove/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Place/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Pokeball/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Pokedex/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/PokedexEntry/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Pokemon/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Region/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Shape/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Sparqlpath/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/SpecialMove/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Species/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/StatusMove/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/String/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/TM/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/Thing/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Time/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Town/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Trainer/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Type/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Uri/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/Uriorcurie/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/about/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/accuracy/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/basePower/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/basePowerPoints/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/containsPlace/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/depiction/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/describedInPokedex/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/describesPokemon/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/description/</loc>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/effectDescription/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/entryNumber/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/evolvesFrom/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/evolvesTo/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/featuresSpecies/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/firmness/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/foundIn/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/hasCatchRate/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasColour/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasFlavor/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasGenus/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/hasHeight/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasPokedexEntry/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasShape/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasSize/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/hasType/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/hasWeight/</loc>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/id/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/inEggGroup/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/isAbleToApply/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/learnsMove/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/linkml-pokemon/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/locatedIn/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/maxPowerPoints/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/mayHaveAbility/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/mayHaveHiddenAbility/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/minLevelToLearn/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
+    </url>
+    <url>
+         <loc>https://vladistan.github.io/linkml-pokemon/name/</loc>
+         <lastmod>2025-05-20</lastmod>
     </url>
     <url>
          <loc>https://vladistan.github.io/linkml-pokemon/smoothness/</loc>
-         <lastmod>2025-05-14</lastmod>
+         <lastmod>2025-05-20</lastmod>
     </url>
 </urlset>

@@ -209,15 +209,26 @@
 <div class="mermaid"> classDiagram
     class TM
     click TM href "../TM"
+      MoveLearning &lt;|-- TM
+        click MoveLearning href "../MoveLearning"
       Item &lt;|-- TM
         click Item href "../Item"
+
+      TM : description
+
+      TM : id
+
+      TM : name
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
+<li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Item/">Item</a><ul>
-<li><strong>TM</strong></li>
+<li><strong>TM</strong> [ <a href="../MoveLearning/">MoveLearning</a>]</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -233,10 +244,22 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Unique human-readable label for the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A description of the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uri/">Uri</a></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 </tbody>
 </table>
@@ -290,6 +313,8 @@ annotations:
     value: A Technical Machine is an item that can be used to teach a Pokemon a move.
 from_schema: https://pokemonkg.org/ontology
 is_a: Item
+mixins:
+- MoveLearning
 
 </code></pre>
 </details>
@@ -302,6 +327,46 @@ annotations:
     value: A Technical Machine is an item that can be used to teach a Pokemon a move.
 from_schema: https://pokemonkg.org/ontology
 is_a: Item
+mixins:
+- MoveLearning
+attributes:
+  name:
+    name: name
+    description: Unique human-readable label for the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:label
+    alias: name
+    owner: TM
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  description:
+    name: description
+    description: A description of the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:comment
+    alias: description
+    owner: TM
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  id:
+    name: id
+    from_schema: https://pokemonkg.org/ontology
+    slot_uri: linkml_common:identifier
+    identifier: true
+    alias: id
+    owner: TM
+    domain_of:
+    - Thing
+    - Entity
+    range: uri
+    required: true
+    multivalued: false
 
 </code></pre>
 </details>

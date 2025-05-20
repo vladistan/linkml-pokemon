@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -317,10 +324,48 @@
 
 
 <h1 id="slot-hastype">Slot: hasType</h1>
-<p><em>['A Pokemon has a type@en', 'Ein Pokemon hat eine Art@de']</em></p>
-<p>URI: <a href="https://pokemonkg.org/ontology#hasType">pokemon:hasType</a></p>
+<p><em>['A Pokemon has a type']</em></p>
+<p>URI: <a href="https://pokemonkg.org/ontology#hasType">pokemon:hasType</a>
+Alias: hasType</p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../SpecialMove/">SpecialMove</a></td>
+<td>A special move is a type of move that can be used during battles</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PhysicalMove/">PhysicalMove</a></td>
+<td>A physical move is a type of move that can be used during battles</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Species/">Species</a></td>
+<td>A species is a category of Pokemon that share common features</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Move/">Move</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../StatusMove/">StatusMove</a></td>
+<td>A status move is a type of move that can be used during battles</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
@@ -358,11 +403,14 @@
 <details>
 
 <pre><code class="language-yaml">name: hasType
-description: '[''A Pokemon has a type@en'', ''Ein Pokemon hat eine Art@de'']'
+description: '[''A Pokemon has a type'']'
 from_schema: https://pokemonkg.org/ontology
 rank: 1000
 slot_uri: pokemon:hasType
 alias: hasType
+domain_of:
+- Species
+- Move
 range: Type
 required: false
 multivalued: true

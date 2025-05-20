@@ -204,6 +204,15 @@
 <div class="mermaid"> classDiagram
     class Generation
     click Generation href "../Generation"
+      Generation : featuresSpecies
+
+
+
+
+    Generation --&gt; "*" Species : featuresSpecies
+    click Species href "../Species"
+
+
 
 </div>
 <!-- no inheritance hierarchy -->
@@ -219,10 +228,10 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../featuresSpecies/">featuresSpecies</a></td>
+<td>* <br/> <a href="../Species/">Species</a></td>
+<td>['A Pokedex entry features a species']</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
@@ -278,6 +287,8 @@ annotations:
       generation are compatible with the others, containing the same Pokemon and the
       number of moves there are to be learned.
 from_schema: https://pokemonkg.org/ontology
+slots:
+- featuresSpecies
 
 </code></pre>
 </details>
@@ -292,6 +303,20 @@ annotations:
       generation are compatible with the others, containing the same Pokemon and the
       number of moves there are to be learned.
 from_schema: https://pokemonkg.org/ontology
+attributes:
+  featuresSpecies:
+    name: featuresSpecies
+    description: '[''A Pokedex entry features a species'']'
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: pokemon:featuresSpecies
+    alias: featuresSpecies
+    owner: Generation
+    domain_of:
+    - Generation
+    range: Species
+    required: false
+    multivalued: true
 
 </code></pre>
 </details>

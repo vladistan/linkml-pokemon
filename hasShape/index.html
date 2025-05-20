@@ -256,6 +256,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#applicable-classes" class="md-nav__link">
+    Applicable Classes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -318,9 +325,27 @@
 
 <h1 id="slot-hasshape">Slot: hasShape</h1>
 <p><em>The shape of a berry is a measure of how good it is for making a Potion.</em></p>
-<p>URI: <a href="https://pokemonkg.org/ontology#hasShape">pokemon:hasShape</a></p>
+<p>URI: <a href="https://pokemonkg.org/ontology#hasShape">pokemon:hasShape</a>
+Alias: hasShape</p>
 <!-- no inheritance hierarchy -->
 
+<h2 id="applicable-classes">Applicable Classes</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Modifies Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Species/">Species</a></td>
+<td>A species is a category of Pokemon that share common features</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../Shape/">Shape</a></li>
@@ -359,6 +384,8 @@ rank: 1000
 domain: Species
 slot_uri: pokemon:hasShape
 alias: hasShape
+domain_of:
+- Species
 range: Shape
 required: false
 multivalued: false

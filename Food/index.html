@@ -212,13 +212,22 @@
         click Berry href "../Berry"
 
 
+      Food : description
+
+      Food : id
+
+      Food : name
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
+<li><a href="../Entity/">Entity</a><ul>
 <li><a href="../Item/">Item</a><ul>
 <li><strong>Food</strong><ul>
 <li><a href="../Berry/">Berry</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -236,10 +245,22 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Unique human-readable label for the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A description of the entity</td>
+<td><a href="../Entity/">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uri/">Uri</a></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../Entity/">Entity</a></td>
 </tr>
 </tbody>
 </table>
@@ -282,6 +303,44 @@ is_a: Item
 <pre><code class="language-yaml">name: Food
 from_schema: https://pokemonkg.org/ontology
 is_a: Item
+attributes:
+  name:
+    name: name
+    description: Unique human-readable label for the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:label
+    alias: name
+    owner: Food
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  description:
+    name: description
+    description: A description of the entity
+    from_schema: https://pokemonkg.org/ontology
+    rank: 1000
+    slot_uri: rdfs:comment
+    alias: description
+    owner: Food
+    domain_of:
+    - NamedThing
+    - Entity
+    range: string
+  id:
+    name: id
+    from_schema: https://pokemonkg.org/ontology
+    slot_uri: linkml_common:identifier
+    identifier: true
+    alias: id
+    owner: Food
+    domain_of:
+    - Thing
+    - Entity
+    range: uri
+    required: true
+    multivalued: false
 
 </code></pre>
 </details>
