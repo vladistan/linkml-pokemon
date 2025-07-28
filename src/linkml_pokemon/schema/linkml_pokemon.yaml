@@ -38,6 +38,7 @@ imports:
 classes:
 
   Thing:
+    abstract: true
     description: >-
       A generic grouping for any identifiable attributes with an id
     slots:
@@ -46,6 +47,7 @@ classes:
 
   NamedThing:
     is_a: Thing
+    abstract: true
     description: >-
       A generic grouping for any identifiable entity that has a name
     slots:
@@ -54,6 +56,7 @@ classes:
     class_uri: linkml_pokemon:NamedThing
 
   Entity:
+    abstract: true
     description: >-
       A grouping of attributes that can be reffered to
     attributes:
@@ -98,6 +101,10 @@ classes:
 
   Food:
     is_a: Item
+    slots:
+      - hasFlavor
+      - firmness
+      - smoothness
 
   Game:
     description: >-
@@ -160,6 +167,8 @@ classes:
       rdfs:comment: A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
 
   Place:
+    is_a: Entity
+    abstract: true
     annotations:
       rdfs:comment: Entities that have a somewhat fixed, physical extension.
 
@@ -174,6 +183,7 @@ classes:
       rdfs:comment: Regions are areas in the Pokémon universe that are smaller parts of a nation.
 
   Species:
+    is_a: Entity
     description: >-
       A species is a category of Pokemon that share common features.
     slots:
@@ -190,7 +200,6 @@ classes:
       - hasGenus
       - hasCatchRate
       - foundIn
-    is_a: NamedThing
       
 
   Move:
