@@ -1,10 +1,10 @@
 # metamodel_version: 1.7.0
 BASE <https://pokemonkg.org/ontology#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX linkml_pokemon: <https://w3id.org/vladistan/linkml-pokemon/>
 PREFIX linkml: <https://w3id.org/linkml/>
 PREFIX dbpedia: <http://dbpedia.org/ontology/>
 
@@ -48,8 +48,8 @@ linkml:Jsonpath xsd:string
 linkml:Sparqlpath xsd:string
 
 <Ability> CLOSED {
-    (  $<Ability_tes> (  &<Entity_tes> ;
-          rdf:type [ linkml_pokemon:Entity ] ? ;
+    (  $<Ability_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ? ;
           <effectDescription> @linkml:String *
        ) ;
        rdf:type [ <Ability> ]
@@ -74,37 +74,47 @@ linkml:Sparqlpath xsd:string
 }
 
 <https://dbpedia.org/ontology/Colour> CLOSED {
-    (  $<https://dbpedia.org/ontology/Colour_tes> rdf:type . * ;
-       rdf:type [ dbpedia:Colour ] ?
+    (  $<https://dbpedia.org/ontology/Colour_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ? ;
+          dbpedia:cmykCoordinateBlack @linkml:Float ? ;
+          dbpedia:cmykCoordinateCyanic @linkml:Float ? ;
+          dbpedia:cmykCoordinateMagenta @linkml:Float ? ;
+          dbpedia:cmykCoordinateYellow @linkml:Float ? ;
+          dbpedia:hsvCoordinateHue @linkml:Float ? ;
+          dbpedia:hsvCoordinateSaturation @linkml:Float ? ;
+          dbpedia:hsvCoordinateLightness @linkml:Float ? ;
+          dbpedia:rgbCoordinateRed @linkml:Integer ? ;
+          dbpedia:rgbCoordinateGreen @linkml:Integer ? ;
+          dbpedia:rgbCoordinateBlue @linkml:Integer ? ;
+          dbpedia:wavelength @linkml:Float ?
+       ) ;
+       rdf:type [ dbpedia:Colour ]
     )
 }
 
 <EggGroup> CLOSED {
-    (  $<EggGroup_tes> rdf:type . * ;
-       rdf:type [ <EggGroup> ] ?
+    (  $<EggGroup_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <EggGroup> ]
     )
 }
 
-<Entity>  (
-    CLOSED {
-       (  $<Entity_tes> (  rdfs:label @linkml:String ? ;
-             rdfs:comment @linkml:String ?
-          ) ;
-          rdf:type [ linkml_pokemon:Entity ]
-       )
-    } OR @<Ability> OR @<Item> OR @<Move>
-)
-
 <Flavor> CLOSED {
-    (  $<Flavor_tes> rdf:type . * ;
-       rdf:type [ <Flavor> ] ?
+    (  $<Flavor_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <Flavor> ]
     )
 }
 
 <Food>  (
     CLOSED {
        (  $<Food_tes> (  &<Item_tes> ;
-             rdf:type [ <Item> ] ?
+             rdf:type [ <Item> ] ? ;
+             <hasFlavor> @<Flavor> * ;
+             <firmness> @linkml:Integer ? ;
+             <smoothness> @linkml:Integer ?
           ) ;
           rdf:type [ <Food> ]
        )
@@ -112,14 +122,19 @@ linkml:Sparqlpath xsd:string
 )
 
 <Game> CLOSED {
-    (  $<Game_tes> rdf:type . * ;
-       rdf:type [ <Game> ] ?
+    (  $<Game_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <Game> ]
     )
 }
 
 <Generation> CLOSED {
-    (  $<Generation_tes> <featuresSpecies> @<Species> * ;
-       rdf:type [ <Generation> ] ?
+    (  $<Generation_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ? ;
+          <featuresSpecies> @<Species> *
+       ) ;
+       rdf:type [ <Generation> ]
     )
 }
 
@@ -127,7 +142,7 @@ linkml:Sparqlpath xsd:string
     (  $<Gym_tes> (  &<Place_tes> ;
           rdf:type [ <Place> ] ?
        ) ;
-       rdf:type [ <Gym> ] ?
+       rdf:type [ <Gym> ]
     )
 }
 
@@ -135,13 +150,15 @@ linkml:Sparqlpath xsd:string
     (  $<GymLeader_tes> (  &<Trainer_tes> ;
           rdf:type [ <Trainer> ] ?
        ) ;
-       rdf:type [ <GymLeader> ] ?
+       rdf:type [ <GymLeader> ]
     )
 }
 
 <Habitat> CLOSED {
-    (  $<Habitat_tes> rdf:type . * ;
-       rdf:type [ <Habitat> ] ?
+    (  $<Habitat_tes> (  &owl:NamedThing_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
+       ) ;
+       rdf:type [ <Habitat> ]
     )
 }
 
@@ -163,8 +180,8 @@ linkml:Sparqlpath xsd:string
 
 <Item>  (
     CLOSED {
-       (  $<Item_tes> (  &<Entity_tes> ;
-             rdf:type [ linkml_pokemon:Entity ] ?
+       (  $<Item_tes> (  &owl:Thing_tes ;
+             rdf:type [ owl:Thing ] ?
           ) ;
           rdf:type [ <Item> ]
        )
@@ -197,8 +214,8 @@ linkml:Sparqlpath xsd:string
 
 <Move>  (
     CLOSED {
-       (  $<Move_tes> (  &<Entity_tes> ;
-             rdf:type [ linkml_pokemon:Entity ] ? ;
+       (  $<Move_tes> (  &owl:Thing_tes ;
+             rdf:type [ owl:Thing ] ? ;
              <effectDescription> @linkml:String * ;
              <hasType> @<Type> *
           ) ;
@@ -215,22 +232,26 @@ linkml:Sparqlpath xsd:string
     } OR @<LearningByLevelingUp> OR @<LearningThroughBreeding>
 )
 
-<NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  &<Thing_tes> ;
-             rdf:type [ linkml_pokemon:Thing ] ? ;
-             rdfs:label @linkml:String ? ;
-             rdfs:comment @linkml:String ?
-          ) ;
-          rdf:type [ linkml_pokemon:NamedThing ]
-       )
-    } OR @<Species>
+owl:NamedThing  (
+    @<Habitat> OR @foaf:Person OR @<PokedexEntry> OR @<Shape> OR @<Species> OR @<Type>
 )
+
+owl:NamedThing_struct {
+    (  $owl:NamedThing_tes (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ? ;
+          rdfs:label @linkml:String
+       ) ;
+       rdf:type [ owl:NamedIndividual ]
+    )
+}
 
 foaf:Person  (
     CLOSED {
-       (  $foaf:Person_tes rdf:type . * ;
-          rdf:type [ foaf:Person ] ?
+       (  $foaf:Person_tes (  &owl:NamedThing_tes ;
+             rdf:type [ owl:NamedIndividual ] ? ;
+             foaf:depiction @linkml:String ?
+          ) ;
+          rdf:type [ foaf:Person ]
        )
     } OR @<Trainer>
 )
@@ -244,12 +265,16 @@ foaf:Person  (
 }
 
 <Place>  (
-    CLOSED {
-       (  $<Place_tes> rdf:type . * ;
-          rdf:type [ <Place> ] ?
-       )
-    } OR @<Gym> OR @<Region> OR @<Town>
+    @<Gym> OR @<Region> OR @<Town>
 )
+
+<Place_struct> {
+    (  $<Place_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <Place> ]
+    )
+}
 
 <Pokeball> CLOSED {
     (  $<Pokeball_tes> (  &<Item_tes> ;
@@ -260,14 +285,18 @@ foaf:Person  (
 }
 
 <Pokedex> CLOSED {
-    (  $<Pokedex_tes> rdf:type . * ;
-       rdf:type [ <Pokedex> ] ?
+    (  $<Pokedex_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ <Pokedex> ]
     )
 }
 
 <PokedexEntry> CLOSED {
-    (  $<PokedexEntry_tes> rdf:type . * ;
-       rdf:type [ <PokedexEntry> ] ?
+    (  $<PokedexEntry_tes> (  &owl:NamedThing_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
+       ) ;
+       rdf:type [ <PokedexEntry> ]
     )
 }
 
@@ -281,13 +310,15 @@ foaf:Person  (
     (  $<Region_tes> (  &<Place_tes> ;
           rdf:type [ <Place> ] ?
        ) ;
-       rdf:type [ <Region> ] ?
+       rdf:type [ <Region> ]
     )
 }
 
 <Shape> CLOSED {
-    (  $<Shape_tes> rdf:type . * ;
-       rdf:type [ <Shape> ] ?
+    (  $<Shape_tes> (  &owl:NamedThing_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
+       ) ;
+       rdf:type [ <Shape> ]
     )
 }
 
@@ -300,8 +331,8 @@ foaf:Person  (
 }
 
 <Species> CLOSED {
-    (  $<Species_tes> (  &<NamedThing_tes> ;
-          rdf:type [ linkml_pokemon:NamedThing ] ? ;
+    (  $<Species_tes> (  &owl:NamedThing_tes ;
+          rdf:type [ owl:NamedIndividual ] ? ;
           <hasColour> @<https://dbpedia.org/ontology/Colour> * ;
           <mayHaveHiddenAbility> @<Ability> * ;
           <mayHaveAbility> @<Ability> * ;
@@ -328,13 +359,18 @@ foaf:Person  (
     )
 }
 
-<Thing>  (
-    CLOSED {
-       (  $<Thing_tes> rdf:type . * ;
-          rdf:type [ linkml_pokemon:Thing ]
-       )
-    } OR @<NamedThing>
+owl:Thing  (
+    @<Ability> OR @<https://dbpedia.org/ontology/Colour> OR @<EggGroup> OR @<Flavor> OR @<Game> OR @<Generation> OR @<Item> OR
+    @<Move> OR @owl:NamedThing OR @<Place> OR @<Pokedex>
 )
+
+owl:Thing_struct {
+    (  $owl:Thing_tes (  rdfs:label @linkml:String ? ;
+          rdfs:comment @linkml:String ?
+       ) ;
+       rdf:type [ owl:Thing ]
+    )
+}
 
 <TM> CLOSED {
     (  $<TM_tes> (  &<Item_tes> ;
@@ -350,7 +386,7 @@ foaf:Person  (
     (  $<Town_tes> (  &<Place_tes> ;
           rdf:type [ <Place> ] ?
        ) ;
-       rdf:type [ <Town> ] ?
+       rdf:type [ <Town> ]
     )
 }
 
@@ -359,14 +395,15 @@ foaf:Person  (
        (  $<Trainer_tes> (  &foaf:Person_tes ;
              rdf:type [ foaf:Person ] ?
           ) ;
-          rdf:type [ <Trainer> ] ?
+          rdf:type [ <Trainer> ]
        )
     } OR @<GymLeader>
 )
 
 <Type> CLOSED {
-    (  $<Type_tes> rdf:type . * ;
-       rdf:type [ <Type> ] ?
+    (  $<Type_tes> (  &owl:NamedThing_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
+       ) ;
+       rdf:type [ <Type> ]
     )
 }
-

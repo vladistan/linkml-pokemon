@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "args": [
+        "./src/linkml_pokemon/schema/linkml_pokemon.yaml"
+      ],
+      "console": "integratedTerminal",
+      "env": { },
+      "justMyCode": false,
+      "module": "linkml.generators.markdowndatadictgen",
+      "name": "Debug LinkML Pokemon DataDict Generator",
+      "request": "launch",
+      "type": "python"
+    }
+  ],
+  "version": "0.2.0"
+}

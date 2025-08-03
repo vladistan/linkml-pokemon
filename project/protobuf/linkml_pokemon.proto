@@ -3,105 +3,192 @@
 // metamodel_version: 1.7.0
 message Ability
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  repeated  string effectDescription = 0
  }
 // Battle items are items that can be used during battles.
 message BattleItem
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
 message Berry
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
+ repeated  flavor hasFlavor = 0
+  integer firmness = 0
+  integer smoothness = 0
   string hasSize = 0
  }
-// A grouping of attributes that can be reffered to
-message Entity
+// Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+message Colour
  {
+  uri id = 0
   string name = 0
   string description = 0
+  float black = 0
+  float cyanic = 0
+  float magenta = 0
+  float yellow = 0
+  float hue = 0
+  float saturation = 0
+  float value = 0
+  integer red = 0
+  integer green = 0
+  integer blue = 0
+  float wavelength = 0
+ }
+message EggGroup
+ {
   uri id = 0
+  string name = 0
+  string description = 0
+ }
+message Flavor
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
  }
 message Food
  {
+  uri id = 0
   string name = 0
   string description = 0
+ repeated  flavor hasFlavor = 0
+  integer firmness = 0
+  integer smoothness = 0
+ }
+// A game is a type of media that can be played by people.
+message Game
+ {
   uri id = 0
+  string name = 0
+  string description = 0
  }
 message Generation
  {
+  uri id = 0
+  string name = 0
+  string description = 0
  repeated  species featuresSpecies = 0
+ }
+// A gym is a location that can be battled at.
+message Gym
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
+ }
+message GymLeader
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
+  string depiction = 0
+ }
+// A habitat is a type of environment that certain Pokemon belong to.
+message Habitat
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
  }
 // Hidden Machine
 message HM
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
 // A hold item is an item that can be held by a Pokemon.
 message HoldItem
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
 message Item
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
 // Medicine items can heal various afflictions of a Pokemon.
 message Medicine
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
 message Move
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  repeated  string effectDescription = 0
  repeated  type hasType = 0
  }
-// A generic grouping for any identifiable entity that has a name
-message NamedThing
+// A person is a human being
+message Person
  {
   uri id = 0
-  string name = 0
   string description = 0
+  string name = 0
+  string depiction = 0
  }
 // A physical move is a type of move that can be used during battles.
 message PhysicalMove
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  repeated  string effectDescription = 0
  repeated  type hasType = 0
  }
 message Pokeball
  {
+  uri id = 0
   string name = 0
   string description = 0
+ }
+message Pokedex
+ {
   uri id = 0
+  string name = 0
+  string description = 0
+ }
+// A pokedex entry is a description of a Pokemon.
+message PokedexEntry
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
+ }
+message Region
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
+ }
+// Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+message Shape
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
  }
 // A special move is a type of move that can be used during battles.
 message SpecialMove
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  repeated  string effectDescription = 0
  repeated  type hasType = 0
  }
@@ -109,8 +196,8 @@ message SpecialMove
 message Species
  {
   uri id = 0
-  string name = 0
   string description = 0
+  string name = 0
  repeated  colour hasColour = 0
  repeated  ability mayHaveHiddenAbility = 0
  repeated  ability mayHaveAbility = 0
@@ -128,21 +215,36 @@ message Species
 // A status move is a type of move that can be used during battles.
 message StatusMove
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  repeated  string effectDescription = 0
  repeated  type hasType = 0
  }
-// A generic grouping for any identifiable attributes with an id
-message Thing
- {
-  uri id = 0
- }
 message TM
  {
+  uri id = 0
   string name = 0
   string description = 0
-  uri id = 0
  }
-
+// A town is a type of place that can be visited.
+message Town
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
+ }
+// A trainer is a person who is able to catch Pokemon.
+message Trainer
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
+  string depiction = 0
+ }
+message Type
+ {
+  uri id = 0
+  string description = 0
+  string name = 0
+ }

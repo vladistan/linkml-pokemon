@@ -8,93 +8,128 @@ enum HabitatEnum
 
 type Ability
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
     effectDescription: [String]
   }
 
 type BattleItem
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Berry
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
+    hasFlavor: [Flavor]
+    firmness: Integer
+    smoothness: Integer
     hasSize: String
   }
 
 type Colour
   {
+    id: Uri!
+    name: String
+    description: String
+    black: Float
+    cyanic: Float
+    magenta: Float
+    yellow: Float
+    hue: Float
+    saturation: Float
+    value: Float
+    red: Integer
+    green: Integer
+    blue: Integer
+    wavelength: Float
   }
 
 type EggGroup
   {
-  }
-
-type Entity
-  {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Flavor
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type Food
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
+    hasFlavor: [Flavor]
+    firmness: Integer
+    smoothness: Integer
   }
 
 type Game
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type Generation
   {
+    id: Uri!
+    name: String
+    description: String
     featuresSpecies: [Species]
   }
 
 type Gym
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type GymLeader
   {
+    id: Uri!
+    description: String
+    name: String!
+    depiction: String
   }
 
 type Habitat
   {
+    id: Uri!
+    description: String
+    name: String!
   }
 
 type HM
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type HoldItem
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Item
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type LearningByLevelingUp
@@ -107,16 +142,16 @@ type LearningThroughBreeding
 
 type Medicine
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Move
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
     effectDescription: [String]
     hasType: [Type]
   }
@@ -125,43 +160,56 @@ type MoveLearning
   {
   }
 
-type NamedThing
+interface NamedThing
   {
     id: Uri!
-    name: String
     description: String
+    name: String!
   }
 
 type Person
   {
+    id: Uri!
+    description: String
+    name: String!
+    depiction: String
   }
 
 type PhysicalMove
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
     effectDescription: [String]
     hasType: [Type]
   }
 
-type Place
+interface Place
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type Pokeball
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Pokedex
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type PokedexEntry
   {
+    id: Uri!
+    description: String
+    name: String!
   }
 
 type Pokemon
@@ -170,17 +218,23 @@ type Pokemon
 
 type Region
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type Shape
   {
+    id: Uri!
+    description: String
+    name: String!
   }
 
 type SpecialMove
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
     effectDescription: [String]
     hasType: [Type]
   }
@@ -188,8 +242,8 @@ type SpecialMove
 type Species
   {
     id: Uri!
-    name: String
     description: String
+    name: String!
     hasColour: [Colour]
     mayHaveHiddenAbility: [Ability]
     mayHaveAbility: [Ability]
@@ -207,34 +261,45 @@ type Species
 
 type StatusMove
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
     effectDescription: [String]
     hasType: [Type]
   }
 
-type Thing
+interface Thing
   {
     id: Uri!
+    name: String
+    description: String
   }
 
 type TM implements MoveLearning
   {
+    id: Uri!
     name: String
     description: String
-    id: Uri!
   }
 
 type Town
   {
+    id: Uri!
+    name: String
+    description: String
   }
 
 type Trainer
   {
+    id: Uri!
+    description: String
+    name: String!
+    depiction: String
   }
 
 type Type
   {
+    id: Uri!
+    description: String
+    name: String!
   }
-

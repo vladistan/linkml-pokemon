@@ -22,10 +22,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -50,10 +51,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -77,6 +79,22 @@
                         "null"
                     ]
                 },
+                "firmness": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "hasFlavor": {
+                    "description": "A Pokemon has a flavor",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "hasSize": {
                     "type": [
                         "string",
@@ -84,12 +102,19 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "smoothness": {
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 }
@@ -102,19 +127,113 @@
         },
         "Colour": {
             "additionalProperties": false,
-            "description": "A colour is a visual property of an object",
+            "description": "Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.",
+            "properties": {
+                "black": {
+                    "description": "Black component in CMYK color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "blue": {
+                    "description": "Blue component in RGB color model (0-255)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "cyanic": {
+                    "description": "Cyan component in CMYK color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "green": {
+                    "description": "Green component in RGB color model (0-255)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "hue": {
+                    "description": "Hue component in HSV color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "magenta": {
+                    "description": "Magenta component in CMYK color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "red": {
+                    "description": "Red component in RGB color model (0-255)",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "saturation": {
+                    "description": "Saturation component in HSV color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "Value/Lightness component in HSV color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "wavelength": {
+                    "description": "The wavelength of the color in nanometers",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "yellow": {
+                    "description": "Yellow component in CMYK color model",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Colour",
             "type": "object"
         },
         "EggGroup": {
             "additionalProperties": false,
             "description": "",
-            "title": "EggGroup",
-            "type": "object"
-        },
-        "Entity": {
-            "additionalProperties": false,
-            "description": "A grouping of attributes that can be reffered to",
             "properties": {
                 "description": {
                     "description": "A description of the entity",
@@ -124,10 +243,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -137,12 +257,35 @@
             "required": [
                 "id"
             ],
-            "title": "Entity",
+            "title": "EggGroup",
             "type": "object"
         },
         "Flavor": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Flavor",
             "type": "object"
         },
@@ -157,13 +300,36 @@
                         "null"
                     ]
                 },
+                "firmness": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "hasFlavor": {
+                    "description": "A Pokemon has a flavor",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "smoothness": {
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 }
@@ -177,6 +343,29 @@
         "Game": {
             "additionalProperties": false,
             "description": "A game is a type of media that can be played by people.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Game",
             "type": "object"
         },
@@ -184,6 +373,13 @@
             "additionalProperties": false,
             "description": "",
             "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "featuresSpecies": {
                     "description": "['A Pokedex entry features a species']",
                     "items": {
@@ -193,20 +389,85 @@
                         "array",
                         "null"
                     ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
+            "required": [
+                "id"
+            ],
             "title": "Generation",
             "type": "object"
         },
         "Gym": {
             "additionalProperties": false,
             "description": "A gym is a location that can be battled at.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Gym",
             "type": "object"
         },
         "GymLeader": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "depiction": {
+                    "description": "A depiction of the person",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "GymLeader",
             "type": "object"
         },
@@ -222,10 +483,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -241,6 +503,27 @@
         "Habitat": {
             "additionalProperties": false,
             "description": "A habitat is a type of environment that certain Pokemon belong to.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "Habitat",
             "type": "object"
         },
@@ -266,10 +549,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -294,10 +578,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -334,10 +619,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -372,7 +658,7 @@
                     ]
                 },
                 "hasType": {
-                    "description": "['A Pokemon has a type']",
+                    "description": "A Pokemon has a type",
                     "items": {
                         "$ref": "#/$defs/Type"
                     },
@@ -382,10 +668,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -404,10 +691,17 @@
             "title": "MoveLearning",
             "type": "object"
         },
-        "NamedThing": {
+        "Person": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity that has a name",
+            "description": "A person is a human being",
             "properties": {
+                "depiction": {
+                    "description": "A depiction of the person",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "A description of the entity",
                     "type": [
@@ -420,22 +714,14 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "name"
             ],
-            "title": "NamedThing",
-            "type": "object"
-        },
-        "Person": {
-            "additionalProperties": false,
-            "description": "A person is a human being",
             "title": "Person",
             "type": "object"
         },
@@ -461,7 +747,7 @@
                     ]
                 },
                 "hasType": {
-                    "description": "['A Pokemon has a type']",
+                    "description": "A Pokemon has a type",
                     "items": {
                         "$ref": "#/$defs/Type"
                     },
@@ -471,10 +757,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -485,12 +772,6 @@
                 "id"
             ],
             "title": "PhysicalMove",
-            "type": "object"
-        },
-        "Place": {
-            "additionalProperties": false,
-            "description": "",
-            "title": "Place",
             "type": "object"
         },
         "Pokeball": {
@@ -505,10 +786,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -524,12 +806,56 @@
         "Pokedex": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Pokedex",
             "type": "object"
         },
         "PokedexEntry": {
             "additionalProperties": false,
             "description": "A pokedex entry is a description of a Pokemon.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "PokedexEntry",
             "type": "object"
         },
@@ -542,12 +868,56 @@
         "Region": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
             "title": "Region",
             "type": "object"
         },
         "Shape": {
             "additionalProperties": false,
             "description": "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "Shape",
             "type": "object"
         },
@@ -573,7 +943,7 @@
                     ]
                 },
                 "hasType": {
-                    "description": "['A Pokemon has a type']",
+                    "description": "A Pokemon has a type",
                     "items": {
                         "$ref": "#/$defs/Type"
                     },
@@ -583,10 +953,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -618,9 +989,9 @@
                     ]
                 },
                 "foundIn": {
-                    "description": "['A place is found in a location']",
+                    "description": "A place is found in a location",
                     "items": {
-                        "$ref": "#/$defs/Habitat"
+                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -634,7 +1005,7 @@
                     ]
                 },
                 "hasColour": {
-                    "description": "['A Pokemon has a color']",
+                    "description": "A Pokemon has a color",
                     "items": {
                         "$ref": "#/$defs/Colour"
                     },
@@ -656,18 +1027,14 @@
                     ]
                 },
                 "hasShape": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Shape"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "The shape of a berry is a measure of how good it is for making a Potion."
+                    "description": "The shape of a berry is a measure of how good it  is for making a Potion.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "hasType": {
-                    "description": "['A Pokemon has a type']",
+                    "description": "A Pokemon has a type",
                     "items": {
                         "$ref": "#/$defs/Type"
                     },
@@ -688,7 +1055,7 @@
                 },
                 "inEggGroup": {
                     "items": {
-                        "$ref": "#/$defs/EggGroup"
+                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -705,7 +1072,7 @@
                     ]
                 },
                 "mayHaveAbility": {
-                    "description": "['A Pokemon may have an ability']",
+                    "description": "A Pokemon may have an ability",
                     "items": {
                         "type": "string"
                     },
@@ -724,15 +1091,13 @@
                     ]
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "name"
             ],
             "title": "Species",
             "type": "object"
@@ -759,7 +1124,7 @@
                     ]
                 },
                 "hasType": {
-                    "description": "['A Pokemon has a type']",
+                    "description": "A Pokemon has a type",
                     "items": {
                         "$ref": "#/$defs/Type"
                     },
@@ -769,10 +1134,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -797,10 +1163,11 @@
                     ]
                 },
                 "id": {
+                    "description": "A unique identifier",
                     "type": "string"
                 },
                 "name": {
-                    "description": "Unique human-readable label for the entity",
+                    "description": "Human-readable label for the entity",
                     "type": [
                         "string",
                         "null"
@@ -813,36 +1180,93 @@
             "title": "TM",
             "type": "object"
         },
-        "Thing": {
+        "Town": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable attributes with an id",
+            "description": "A town is a type of place that can be visited.",
             "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "id": {
                     "description": "A unique identifier",
                     "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
                 "id"
             ],
-            "title": "Thing",
-            "type": "object"
-        },
-        "Town": {
-            "additionalProperties": false,
-            "description": "A town is a type of place that can be visited.",
             "title": "Town",
             "type": "object"
         },
         "Trainer": {
             "additionalProperties": false,
             "description": "A trainer is a person who is able to catch Pokemon.",
+            "properties": {
+                "depiction": {
+                    "description": "A depiction of the person",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "Trainer",
             "type": "object"
         },
         "Type": {
             "additionalProperties": false,
             "description": "",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ],
             "title": "Type",
             "type": "object"
         }

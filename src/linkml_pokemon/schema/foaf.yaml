@@ -8,13 +8,19 @@ license: MIT
 prefixes:
   foaf: http://xmlns.com/foaf/0.1/
 
+imports:
+  - ./owl
+
 classes:
   Person:
+    is_a: NamedThing
     description: A person is a human being
     class_uri: foaf:Person
+    slots:
+      - depiction
 
 slots:
- depiction:
+  depiction:
     range: string
     slot_uri: foaf:depiction
     description: A depiction of the person

@@ -25,6 +25,7 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   foaf: http://xmlns.com/foaf/0.1/
+  dbpedia: http://dbpedia.org/ontology/
   pokemon: https://pokemonkg.org/ontology#
 
 default_prefix: pokemon
@@ -34,48 +35,15 @@ imports:
   - linkml:types
   - ./foaf
   - ./dbpedia
+  - ./owl
 
 classes:
-
-  Thing:
-    abstract: true
-    description: >-
-      A generic grouping for any identifiable attributes with an id
-    slots:
-      - id
-    class_uri: linkml_pokemon:Thing
-
-  NamedThing:
-    is_a: Thing
-    abstract: true
-    description: >-
-      A generic grouping for any identifiable entity that has a name
-    slots:
-      - name
-      - description
-    class_uri: linkml_pokemon:NamedThing
-
-  Entity:
-    abstract: true
-    description: >-
-      A grouping of attributes that can be reffered to
-    attributes:
-      id:
-        slot_uri: linkml_common:identifier
-        multivalued: false
-        required: true
-        identifier: true
-        range: uri
-    slots:
-      - name
-      - description
-    class_uri: linkml_pokemon:Entity
 
   Ability:
     annotations:
       rdfs:comment: Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon.
     class_uri: pokemon:Ability
-    is_a: Entity
+    is_a: Thing
     slots:
       - effectDescription
 
@@ -94,27 +62,32 @@ classes:
   EggGroup:
     annotations:
       rdfs:comment: Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
+    is_a: Thing
 
   Flavor:
     annotations:
       rdfs:comment: Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them.
+    is_a: Thing
 
   Food:
-    is_a: Item
     slots:
       - hasFlavor
       - firmness
       - smoothness
+    is_a: Item
 
   Game:
     description: >-
       A game is a type of media that can be played by people.
+    is_a: Thing
+
 
   Generation:
     annotations:
       rdfs:comment: Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned.
     slots:
       - featuresSpecies
+    is_a: Thing
 
   Gym:
     is_a: Place
@@ -134,6 +107,7 @@ classes:
   Habitat:
     description: >-
       A habitat is a type of environment that certain Pokemon belong to.
+    is_a: NamedThing
 
   HoldItem:
     is_a: Item
@@ -143,11 +117,12 @@ classes:
   Item:
     annotations:
       rdfs:comment: An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
-    is_a: Entity
- 
+    is_a: Thing
+
   Pokedex:
     annotations:
       rdfs:comment: The Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokemon featured in the Pokemon video game, anime and manga series.
+    is_a: Thing
 
   Pokemon:
     description: A Pokemon
@@ -160,6 +135,7 @@ classes:
   PokedexEntry:
     description: >-
       A pokedex entry is a description of a Pokemon.
+    is_a: NamedThing
 
   Pokeball:
     is_a: Item
@@ -167,7 +143,7 @@ classes:
       rdfs:comment: A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
 
   Place:
-    is_a: Entity
+    is_a: Thing
     abstract: true
     annotations:
       rdfs:comment: Entities that have a somewhat fixed, physical extension.
@@ -176,6 +152,7 @@ classes:
     description: >-
       Shapes are categories that certain Pokemon belong to,
       which determine which Pokemon they can breed with.
+    is_a: NamedThing
 
   Region:
     is_a: Place
@@ -183,7 +160,8 @@ classes:
       rdfs:comment: Regions are areas in the Pokémon universe that are smaller parts of a nation.
 
   Species:
-    is_a: Entity
+    is_a: NamedThing
+    class_uri: pokemon:Species
     description: >-
       A species is a category of Pokemon that share common features.
     slots:
@@ -200,7 +178,6 @@ classes:
       - hasGenus
       - hasCatchRate
       - foundIn
-      
 
   Move:
     annotations:
@@ -209,7 +186,7 @@ classes:
       - effectDescription
       - hasType
     class_uri: pokemon:Move
-    is_a: Entity
+    is_a: Thing
 
   MoveLearning:
     description: >-
@@ -265,27 +242,10 @@ classes:
   Type:
     annotations:
       rdfs:comment: All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
+    is_a: NamedThing
+    class_uri: pokemon:Type
 
 slots:
-
-  id:
-    identifier: true
-    required: true
-    range: uri
-    description: >-
-      A unique identifier
-
-  name:
-    range: string
-    slot_uri: rdfs:label
-    description: >-
-      Unique human-readable label for the entity
-
-  description:
-    range: string
-    slot_uri: rdfs:comment
-    description: >-
-      A description of the entity
 
   effectDescription:
     range: string
@@ -306,7 +266,7 @@ slots:
     required: false
     annotations:
       rdfs:comment: A place is contained to some extent in this place.
- 
+
   describedInPokedex:
     slot_uri: pokemon:describedInPokedex
     range: PokedexEntry
@@ -369,16 +329,15 @@ slots:
     domain: Species
     multivalued: true
     required: false
-    description:
-      - "A place is found in a location"
+    description: A place is found in a location
 
   hasColour:
     slot_uri: pokemon:hasColour
     range: Colour
     multivalued: true
     required: false
-    description:
-      - "A Pokemon has a color"
+    inlined_as_list: true
+    description: A Pokemon has a color
 
   hasFlavor:
     slot_uri: pokemon:hasFlavor
@@ -386,16 +345,15 @@ slots:
     domain: Food
     multivalued: true
     required: false
-    description:
-      - "A Pokemon has a flavor"
+    description: A Pokemon has a flavor
 
   hasType:
     slot_uri: pokemon:hasType
     range: Type
     multivalued: true
     required: false
-    description:
-      - "A Pokemon has a type"
+    inlined_as_list: true
+    description: A Pokemon has a type
 
   hasSize:
     slot_uri: pokemon:hasSize
@@ -428,7 +386,8 @@ slots:
     multivalued: false
     required: false
     description: >-
-      The shape of a berry is a measure of how good it is for making a Potion.
+      The shape of a berry is a measure of how good it 
+      is for making a Potion.
 
   learnsMove:
     slot_uri: pokemon:learnsMove
@@ -460,8 +419,7 @@ slots:
     range: Ability
     domain: Species
     multivalued: true
-    description:
-      - "A Pokemon may have an ability"
+    description: A Pokemon may have an ability
 
   mayHaveHiddenAbility:
     slot_uri: pokemon:mayHaveHiddenAbility

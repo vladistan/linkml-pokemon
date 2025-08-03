@@ -3,6 +3,7 @@ name: Auto-deployment of linkml_pokemon Documentation
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-docs:
@@ -12,26 +13,30 @@ jobs:
     permissions:
       contents: write  # to let mkdocs write the new docs
       pages: write     # to deploy to Pages
-      id-token: write  # to verify the deployment originates from an appropriate source
+      id-token: write  # allow to generate an OpenID Connect (OIDC) token
 
     steps:
+      # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
 
-      - name: Set up Python.
-        uses: actions/setup-python@v4
+
+      # https://github.com/actions/setup-python
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
         with:
-          python-version: 3.9
+          python-version: 3.13
 
-      - name: Install Poetry.
-        run: pipx install poetry
+      - name: Install just
+        run: |
+          uv tool install rust-just
 
-      - name: Install dependencies.
-        run: poetry install -E docs
+      - name: Install dependencies
+        run: uv sync --dev --no-progress
 
-      - name: Build documentation.
+      - name: Generate schema documentation
         run: |
           mkdir -p docs
           touch docs/.nojekyll

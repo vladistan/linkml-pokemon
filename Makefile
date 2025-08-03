@@ -57,7 +57,7 @@ endif
 
 
 # basename of a YAML file in model/
-.PHONY: all clean setup gen-project gen-examples gendoc 
+.PHONY: all clean setup gen-project gen-examples gendoc
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
@@ -79,7 +79,7 @@ status: check-config
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
 # generate products and add everything to github
-setup: check-config install gen-project gen-examples gendoc 
+setup: check-config install gen-project gen-examples gendoc
 
 # install any dependencies required for building
 install:
@@ -131,6 +131,8 @@ gen-project: $(PYMODEL)
 
 	mkdir -p ${DEST}/protobuf
 	$(RUN) gen-proto  $(SOURCE_SCHEMA_PATH) > ${DEST}/protobuf/$(SCHEMA_NAME).proto
+
+	$(RUN) gen-markdown-datadict $(SOURCE_SCHEMA_PATH) > ${DEST}/datadict.md
 
 # non-empty arg triggers owl (workaround https://github.com/linkml/linkml/issues/1453)
 ifneq ($(strip ${GEN_OWL_ARGS}),)

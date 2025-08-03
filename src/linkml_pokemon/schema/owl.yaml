@@ -1,0 +1,63 @@
+---
+id: http://www.w3.org/2002/07/owl
+name: owl
+title: OWL Core Classes
+description: |-
+  Core OWL classes extracted for reuse, including Thing and NamedThing base classes
+license: MIT
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  linkml_common: https://w3id.org/linkml/common/
+  owl: http://www.w3.org/2002/07/owl#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+default_prefix: owl
+default_range: string
+
+imports:
+  - linkml:types
+
+classes:
+
+  Thing:
+    abstract: true
+    description: >-
+      An rdfs:Resource that defines name and description
+    slots:
+      - id
+      - name
+      - description
+    class_uri: owl:Thing
+
+  NamedThing:
+    is_a: Thing
+    abstract: true
+    description: >-
+      A Thing that requires a name
+    slot_usage:
+      name:
+        required: true
+    class_uri: owl:NamedIndividual
+
+slots:
+  id:
+    identifier: true
+    required: true
+    range: uri
+    slot_uri: linkml_common:identifier
+    description: >-
+      A unique identifier
+
+  name:
+    range: string
+    slot_uri: rdfs:label
+    description: >-
+      Human-readable label for the entity
+
+  description:
+    range: string
+    slot_uri: rdfs:comment
+    description: >-
+      A description of the entity

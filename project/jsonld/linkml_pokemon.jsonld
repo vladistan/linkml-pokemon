@@ -20,7 +20,8 @@
   "imports": [
     "linkml:types",
     "./foaf",
-    "./dbpedia"
+    "./dbpedia",
+    "./owl"
   ],
   "license": "MIT",
   "prefixes": [
@@ -71,6 +72,10 @@
     {
       "prefix_prefix": "foaf",
       "prefix_reference": "http://xmlns.com/foaf/0.1/"
+    },
+    {
+      "prefix_prefix": "dbpedia",
+      "prefix_reference": "http://dbpedia.org/ontology/"
     },
     {
       "prefix_prefix": "pokemon",
@@ -415,55 +420,6 @@
   ],
   "slots": [
     {
-      "name": "id",
-      "definition_uri": "https://pokemonkg.org/ontology#id",
-      "description": "A unique identifier",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "slot_uri": "https://pokemonkg.org/ontology#id",
-      "identifier": true,
-      "owner": "Thing",
-      "domain_of": [
-        "Thing"
-      ],
-      "range": "uri",
-      "required": true,
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "name",
-      "definition_uri": "https://pokemonkg.org/ontology#name",
-      "description": "Unique human-readable label for the entity",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#label"
-      ],
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
-      "owner": "Entity",
-      "domain_of": [
-        "NamedThing",
-        "Entity"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "description",
-      "definition_uri": "https://pokemonkg.org/ontology#description",
-      "description": "A description of the entity",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "mappings": [
-        "http://www.w3.org/2000/01/rdf-schema#comment"
-      ],
-      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#comment",
-      "owner": "Entity",
-      "domain_of": [
-        "NamedThing",
-        "Entity"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
       "name": "effectDescription",
       "definition_uri": "https://pokemonkg.org/ontology#effectDescription",
       "description": "A description of the effect of the entity",
@@ -503,7 +459,6 @@
       "inverse": "locatedIn",
       "range": "Place",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -520,7 +475,6 @@
       "inverse": "describesPokemon",
       "range": "PokedexEntry",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -581,7 +535,6 @@
       "owner": "hasPokedexEntry",
       "range": "PokedexEntry",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -630,7 +583,7 @@
     {
       "name": "foundIn",
       "definition_uri": "https://pokemonkg.org/ontology#foundIn",
-      "description": "['A place is found in a location']",
+      "description": "A place is found in a location",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#foundIn"
@@ -643,13 +596,12 @@
       ],
       "range": "Habitat",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "hasColour",
       "definition_uri": "https://pokemonkg.org/ontology#hasColour",
-      "description": "['A Pokemon has a color']",
+      "description": "A Pokemon has a color",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasColour"
@@ -662,28 +614,31 @@
       "range": "Colour",
       "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "hasFlavor",
       "definition_uri": "https://pokemonkg.org/ontology#hasFlavor",
-      "description": "['A Pokemon has a flavor']",
+      "description": "A Pokemon has a flavor",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasFlavor"
       ],
       "domain": "Food",
       "slot_uri": "https://pokemonkg.org/ontology#hasFlavor",
-      "owner": "hasFlavor",
+      "owner": "Food",
+      "domain_of": [
+        "Food"
+      ],
       "range": "Flavor",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "hasType",
       "definition_uri": "https://pokemonkg.org/ontology#hasType",
-      "description": "['A Pokemon has a type']",
+      "description": "A Pokemon has a type",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasType"
@@ -697,6 +652,7 @@
       "range": "Type",
       "multivalued": true,
       "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -765,7 +721,7 @@
     {
       "name": "hasShape",
       "definition_uri": "https://pokemonkg.org/ontology#hasShape",
-      "description": "The shape of a berry is a measure of how good it is for making a Potion.",
+      "description": "The shape of a berry is a measure of how good it  is for making a Potion.",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#hasShape"
@@ -777,7 +733,6 @@
         "Species"
       ],
       "range": "Shape",
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -816,7 +771,6 @@
       "inverse": "containsPlace",
       "range": "Place",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -834,13 +788,12 @@
       ],
       "range": "EggGroup",
       "multivalued": true,
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
       "name": "mayHaveAbility",
       "definition_uri": "https://pokemonkg.org/ontology#mayHaveAbility",
-      "description": "['A Pokemon may have an ability']",
+      "description": "A Pokemon may have an ability",
       "from_schema": "https://pokemonkg.org/ontology",
       "mappings": [
         "https://pokemonkg.org/ontology#mayHaveAbility"
@@ -895,7 +848,10 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "domain": "Food",
       "slot_uri": "https://pokemonkg.org/ontology#firmness",
-      "owner": "firmness",
+      "owner": "Food",
+      "domain_of": [
+        "Food"
+      ],
       "range": "integer",
       "@type": "SlotDefinition"
     },
@@ -976,7 +932,10 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "domain": "Food",
       "slot_uri": "https://pokemonkg.org/ontology#smoothness",
-      "owner": "smoothness",
+      "owner": "Food",
+      "domain_of": [
+        "Food"
+      ],
       "range": "integer",
       "@type": "SlotDefinition"
     },
@@ -989,92 +948,264 @@
         "http://xmlns.com/foaf/0.1/depiction"
       ],
       "slot_uri": "http://xmlns.com/foaf/0.1/depiction",
-      "owner": "Species",
+      "owner": "Person",
       "domain_of": [
-        "Species"
+        "Species",
+        "Person"
       ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "entity__id",
-      "from_schema": "https://pokemonkg.org/ontology",
+      "name": "black",
+      "definition_uri": "https://dbpedia.org/ontology//black",
+      "description": "Black component in CMYK color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/cmykCoordinateBlack"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/cmykCoordinateBlack",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "cyanic",
+      "definition_uri": "https://dbpedia.org/ontology//cyanic",
+      "description": "Cyan component in CMYK color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/cmykCoordinateCyanic"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/cmykCoordinateCyanic",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "magenta",
+      "definition_uri": "https://dbpedia.org/ontology//magenta",
+      "description": "Magenta component in CMYK color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/cmykCoordinateMagenta"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/cmykCoordinateMagenta",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "yellow",
+      "definition_uri": "https://dbpedia.org/ontology//yellow",
+      "description": "Yellow component in CMYK color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/cmykCoordinateYellow"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/cmykCoordinateYellow",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hue",
+      "definition_uri": "https://dbpedia.org/ontology//hue",
+      "description": "Hue component in HSV color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/hsvCoordinateHue"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/hsvCoordinateHue",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "saturation",
+      "definition_uri": "https://dbpedia.org/ontology//saturation",
+      "description": "Saturation component in HSV color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/hsvCoordinateSaturation"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/hsvCoordinateSaturation",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "value",
+      "definition_uri": "https://dbpedia.org/ontology//value",
+      "description": "Value/Lightness component in HSV color model",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/hsvCoordinateLightness"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/hsvCoordinateLightness",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "red",
+      "definition_uri": "https://dbpedia.org/ontology//red",
+      "description": "Red component in RGB color model (0-255)",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/rgbCoordinateRed"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/rgbCoordinateRed",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "green",
+      "definition_uri": "https://dbpedia.org/ontology//green",
+      "description": "Green component in RGB color model (0-255)",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/rgbCoordinateGreen"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/rgbCoordinateGreen",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "blue",
+      "definition_uri": "https://dbpedia.org/ontology//blue",
+      "description": "Blue component in RGB color model (0-255)",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/rgbCoordinateBlue"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/rgbCoordinateBlue",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "integer",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "wavelength",
+      "definition_uri": "https://dbpedia.org/ontology//wavelength",
+      "description": "The wavelength of the color in nanometers",
+      "from_schema": "https://dbpedia.org/ontology/",
+      "mappings": [
+        "http://dbpedia.org/ontology/wavelength"
+      ],
+      "slot_uri": "http://dbpedia.org/ontology/wavelength",
+      "owner": "Colour",
+      "domain_of": [
+        "Colour"
+      ],
+      "range": "float",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "id",
+      "definition_uri": "http://www.w3.org/2002/07/owl#id",
+      "description": "A unique identifier",
+      "from_schema": "http://www.w3.org/2002/07/owl",
       "mappings": [
         "https://w3id.org/linkml/common/identifier"
       ],
       "slot_uri": "https://w3id.org/linkml/common/identifier",
       "identifier": true,
-      "alias": "id",
-      "owner": "Entity",
+      "owner": "Thing",
       "domain_of": [
-        "Entity"
+        "Thing"
       ],
       "range": "uri",
+      "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "name",
+      "definition_uri": "http://www.w3.org/2002/07/owl#name",
+      "description": "Human-readable label for the entity",
+      "from_schema": "http://www.w3.org/2002/07/owl",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "owner": "Thing",
+      "domain_of": [
+        "Thing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "description",
+      "definition_uri": "http://www.w3.org/2002/07/owl#description",
+      "description": "A description of the entity",
+      "from_schema": "http://www.w3.org/2002/07/owl",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#comment"
+      ],
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#comment",
+      "owner": "Thing",
+      "domain_of": [
+        "Thing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "NamedThing_name",
+      "definition_uri": "http://www.w3.org/2002/07/owl#name",
+      "description": "Human-readable label for the entity",
+      "from_schema": "http://www.w3.org/2002/07/owl",
+      "mappings": [
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ],
+      "is_a": "name",
+      "domain": "NamedThing",
+      "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
+      "alias": "name",
+      "owner": "NamedThing",
+      "domain_of": [
+        "NamedThing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "name",
+      "range": "string",
       "required": true,
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
-    {
-      "name": "Thing",
-      "definition_uri": "https://pokemonkg.org/ontology#Thing",
-      "description": "A generic grouping for any identifiable attributes with an id",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "mappings": [
-        "linkml_pokemon:Thing"
-      ],
-      "slots": [
-        "id"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/Thing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "NamedThing",
-      "definition_uri": "https://pokemonkg.org/ontology#NamedThing",
-      "description": "A generic grouping for any identifiable entity that has a name",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "mappings": [
-        "linkml_pokemon:NamedThing"
-      ],
-      "is_a": "Thing",
-      "slots": [
-        "id",
-        "name",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/NamedThing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Entity",
-      "definition_uri": "https://pokemonkg.org/ontology#Entity",
-      "description": "A grouping of attributes that can be reffered to",
-      "from_schema": "https://pokemonkg.org/ontology",
-      "mappings": [
-        "linkml_pokemon:Entity"
-      ],
-      "slots": [
-        "name",
-        "description",
-        "entity__id"
-      ],
-      "slot_usage": {},
-      "attributes": [
-        {
-          "name": "id",
-          "slot_uri": "linkml_common:identifier",
-          "identifier": true,
-          "range": "uri",
-          "required": true,
-          "@type": "SlotDefinition"
-        }
-      ],
-      "class_uri": "https://w3id.org/vladistan/linkml-pokemon/Entity",
-      "@type": "ClassDefinition"
-    },
     {
       "name": "Ability",
       "definition_uri": "https://pokemonkg.org/ontology#Ability",
@@ -1089,11 +1220,11 @@
       "mappings": [
         "pokemon:Ability"
       ],
-      "is_a": "Entity",
+      "is_a": "Thing",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
         "effectDescription"
       ],
       "slot_usage": {},
@@ -1107,9 +1238,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#BattleItem",
@@ -1128,9 +1259,12 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Food",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
+        "hasFlavor",
+        "firmness",
+        "smoothness",
         "hasSize"
       ],
       "slot_usage": {},
@@ -1148,6 +1282,12 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#EggGroup",
       "@type": "ClassDefinition"
@@ -1163,6 +1303,12 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Flavor",
       "@type": "ClassDefinition"
@@ -1173,9 +1319,12 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id"
+        "hasFlavor",
+        "firmness",
+        "smoothness"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Food",
@@ -1186,6 +1335,12 @@
       "definition_uri": "https://pokemonkg.org/ontology#Game",
       "description": "A game is a type of media that can be played by people.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Game",
       "@type": "ClassDefinition"
@@ -1201,7 +1356,11 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
       "slots": [
+        "id",
+        "name",
+        "description",
         "featuresSpecies"
       ],
       "slot_usage": {},
@@ -1214,6 +1373,11 @@
       "description": "A gym is a location that can be battled at.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Place",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Gym",
       "@type": "ClassDefinition"
@@ -1230,6 +1394,12 @@
       ],
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Trainer",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name",
+        "depiction"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#GymLeader",
       "@type": "ClassDefinition"
@@ -1241,9 +1411,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#HM",
@@ -1254,6 +1424,12 @@
       "definition_uri": "https://pokemonkg.org/ontology#Habitat",
       "description": "A habitat is a type of environment that certain Pokemon belong to.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Habitat",
       "@type": "ClassDefinition"
@@ -1265,9 +1441,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#HoldItem",
@@ -1284,11 +1460,11 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "Entity",
+      "is_a": "Thing",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Item",
@@ -1305,6 +1481,12 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Pokedex",
       "@type": "ClassDefinition"
@@ -1334,6 +1516,12 @@
       "definition_uri": "https://pokemonkg.org/ontology#PokedexEntry",
       "description": "A pokedex entry is a description of a Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#PokedexEntry",
       "@type": "ClassDefinition"
@@ -1351,9 +1539,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Pokeball",
@@ -1370,6 +1558,13 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "Thing",
+      "abstract": true,
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Place",
       "@type": "ClassDefinition"
@@ -1379,6 +1574,12 @@
       "definition_uri": "https://pokemonkg.org/ontology#Shape",
       "description": "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Shape",
       "@type": "ClassDefinition"
@@ -1395,6 +1596,11 @@
       ],
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Place",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Region",
       "@type": "ClassDefinition"
@@ -1404,11 +1610,14 @@
       "definition_uri": "https://pokemonkg.org/ontology#Species",
       "description": "A species is a category of Pokemon that share common features.",
       "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "pokemon:Species"
+      ],
       "is_a": "NamedThing",
       "slots": [
         "id",
-        "name",
         "description",
+        "NamedThing_name",
         "hasColour",
         "mayHaveHiddenAbility",
         "mayHaveAbility",
@@ -1441,11 +1650,11 @@
       "mappings": [
         "pokemon:Move"
       ],
-      "is_a": "Entity",
+      "is_a": "Thing",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
         "effectDescription",
         "hasType"
       ],
@@ -1489,9 +1698,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Item",
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Medicine",
@@ -1504,9 +1713,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
         "effectDescription",
         "hasType"
       ],
@@ -1521,9 +1730,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
         "effectDescription",
         "hasType"
       ],
@@ -1538,9 +1747,9 @@
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Move",
       "slots": [
+        "id",
         "name",
         "description",
-        "entity__id",
         "effectDescription",
         "hasType"
       ],
@@ -1564,9 +1773,9 @@
         "MoveLearning"
       ],
       "slots": [
+        "id",
         "name",
-        "description",
-        "entity__id"
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#TM",
@@ -1578,6 +1787,11 @@
       "description": "A town is a type of place that can be visited.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Place",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Town",
       "@type": "ClassDefinition"
@@ -1588,6 +1802,12 @@
       "description": "A trainer is a person who is able to catch Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
       "is_a": "Person",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name",
+        "depiction"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Trainer",
       "@type": "ClassDefinition"
@@ -1603,6 +1823,15 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
+      "mappings": [
+        "pokemon:Type"
+      ],
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name"
+      ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Type",
       "@type": "ClassDefinition"
@@ -1615,6 +1844,13 @@
       "mappings": [
         "foaf:Person"
       ],
+      "is_a": "NamedThing",
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name",
+        "depiction"
+      ],
       "slot_usage": {},
       "class_uri": "http://xmlns.com/foaf/0.1/Person",
       "@type": "ClassDefinition"
@@ -1622,27 +1858,82 @@
     {
       "name": "Colour",
       "definition_uri": "https://dbpedia.org/ontology//Colour",
-      "description": "A colour is a visual property of an object",
+      "description": "Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.",
       "from_schema": "https://dbpedia.org/ontology/",
       "mappings": [
         "dbpedia:Colour"
       ],
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "black",
+        "cyanic",
+        "magenta",
+        "yellow",
+        "hue",
+        "saturation",
+        "value",
+        "red",
+        "green",
+        "blue",
+        "wavelength"
+      ],
       "slot_usage": {},
       "class_uri": "http://dbpedia.org/ontology/Colour",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Thing",
+      "definition_uri": "http://www.w3.org/2002/07/owl#Thing",
+      "description": "An rdfs:Resource that defines name and description",
+      "from_schema": "http://www.w3.org/2002/07/owl",
+      "mappings": [
+        "owl:Thing"
+      ],
+      "abstract": true,
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2002/07/owl#Thing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NamedThing",
+      "definition_uri": "http://www.w3.org/2002/07/owl#NamedThing",
+      "description": "A Thing that requires a name",
+      "from_schema": "http://www.w3.org/2002/07/owl",
+      "mappings": [
+        "owl:NamedIndividual"
+      ],
+      "is_a": "Thing",
+      "abstract": true,
+      "slots": [
+        "id",
+        "description",
+        "NamedThing_name"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://www.w3.org/2002/07/owl#NamedIndividual",
       "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2025-05-15T23:02:40",
-  "source_file_size": 12962,
-  "generation_date": "2025-05-15T23:18:46",
+  "source_file_date": "2025-09-01T09:53:17",
+  "source_file_size": 12298,
+  "generation_date": "2025-09-01T15:17:12",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",
     "https://w3id.org/linkml/types.context.jsonld",
     "./foaf.context.jsonld",
     "./dbpedia.context.jsonld",
+    "./owl.context.jsonld",
     {
       "@base": "https://pokemonkg.org/ontology#"
     }

@@ -52,15 +52,25 @@ Trainer <|-- GymLeader
 
 ```
 
-## ERD Diagrams
-
-
-### Component 1 (Ability, Colour, EggGroup...)
+## ERD Diagram
 
 ```mermaid
 erDiagram
 Ability {
     stringList effectDescription  
+    uri id  
+    string name  
+    string description  
+}
+BattleItem {
+    uri id  
+    string name  
+    string description  
+}
+Berry {
+    string hasSize  
+    integer firmness  
+    integer smoothness  
     uri id  
     string name  
     string description  
@@ -86,12 +96,66 @@ EggGroup {
     string name  
     string description  
 }
+Flavor {
+    uri id  
+    string name  
+    string description  
+}
+Food {
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+Game {
+    uri id  
+    string name  
+    string description  
+}
 Generation {
     uri id  
     string name  
     string description  
 }
+Gym {
+    uri id  
+    string name  
+    string description  
+}
+GymLeader {
+    string depiction  
+    uri id  
+    string name  
+    string description  
+}
+HM {
+    uri id  
+    string name  
+    string description  
+}
 Habitat {
+    uri id  
+    string name  
+    string description  
+}
+HoldItem {
+    uri id  
+    string name  
+    string description  
+}
+Item {
+    uri id  
+    string name  
+    string description  
+}
+LearningByLevelingUp {
+
+}
+LearningThroughBreeding {
+
+}
+Medicine {
     uri id  
     string name  
     string description  
@@ -102,8 +166,40 @@ Move {
     string name  
     string description  
 }
+MoveLearning {
+
+}
+Person {
+    string depiction  
+    uri id  
+    string name  
+    string description  
+}
 PhysicalMove {
     stringList effectDescription  
+    uri id  
+    string name  
+    string description  
+}
+Pokeball {
+    uri id  
+    string name  
+    string description  
+}
+Pokedex {
+    uri id  
+    string name  
+    string description  
+}
+PokedexEntry {
+    uri id  
+    string name  
+    string description  
+}
+Pokemon {
+
+}
+Region {
     uri id  
     string name  
     string description  
@@ -135,159 +231,6 @@ StatusMove {
     string name  
     string description  
 }
-Type {
-    uri id  
-    string name  
-    string description  
-}
-
-Generation ||--}o Species : "featuresSpecies"
-Move ||--}o Type : "hasType"
-PhysicalMove ||--}o Type : "hasType"
-SpecialMove ||--}o Type : "hasType"
-Species ||--|o Shape : "hasShape"
-Species ||--}o Ability : "mayHaveAbility"
-Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
-Species ||--}o EggGroup : "inEggGroup"
-Species ||--}o Habitat : "foundIn"
-Species ||--}o Move : "isAbleToApply"
-Species ||--}o Type : "hasType"
-StatusMove ||--}o Type : "hasType"
-
-```
-
-
-### Component 2 (Berry, Flavor, Food)
-
-```mermaid
-erDiagram
-Berry {
-    string hasSize  
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-Flavor {
-    uri id  
-    string name  
-    string description  
-}
-Food {
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-
-Berry ||--}o Flavor : "hasFlavor"
-Food ||--}o Flavor : "hasFlavor"
-
-```
-
-
-## Base Classes
-
-
-These classes have no direct relationships but serve as base classes for other classes:
-
-```mermaid
-erDiagram
-Item {
-    uri id  
-    string name  
-    string description  
-}
-
-
-
-```
-
-
-## Standalone Classes
-
-
-These classes are completely isolated with no relationships and are not used as base classes:
-
-```mermaid
-erDiagram
-BattleItem {
-    uri id  
-    string name  
-    string description  
-}
-Game {
-    uri id  
-    string name  
-    string description  
-}
-Gym {
-    uri id  
-    string name  
-    string description  
-}
-GymLeader {
-    string depiction  
-    uri id  
-    string name  
-    string description  
-}
-HM {
-    uri id  
-    string name  
-    string description  
-}
-HoldItem {
-    uri id  
-    string name  
-    string description  
-}
-LearningByLevelingUp {
-
-}
-LearningThroughBreeding {
-
-}
-Medicine {
-    uri id  
-    string name  
-    string description  
-}
-MoveLearning {
-
-}
-Person {
-    string depiction  
-    uri id  
-    string name  
-    string description  
-}
-Pokeball {
-    uri id  
-    string name  
-    string description  
-}
-Pokedex {
-    uri id  
-    string name  
-    string description  
-}
-PokedexEntry {
-    uri id  
-    string name  
-    string description  
-}
-Pokemon {
-
-}
-Region {
-    uri id  
-    string name  
-    string description  
-}
 TM {
     uri id  
     string name  
@@ -304,8 +247,27 @@ Trainer {
     string name  
     string description  
 }
+Type {
+    uri id  
+    string name  
+    string description  
+}
 
-
+Berry ||--}o Flavor : "hasFlavor"
+Food ||--}o Flavor : "hasFlavor"
+Generation ||--}o Species : "featuresSpecies"
+Move ||--}o Type : "hasType"
+PhysicalMove ||--}o Type : "hasType"
+SpecialMove ||--}o Type : "hasType"
+Species ||--|o Shape : "hasShape"
+Species ||--}o Ability : "mayHaveAbility"
+Species ||--}o Ability : "mayHaveHiddenAbility"
+Species ||--}o Colour : "hasColour"
+Species ||--}o EggGroup : "inEggGroup"
+Species ||--}o Habitat : "foundIn"
+Species ||--}o Move : "isAbleToApply"
+Species ||--}o Type : "hasType"
+StatusMove ||--}o Type : "hasType"
 
 ```
 
@@ -337,8 +299,9 @@ Thing <|-- NamedThing
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| **NamedThing_name** | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
@@ -861,8 +824,9 @@ Trainer <|-- GymLeader
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | depiction | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
@@ -931,8 +895,9 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
@@ -1202,8 +1167,9 @@ Thing <|-- NamedThing
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **depiction** | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
@@ -1331,8 +1297,9 @@ Thing <|-- NamedThing
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
@@ -1414,8 +1381,9 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
@@ -1516,8 +1484,9 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **depiction** | <sub>0..1</sub> | string | A depiction of the person |
 | **foundIn** | <sub>0..\*</sub> | [Habitat](#Habitat) | A place is found in a location |
 | **hasCatchRate** | <sub>0..1</sub> | integer |  |
@@ -1662,8 +1631,9 @@ Trainer <|-- GymLeader
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | depiction | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
@@ -1711,8 +1681,9 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>1..1</sub> | string | Human-readable label for the entity |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
+| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 

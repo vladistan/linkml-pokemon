@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-05-15T23:18:47
+# Generation date: 2025-09-01T15:17:13
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -56,7 +56,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Integer, String, Uri
+from linkml_runtime.linkml_model.types import Float, Integer, String, Uri
 from linkml_runtime.utils.metamodelcore import URI
 
 metamodel_version = "1.7.0"
@@ -87,19 +87,27 @@ class ThingId(URI):
     pass
 
 
-class NamedThingId(ThingId):
+class AbilityId(ThingId):
     pass
 
 
-class EntityId(URI):
+class EggGroupId(ThingId):
     pass
 
 
-class AbilityId(EntityId):
+class FlavorId(ThingId):
     pass
 
 
-class ItemId(EntityId):
+class GameId(ThingId):
+    pass
+
+
+class GenerationId(ThingId):
+    pass
+
+
+class ItemId(ThingId):
     pass
 
 
@@ -123,15 +131,27 @@ class HoldItemId(ItemId):
     pass
 
 
+class PokedexId(ThingId):
+    pass
+
+
 class PokeballId(ItemId):
     pass
 
 
-class SpeciesId(NamedThingId):
+class PlaceId(ThingId):
     pass
 
 
-class MoveId(EntityId):
+class GymId(PlaceId):
+    pass
+
+
+class RegionId(PlaceId):
+    pass
+
+
+class MoveId(ThingId):
     pass
 
 
@@ -155,19 +175,113 @@ class TMId(ItemId):
     pass
 
 
-@dataclass(repr=False)
-class Thing(YAMLRoot):
+class TownId(PlaceId):
+    pass
+
+
+class ColourId(ThingId):
+    pass
+
+
+class NamedThingId(ThingId):
+    pass
+
+
+class HabitatId(NamedThingId):
+    pass
+
+
+class PokedexEntryId(NamedThingId):
+    pass
+
+
+class ShapeId(NamedThingId):
+    pass
+
+
+class SpeciesId(NamedThingId):
+    pass
+
+
+class TypeId(NamedThingId):
+    pass
+
+
+class PersonId(NamedThingId):
+    pass
+
+
+class TrainerId(PersonId):
+    pass
+
+
+class GymLeaderId(TrainerId):
+    pass
+
+
+class Pokemon(YAMLRoot):
     """
-    A generic grouping for any identifiable attributes with an id
+    A Pokemon
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = LINKML_POKEMON["Thing"]
-    class_class_curie: ClassVar[str] = "linkml_pokemon:Thing"
+    class_class_uri: ClassVar[URIRef] = POKEMON["Pokemon"]
+    class_class_curie: ClassVar[str] = "pokemon:Pokemon"
+    class_name: ClassVar[str] = "Pokemon"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Pokemon
+
+
+class MoveLearning(YAMLRoot):
+    """
+    A move learning is a way that a Pokemon can learn a move.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["MoveLearning"]
+    class_class_curie: ClassVar[str] = "pokemon:MoveLearning"
+    class_name: ClassVar[str] = "MoveLearning"
+    class_model_uri: ClassVar[URIRef] = POKEMON.MoveLearning
+
+
+class LearningByLevelingUp(MoveLearning):
+    """
+    A move that is learned by leveling up.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["LearningByLevelingUp"]
+    class_class_curie: ClassVar[str] = "pokemon:LearningByLevelingUp"
+    class_name: ClassVar[str] = "LearningByLevelingUp"
+    class_model_uri: ClassVar[URIRef] = POKEMON.LearningByLevelingUp
+
+
+class LearningThroughBreeding(MoveLearning):
+    """
+    A move that is learned by breeding.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["LearningThroughBreeding"]
+    class_class_curie: ClassVar[str] = "pokemon:LearningThroughBreeding"
+    class_name: ClassVar[str] = "LearningThroughBreeding"
+    class_model_uri: ClassVar[URIRef] = POKEMON.LearningThroughBreeding
+
+
+@dataclass(repr=False)
+class Thing(YAMLRoot):
+    """
+    An rdfs:Resource that defines name and description
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = OWL["Thing"]
+    class_class_curie: ClassVar[str] = "owl:Thing"
     class_name: ClassVar[str] = "Thing"
     class_model_uri: ClassVar[URIRef] = POKEMON.Thing
 
     id: Union[str, ThingId] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -175,31 +289,6 @@ class Thing(YAMLRoot):
         if not isinstance(self.id, ThingId):
             self.id = ThingId(self.id)
 
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class NamedThing(Thing):
-    """
-    A generic grouping for any identifiable entity that has a name
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = LINKML_POKEMON["NamedThing"]
-    class_class_curie: ClassVar[str] = "linkml_pokemon:NamedThing"
-    class_name: ClassVar[str] = "NamedThing"
-    class_model_uri: ClassVar[URIRef] = POKEMON.NamedThing
-
-    id: Union[str, NamedThingId] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, NamedThingId):
-            self.id = NamedThingId(self.id)
-
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
@@ -210,38 +299,7 @@ class NamedThing(Thing):
 
 
 @dataclass(repr=False)
-class Entity(YAMLRoot):
-    """
-    A grouping of attributes that can be reffered to
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = LINKML_POKEMON["Entity"]
-    class_class_curie: ClassVar[str] = "linkml_pokemon:Entity"
-    class_name: ClassVar[str] = "Entity"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Entity
-
-    id: Union[str, EntityId] = None
-    name: Optional[str] = None
-    description: Optional[str] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, EntityId):
-            self.id = EntityId(self.id)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Ability(Entity):
+class Ability(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Ability"]
@@ -265,7 +323,8 @@ class Ability(Entity):
         super().__post_init__(**kwargs)
 
 
-class EggGroup(YAMLRoot):
+@dataclass(repr=False)
+class EggGroup(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["EggGroup"]
@@ -273,8 +332,19 @@ class EggGroup(YAMLRoot):
     class_name: ClassVar[str] = "EggGroup"
     class_model_uri: ClassVar[URIRef] = POKEMON.EggGroup
 
+    id: Union[str, EggGroupId] = None
 
-class Flavor(YAMLRoot):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, EggGroupId):
+            self.id = EggGroupId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Flavor(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Flavor"]
@@ -282,8 +352,19 @@ class Flavor(YAMLRoot):
     class_name: ClassVar[str] = "Flavor"
     class_model_uri: ClassVar[URIRef] = POKEMON.Flavor
 
+    id: Union[str, FlavorId] = None
 
-class Game(YAMLRoot):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, FlavorId):
+            self.id = FlavorId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Game(Thing):
     """
     A game is a type of media that can be played by people.
     """
@@ -294,9 +375,19 @@ class Game(YAMLRoot):
     class_name: ClassVar[str] = "Game"
     class_model_uri: ClassVar[URIRef] = POKEMON.Game
 
+    id: Union[str, GameId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GameId):
+            self.id = GameId(self.id)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
-class Generation(YAMLRoot):
+class Generation(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Generation"]
@@ -304,9 +395,15 @@ class Generation(YAMLRoot):
     class_name: ClassVar[str] = "Generation"
     class_model_uri: ClassVar[URIRef] = POKEMON.Generation
 
+    id: Union[str, GenerationId] = None
     featuresSpecies: Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GenerationId):
+            self.id = GenerationId(self.id)
+
         if not isinstance(self.featuresSpecies, list):
             self.featuresSpecies = [self.featuresSpecies] if self.featuresSpecies is not None else []
         self.featuresSpecies = [v if isinstance(v, SpeciesId) else SpeciesId(v) for v in self.featuresSpecies]
@@ -314,20 +411,8 @@ class Generation(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-class Habitat(YAMLRoot):
-    """
-    A habitat is a type of environment that certain Pokemon belong to.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["Habitat"]
-    class_class_curie: ClassVar[str] = "pokemon:Habitat"
-    class_name: ClassVar[str] = "Habitat"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Habitat
-
-
 @dataclass(repr=False)
-class Item(Entity):
+class Item(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Item"]
@@ -379,12 +464,25 @@ class Food(Item):
     class_model_uri: ClassVar[URIRef] = POKEMON.Food
 
     id: Union[str, FoodId] = None
+    hasFlavor: Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]] = empty_list()
+    firmness: Optional[int] = None
+    smoothness: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, FoodId):
             self.id = FoodId(self.id)
+
+        if not isinstance(self.hasFlavor, list):
+            self.hasFlavor = [self.hasFlavor] if self.hasFlavor is not None else []
+        self.hasFlavor = [v if isinstance(v, FlavorId) else FlavorId(v) for v in self.hasFlavor]
+
+        if self.firmness is not None and not isinstance(self.firmness, int):
+            self.firmness = int(self.firmness)
+
+        if self.smoothness is not None and not isinstance(self.smoothness, int):
+            self.smoothness = int(self.smoothness)
 
         super().__post_init__(**kwargs)
 
@@ -459,7 +557,8 @@ class HoldItem(Item):
         super().__post_init__(**kwargs)
 
 
-class Pokedex(YAMLRoot):
+@dataclass(repr=False)
+class Pokedex(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Pokedex"]
@@ -467,29 +566,15 @@ class Pokedex(YAMLRoot):
     class_name: ClassVar[str] = "Pokedex"
     class_model_uri: ClassVar[URIRef] = POKEMON.Pokedex
 
+    id: Union[str, PokedexId] = None
 
-class Pokemon(YAMLRoot):
-    """
-    A Pokemon
-    """
-    _inherited_slots: ClassVar[list[str]] = []
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PokedexId):
+            self.id = PokedexId(self.id)
 
-    class_class_uri: ClassVar[URIRef] = POKEMON["Pokemon"]
-    class_class_curie: ClassVar[str] = "pokemon:Pokemon"
-    class_name: ClassVar[str] = "Pokemon"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Pokemon
-
-
-class PokedexEntry(YAMLRoot):
-    """
-    A pokedex entry is a description of a Pokemon.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["PokedexEntry"]
-    class_class_curie: ClassVar[str] = "pokemon:PokedexEntry"
-    class_name: ClassVar[str] = "PokedexEntry"
-    class_model_uri: ClassVar[URIRef] = POKEMON.PokedexEntry
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -512,7 +597,8 @@ class Pokeball(Item):
         super().__post_init__(**kwargs)
 
 
-class Place(YAMLRoot):
+@dataclass(repr=False)
+class Place(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Place"]
@@ -520,7 +606,9 @@ class Place(YAMLRoot):
     class_name: ClassVar[str] = "Place"
     class_model_uri: ClassVar[URIRef] = POKEMON.Place
 
+    id: Union[str, PlaceId] = None
 
+@dataclass(repr=False)
 class Gym(Place):
     """
     A gym is a location that can be battled at.
@@ -532,19 +620,18 @@ class Gym(Place):
     class_name: ClassVar[str] = "Gym"
     class_model_uri: ClassVar[URIRef] = POKEMON.Gym
 
+    id: Union[str, GymId] = None
 
-class Shape(YAMLRoot):
-    """
-    Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GymId):
+            self.id = GymId(self.id)
 
-    class_class_uri: ClassVar[URIRef] = POKEMON["Shape"]
-    class_class_curie: ClassVar[str] = "pokemon:Shape"
-    class_name: ClassVar[str] = "Shape"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Shape
+        super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class Region(Place):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -553,91 +640,19 @@ class Region(Place):
     class_name: ClassVar[str] = "Region"
     class_model_uri: ClassVar[URIRef] = POKEMON.Region
 
-
-@dataclass(repr=False)
-class Species(NamedThing):
-    """
-    A species is a category of Pokemon that share common features.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["Species"]
-    class_class_curie: ClassVar[str] = "pokemon:Species"
-    class_name: ClassVar[str] = "Species"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Species
-
-    id: Union[str, SpeciesId] = None
-    hasColour: Optional[Union[Union[dict, "Colour"], list[Union[dict, "Colour"]]]] = empty_list()
-    mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
-    mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
-    isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
-    hasHeight: Optional[str] = None
-    hasWeight: Optional[str] = None
-    depiction: Optional[str] = None
-    inEggGroup: Optional[Union[Union[dict, EggGroup], list[Union[dict, EggGroup]]]] = empty_list()
-    hasType: Optional[Union[Union[dict, "Type"], list[Union[dict, "Type"]]]] = empty_list()
-    hasShape: Optional[Union[dict, Shape]] = None
-    hasGenus: Optional[str] = None
-    hasCatchRate: Optional[int] = None
-    foundIn: Optional[Union[Union[dict, Habitat], list[Union[dict, Habitat]]]] = empty_list()
+    id: Union[str, RegionId] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, SpeciesId):
-            self.id = SpeciesId(self.id)
-
-        if not isinstance(self.hasColour, list):
-            self.hasColour = [self.hasColour] if self.hasColour is not None else []
-        self.hasColour = [v if isinstance(v, Colour) else Colour(**as_dict(v)) for v in self.hasColour]
-
-        if not isinstance(self.mayHaveHiddenAbility, list):
-            self.mayHaveHiddenAbility = [self.mayHaveHiddenAbility] if self.mayHaveHiddenAbility is not None else []
-        self.mayHaveHiddenAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveHiddenAbility]
-
-        if not isinstance(self.mayHaveAbility, list):
-            self.mayHaveAbility = [self.mayHaveAbility] if self.mayHaveAbility is not None else []
-        self.mayHaveAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveAbility]
-
-        if not isinstance(self.isAbleToApply, list):
-            self.isAbleToApply = [self.isAbleToApply] if self.isAbleToApply is not None else []
-        self.isAbleToApply = [v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply]
-
-        if self.hasHeight is not None and not isinstance(self.hasHeight, str):
-            self.hasHeight = str(self.hasHeight)
-
-        if self.hasWeight is not None and not isinstance(self.hasWeight, str):
-            self.hasWeight = str(self.hasWeight)
-
-        if self.depiction is not None and not isinstance(self.depiction, str):
-            self.depiction = str(self.depiction)
-
-        if not isinstance(self.inEggGroup, list):
-            self.inEggGroup = [self.inEggGroup] if self.inEggGroup is not None else []
-        self.inEggGroup = [v if isinstance(v, EggGroup) else EggGroup(**as_dict(v)) for v in self.inEggGroup]
-
-        if not isinstance(self.hasType, list):
-            self.hasType = [self.hasType] if self.hasType is not None else []
-        self.hasType = [v if isinstance(v, Type) else Type(**as_dict(v)) for v in self.hasType]
-
-        if self.hasShape is not None and not isinstance(self.hasShape, Shape):
-            self.hasShape = Shape()
-
-        if self.hasGenus is not None and not isinstance(self.hasGenus, str):
-            self.hasGenus = str(self.hasGenus)
-
-        if self.hasCatchRate is not None and not isinstance(self.hasCatchRate, int):
-            self.hasCatchRate = int(self.hasCatchRate)
-
-        if not isinstance(self.foundIn, list):
-            self.foundIn = [self.foundIn] if self.foundIn is not None else []
-        self.foundIn = [v if isinstance(v, Habitat) else Habitat(**as_dict(v)) for v in self.foundIn]
+        if not isinstance(self.id, RegionId):
+            self.id = RegionId(self.id)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Move(Entity):
+class Move(Thing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Move"]
@@ -647,7 +662,7 @@ class Move(Entity):
 
     id: Union[str, MoveId] = None
     effectDescription: Optional[Union[str, list[str]]] = empty_list()
-    hasType: Optional[Union[Union[dict, "Type"], list[Union[dict, "Type"]]]] = empty_list()
+    hasType: Optional[Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -659,47 +674,9 @@ class Move(Entity):
             self.effectDescription = [self.effectDescription] if self.effectDescription is not None else []
         self.effectDescription = [v if isinstance(v, str) else str(v) for v in self.effectDescription]
 
-        if not isinstance(self.hasType, list):
-            self.hasType = [self.hasType] if self.hasType is not None else []
-        self.hasType = [v if isinstance(v, Type) else Type(**as_dict(v)) for v in self.hasType]
+        self._normalize_inlined_as_list(slot_name="hasType", slot_type=Type, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
-
-
-class MoveLearning(YAMLRoot):
-    """
-    A move learning is a way that a Pokemon can learn a move.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["MoveLearning"]
-    class_class_curie: ClassVar[str] = "pokemon:MoveLearning"
-    class_name: ClassVar[str] = "MoveLearning"
-    class_model_uri: ClassVar[URIRef] = POKEMON.MoveLearning
-
-
-class LearningByLevelingUp(MoveLearning):
-    """
-    A move that is learned by leveling up.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["LearningByLevelingUp"]
-    class_class_curie: ClassVar[str] = "pokemon:LearningByLevelingUp"
-    class_name: ClassVar[str] = "LearningByLevelingUp"
-    class_model_uri: ClassVar[URIRef] = POKEMON.LearningByLevelingUp
-
-
-class LearningThroughBreeding(MoveLearning):
-    """
-    A move that is learned by breeding.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = POKEMON["LearningThroughBreeding"]
-    class_class_curie: ClassVar[str] = "pokemon:LearningThroughBreeding"
-    class_name: ClassVar[str] = "LearningThroughBreeding"
-    class_model_uri: ClassVar[URIRef] = POKEMON.LearningThroughBreeding
 
 
 @dataclass(repr=False)
@@ -814,6 +791,7 @@ class TM(Item):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class Town(Place):
     """
     A town is a type of place that can be visited.
@@ -825,8 +803,262 @@ class Town(Place):
     class_name: ClassVar[str] = "Town"
     class_model_uri: ClassVar[URIRef] = POKEMON.Town
 
+    id: Union[str, TownId] = None
 
-class Type(YAMLRoot):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TownId):
+            self.id = TownId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Colour(Thing):
+    """
+    Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow,
+    blue and others.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DBPEDIA["Colour"]
+    class_class_curie: ClassVar[str] = "dbpedia:Colour"
+    class_name: ClassVar[str] = "Colour"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Colour
+
+    id: Union[str, ColourId] = None
+    black: Optional[float] = None
+    cyanic: Optional[float] = None
+    magenta: Optional[float] = None
+    yellow: Optional[float] = None
+    hue: Optional[float] = None
+    saturation: Optional[float] = None
+    value: Optional[float] = None
+    red: Optional[int] = None
+    green: Optional[int] = None
+    blue: Optional[int] = None
+    wavelength: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ColourId):
+            self.id = ColourId(self.id)
+
+        if self.black is not None and not isinstance(self.black, float):
+            self.black = float(self.black)
+
+        if self.cyanic is not None and not isinstance(self.cyanic, float):
+            self.cyanic = float(self.cyanic)
+
+        if self.magenta is not None and not isinstance(self.magenta, float):
+            self.magenta = float(self.magenta)
+
+        if self.yellow is not None and not isinstance(self.yellow, float):
+            self.yellow = float(self.yellow)
+
+        if self.hue is not None and not isinstance(self.hue, float):
+            self.hue = float(self.hue)
+
+        if self.saturation is not None and not isinstance(self.saturation, float):
+            self.saturation = float(self.saturation)
+
+        if self.value is not None and not isinstance(self.value, float):
+            self.value = float(self.value)
+
+        if self.red is not None and not isinstance(self.red, int):
+            self.red = int(self.red)
+
+        if self.green is not None and not isinstance(self.green, int):
+            self.green = int(self.green)
+
+        if self.blue is not None and not isinstance(self.blue, int):
+            self.blue = int(self.blue)
+
+        if self.wavelength is not None and not isinstance(self.wavelength, float):
+            self.wavelength = float(self.wavelength)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class NamedThing(Thing):
+    """
+    A Thing that requires a name
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = OWL["NamedIndividual"]
+    class_class_curie: ClassVar[str] = "owl:NamedIndividual"
+    class_name: ClassVar[str] = "NamedThing"
+    class_model_uri: ClassVar[URIRef] = POKEMON.NamedThing
+
+    id: Union[str, NamedThingId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.name):
+            self.MissingRequiredField("name")
+        if not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Habitat(NamedThing):
+    """
+    A habitat is a type of environment that certain Pokemon belong to.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["Habitat"]
+    class_class_curie: ClassVar[str] = "pokemon:Habitat"
+    class_name: ClassVar[str] = "Habitat"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Habitat
+
+    id: Union[str, HabitatId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, HabitatId):
+            self.id = HabitatId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class PokedexEntry(NamedThing):
+    """
+    A pokedex entry is a description of a Pokemon.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["PokedexEntry"]
+    class_class_curie: ClassVar[str] = "pokemon:PokedexEntry"
+    class_name: ClassVar[str] = "PokedexEntry"
+    class_model_uri: ClassVar[URIRef] = POKEMON.PokedexEntry
+
+    id: Union[str, PokedexEntryId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PokedexEntryId):
+            self.id = PokedexEntryId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Shape(NamedThing):
+    """
+    Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["Shape"]
+    class_class_curie: ClassVar[str] = "pokemon:Shape"
+    class_name: ClassVar[str] = "Shape"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Shape
+
+    id: Union[str, ShapeId] = None
+    name: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, ShapeId):
+            self.id = ShapeId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Species(NamedThing):
+    """
+    A species is a category of Pokemon that share common features.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = POKEMON["Species"]
+    class_class_curie: ClassVar[str] = "pokemon:Species"
+    class_name: ClassVar[str] = "Species"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Species
+
+    id: Union[str, SpeciesId] = None
+    name: str = None
+    hasColour: Optional[Union[dict[Union[str, ColourId], Union[dict, Colour]], list[Union[dict, Colour]]]] = empty_dict()
+    mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
+    mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
+    isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
+    hasHeight: Optional[str] = None
+    hasWeight: Optional[str] = None
+    depiction: Optional[str] = None
+    inEggGroup: Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]] = empty_list()
+    hasType: Optional[Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]] = empty_dict()
+    hasShape: Optional[Union[str, ShapeId]] = None
+    hasGenus: Optional[str] = None
+    hasCatchRate: Optional[int] = None
+    foundIn: Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SpeciesId):
+            self.id = SpeciesId(self.id)
+
+        self._normalize_inlined_as_list(slot_name="hasColour", slot_type=Colour, key_name="id", keyed=True)
+
+        if not isinstance(self.mayHaveHiddenAbility, list):
+            self.mayHaveHiddenAbility = [self.mayHaveHiddenAbility] if self.mayHaveHiddenAbility is not None else []
+        self.mayHaveHiddenAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveHiddenAbility]
+
+        if not isinstance(self.mayHaveAbility, list):
+            self.mayHaveAbility = [self.mayHaveAbility] if self.mayHaveAbility is not None else []
+        self.mayHaveAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveAbility]
+
+        if not isinstance(self.isAbleToApply, list):
+            self.isAbleToApply = [self.isAbleToApply] if self.isAbleToApply is not None else []
+        self.isAbleToApply = [v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply]
+
+        if self.hasHeight is not None and not isinstance(self.hasHeight, str):
+            self.hasHeight = str(self.hasHeight)
+
+        if self.hasWeight is not None and not isinstance(self.hasWeight, str):
+            self.hasWeight = str(self.hasWeight)
+
+        if self.depiction is not None and not isinstance(self.depiction, str):
+            self.depiction = str(self.depiction)
+
+        if not isinstance(self.inEggGroup, list):
+            self.inEggGroup = [self.inEggGroup] if self.inEggGroup is not None else []
+        self.inEggGroup = [v if isinstance(v, EggGroupId) else EggGroupId(v) for v in self.inEggGroup]
+
+        self._normalize_inlined_as_list(slot_name="hasType", slot_type=Type, key_name="id", keyed=True)
+
+        if self.hasShape is not None and not isinstance(self.hasShape, ShapeId):
+            self.hasShape = ShapeId(self.hasShape)
+
+        if self.hasGenus is not None and not isinstance(self.hasGenus, str):
+            self.hasGenus = str(self.hasGenus)
+
+        if self.hasCatchRate is not None and not isinstance(self.hasCatchRate, int):
+            self.hasCatchRate = int(self.hasCatchRate)
+
+        if not isinstance(self.foundIn, list):
+            self.foundIn = [self.foundIn] if self.foundIn is not None else []
+        self.foundIn = [v if isinstance(v, HabitatId) else HabitatId(v) for v in self.foundIn]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Type(NamedThing):
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Type"]
@@ -834,8 +1066,20 @@ class Type(YAMLRoot):
     class_name: ClassVar[str] = "Type"
     class_model_uri: ClassVar[URIRef] = POKEMON.Type
 
+    id: Union[str, TypeId] = None
+    name: str = None
 
-class Person(YAMLRoot):
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TypeId):
+            self.id = TypeId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Person(NamedThing):
     """
     A person is a human being
     """
@@ -846,7 +1090,23 @@ class Person(YAMLRoot):
     class_name: ClassVar[str] = "Person"
     class_model_uri: ClassVar[URIRef] = POKEMON.Person
 
+    id: Union[str, PersonId] = None
+    name: str = None
+    depiction: Optional[str] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PersonId):
+            self.id = PersonId(self.id)
+
+        if self.depiction is not None and not isinstance(self.depiction, str):
+            self.depiction = str(self.depiction)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Trainer(Person):
     """
     A trainer is a person who is able to catch Pokemon.
@@ -858,7 +1118,19 @@ class Trainer(Person):
     class_name: ClassVar[str] = "Trainer"
     class_model_uri: ClassVar[URIRef] = POKEMON.Trainer
 
+    id: Union[str, TrainerId] = None
+    name: str = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, TrainerId):
+            self.id = TrainerId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class GymLeader(Trainer):
     _inherited_slots: ClassVar[list[str]] = []
 
@@ -867,17 +1139,16 @@ class GymLeader(Trainer):
     class_name: ClassVar[str] = "GymLeader"
     class_model_uri: ClassVar[URIRef] = POKEMON.GymLeader
 
+    id: Union[str, GymLeaderId] = None
+    name: str = None
 
-class Colour(YAMLRoot):
-    """
-    A colour is a visual property of an object
-    """
-    _inherited_slots: ClassVar[list[str]] = []
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, GymLeaderId):
+            self.id = GymLeaderId(self.id)
 
-    class_class_uri: ClassVar[URIRef] = DBPEDIA["Colour"]
-    class_class_curie: ClassVar[str] = "dbpedia:Colour"
-    class_name: ClassVar[str] = "Colour"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Colour
+        super().__post_init__(**kwargs)
 
 
 # Enumerations
@@ -901,23 +1172,14 @@ class HabitatEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.id = Slot(uri=POKEMON.id, name="id", curie=POKEMON.curie('id'),
-                   model_uri=POKEMON.id, domain=None, range=URIRef)
-
-slots.name = Slot(uri=RDFS.label, name="name", curie=RDFS.curie('label'),
-                   model_uri=POKEMON.name, domain=None, range=Optional[str])
-
-slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie('comment'),
-                   model_uri=POKEMON.description, domain=None, range=Optional[str])
-
 slots.effectDescription = Slot(uri=POKEMON.effectDescription, name="effectDescription", curie=POKEMON.curie('effectDescription'),
                    model_uri=POKEMON.effectDescription, domain=None, range=Optional[Union[str, list[str]]])
 
 slots.containsPlace = Slot(uri=POKEMON.contains_place, name="containsPlace", curie=POKEMON.curie('contains_place'),
-                   model_uri=POKEMON.containsPlace, domain=Place, range=Optional[Union[Union[dict, "Place"], list[Union[dict, "Place"]]]])
+                   model_uri=POKEMON.containsPlace, domain=Place, range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]])
 
 slots.describedInPokedex = Slot(uri=POKEMON.describedInPokedex, name="describedInPokedex", curie=POKEMON.curie('describedInPokedex'),
-                   model_uri=POKEMON.describedInPokedex, domain=Species, range=Optional[Union[Union[dict, PokedexEntry], list[Union[dict, PokedexEntry]]]])
+                   model_uri=POKEMON.describedInPokedex, domain=Species, range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]])
 
 slots.describesPokemon = Slot(uri=POKEMON.describesPokemon, name="describesPokemon", curie=POKEMON.curie('describesPokemon'),
                    model_uri=POKEMON.describesPokemon, domain=PokedexEntry, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
@@ -926,7 +1188,7 @@ slots.featuresSpecies = Slot(uri=POKEMON.featuresSpecies, name="featuresSpecies"
                    model_uri=POKEMON.featuresSpecies, domain=None, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
 
 slots.hasPokedexEntry = Slot(uri=POKEMON.hasPokedexEntry, name="hasPokedexEntry", curie=POKEMON.curie('hasPokedexEntry'),
-                   model_uri=POKEMON.hasPokedexEntry, domain=Pokedex, range=Optional[Union[Union[dict, "PokedexEntry"], list[Union[dict, "PokedexEntry"]]]])
+                   model_uri=POKEMON.hasPokedexEntry, domain=Pokedex, range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]])
 
 slots.evolvesFrom = Slot(uri=POKEMON.evolvesFrom, name="evolvesFrom", curie=POKEMON.curie('evolvesFrom'),
                    model_uri=POKEMON.evolvesFrom, domain=Species, range=Optional[Union[str, SpeciesId]])
@@ -935,16 +1197,16 @@ slots.evolvesTo = Slot(uri=POKEMON.evolvesTo, name="evolvesTo", curie=POKEMON.cu
                    model_uri=POKEMON.evolvesTo, domain=Species, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
 
 slots.foundIn = Slot(uri=POKEMON.foundIn, name="foundIn", curie=POKEMON.curie('foundIn'),
-                   model_uri=POKEMON.foundIn, domain=Species, range=Optional[Union[Union[dict, Habitat], list[Union[dict, Habitat]]]])
+                   model_uri=POKEMON.foundIn, domain=Species, range=Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]])
 
 slots.hasColour = Slot(uri=POKEMON.hasColour, name="hasColour", curie=POKEMON.curie('hasColour'),
-                   model_uri=POKEMON.hasColour, domain=None, range=Optional[Union[Union[dict, Colour], list[Union[dict, Colour]]]])
+                   model_uri=POKEMON.hasColour, domain=None, range=Optional[Union[dict[Union[str, ColourId], Union[dict, Colour]], list[Union[dict, Colour]]]])
 
 slots.hasFlavor = Slot(uri=POKEMON.hasFlavor, name="hasFlavor", curie=POKEMON.curie('hasFlavor'),
-                   model_uri=POKEMON.hasFlavor, domain=Food, range=Optional[Union[Union[dict, Flavor], list[Union[dict, Flavor]]]])
+                   model_uri=POKEMON.hasFlavor, domain=Food, range=Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]])
 
 slots.hasType = Slot(uri=POKEMON.hasType, name="hasType", curie=POKEMON.curie('hasType'),
-                   model_uri=POKEMON.hasType, domain=None, range=Optional[Union[Union[dict, Type], list[Union[dict, Type]]]])
+                   model_uri=POKEMON.hasType, domain=None, range=Optional[Union[dict[Union[str, TypeId], Union[dict, Type]], list[Union[dict, Type]]]])
 
 slots.hasSize = Slot(uri=POKEMON.hasSize, name="hasSize", curie=POKEMON.curie('hasSize'),
                    model_uri=POKEMON.hasSize, domain=None, range=Optional[str])
@@ -959,16 +1221,16 @@ slots.hasCatchRate = Slot(uri=POKEMON.hasCatchRate, name="hasCatchRate", curie=P
                    model_uri=POKEMON.hasCatchRate, domain=Species, range=Optional[int])
 
 slots.hasShape = Slot(uri=POKEMON.hasShape, name="hasShape", curie=POKEMON.curie('hasShape'),
-                   model_uri=POKEMON.hasShape, domain=Species, range=Optional[Union[dict, Shape]])
+                   model_uri=POKEMON.hasShape, domain=Species, range=Optional[Union[str, ShapeId]])
 
 slots.learnsMove = Slot(uri=POKEMON.learnsMove, name="learnsMove", curie=POKEMON.curie('learnsMove'),
                    model_uri=POKEMON.learnsMove, domain=MoveLearning, range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]])
 
 slots.locatedIn = Slot(uri=POKEMON.locatedIn, name="locatedIn", curie=POKEMON.curie('locatedIn'),
-                   model_uri=POKEMON.locatedIn, domain=Place, range=Optional[Union[Union[dict, "Place"], list[Union[dict, "Place"]]]])
+                   model_uri=POKEMON.locatedIn, domain=Place, range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]])
 
 slots.inEggGroup = Slot(uri=POKEMON.inEggGroup, name="inEggGroup", curie=POKEMON.curie('inEggGroup'),
-                   model_uri=POKEMON.inEggGroup, domain=Species, range=Optional[Union[Union[dict, EggGroup], list[Union[dict, EggGroup]]]])
+                   model_uri=POKEMON.inEggGroup, domain=Species, range=Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]])
 
 slots.mayHaveAbility = Slot(uri=POKEMON.mayHaveAbility, name="mayHaveAbility", curie=POKEMON.curie('mayHaveAbility'),
                    model_uri=POKEMON.mayHaveAbility, domain=Species, range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]])
@@ -1009,5 +1271,47 @@ slots.smoothness = Slot(uri=POKEMON.smoothness, name="smoothness", curie=POKEMON
 slots.depiction = Slot(uri=FOAF.depiction, name="depiction", curie=FOAF.curie('depiction'),
                    model_uri=POKEMON.depiction, domain=None, range=Optional[str])
 
-slots.entity__id = Slot(uri=LINKML_COMMON.identifier, name="entity__id", curie=LINKML_COMMON.curie('identifier'),
-                   model_uri=POKEMON.entity__id, domain=None, range=URIRef)
+slots.black = Slot(uri=DBPEDIA.cmykCoordinateBlack, name="black", curie=DBPEDIA.curie('cmykCoordinateBlack'),
+                   model_uri=POKEMON.black, domain=None, range=Optional[float])
+
+slots.cyanic = Slot(uri=DBPEDIA.cmykCoordinateCyanic, name="cyanic", curie=DBPEDIA.curie('cmykCoordinateCyanic'),
+                   model_uri=POKEMON.cyanic, domain=None, range=Optional[float])
+
+slots.magenta = Slot(uri=DBPEDIA.cmykCoordinateMagenta, name="magenta", curie=DBPEDIA.curie('cmykCoordinateMagenta'),
+                   model_uri=POKEMON.magenta, domain=None, range=Optional[float])
+
+slots.yellow = Slot(uri=DBPEDIA.cmykCoordinateYellow, name="yellow", curie=DBPEDIA.curie('cmykCoordinateYellow'),
+                   model_uri=POKEMON.yellow, domain=None, range=Optional[float])
+
+slots.hue = Slot(uri=DBPEDIA.hsvCoordinateHue, name="hue", curie=DBPEDIA.curie('hsvCoordinateHue'),
+                   model_uri=POKEMON.hue, domain=None, range=Optional[float])
+
+slots.saturation = Slot(uri=DBPEDIA.hsvCoordinateSaturation, name="saturation", curie=DBPEDIA.curie('hsvCoordinateSaturation'),
+                   model_uri=POKEMON.saturation, domain=None, range=Optional[float])
+
+slots.value = Slot(uri=DBPEDIA.hsvCoordinateLightness, name="value", curie=DBPEDIA.curie('hsvCoordinateLightness'),
+                   model_uri=POKEMON.value, domain=None, range=Optional[float])
+
+slots.red = Slot(uri=DBPEDIA.rgbCoordinateRed, name="red", curie=DBPEDIA.curie('rgbCoordinateRed'),
+                   model_uri=POKEMON.red, domain=None, range=Optional[int])
+
+slots.green = Slot(uri=DBPEDIA.rgbCoordinateGreen, name="green", curie=DBPEDIA.curie('rgbCoordinateGreen'),
+                   model_uri=POKEMON.green, domain=None, range=Optional[int])
+
+slots.blue = Slot(uri=DBPEDIA.rgbCoordinateBlue, name="blue", curie=DBPEDIA.curie('rgbCoordinateBlue'),
+                   model_uri=POKEMON.blue, domain=None, range=Optional[int])
+
+slots.wavelength = Slot(uri=DBPEDIA.wavelength, name="wavelength", curie=DBPEDIA.curie('wavelength'),
+                   model_uri=POKEMON.wavelength, domain=None, range=Optional[float])
+
+slots.id = Slot(uri=LINKML_COMMON.identifier, name="id", curie=LINKML_COMMON.curie('identifier'),
+                   model_uri=POKEMON.id, domain=None, range=URIRef)
+
+slots.name = Slot(uri=RDFS.label, name="name", curie=RDFS.curie('label'),
+                   model_uri=POKEMON.name, domain=None, range=Optional[str])
+
+slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie('comment'),
+                   model_uri=POKEMON.description, domain=None, range=Optional[str])
+
+slots.NamedThing_name = Slot(uri=RDFS.label, name="NamedThing_name", curie=RDFS.curie('label'),
+                   model_uri=POKEMON.NamedThing_name, domain=NamedThing, range=str)

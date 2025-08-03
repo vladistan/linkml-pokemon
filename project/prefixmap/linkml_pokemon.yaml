@@ -16,16 +16,13 @@
    "Colour": {
       "@id": "dbpedia:Colour"
    },
-   "Entity": {
-      "@id": "linkml_pokemon:Entity"
-   },
    "NamedThing": {
-      "@id": "linkml_pokemon:NamedThing"
+      "@id": "owl:NamedIndividual"
    },
    "Person": {
       "@id": "foaf:Person"
    },
    "Thing": {
-      "@id": "linkml_pokemon:Thing"
+      "@id": "owl:Thing"
    }
 }

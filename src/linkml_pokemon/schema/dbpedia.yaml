@@ -8,7 +8,89 @@ license: CC-BY-SA-3.0
 prefixes:
   dbpedia: http://dbpedia.org/ontology/
 
+imports:
+  - ./owl
+
 classes:
   Colour:
-    description: A colour is a visual property of an object
+    is_a: Thing
+    description: >-
+      Color or colour is the visual perceptual property corresponding in humans
+      to the categories called red, yellow, blue and others.
     class_uri: dbpedia:Colour
+    slots:
+      # CMYK coordinates
+      - black
+      - cyanic
+      - magenta
+      - yellow
+      # HSV coordinates
+      - hue
+      - saturation
+      - value
+      # RGB coordinates
+      - red
+      - green
+      - blue
+      # Additional property
+      - wavelength
+
+slots:
+  # CMYK color coordinates
+  black:
+    range: float
+    slot_uri: dbpedia:cmykCoordinateBlack
+    description: Black component in CMYK color model
+
+  cyanic:
+    range: float
+    slot_uri: dbpedia:cmykCoordinateCyanic
+    description: Cyan component in CMYK color model
+
+  magenta:
+    range: float
+    slot_uri: dbpedia:cmykCoordinateMagenta
+    description: Magenta component in CMYK color model
+
+  yellow:
+    range: float
+    slot_uri: dbpedia:cmykCoordinateYellow
+    description: Yellow component in CMYK color model
+
+  # HSV color coordinates
+  hue:
+    range: float
+    slot_uri: dbpedia:hsvCoordinateHue
+    description: Hue component in HSV color model
+
+  saturation:
+    range: float
+    slot_uri: dbpedia:hsvCoordinateSaturation
+    description: Saturation component in HSV color model
+
+  value:
+    range: float
+    slot_uri: dbpedia:hsvCoordinateLightness
+    description: Value/Lightness component in HSV color model
+
+  # RGB color coordinates
+  red:
+    range: integer
+    slot_uri: dbpedia:rgbCoordinateRed
+    description: Red component in RGB color model (0-255)
+
+  green:
+    range: integer
+    slot_uri: dbpedia:rgbCoordinateGreen
+    description: Green component in RGB color model (0-255)
+
+  blue:
+    range: integer
+    slot_uri: dbpedia:rgbCoordinateBlue
+    description: Blue component in RGB color model (0-255)
+
+  # Wavelength
+  wavelength:
+    range: float
+    slot_uri: dbpedia:wavelength
+    description: The wavelength of the color in nanometers

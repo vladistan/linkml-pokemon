@@ -32,4 +32,3 @@ pre-commit run -a || true
 cd "${STARTUP_DIR}"
 poetry install --all-extras
 pip install -e ../linkml
-
