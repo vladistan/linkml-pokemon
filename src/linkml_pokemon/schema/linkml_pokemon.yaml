@@ -334,9 +334,8 @@ slots:
   hasColour:
     slot_uri: pokemon:hasColour
     range: Colour
-    multivalued: true
+    multivalued: false
     required: false
-    inlined_as_list: true
     description: A Pokemon has a color
 
   hasFlavor:
