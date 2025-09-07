@@ -1,5 +1,5 @@
 export type ThingId = string;
-export type NamedThingId = string;
+export type NamedIndividualId = string;
 export type PersonId = string;
 export type ColourId = string;
 export type AbilityId = string;
@@ -57,14 +57,14 @@ export interface Thing {
 /**
  * A Thing that requires a name
  */
-export interface NamedThing extends Thing {
+export interface NamedIndividual extends Thing {
 }
 
 
 /**
  * A person is a human being
  */
-export interface Person extends NamedThing {
+export interface Person extends NamedIndividual {
     /** A depiction of the person */
     depiction?: string,
 }
@@ -120,12 +120,12 @@ export interface Berry extends Food {
 
 
 
-export interface EggGroup extends Thing {
+export interface EggGroup extends NamedIndividual {
 }
 
 
 
-export interface Flavor extends Thing {
+export interface Flavor extends NamedIndividual {
 }
 
 
@@ -174,7 +174,7 @@ export interface HM extends Item {
 /**
  * A habitat is a type of environment that certain Pokemon belong to.
  */
-export interface Habitat extends NamedThing {
+export interface Habitat extends NamedIndividual {
 }
 
 
@@ -205,7 +205,7 @@ export interface Pokemon {
 /**
  * A pokedex entry is a description of a Pokemon.
  */
-export interface PokedexEntry extends NamedThing {
+export interface PokedexEntry extends Thing {
 }
 
 
@@ -222,7 +222,7 @@ export interface Place extends Thing {
 /**
  * Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
  */
-export interface Shape extends NamedThing {
+export interface Shape extends NamedIndividual {
 }
 
 
@@ -234,9 +234,9 @@ export interface Region extends Place {
 /**
  * A species is a category of Pokemon that share common features.
  */
-export interface Species extends NamedThing {
+export interface Species extends NamedIndividual {
     /** A Pokemon has a color */
-    hasColour?: Colour[],
+    hasColour?: Colour,
     mayHaveHiddenAbility?: AbilityId[],
     /** A Pokemon may have an ability */
     mayHaveAbility?: AbilityId[],
@@ -335,7 +335,7 @@ export interface Trainer extends Person {
 
 
 
-export interface Type extends NamedThing {
+export interface Type extends NamedIndividual {
 }
 
 

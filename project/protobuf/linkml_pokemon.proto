@@ -46,14 +46,14 @@ message Colour
 message EggGroup
  {
   uri id = 0
-  string name = 0
   string description = 0
+  string name = 0
  }
 message Flavor
  {
   uri id = 0
-  string name = 0
   string description = 0
+  string name = 0
  }
 message Food
  {
@@ -167,8 +167,8 @@ message Pokedex
 message PokedexEntry
  {
   uri id = 0
-  string description = 0
   string name = 0
+  string description = 0
  }
 message Region
  {
@@ -198,7 +198,7 @@ message Species
   uri id = 0
   string description = 0
   string name = 0
- repeated  colour hasColour = 0
+  colour hasColour = 0
  repeated  ability mayHaveHiddenAbility = 0
  repeated  ability mayHaveAbility = 0
  repeated  move isAbleToApply = 0

@@ -248,14 +248,12 @@
                 },
                 "name": {
                     "description": "Human-readable label for the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "name"
             ],
             "title": "EggGroup",
             "type": "object"
@@ -277,14 +275,12 @@
                 },
                 "name": {
                     "description": "Human-readable label for the entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             },
             "required": [
-                "id"
+                "id",
+                "name"
             ],
             "title": "Flavor",
             "type": "object"
@@ -849,12 +845,14 @@
                 },
                 "name": {
                     "description": "Human-readable label for the entity",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 }
             },
             "required": [
-                "id",
-                "name"
+                "id"
             ],
             "title": "PokedexEntry",
             "type": "object"
@@ -1005,14 +1003,15 @@
                     ]
                 },
                 "hasColour": {
-                    "description": "A Pokemon has a color",
-                    "items": {
-                        "$ref": "#/$defs/Colour"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Colour"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A Pokemon has a color"
                 },
                 "hasGenus": {
                     "type": [

@@ -62,12 +62,12 @@ classes:
   EggGroup:
     annotations:
       rdfs:comment: Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
-    is_a: Thing
+    is_a: NamedIndividual
 
   Flavor:
     annotations:
       rdfs:comment: Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them.
-    is_a: Thing
+    is_a: NamedIndividual
 
   Food:
     slots:
@@ -107,7 +107,7 @@ classes:
   Habitat:
     description: >-
       A habitat is a type of environment that certain Pokemon belong to.
-    is_a: NamedThing
+    is_a: NamedIndividual
 
   HoldItem:
     is_a: Item
@@ -135,7 +135,7 @@ classes:
   PokedexEntry:
     description: >-
       A pokedex entry is a description of a Pokemon.
-    is_a: NamedThing
+    is_a: Thing
 
   Pokeball:
     is_a: Item
@@ -152,7 +152,7 @@ classes:
     description: >-
       Shapes are categories that certain Pokemon belong to,
       which determine which Pokemon they can breed with.
-    is_a: NamedThing
+    is_a: NamedIndividual
 
   Region:
     is_a: Place
@@ -160,7 +160,7 @@ classes:
       rdfs:comment: Regions are areas in the Pokémon universe that are smaller parts of a nation.
 
   Species:
-    is_a: NamedThing
+    is_a: NamedIndividual
     class_uri: pokemon:Species
     description: >-
       A species is a category of Pokemon that share common features.
@@ -242,7 +242,7 @@ classes:
   Type:
     annotations:
       rdfs:comment: All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
-    is_a: NamedThing
+    is_a: NamedIndividual
     class_uri: pokemon:Type
 
 slots:
@@ -334,6 +334,7 @@ slots:
   hasColour:
     slot_uri: pokemon:hasColour
     range: Colour
+    inlined: true
     multivalued: false
     required: false
     description: A Pokemon has a color

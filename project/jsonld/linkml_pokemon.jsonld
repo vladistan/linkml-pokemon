@@ -612,9 +612,7 @@
         "Species"
       ],
       "range": "Colour",
-      "multivalued": true,
       "inlined": true,
-      "inlined_as_list": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1183,7 +1181,7 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "NamedThing_name",
+      "name": "NamedIndividual_name",
       "definition_uri": "http://www.w3.org/2002/07/owl#name",
       "description": "Human-readable label for the entity",
       "from_schema": "http://www.w3.org/2002/07/owl",
@@ -1191,12 +1189,12 @@
         "http://www.w3.org/2000/01/rdf-schema#label"
       ],
       "is_a": "name",
-      "domain": "NamedThing",
+      "domain": "NamedIndividual",
       "slot_uri": "http://www.w3.org/2000/01/rdf-schema#label",
       "alias": "name",
-      "owner": "NamedThing",
+      "owner": "NamedIndividual",
       "domain_of": [
-        "NamedThing"
+        "NamedIndividual"
       ],
       "is_usage_slot": true,
       "usage_slot_name": "name",
@@ -1282,11 +1280,11 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "Thing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
-        "name",
-        "description"
+        "description",
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#EggGroup",
@@ -1303,11 +1301,11 @@
         }
       ],
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "Thing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
-        "name",
-        "description"
+        "description",
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Flavor",
@@ -1397,7 +1395,7 @@
       "slots": [
         "id",
         "description",
-        "NamedThing_name",
+        "NamedIndividual_name",
         "depiction"
       ],
       "slot_usage": {},
@@ -1424,11 +1422,11 @@
       "definition_uri": "https://pokemonkg.org/ontology#Habitat",
       "description": "A habitat is a type of environment that certain Pokemon belong to.",
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "NamedThing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
         "description",
-        "NamedThing_name"
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Habitat",
@@ -1516,11 +1514,11 @@
       "definition_uri": "https://pokemonkg.org/ontology#PokedexEntry",
       "description": "A pokedex entry is a description of a Pokemon.",
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "NamedThing",
+      "is_a": "Thing",
       "slots": [
         "id",
-        "description",
-        "NamedThing_name"
+        "name",
+        "description"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#PokedexEntry",
@@ -1574,11 +1572,11 @@
       "definition_uri": "https://pokemonkg.org/ontology#Shape",
       "description": "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.",
       "from_schema": "https://pokemonkg.org/ontology",
-      "is_a": "NamedThing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
         "description",
-        "NamedThing_name"
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Shape",
@@ -1613,11 +1611,11 @@
       "mappings": [
         "pokemon:Species"
       ],
-      "is_a": "NamedThing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
         "description",
-        "NamedThing_name",
+        "NamedIndividual_name",
         "hasColour",
         "mayHaveHiddenAbility",
         "mayHaveAbility",
@@ -1805,7 +1803,7 @@
       "slots": [
         "id",
         "description",
-        "NamedThing_name",
+        "NamedIndividual_name",
         "depiction"
       ],
       "slot_usage": {},
@@ -1826,11 +1824,11 @@
       "mappings": [
         "pokemon:Type"
       ],
-      "is_a": "NamedThing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
         "description",
-        "NamedThing_name"
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "https://pokemonkg.org/ontology#Type",
@@ -1844,11 +1842,11 @@
       "mappings": [
         "foaf:Person"
       ],
-      "is_a": "NamedThing",
+      "is_a": "NamedIndividual",
       "slots": [
         "id",
         "description",
-        "NamedThing_name",
+        "NamedIndividual_name",
         "depiction"
       ],
       "slot_usage": {},
@@ -1903,8 +1901,8 @@
       "@type": "ClassDefinition"
     },
     {
-      "name": "NamedThing",
-      "definition_uri": "http://www.w3.org/2002/07/owl#NamedThing",
+      "name": "NamedIndividual",
+      "definition_uri": "http://www.w3.org/2002/07/owl#NamedIndividual",
       "description": "A Thing that requires a name",
       "from_schema": "http://www.w3.org/2002/07/owl",
       "mappings": [
@@ -1915,7 +1913,7 @@
       "slots": [
         "id",
         "description",
-        "NamedThing_name"
+        "NamedIndividual_name"
       ],
       "slot_usage": {},
       "class_uri": "http://www.w3.org/2002/07/owl#NamedIndividual",
@@ -1924,9 +1922,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2025-09-01T09:53:17",
-  "source_file_size": 12298,
-  "generation_date": "2025-09-01T15:17:12",
+  "source_file_date": "2025-09-07T15:41:50",
+  "source_file_size": 12326,
+  "generation_date": "2025-09-07T15:43:20",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",

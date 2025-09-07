@@ -27,50 +27,40 @@ Move <|-- SpecialMove
 Move <|-- StatusMove
 MoveLearning <|-- LearningByLevelingUp
 MoveLearning <|-- LearningThroughBreeding
-NamedThing <|-- Habitat
-NamedThing <|-- Person
-NamedThing <|-- PokedexEntry
-NamedThing <|-- Shape
-NamedThing <|-- Species
-NamedThing <|-- Type
+NamedIndividual <|-- EggGroup
+NamedIndividual <|-- Flavor
+NamedIndividual <|-- Habitat
+NamedIndividual <|-- Person
+NamedIndividual <|-- Shape
+NamedIndividual <|-- Species
+NamedIndividual <|-- Type
 Person <|-- Trainer
 Place <|-- Gym
 Place <|-- Region
 Place <|-- Town
 Thing <|-- Ability
 Thing <|-- Colour
-Thing <|-- EggGroup
-Thing <|-- Flavor
 Thing <|-- Game
 Thing <|-- Generation
 Thing <|-- Item
 Thing <|-- Move
-Thing <|-- NamedThing
+Thing <|-- NamedIndividual
 Thing <|-- Place
 Thing <|-- Pokedex
+Thing <|-- PokedexEntry
 Trainer <|-- GymLeader
 
 ```
 
-## ERD Diagram
+## ERD Diagrams
+
+
+### Component 1 (Ability, Colour, EggGroup...)
 
 ```mermaid
 erDiagram
 Ability {
     stringList effectDescription  
-    uri id  
-    string name  
-    string description  
-}
-BattleItem {
-    uri id  
-    string name  
-    string description  
-}
-Berry {
-    string hasSize  
-    integer firmness  
-    integer smoothness  
     uri id  
     string name  
     string description  
@@ -96,66 +86,12 @@ EggGroup {
     string name  
     string description  
 }
-Flavor {
-    uri id  
-    string name  
-    string description  
-}
-Food {
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-Game {
-    uri id  
-    string name  
-    string description  
-}
 Generation {
     uri id  
     string name  
     string description  
 }
-Gym {
-    uri id  
-    string name  
-    string description  
-}
-GymLeader {
-    string depiction  
-    uri id  
-    string name  
-    string description  
-}
-HM {
-    uri id  
-    string name  
-    string description  
-}
 Habitat {
-    uri id  
-    string name  
-    string description  
-}
-HoldItem {
-    uri id  
-    string name  
-    string description  
-}
-Item {
-    uri id  
-    string name  
-    string description  
-}
-LearningByLevelingUp {
-
-}
-LearningThroughBreeding {
-
-}
-Medicine {
     uri id  
     string name  
     string description  
@@ -166,40 +102,8 @@ Move {
     string name  
     string description  
 }
-MoveLearning {
-
-}
-Person {
-    string depiction  
-    uri id  
-    string name  
-    string description  
-}
 PhysicalMove {
     stringList effectDescription  
-    uri id  
-    string name  
-    string description  
-}
-Pokeball {
-    uri id  
-    string name  
-    string description  
-}
-Pokedex {
-    uri id  
-    string name  
-    string description  
-}
-PokedexEntry {
-    uri id  
-    string name  
-    string description  
-}
-Pokemon {
-
-}
-Region {
     uri id  
     string name  
     string description  
@@ -231,6 +135,159 @@ StatusMove {
     string name  
     string description  
 }
+Type {
+    uri id  
+    string name  
+    string description  
+}
+
+Generation ||--}o Species : "featuresSpecies"
+Move ||--}o Type : "hasType"
+PhysicalMove ||--}o Type : "hasType"
+SpecialMove ||--}o Type : "hasType"
+Species ||--|o Colour : "hasColour"
+Species ||--|o Shape : "hasShape"
+Species ||--}o Ability : "mayHaveAbility"
+Species ||--}o Ability : "mayHaveHiddenAbility"
+Species ||--}o EggGroup : "inEggGroup"
+Species ||--}o Habitat : "foundIn"
+Species ||--}o Move : "isAbleToApply"
+Species ||--}o Type : "hasType"
+StatusMove ||--}o Type : "hasType"
+
+```
+
+
+### Component 2 (Berry, Flavor, Food)
+
+```mermaid
+erDiagram
+Berry {
+    string hasSize  
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+Flavor {
+    uri id  
+    string name  
+    string description  
+}
+Food {
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+
+Berry ||--}o Flavor : "hasFlavor"
+Food ||--}o Flavor : "hasFlavor"
+
+```
+
+
+## Base Classes
+
+
+These classes have no direct relationships but serve as base classes for other classes:
+
+```mermaid
+erDiagram
+Item {
+    uri id  
+    string name  
+    string description  
+}
+
+
+
+```
+
+
+## Standalone Classes
+
+
+These classes are completely isolated with no relationships and are not used as base classes:
+
+```mermaid
+erDiagram
+BattleItem {
+    uri id  
+    string name  
+    string description  
+}
+Game {
+    uri id  
+    string name  
+    string description  
+}
+Gym {
+    uri id  
+    string name  
+    string description  
+}
+GymLeader {
+    string depiction  
+    uri id  
+    string name  
+    string description  
+}
+HM {
+    uri id  
+    string name  
+    string description  
+}
+HoldItem {
+    uri id  
+    string name  
+    string description  
+}
+LearningByLevelingUp {
+
+}
+LearningThroughBreeding {
+
+}
+Medicine {
+    uri id  
+    string name  
+    string description  
+}
+MoveLearning {
+
+}
+Person {
+    string depiction  
+    uri id  
+    string name  
+    string description  
+}
+Pokeball {
+    uri id  
+    string name  
+    string description  
+}
+Pokedex {
+    uri id  
+    string name  
+    string description  
+}
+PokedexEntry {
+    uri id  
+    string name  
+    string description  
+}
+Pokemon {
+
+}
+Region {
+    uri id  
+    string name  
+    string description  
+}
 TM {
     uri id  
     string name  
@@ -247,27 +304,8 @@ Trainer {
     string name  
     string description  
 }
-Type {
-    uri id  
-    string name  
-    string description  
-}
 
-Berry ||--}o Flavor : "hasFlavor"
-Food ||--}o Flavor : "hasFlavor"
-Generation ||--}o Species : "featuresSpecies"
-Move ||--}o Type : "hasType"
-PhysicalMove ||--}o Type : "hasType"
-SpecialMove ||--}o Type : "hasType"
-Species ||--|o Shape : "hasShape"
-Species ||--}o Ability : "mayHaveAbility"
-Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
-Species ||--}o EggGroup : "inEggGroup"
-Species ||--}o Habitat : "foundIn"
-Species ||--}o Move : "isAbleToApply"
-Species ||--}o Type : "hasType"
-StatusMove ||--}o Type : "hasType"
+
 
 ```
 
@@ -275,7 +313,7 @@ StatusMove ||--}o Type : "hasType"
 ## Abstract Classes
 
 
-### NamedThing
+### NamedIndividual
 
 A Thing that requires a name
 
@@ -284,13 +322,14 @@ A Thing that requires a name
 
 ```mermaid
 classDiagram
-NamedThing <|-- Habitat
-NamedThing <|-- Person
-NamedThing <|-- PokedexEntry
-NamedThing <|-- Shape
-NamedThing <|-- Species
-NamedThing <|-- Type
-Thing <|-- NamedThing
+NamedIndividual <|-- EggGroup
+NamedIndividual <|-- Flavor
+NamedIndividual <|-- Habitat
+NamedIndividual <|-- Person
+NamedIndividual <|-- Shape
+NamedIndividual <|-- Species
+NamedIndividual <|-- Type
+Thing <|-- NamedIndividual
 
 ```
 
@@ -299,9 +338,8 @@ Thing <|-- NamedThing
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| **NamedThing_name** | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
@@ -309,9 +347,10 @@ Thing <|-- NamedThing
 
 #### Children
 
+ * [EggGroup](#EggGroup)
+ * [Flavor](#Flavor)
  * [Habitat](#Habitat) - A habitat is a type of environment that certain Pokemon belong to.
  * [Person](#Person) - A person is a human being
- * [PokedexEntry](#PokedexEntry) - A pokedex entry is a description of a Pokemon.
  * [Shape](#Shape) - Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
  * [Species](#Species) - A species is a category of Pokemon that share common features.
  * [Type](#Type)
@@ -373,15 +412,14 @@ An rdfs:Resource that defines name and description
 classDiagram
 Thing <|-- Ability
 Thing <|-- Colour
-Thing <|-- EggGroup
-Thing <|-- Flavor
 Thing <|-- Game
 Thing <|-- Generation
 Thing <|-- Item
 Thing <|-- Move
-Thing <|-- NamedThing
+Thing <|-- NamedIndividual
 Thing <|-- Place
 Thing <|-- Pokedex
+Thing <|-- PokedexEntry
 
 ```
 
@@ -397,15 +435,14 @@ Thing <|-- Pokedex
 
  * [Ability](#Ability)
  * [Colour](#Colour) - Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
- * [EggGroup](#EggGroup)
- * [Flavor](#Flavor)
  * [Game](#Game) - A game is a type of media that can be played by people.
  * [Generation](#Generation)
  * [Item](#Item)
  * [Move](#Move)
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
  * [Place](#Place)
  * [Pokedex](#Pokedex)
+ * [PokedexEntry](#PokedexEntry) - A pokedex entry is a description of a Pokemon.
 
 
 
@@ -426,10 +463,10 @@ Species {
 
 }
 
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -538,10 +575,10 @@ Species {
 
 }
 
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -575,7 +612,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[hasColour](#hasColour)*  <sub>0..\*</sub> 
+ *  **[Species](#Species)** : *[hasColour](#hasColour)*  <sub>0..1</sub> 
 
 
 
@@ -593,10 +630,10 @@ Species {
 
 }
 
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -610,12 +647,12 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
 
 #### Parents
 
- * [Thing](#Thing) - An rdfs:Resource that defines name and description
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 
@@ -647,12 +684,12 @@ Food ||--}o Flavor : "hasFlavor"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
 
 #### Parents
 
- * [Thing](#Thing) - An rdfs:Resource that defines name and description
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 
@@ -746,10 +783,10 @@ Species {
 }
 
 Generation ||--}o Species : "featuresSpecies"
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -812,9 +849,9 @@ Thing <|-- Place
 
 ```mermaid
 classDiagram
-NamedThing <|-- Person
+NamedIndividual <|-- Person
 Person <|-- Trainer
-Thing <|-- NamedThing
+Thing <|-- NamedIndividual
 Trainer <|-- GymLeader
 
 ```
@@ -824,9 +861,8 @@ Trainer <|-- GymLeader
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | depiction | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
@@ -878,10 +914,10 @@ Species {
 
 }
 
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -895,13 +931,12 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 
@@ -1076,10 +1111,10 @@ Type {
 }
 
 Move ||--}o Type : "hasType"
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -1156,9 +1191,9 @@ A person is a human being
 
 ```mermaid
 classDiagram
-NamedThing <|-- Person
+NamedIndividual <|-- Person
 Person <|-- Trainer
-Thing <|-- NamedThing
+Thing <|-- NamedIndividual
 
 ```
 
@@ -1167,14 +1202,13 @@ Thing <|-- NamedThing
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **depiction** | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Children
 
@@ -1287,8 +1321,7 @@ A pokedex entry is a description of a Pokemon.
 
 ```mermaid
 classDiagram
-NamedThing <|-- PokedexEntry
-Thing <|-- NamedThing
+Thing <|-- PokedexEntry
 
 ```
 
@@ -1299,11 +1332,10 @@ Thing <|-- NamedThing
 | id | <sub>1..1</sub> | uri | A unique identifier |
 | name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [Thing](#Thing) - An rdfs:Resource that defines name and description
 
 #### Referenced by:
 
@@ -1364,10 +1396,10 @@ Species {
 
 }
 
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -1381,13 +1413,12 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 
@@ -1467,10 +1498,10 @@ Type {
 
 Generation ||--}o Species : "featuresSpecies"
 Move ||--}o Type : "hasType"
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -1484,13 +1515,12 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **depiction** | <sub>0..1</sub> | string | A depiction of the person |
 | **foundIn** | <sub>0..\*</sub> | [Habitat](#Habitat) | A place is found in a location |
 | **hasCatchRate** | <sub>0..1</sub> | integer |  |
-| **hasColour** | <sub>0..\*</sub> | [Colour](#Colour) | A Pokemon has a color |
+| **hasColour** | <sub>0..1</sub> | [Colour](#Colour) | A Pokemon has a color |
 | **hasGenus** | <sub>0..1</sub> | string |  |
 | **hasHeight** | <sub>0..1</sub> | string |  |
 | **hasShape** | <sub>0..1</sub> | [Shape](#Shape) | The shape of a berry is a measure of how good it is for making a Potion. |
@@ -1503,7 +1533,7 @@ Species ||--}o Type : "hasType"
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 
@@ -1619,9 +1649,9 @@ A trainer is a person who is able to catch Pokemon.
 
 ```mermaid
 classDiagram
-NamedThing <|-- Person
+NamedIndividual <|-- Person
 Person <|-- Trainer
-Thing <|-- NamedThing
+Thing <|-- NamedIndividual
 Trainer <|-- GymLeader
 
 ```
@@ -1631,9 +1661,8 @@ Trainer <|-- GymLeader
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | depiction | <sub>0..1</sub> | string | A depiction of the person |
 
 #### Parents
@@ -1664,10 +1693,10 @@ Type {
 }
 
 Move ||--}o Type : "hasType"
+Species ||--|o Colour : "hasColour"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
-Species ||--}o Colour : "hasColour"
 Species ||--}o EggGroup : "inEggGroup"
 Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
@@ -1681,13 +1710,12 @@ Species ||--}o Type : "hasType"
 | Name | Cardinality: | Type | Description |
 | --- | --- | --- | --- |
 | id | <sub>1..1</sub> | uri | A unique identifier |
-| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| name | <sub>1..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| NamedThing_name | <sub>1..1</sub> | string | Human-readable label for the entity |
 
 #### Parents
 
- * [NamedThing](#NamedThing) - A Thing that requires a name
+ * [NamedIndividual](#NamedIndividual) - A Thing that requires a name
 
 #### Referenced by:
 

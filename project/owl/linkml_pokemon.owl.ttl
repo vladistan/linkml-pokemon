@@ -23,10 +23,10 @@ pokemon:Berry a owl:Class ;
             owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:hasSize ],
         pokemon:Food ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -41,10 +41,10 @@ pokemon:Generation a owl:Class ;
     rdfs:label "Generation" ;
     rdfs:comment "Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Species ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:featuresSpecies ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom pokemon:Species ;
             owl:onProperty pokemon:featuresSpecies ],
         owl:Thing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -261,15 +261,15 @@ pokemon:locatedIn a owl:AsymmetricProperty,
 foaf:Person a owl:Class ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty foaf:depiction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty foaf:depiction ],
-        owl:NamedThing ;
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty foaf:depiction ],
+        owl:NamedIndividual ;
     skos:definition "A person is a human being" ;
     skos:exactMatch foaf:Person ;
     skos:inScheme foaf: .
@@ -278,94 +278,73 @@ foaf:Person a owl:Class ;
     rdfs:label "Colour" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
             owl:onProperty <https://dbpedia.org/ontology/black> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/value> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/green> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://dbpedia.org/ontology/blue> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/green> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty <https://dbpedia.org/ontology/value> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/green> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/hue> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/black> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/value> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/hue> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/green> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty <https://dbpedia.org/ontology/yellow> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/black> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/magenta> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
+            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/blue> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/blue> ],
+            owl:onProperty <https://dbpedia.org/ontology/green> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/blue> ],
+            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/yellow> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/value> ],
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/black> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty <https://dbpedia.org/ontology/blue> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/black> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/hue> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://dbpedia.org/ontology/saturation> ],
@@ -373,8 +352,29 @@ foaf:Person a owl:Class ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty <https://dbpedia.org/ontology/magenta> ],
         [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
+            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/green> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
         owl:Thing ;
     skos:definition "Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others." ;
     skos:exactMatch dbpedia:Colour ;
@@ -383,18 +383,18 @@ foaf:Person a owl:Class ;
 pokemon:EggGroup a owl:Class ;
     rdfs:label "EggGroup" ;
     rdfs:comment "Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups." ;
-    rdfs:subClassOf owl:Thing ;
+    rdfs:subClassOf owl:NamedIndividual ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Flavor a owl:Class ;
     rdfs:label "Flavor" ;
     rdfs:comment "Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them." ;
-    rdfs:subClassOf owl:Thing ;
+    rdfs:subClassOf owl:NamedIndividual ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Habitat a owl:Class ;
     rdfs:label "Habitat" ;
-    rdfs:subClassOf owl:NamedThing ;
+    rdfs:subClassOf owl:NamedIndividual ;
     skos:definition "A habitat is a type of environment that certain Pokemon belong to." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -412,7 +412,7 @@ pokemon:Habitat_Grassland a owl:NamedIndividual,
 
 pokemon:Shape a owl:Class ;
     rdfs:label "Shape" ;
-    rdfs:subClassOf owl:NamedThing ;
+    rdfs:subClassOf owl:NamedIndividual ;
     skos:definition "Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -427,12 +427,6 @@ pokemon:foundIn a owl:ObjectProperty ;
     rdfs:domain pokemon:Species ;
     rdfs:range pokemon:Habitat ;
     skos:definition "A place is found in a location" ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
-
-pokemon:hasColour a owl:ObjectProperty ;
-    rdfs:label "hasColour" ;
-    rdfs:range <https://dbpedia.org/ontology/Colour> ;
-    skos:definition "A Pokemon has a color" ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:hasFlavor a owl:ObjectProperty ;
@@ -562,6 +556,12 @@ pokemon:hasCatchRate a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+pokemon:hasColour a owl:ObjectProperty ;
+    rdfs:label "hasColour" ;
+    rdfs:range <https://dbpedia.org/ontology/Colour> ;
+    skos:definition "A Pokemon has a color" ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
 pokemon:hasGenus a owl:DatatypeProperty ;
     rdfs:label "hasGenus" ;
     rdfs:domain pokemon:Species ;
@@ -598,29 +598,29 @@ pokemon:smoothness a owl:DatatypeProperty ;
 pokemon:Food a owl:Class ;
     rdfs:label "Food" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:firmness ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasFlavor ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:firmness ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:smoothness ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:smoothness ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:firmness ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Flavor ;
             owl:onProperty pokemon:hasFlavor ],
         [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:smoothness ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
             owl:onProperty pokemon:smoothness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasFlavor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:firmness ],
         pokemon:Item ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -631,14 +631,14 @@ pokemon:MoveLearning a owl:Class ;
 
 pokemon:PokedexEntry a owl:Class ;
     rdfs:label "PokedexEntry" ;
-    rdfs:subClassOf owl:NamedThing ;
+    rdfs:subClassOf owl:Thing ;
     skos:definition "A pokedex entry is a description of a Pokemon." ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:Type a owl:Class ;
     rdfs:label "Type" ;
     rdfs:comment "All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense." ;
-    rdfs:subClassOf owl:NamedThing ;
+    rdfs:subClassOf owl:NamedIndividual ;
     skos:exactMatch pokemon:Type ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
@@ -667,22 +667,6 @@ pokemon:Ability a owl:Class ;
     skos:exactMatch pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-owl:NamedThing a owl:Class ;
-    rdfs:label "NamedThing" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty owl:name ],
-        owl:Thing ;
-    skos:definition "A Thing that requires a name" ;
-    skos:exactMatch owl:NamedIndividual ;
-    skos:inScheme <http://www.w3.org/2002/07/owl> .
-
 owl:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
     rdfs:range xsd:string ;
@@ -707,157 +691,176 @@ pokemon:Place a owl:Class ;
     rdfs:subClassOf owl:Thing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+owl:NamedIndividual a owl:Class ;
+    rdfs:label "NamedIndividual" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty owl:name ],
+        owl:Thing ;
+    skos:definition "A Thing that requires a name" ;
+    skos:exactMatch owl:NamedIndividual ;
+    skos:inScheme <http://www.w3.org/2002/07/owl> .
+
+owl:Thing a owl:Class ;
+    rdfs:label "Thing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty owl:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:anyURI ;
+            owl:onProperty owl:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty owl:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty owl:name ] ;
+    skos:definition "An rdfs:Resource that defines name and description" ;
+    skos:exactMatch owl:Thing ;
+    skos:inScheme <http://www.w3.org/2002/07/owl> .
+
 pokemon:Move a owl:Class ;
     rdfs:label "Move" ;
     rdfs:comment "A move is a special ability of a Pokemon." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:effectDescription ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:effectDescription ],
-        [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Type ;
             owl:onProperty pokemon:hasType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:effectDescription ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:effectDescription ],
         owl:Thing ;
     skos:exactMatch pokemon:Move ;
     skos:inScheme <https://pokemonkg.org/ontology> .
-
-owl:Thing a owl:Class ;
-    rdfs:label "Thing" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:description ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty owl:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:anyURI ;
-            owl:onProperty owl:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty owl:description ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty owl:description ] ;
-    skos:definition "An rdfs:Resource that defines name and description" ;
-    skos:exactMatch owl:Thing ;
-    skos:inScheme <http://www.w3.org/2002/07/owl> .
 
 pokemon:Species a owl:Class ;
     rdfs:label "Species" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasType ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty pokemon:hasCatchRate ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasHeight ],
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:hasCatchRate ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:foundIn ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:isAbleToApply ],
+            owl:allValuesFrom pokemon:EggGroup ;
+            owl:onProperty pokemon:inEggGroup ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasWeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasGenus ],
+            owl:onProperty pokemon:inEggGroup ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Shape ;
             owl:onProperty pokemon:hasShape ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://dbpedia.org/ontology/Colour> ;
-            owl:onProperty pokemon:hasColour ],
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasShape ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
-            owl:onProperty pokemon:mayHaveHiddenAbility ],
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasHeight ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
+            owl:allValuesFrom pokemon:Habitat ;
+            owl:onProperty pokemon:foundIn ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasCatchRate ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Type ;
             owl:onProperty pokemon:hasType ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasWeight ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
             owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://dbpedia.org/ontology/Colour> ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isAbleToApply ],
         [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Move ;
             owl:onProperty pokemon:isAbleToApply ],
         [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasHeight ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasGenus ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:inEggGroup ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasCatchRate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasHeight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasShape ],
+            owl:onProperty foaf:depiction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:hasColour ],
         [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:EggGroup ;
-            owl:onProperty pokemon:inEggGroup ],
-        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Habitat ;
-            owl:onProperty pokemon:foundIn ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasWeight ],
+            owl:onProperty pokemon:hasColour ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasGenus ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty foaf:depiction ],
-        owl:NamedThing ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasShape ],
+        owl:NamedIndividual ;
     skos:definition "A species is a category of Pokemon that share common features." ;
     skos:exactMatch pokemon:Species ;
     skos:inScheme <https://pokemonkg.org/ontology> .

@@ -31,7 +31,7 @@ classes:
       - description
     class_uri: owl:Thing
 
-  NamedThing:
+  NamedIndividual:
     is_a: Thing
     abstract: true
     description: >-

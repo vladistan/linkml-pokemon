@@ -13,7 +13,7 @@ imports:
 
 classes:
   Person:
-    is_a: NamedThing
+    is_a: NamedIndividual
     description: A person is a human being
     class_uri: foaf:Person
     slots:

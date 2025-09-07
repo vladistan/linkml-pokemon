@@ -16,7 +16,7 @@
    "Colour": {
       "@id": "dbpedia:Colour"
    },
-   "NamedThing": {
+   "NamedIndividual": {
       "@id": "owl:NamedIndividual"
    },
    "Person": {

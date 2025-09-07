@@ -129,7 +129,7 @@ class Thing(ConfiguredBaseModel):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class NamedThing(Thing):
+class NamedIndividual(Thing):
     """
     A Thing that requires a name
     """
@@ -143,7 +143,7 @@ class NamedThing(Thing):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Person(NamedThing):
+class Person(NamedIndividual):
     """
     A person is a human being
     """
@@ -222,7 +222,7 @@ class Ability(Thing):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class EggGroup(Thing):
+class EggGroup(NamedIndividual):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'Egg group is a category that '
                                                    'determines which Pokemon are able '
@@ -234,11 +234,11 @@ class EggGroup(Thing):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Flavor(Thing):
+class Flavor(NamedIndividual):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'Flavor is a special set of '
                                                    'attributes that certain foods in '
@@ -249,7 +249,7 @@ class Flavor(Thing):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
@@ -285,7 +285,7 @@ class Generation(Thing):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Habitat(NamedThing):
+class Habitat(NamedIndividual):
     """
     A habitat is a type of environment that certain Pokemon belong to.
     """
@@ -411,14 +411,14 @@ A Pokemon
 """
 
 
-class PokedexEntry(NamedThing):
+class PokedexEntry(Thing):
     """
     A pokedex entry is a description of a Pokemon.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
@@ -458,7 +458,7 @@ class Gym(Place):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Shape(NamedThing):
+class Shape(NamedIndividual):
     """
     Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
     """
@@ -481,14 +481,14 @@ class Region(Place):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Species(NamedThing):
+class Species(NamedIndividual):
     """
     A species is a category of Pokemon that share common features.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'pokemon:Species',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    hasColour: Optional[list[Colour]] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'alias': 'hasColour',
+    hasColour: Optional[Colour] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'alias': 'hasColour',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:hasColour'} })
     mayHaveHiddenAbility: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mayHaveHiddenAbility',
@@ -706,7 +706,7 @@ class GymLeader(Trainer):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Type(NamedThing):
+class Type(NamedIndividual):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'annotations': {'rdfs:comment': {'tag': 'rdfs:comment',
                                           'value': 'All Pokemon creatures and their '
                                                    'moves are assigned certain types. '
@@ -724,7 +724,7 @@ class Type(NamedThing):
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
 Thing.model_rebuild()
-NamedThing.model_rebuild()
+NamedIndividual.model_rebuild()
 Person.model_rebuild()
 Colour.model_rebuild()
 Ability.model_rebuild()

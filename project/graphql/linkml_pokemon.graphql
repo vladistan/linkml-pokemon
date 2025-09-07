@@ -53,15 +53,15 @@ type Colour
 type EggGroup
   {
     id: Uri!
-    name: String
     description: String
+    name: String!
   }
 
 type Flavor
   {
     id: Uri!
-    name: String
     description: String
+    name: String!
   }
 
 type Food
@@ -160,7 +160,7 @@ type MoveLearning
   {
   }
 
-interface NamedThing
+interface NamedIndividual
   {
     id: Uri!
     description: String
@@ -208,8 +208,8 @@ type Pokedex
 type PokedexEntry
   {
     id: Uri!
+    name: String
     description: String
-    name: String!
   }
 
 type Pokemon
@@ -244,7 +244,7 @@ type Species
     id: Uri!
     description: String
     name: String!
-    hasColour: [Colour]
+    hasColour: Colour
     mayHaveHiddenAbility: [Ability]
     mayHaveAbility: [Ability]
     isAbleToApply: [Move]

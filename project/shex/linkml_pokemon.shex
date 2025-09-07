@@ -93,16 +93,16 @@ linkml:Sparqlpath xsd:string
 }
 
 <EggGroup> CLOSED {
-    (  $<EggGroup_tes> (  &owl:Thing_tes ;
-          rdf:type [ owl:Thing ] ?
+    (  $<EggGroup_tes> (  &owl:NamedIndividual_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <EggGroup> ]
     )
 }
 
 <Flavor> CLOSED {
-    (  $<Flavor_tes> (  &owl:Thing_tes ;
-          rdf:type [ owl:Thing ] ?
+    (  $<Flavor_tes> (  &owl:NamedIndividual_tes ;
+          rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <Flavor> ]
     )
@@ -155,7 +155,7 @@ linkml:Sparqlpath xsd:string
 }
 
 <Habitat> CLOSED {
-    (  $<Habitat_tes> (  &owl:NamedThing_tes ;
+    (  $<Habitat_tes> (  &owl:NamedIndividual_tes ;
           rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <Habitat> ]
@@ -232,12 +232,12 @@ linkml:Sparqlpath xsd:string
     } OR @<LearningByLevelingUp> OR @<LearningThroughBreeding>
 )
 
-owl:NamedThing  (
-    @<Habitat> OR @foaf:Person OR @<PokedexEntry> OR @<Shape> OR @<Species> OR @<Type>
+owl:NamedIndividual  (
+    @<EggGroup> OR @<Flavor> OR @<Habitat> OR @foaf:Person OR @<Shape> OR @<Species> OR @<Type>
 )
 
-owl:NamedThing_struct {
-    (  $owl:NamedThing_tes (  &owl:Thing_tes ;
+owl:NamedIndividual_struct {
+    (  $owl:NamedIndividual_tes (  &owl:Thing_tes ;
           rdf:type [ owl:Thing ] ? ;
           rdfs:label @linkml:String
        ) ;
@@ -247,7 +247,7 @@ owl:NamedThing_struct {
 
 foaf:Person  (
     CLOSED {
-       (  $foaf:Person_tes (  &owl:NamedThing_tes ;
+       (  $foaf:Person_tes (  &owl:NamedIndividual_tes ;
              rdf:type [ owl:NamedIndividual ] ? ;
              foaf:depiction @linkml:String ?
           ) ;
@@ -293,8 +293,8 @@ foaf:Person  (
 }
 
 <PokedexEntry> CLOSED {
-    (  $<PokedexEntry_tes> (  &owl:NamedThing_tes ;
-          rdf:type [ owl:NamedIndividual ] ?
+    (  $<PokedexEntry_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
        ) ;
        rdf:type [ <PokedexEntry> ]
     )
@@ -315,7 +315,7 @@ foaf:Person  (
 }
 
 <Shape> CLOSED {
-    (  $<Shape_tes> (  &owl:NamedThing_tes ;
+    (  $<Shape_tes> (  &owl:NamedIndividual_tes ;
           rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <Shape> ]
@@ -331,9 +331,9 @@ foaf:Person  (
 }
 
 <Species> CLOSED {
-    (  $<Species_tes> (  &owl:NamedThing_tes ;
+    (  $<Species_tes> (  &owl:NamedIndividual_tes ;
           rdf:type [ owl:NamedIndividual ] ? ;
-          <hasColour> @<https://dbpedia.org/ontology/Colour> * ;
+          <hasColour> @<https://dbpedia.org/ontology/Colour> ? ;
           <mayHaveHiddenAbility> @<Ability> * ;
           <mayHaveAbility> @<Ability> * ;
           <isAbleToApply> @<Move> * ;
@@ -360,8 +360,8 @@ foaf:Person  (
 }
 
 owl:Thing  (
-    @<Ability> OR @<https://dbpedia.org/ontology/Colour> OR @<EggGroup> OR @<Flavor> OR @<Game> OR @<Generation> OR @<Item> OR
-    @<Move> OR @owl:NamedThing OR @<Place> OR @<Pokedex>
+    @<Ability> OR @<https://dbpedia.org/ontology/Colour> OR @<Game> OR @<Generation> OR @<Item> OR @<Move> OR @owl:NamedIndividual
+    OR @<Place> OR @<Pokedex> OR @<PokedexEntry>
 )
 
 owl:Thing_struct {
@@ -401,7 +401,7 @@ owl:Thing_struct {
 )
 
 <Type> CLOSED {
-    (  $<Type_tes> (  &owl:NamedThing_tes ;
+    (  $<Type_tes> (  &owl:NamedIndividual_tes ;
           rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <Type> ]
