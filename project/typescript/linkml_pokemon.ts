@@ -2,6 +2,7 @@ export type ThingId = string;
 export type NamedIndividualId = string;
 export type PersonId = string;
 export type ColourId = string;
+export type QuantityId = string;
 export type AbilityId = string;
 export type BattleItemId = string;
 export type BerryId = string;
@@ -96,6 +97,19 @@ export interface Colour extends Thing {
     blue?: number,
     /** The wavelength of the color in nanometers */
     wavelength?: number,
+}
+
+
+/**
+ * A physical quantity.
+ */
+export interface Quantity extends Thing {
+    /** The unit of measure for the quantity. */
+    hasUnit?: string,
+    /** The kind of quantity (e.g., Length, Mass, Time). */
+    hasQuantityKind?: string,
+    /** The numeric value of the quantity. */
+    hasValue?: string,
 }
 
 
@@ -236,13 +250,13 @@ export interface Region extends Place {
  */
 export interface Species extends NamedIndividual {
     /** A Pokemon has a color */
-    hasColour?: Colour,
+    hasColour?: ColourId,
     mayHaveHiddenAbility?: AbilityId[],
     /** A Pokemon may have an ability */
     mayHaveAbility?: AbilityId[],
     isAbleToApply?: MoveId[],
-    hasHeight?: string,
-    hasWeight?: string,
+    hasHeight?: Quantity,
+    hasWeight?: Quantity,
     /** A depiction of the person */
     depiction?: string,
     inEggGroup?: EggGroupId[],

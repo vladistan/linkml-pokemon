@@ -21,7 +21,8 @@
     "linkml:types",
     "./foaf",
     "./dbpedia",
-    "./owl"
+    "./owl",
+    "./qudt"
   ],
   "license": "MIT",
   "prefixes": [
@@ -80,6 +81,10 @@
     {
       "prefix_prefix": "pokemon",
       "prefix_reference": "https://pokemonkg.org/ontology#"
+    },
+    {
+      "prefix_prefix": "qudt",
+      "prefix_reference": "http://qudt.org/schema/qudt/"
     }
   ],
   "default_prefix": "pokemon",
@@ -612,7 +617,6 @@
         "Species"
       ],
       "range": "Colour",
-      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -666,6 +670,7 @@
         "Berry"
       ],
       "range": "string",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -681,7 +686,8 @@
       "domain_of": [
         "Species"
       ],
-      "range": "string",
+      "range": "Quantity",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -697,7 +703,8 @@
       "domain_of": [
         "Species"
       ],
-      "range": "string",
+      "range": "Quantity",
+      "inlined": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1176,6 +1183,51 @@
       "owner": "Thing",
       "domain_of": [
         "Thing"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasUnit",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasUnit",
+      "description": "The unit of measure for the quantity.",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "slot_uri": "http://qudt.org/2.1/vocab/unit/hasUnit",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasValue",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasValue",
+      "description": "The numeric value of the quantity.",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "http://qudt.org/schema/qudt/quantityValue"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/quantityValue",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasQuantityKind",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasQuantityKind",
+      "description": "The kind of quantity (e.g., Length, Mass, Time).",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
       ],
       "range": "string",
       "@type": "SlotDefinition"
@@ -1918,13 +1970,31 @@
       "slot_usage": {},
       "class_uri": "http://www.w3.org/2002/07/owl#NamedIndividual",
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "Quantity",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/Quantity",
+      "description": "A physical quantity.",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description",
+        "hasUnit",
+        "hasQuantityKind",
+        "hasValue"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/2.1/vocab/unit/Quantity",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "linkml_pokemon.yaml",
-  "source_file_date": "2025-09-07T15:41:50",
-  "source_file_size": 12326,
-  "generation_date": "2025-09-07T15:43:20",
+  "source_file_date": "2025-09-08T11:54:51",
+  "source_file_size": 12469,
+  "generation_date": "2025-09-08T13:04:50",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",
@@ -1932,6 +2002,7 @@
     "./foaf.context.jsonld",
     "./dbpedia.context.jsonld",
     "./owl.context.jsonld",
+    "./qudt.context.jsonld",
     {
       "@base": "https://pokemonkg.org/ontology#"
     }

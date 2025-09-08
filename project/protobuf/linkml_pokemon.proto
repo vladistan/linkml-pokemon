@@ -170,6 +170,16 @@ message PokedexEntry
   string name = 0
   string description = 0
  }
+// A physical quantity.
+message Quantity
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
+  string hasUnit = 0
+  string hasQuantityKind = 0
+  string hasValue = 0
+ }
 message Region
  {
   uri id = 0
@@ -202,8 +212,8 @@ message Species
  repeated  ability mayHaveHiddenAbility = 0
  repeated  ability mayHaveAbility = 0
  repeated  move isAbleToApply = 0
-  string hasHeight = 0
-  string hasWeight = 0
+  quantity hasHeight = 0
+  quantity hasWeight = 0
   string depiction = 0
  repeated  eggGroup inEggGroup = 0
  repeated  type hasType = 0

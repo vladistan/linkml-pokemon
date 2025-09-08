@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-07T15:43:21
+# Generation date: 2025-09-08T13:04:51
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -72,6 +72,7 @@ LINKML_COMMON = CurieNamespace('linkml_common', 'https://w3id.org/linkml/common/
 LINKML_POKEMON = CurieNamespace('linkml_pokemon', 'https://w3id.org/vladistan/linkml-pokemon/')
 OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 POKEMON = CurieNamespace('pokemon', 'https://pokemonkg.org/ontology#')
+QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
 RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
@@ -216,6 +217,10 @@ class TrainerId(PersonId):
 
 
 class GymLeaderId(TrainerId):
+    pass
+
+
+class QuantityId(ThingId):
     pass
 
 
@@ -993,12 +998,12 @@ class Species(NamedIndividual):
 
     id: Union[str, SpeciesId] = None
     name: str = None
-    hasColour: Optional[Union[dict, Colour]] = None
+    hasColour: Optional[Union[str, ColourId]] = None
     mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
     mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
     isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
-    hasHeight: Optional[str] = None
-    hasWeight: Optional[str] = None
+    hasHeight: Optional[Union[dict, "Quantity"]] = None
+    hasWeight: Optional[Union[dict, "Quantity"]] = None
     depiction: Optional[str] = None
     inEggGroup: Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]] = empty_list()
     hasType: Optional[Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]] = empty_dict()
@@ -1013,8 +1018,8 @@ class Species(NamedIndividual):
         if not isinstance(self.id, SpeciesId):
             self.id = SpeciesId(self.id)
 
-        if self.hasColour is not None and not isinstance(self.hasColour, Colour):
-            self.hasColour = Colour(**as_dict(self.hasColour))
+        if self.hasColour is not None and not isinstance(self.hasColour, ColourId):
+            self.hasColour = ColourId(self.hasColour)
 
         if not isinstance(self.mayHaveHiddenAbility, list):
             self.mayHaveHiddenAbility = [self.mayHaveHiddenAbility] if self.mayHaveHiddenAbility is not None else []
@@ -1028,11 +1033,11 @@ class Species(NamedIndividual):
             self.isAbleToApply = [self.isAbleToApply] if self.isAbleToApply is not None else []
         self.isAbleToApply = [v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply]
 
-        if self.hasHeight is not None and not isinstance(self.hasHeight, str):
-            self.hasHeight = str(self.hasHeight)
+        if self.hasHeight is not None and not isinstance(self.hasHeight, Quantity):
+            self.hasHeight = Quantity(**as_dict(self.hasHeight))
 
-        if self.hasWeight is not None and not isinstance(self.hasWeight, str):
-            self.hasWeight = str(self.hasWeight)
+        if self.hasWeight is not None and not isinstance(self.hasWeight, Quantity):
+            self.hasWeight = Quantity(**as_dict(self.hasWeight))
 
         if self.depiction is not None and not isinstance(self.depiction, str):
             self.depiction = str(self.depiction)
@@ -1153,6 +1158,41 @@ class GymLeader(Trainer):
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
+class Quantity(Thing):
+    """
+    A physical quantity.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("http://qudt.org/2.1/vocab/unit/Quantity")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "Quantity"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Quantity
+
+    id: Union[str, QuantityId] = None
+    hasUnit: Optional[str] = None
+    hasQuantityKind: Optional[str] = None
+    hasValue: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityId):
+            self.id = QuantityId(self.id)
+
+        if self.hasUnit is not None and not isinstance(self.hasUnit, str):
+            self.hasUnit = str(self.hasUnit)
+
+        if self.hasQuantityKind is not None and not isinstance(self.hasQuantityKind, str):
+            self.hasQuantityKind = str(self.hasQuantityKind)
+
+        if self.hasValue is not None and not isinstance(self.hasValue, str):
+            self.hasValue = str(self.hasValue)
+
+        super().__post_init__(**kwargs)
+
+
 # Enumerations
 class HabitatEnum(EnumDefinitionImpl):
 
@@ -1202,7 +1242,7 @@ slots.foundIn = Slot(uri=POKEMON.foundIn, name="foundIn", curie=POKEMON.curie('f
                    model_uri=POKEMON.foundIn, domain=Species, range=Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]])
 
 slots.hasColour = Slot(uri=POKEMON.hasColour, name="hasColour", curie=POKEMON.curie('hasColour'),
-                   model_uri=POKEMON.hasColour, domain=None, range=Optional[Union[dict, Colour]])
+                   model_uri=POKEMON.hasColour, domain=None, range=Optional[Union[str, ColourId]])
 
 slots.hasFlavor = Slot(uri=POKEMON.hasFlavor, name="hasFlavor", curie=POKEMON.curie('hasFlavor'),
                    model_uri=POKEMON.hasFlavor, domain=Food, range=Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]])
@@ -1214,10 +1254,10 @@ slots.hasSize = Slot(uri=POKEMON.hasSize, name="hasSize", curie=POKEMON.curie('h
                    model_uri=POKEMON.hasSize, domain=None, range=Optional[str])
 
 slots.hasHeight = Slot(uri=POKEMON.hasHeight, name="hasHeight", curie=POKEMON.curie('hasHeight'),
-                   model_uri=POKEMON.hasHeight, domain=Species, range=Optional[str])
+                   model_uri=POKEMON.hasHeight, domain=Species, range=Optional[Union[dict, "Quantity"]])
 
 slots.hasWeight = Slot(uri=POKEMON.hasWeight, name="hasWeight", curie=POKEMON.curie('hasWeight'),
-                   model_uri=POKEMON.hasWeight, domain=Species, range=Optional[str])
+                   model_uri=POKEMON.hasWeight, domain=Species, range=Optional[Union[dict, "Quantity"]])
 
 slots.hasCatchRate = Slot(uri=POKEMON.hasCatchRate, name="hasCatchRate", curie=POKEMON.curie('hasCatchRate'),
                    model_uri=POKEMON.hasCatchRate, domain=Species, range=Optional[int])
@@ -1314,6 +1354,15 @@ slots.name = Slot(uri=RDFS.label, name="name", curie=RDFS.curie('label'),
 
 slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie('comment'),
                    model_uri=POKEMON.description, domain=None, range=Optional[str])
+
+slots.hasUnit = Slot(uri="str(uriorcurie)", name="hasUnit", curie=None,
+                   model_uri=POKEMON.hasUnit, domain=None, range=Optional[str])
+
+slots.hasValue = Slot(uri=QUDT.quantityValue, name="hasValue", curie=QUDT.curie('quantityValue'),
+                   model_uri=POKEMON.hasValue, domain=None, range=Optional[str])
+
+slots.hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
+                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[str])
 
 slots.NamedIndividual_name = Slot(uri=RDFS.label, name="NamedIndividual_name", curie=RDFS.curie('label'),
                    model_uri=POKEMON.NamedIndividual_name, domain=NamedIndividual, range=str)

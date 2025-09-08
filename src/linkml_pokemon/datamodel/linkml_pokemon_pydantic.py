@@ -74,7 +74,7 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
      'description': 'Ontology covering the Pokémon world as it is presented in '
                     'games and anime television series',
      'id': 'https://pokemonkg.org/ontology',
-     'imports': ['linkml:types', './foaf', './dbpedia', './owl'],
+     'imports': ['linkml:types', './foaf', './dbpedia', './owl', './qudt'],
      'license': 'MIT',
      'name': 'linkml-pokemon',
      'prefixes': {'PATO': {'prefix_prefix': 'PATO',
@@ -95,6 +95,8 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                           'prefix_reference': 'http://www.w3.org/2002/07/owl#'},
                   'pokemon': {'prefix_prefix': 'pokemon',
                               'prefix_reference': 'https://pokemonkg.org/ontology#'},
+                  'qudt': {'prefix_prefix': 'qudt',
+                           'prefix_reference': 'http://qudt.org/schema/qudt/'},
                   'rdf': {'prefix_prefix': 'rdf',
                           'prefix_reference': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
@@ -196,6 +198,24 @@ class Colour(Thing):
     wavelength: Optional[float] = Field(default=None, description="""The wavelength of the color in nanometers""", json_schema_extra = { "linkml_meta": {'alias': 'wavelength',
          'domain_of': ['Colour'],
          'slot_uri': 'dbpedia:wavelength'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+
+
+class Quantity(Thing):
+    """
+    A physical quantity.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://qudt.org/2.1/vocab/unit'})
+
+    hasUnit: Optional[str] = Field(default=None, description="""The unit of measure for the quantity.""", json_schema_extra = { "linkml_meta": {'alias': 'hasUnit', 'domain_of': ['Quantity']} })
+    hasQuantityKind: Optional[str] = Field(default=None, description="""The kind of quantity (e.g., Length, Mass, Time).""", json_schema_extra = { "linkml_meta": {'alias': 'hasQuantityKind',
+         'domain_of': ['Quantity'],
+         'slot_uri': 'qudt:hasQuantityKind'} })
+    hasValue: Optional[str] = Field(default=None, description="""The numeric value of the quantity.""", json_schema_extra = { "linkml_meta": {'alias': 'hasValue',
+         'domain_of': ['Quantity'],
+         'slot_uri': 'qudt:quantityValue'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -488,7 +508,7 @@ class Species(NamedIndividual):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'pokemon:Species',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    hasColour: Optional[Colour] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'alias': 'hasColour',
+    hasColour: Optional[str] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'alias': 'hasColour',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:hasColour'} })
     mayHaveHiddenAbility: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'mayHaveHiddenAbility',
@@ -503,11 +523,11 @@ class Species(NamedIndividual):
     isAbleToApply: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'isAbleToApply',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:isAbleToApply'} })
-    hasHeight: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'hasHeight',
+    hasHeight: Optional[Quantity] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'hasHeight',
          'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:hasHeight'} })
-    hasWeight: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'hasWeight',
+    hasWeight: Optional[Quantity] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'hasWeight',
          'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:hasWeight'} })
@@ -727,6 +747,7 @@ Thing.model_rebuild()
 NamedIndividual.model_rebuild()
 Person.model_rebuild()
 Colour.model_rebuild()
+Quantity.model_rebuild()
 Ability.model_rebuild()
 EggGroup.model_rebuild()
 Flavor.model_rebuild()

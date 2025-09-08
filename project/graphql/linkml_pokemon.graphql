@@ -216,6 +216,16 @@ type Pokemon
   {
   }
 
+type Quantity
+  {
+    id: Uri!
+    name: String
+    description: String
+    hasUnit: String
+    hasQuantityKind: String
+    hasValue: String
+  }
+
 type Region
   {
     id: Uri!
@@ -248,8 +258,8 @@ type Species
     mayHaveHiddenAbility: [Ability]
     mayHaveAbility: [Ability]
     isAbleToApply: [Move]
-    hasHeight: String
-    hasWeight: String
+    hasHeight: Quantity
+    hasWeight: Quantity
     depiction: String
     inEggGroup: [EggGroup]
     hasType: [Type]

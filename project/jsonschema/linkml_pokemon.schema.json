@@ -863,6 +863,56 @@
             "title": "Pokemon",
             "type": "object"
         },
+        "Quantity": {
+            "additionalProperties": false,
+            "description": "A physical quantity.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasQuantityKind": {
+                    "description": "The kind of quantity (e.g., Length, Mass, Time).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasUnit": {
+                    "description": "The unit of measure for the quantity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hasValue": {
+                    "description": "The numeric value of the quantity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Quantity",
+            "type": "object"
+        },
         "Region": {
             "additionalProperties": false,
             "description": "",
@@ -1003,15 +1053,11 @@
                     ]
                 },
                 "hasColour": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Colour"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "A Pokemon has a color"
+                    "description": "A Pokemon has a color",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "hasGenus": {
                     "type": [
@@ -1020,9 +1066,13 @@
                     ]
                 },
                 "hasHeight": {
-                    "type": [
-                        "string",
-                        "null"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Quantity"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "hasShape": {
@@ -1043,9 +1093,13 @@
                     ]
                 },
                 "hasWeight": {
-                    "type": [
-                        "string",
-                        "null"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Quantity"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "id": {

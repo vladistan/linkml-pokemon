@@ -22,5 +22,6 @@ classes:
 slots:
   depiction:
     range: string
+    multivalued:
     slot_uri: foaf:depiction
     description: A depiction of the person

@@ -48,6 +48,7 @@ Thing <|-- NamedIndividual
 Thing <|-- Place
 Thing <|-- Pokedex
 Thing <|-- PokedexEntry
+Thing <|-- Quantity
 Trainer <|-- GymLeader
 
 ```
@@ -55,7 +56,38 @@ Trainer <|-- GymLeader
 ## ERD Diagrams
 
 
-### Component 1 (Ability, Colour, EggGroup...)
+### Component 1 (Berry, Flavor, Food)
+
+```mermaid
+erDiagram
+Berry {
+    string hasSize  
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+Flavor {
+    uri id  
+    string name  
+    string description  
+}
+Food {
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+
+Berry ||--}o Flavor : "hasFlavor"
+Food ||--}o Flavor : "hasFlavor"
+
+```
+
+
+### Component 2 (Ability, Colour, EggGroup...)
 
 ```mermaid
 erDiagram
@@ -108,6 +140,14 @@ PhysicalMove {
     string name  
     string description  
 }
+Quantity {
+    string hasUnit  
+    string hasQuantityKind  
+    string hasValue  
+    uri id  
+    string name  
+    string description  
+}
 Shape {
     uri id  
     string name  
@@ -120,8 +160,6 @@ SpecialMove {
     string description  
 }
 Species {
-    string hasHeight  
-    string hasWeight  
     string depiction  
     string hasGenus  
     integer hasCatchRate  
@@ -146,6 +184,8 @@ Move ||--}o Type : "hasType"
 PhysicalMove ||--}o Type : "hasType"
 SpecialMove ||--}o Type : "hasType"
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -154,37 +194,6 @@ Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
 Species ||--}o Type : "hasType"
 StatusMove ||--}o Type : "hasType"
-
-```
-
-
-### Component 2 (Berry, Flavor, Food)
-
-```mermaid
-erDiagram
-Berry {
-    string hasSize  
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-Flavor {
-    uri id  
-    string name  
-    string description  
-}
-Food {
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-
-Berry ||--}o Flavor : "hasFlavor"
-Food ||--}o Flavor : "hasFlavor"
 
 ```
 
@@ -420,6 +429,7 @@ Thing <|-- NamedIndividual
 Thing <|-- Place
 Thing <|-- Pokedex
 Thing <|-- PokedexEntry
+Thing <|-- Quantity
 
 ```
 
@@ -443,6 +453,7 @@ Thing <|-- PokedexEntry
  * [Place](#Place)
  * [Pokedex](#Pokedex)
  * [PokedexEntry](#PokedexEntry) - A pokedex entry is a description of a Pokemon.
+ * [Quantity](#Quantity) - A physical quantity.
 
 
 
@@ -464,6 +475,8 @@ Species {
 }
 
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -576,6 +589,8 @@ Species {
 }
 
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -631,6 +646,8 @@ Species {
 }
 
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -784,6 +801,8 @@ Species {
 
 Generation ||--}o Species : "featuresSpecies"
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -915,6 +934,8 @@ Species {
 }
 
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -1112,6 +1133,8 @@ Type {
 
 Move ||--}o Type : "hasType"
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -1354,6 +1377,56 @@ This class has no attributes
 
 
 
+### Quantity
+
+A physical quantity.
+
+```mermaid
+erDiagram
+Quantity {
+
+}
+Species {
+
+}
+
+Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
+Species ||--|o Shape : "hasShape"
+Species ||--}o Ability : "mayHaveAbility"
+Species ||--}o Ability : "mayHaveHiddenAbility"
+Species ||--}o EggGroup : "inEggGroup"
+Species ||--}o Habitat : "foundIn"
+Species ||--}o Move : "isAbleToApply"
+Species ||--}o Type : "hasType"
+
+```
+
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| id | <sub>1..1</sub> | uri | A unique identifier |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| description | <sub>0..1</sub> | string | A description of the entity |
+| **hasQuantityKind** | <sub>0..1</sub> | string | The kind of quantity (e.g., Length, Mass, Time). |
+| **hasUnit** | <sub>0..1</sub> | string | The unit of measure for the quantity. |
+| **hasValue** | <sub>0..1</sub> | string | The numeric value of the quantity. |
+
+#### Parents
+
+ * [Thing](#Thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Species](#Species)** : *[hasHeight](#hasHeight)*  <sub>0..1</sub> 
+ *  **[Species](#Species)** : *[hasWeight](#hasWeight)*  <sub>0..1</sub> 
+
+
+
+
 ### Region
 
 
@@ -1397,6 +1470,8 @@ Species {
 }
 
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -1486,6 +1561,9 @@ Habitat {
 Move {
 
 }
+Quantity {
+
+}
 Shape {
 
 }
@@ -1499,6 +1577,8 @@ Type {
 Generation ||--}o Species : "featuresSpecies"
 Move ||--}o Type : "hasType"
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"
@@ -1522,10 +1602,10 @@ Species ||--}o Type : "hasType"
 | **hasCatchRate** | <sub>0..1</sub> | integer |  |
 | **hasColour** | <sub>0..1</sub> | [Colour](#Colour) | A Pokemon has a color |
 | **hasGenus** | <sub>0..1</sub> | string |  |
-| **hasHeight** | <sub>0..1</sub> | string |  |
+| **hasHeight** | <sub>0..1</sub> | [Quantity](#Quantity) |  |
 | **hasShape** | <sub>0..1</sub> | [Shape](#Shape) | The shape of a berry is a measure of how good it is for making a Potion. |
 | **hasType** | <sub>0..\*</sub> | [Type](#Type) | A Pokemon has a type |
-| **hasWeight** | <sub>0..1</sub> | string |  |
+| **hasWeight** | <sub>0..1</sub> | [Quantity](#Quantity) |  |
 | **inEggGroup** | <sub>0..\*</sub> | [EggGroup](#EggGroup) |  |
 | **isAbleToApply** | <sub>0..\*</sub> | [Move](#Move) |  |
 | **mayHaveAbility** | <sub>0..\*</sub> | [Ability](#Ability) | A Pokemon may have an ability |
@@ -1694,6 +1774,8 @@ Type {
 
 Move ||--}o Type : "hasType"
 Species ||--|o Colour : "hasColour"
+Species ||--|o Quantity : "hasHeight"
+Species ||--|o Quantity : "hasWeight"
 Species ||--|o Shape : "hasShape"
 Species ||--}o Ability : "mayHaveAbility"
 Species ||--}o Ability : "mayHaveHiddenAbility"

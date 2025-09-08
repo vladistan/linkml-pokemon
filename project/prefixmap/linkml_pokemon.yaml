@@ -8,6 +8,7 @@
    "linkml_pokemon": "https://w3id.org/vladistan/linkml-pokemon/",
    "owl": "http://www.w3.org/2002/07/owl#",
    "pokemon": "https://pokemonkg.org/ontology#",
+   "qudt": "http://qudt.org/schema/qudt/",
    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
    "schema": "http://schema.org/",
@@ -21,6 +22,9 @@
    },
    "Person": {
       "@id": "foaf:Person"
+   },
+   "Quantity": {
+      "@id": "http://qudt.org/2.1/vocab/unit/Quantity"
    },
    "Thing": {
       "@id": "owl:Thing"
