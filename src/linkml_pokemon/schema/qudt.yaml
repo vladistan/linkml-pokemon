@@ -1,0 +1,34 @@
+---
+id: http://qudt.org/2.1/vocab/unit
+name: qudt-units
+description: A vocabulary of units of measure.
+title: QUDT Units
+version: 2.1
+
+prefixes:
+  qudt: http://qudt.org/schema/qudt/
+  xsd: http://www.w3.org/2001/XMLSchema#
+
+classes:
+   Quantity:
+      is_a: Thing
+      description: A physical quantity.
+      slots:
+        - hasUnit
+        - hasQuantityKind
+        - hasValue
+slots:
+
+  hasUnit:
+    description: The unit of measure for the quantity.
+    multivalued: false
+
+  hasValue:
+    description: The numeric value of the quantity.
+    multivalued: false
+    slot_uri: qudt:quantityValue
+
+  hasQuantityKind:
+    description: The kind of quantity (e.g., Length, Mass, Time).
+    multivalued: false
+    slot_uri: qudt:hasQuantityKind

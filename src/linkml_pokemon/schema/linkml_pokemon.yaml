@@ -27,6 +27,7 @@ prefixes:
   foaf: http://xmlns.com/foaf/0.1/
   dbpedia: http://dbpedia.org/ontology/
   pokemon: https://pokemonkg.org/ontology#
+  qudt: http://qudt.org/schema/qudt/
 
 default_prefix: pokemon
 default_range: string
@@ -36,6 +37,7 @@ imports:
   - ./foaf
   - ./dbpedia
   - ./owl
+  - ./qudt
 
 classes:
 
@@ -334,7 +336,7 @@ slots:
   hasColour:
     slot_uri: pokemon:hasColour
     range: Colour
-    inlined: true
+    inlined: false
     multivalued: false
     required: false
     description: A Pokemon has a color
@@ -359,16 +361,21 @@ slots:
     slot_uri: pokemon:hasSize
     multivalued: false
     required: false
+    inlined: true
 
   hasHeight:
     slot_uri: pokemon:hasHeight
     domain: Species
+    range: Quantity
+    inlined: true
     multivalued: false
     required: false
 
   hasWeight:
     slot_uri: pokemon:hasWeight
     domain: Species
+    range: Quantity
+    inlined: true
     multivalued: false
     required: false
 
