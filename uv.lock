@@ -1153,21 +1153,30 @@ dev = [
     { name = "black", specifier = ">=24.0.0" },
     { name = "chardet" },
     { name = "coverage", specifier = ">=6.4.1" },
+    { name = "gql", specifier = ">=4.0.0" },
     { name = "ipykernel" },
     { name = "ipython-genutils" },
+    { name = "jsonpatch", specifier = ">=1.33" },
     { name = "jupyter" },
+    { name = "mock", specifier = ">=5.1.0" },
+    { name = "morph-kgc", marker = "python_full_version >= '3.10'", specifier = ">=2.9.0" },
     { name = "myst-nb", marker = "python_full_version >= '3.9'", specifier = ">=1.0.0" },
     { name = "nbconvert" },
     { name = "nbformat" },
+    { name = "numpy", marker = "python_full_version < '3.12'", specifier = ">=1.24.3" },
+    { name = "numpy", marker = "python_full_version >= '3.12'", specifier = ">=1.25.2" },
     { name = "numpydantic", specifier = ">=1.6.1" },
     { name = "pandas" },
     { name = "pandera", specifier = ">=0.19.0" },
     { name = "polars-lts-cpu", specifier = ">=1.0.0" },
     { name = "pyshacl", specifier = ">=0.25.0" },
     { name = "pytest", specifier = ">=7.4.0" },
+    { name = "pytest-subtests", specifier = ">=0.11.0" },
+    { name = "pytest-xdist", specifier = ">=3.6.1" },
     { name = "requests-cache", specifier = ">=1.2.0" },
     { name = "rich", specifier = ">=13.7.1" },
     { name = "sphinx-design", specifier = ">=0.5.0" },
+    { name = "testcontainers", specifier = "==3.7.1" },
     { name = "tox", specifier = ">=4" },
     { name = "tox-uv" },
 ]
@@ -1191,6 +1200,7 @@ pandera = [
 shacl = [{ name = "pyshacl", specifier = ">=0.25.0" }]
 tests = [
     { name = "black", specifier = ">=24.0.0" },
+    { name = "morph-kgc", marker = "python_full_version >= '3.10'", specifier = ">=2.9.0" },
     { name = "numpydantic", specifier = ">=1.6.1" },
     { name = "pyshacl", specifier = ">=0.25.0" },
 ]
@@ -1205,6 +1215,7 @@ tests-extra = [
     { name = "requests-cache", specifier = ">=1.2.0" },
     { name = "testcontainers", specifier = "==3.7.1" },
 ]
+tests-rustgen = [{ name = "maturin", specifier = ">=1.9.4" }]
 typing = [{ name = "numpydantic", specifier = ">=1.6.1" }]
 
 [[package]]
@@ -1285,6 +1296,8 @@ provides-extras = ["dev"]
 dev = [
     { name = "coverage", specifier = ">=6.2" },
     { name = "requests-cache", specifier = ">=1.2.0" },
+    { name = "ruff", specifier = "==0.11.13" },
+    { name = "tox", specifier = ">=4" },
 ]
 
 [[package]]

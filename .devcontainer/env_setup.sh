@@ -6,9 +6,6 @@ STARTUP_DIR=$(pwd)
 set -e # Exit on error
 
 
-python -m pip install -U pip
-poetry config virtualenvs.in-project true
-
 
 # Clone linkml
 if [ ! -d "../linkml" ]; then
