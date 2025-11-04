@@ -1,20 +1,74 @@
 ---
-site_name: "linkml-pokemon"
+site_name: Pokemon LinkML Model
+site_description: LinkML model for Pokemon Ontology
+repo_url: https://github.com/vladistan/linkml-pokemon
+repo_name: vladistan/linkml-pokemon
+
 theme:
   name: material
-  # palette:
-  #  scheme: slate
-  #  primary: cyan
+  toc_depth: 3
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
     - content.tabs.link
+    - content.code.copy
+
 plugins:
   - search
   - mermaid2
-  - mermaid2:
-      version: 10.9.0
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
 nav:
-  # - Home: home.md
-  - Index: index.md
+  - Home: index.md
+  - Data Dictionary: datadict.md
   - About: about.md
 site_url: https://vladistan.github.io/linkml-pokemon
 repo_url: https://github.com/vladistan/linkml-pokemon

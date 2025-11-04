@@ -4,6 +4,18 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
+      # General
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-executables-have-shebangs
+      - id: detect-private-key
+      - id: check-symlinks
       - id: check-toml
       - id: check-yaml
       - id: end-of-file-fixer

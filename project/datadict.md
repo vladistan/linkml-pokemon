@@ -49,6 +49,7 @@ Thing <|-- Place
 Thing <|-- Pokedex
 Thing <|-- PokedexEntry
 Thing <|-- Quantity
+Thing <|-- Unit
 Trainer <|-- GymLeader
 
 ```
@@ -56,38 +57,7 @@ Trainer <|-- GymLeader
 ## ERD Diagrams
 
 
-### Component 1 (Berry, Flavor, Food)
-
-```mermaid
-erDiagram
-Berry {
-    string hasSize  
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-Flavor {
-    uri id  
-    string name  
-    string description  
-}
-Food {
-    integer firmness  
-    integer smoothness  
-    uri id  
-    string name  
-    string description  
-}
-
-Berry ||--}o Flavor : "hasFlavor"
-Food ||--}o Flavor : "hasFlavor"
-
-```
-
-
-### Component 2 (Ability, Colour, EggGroup...)
+### Component 1 (Ability, Colour, EggGroup...)
 
 ```mermaid
 erDiagram
@@ -141,12 +111,13 @@ PhysicalMove {
     string description  
 }
 Quantity {
-    string hasUnit  
-    string hasQuantityKind  
     string hasValue  
     uri id  
     string name  
     string description  
+}
+QuantityKind {
+
 }
 Shape {
     uri id  
@@ -178,10 +149,17 @@ Type {
     string name  
     string description  
 }
+Unit {
+    uri id  
+    string name  
+    string description  
+}
 
 Generation ||--}o Species : "featuresSpecies"
 Move ||--}o Type : "hasType"
 PhysicalMove ||--}o Type : "hasType"
+Quantity ||--|o QuantityKind : "hasQuantityKind"
+Quantity ||--}o Unit : "hasUnit"
 SpecialMove ||--}o Type : "hasType"
 Species ||--|o Colour : "hasColour"
 Species ||--|o Quantity : "hasHeight"
@@ -194,6 +172,37 @@ Species ||--}o Habitat : "foundIn"
 Species ||--}o Move : "isAbleToApply"
 Species ||--}o Type : "hasType"
 StatusMove ||--}o Type : "hasType"
+
+```
+
+
+### Component 2 (Berry, Flavor, Food)
+
+```mermaid
+erDiagram
+Berry {
+    string hasSize  
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+Flavor {
+    uri id  
+    string name  
+    string description  
+}
+Food {
+    integer firmness  
+    integer smoothness  
+    uri id  
+    string name  
+    string description  
+}
+
+Berry ||--}o Flavor : "hasFlavor"
+Food ||--}o Flavor : "hasFlavor"
 
 ```
 
@@ -430,6 +439,7 @@ Thing <|-- Place
 Thing <|-- Pokedex
 Thing <|-- PokedexEntry
 Thing <|-- Quantity
+Thing <|-- Unit
 
 ```
 
@@ -454,6 +464,7 @@ Thing <|-- Quantity
  * [Pokedex](#Pokedex)
  * [PokedexEntry](#PokedexEntry) - A pokedex entry is a description of a Pokemon.
  * [Quantity](#Quantity) - A physical quantity.
+ * [Unit](#Unit) - A unit of measure.
 
 
 
@@ -1386,10 +1397,18 @@ erDiagram
 Quantity {
 
 }
+QuantityKind {
+
+}
 Species {
 
 }
+Unit {
 
+}
+
+Quantity ||--|o QuantityKind : "hasQuantityKind"
+Quantity ||--}o Unit : "hasUnit"
 Species ||--|o Colour : "hasColour"
 Species ||--|o Quantity : "hasHeight"
 Species ||--|o Quantity : "hasWeight"
@@ -1411,8 +1430,8 @@ Species ||--}o Type : "hasType"
 | id | <sub>1..1</sub> | uri | A unique identifier |
 | name | <sub>0..1</sub> | string | Human-readable label for the entity |
 | description | <sub>0..1</sub> | string | A description of the entity |
-| **hasQuantityKind** | <sub>0..1</sub> | string | The kind of quantity (e.g., Length, Mass, Time). |
-| **hasUnit** | <sub>0..1</sub> | string | The unit of measure for the quantity. |
+| **hasQuantityKind** | <sub>0..1</sub> | [QuantityKind](#QuantityKind) | The kind of quantity (e.g., Length, Mass, Time). |
+| **hasUnit** | <sub>0..\*</sub> | [Unit](#Unit) |  |
 | **hasValue** | <sub>0..1</sub> | string | The numeric value of the quantity. |
 
 #### Parents
@@ -1423,6 +1442,35 @@ Species ||--}o Type : "hasType"
 
  *  **[Species](#Species)** : *[hasHeight](#hasHeight)*  <sub>0..1</sub> 
  *  **[Species](#Species)** : *[hasWeight](#hasWeight)*  <sub>0..1</sub> 
+
+
+
+
+### QuantityKind
+
+
+
+```mermaid
+erDiagram
+Quantity {
+
+}
+QuantityKind {
+
+}
+
+Quantity ||--|o QuantityKind : "hasQuantityKind"
+Quantity ||--}o Unit : "hasUnit"
+
+```
+
+
+This class has no attributes
+
+
+#### Referenced by:
+
+ *  **[Quantity](#Quantity)** : *[Quantity_hasQuantityKind](#Quantity_hasQuantityKind)*  <sub>0..1</sub> 
 
 
 
@@ -1576,6 +1624,8 @@ Type {
 
 Generation ||--}o Species : "featuresSpecies"
 Move ||--}o Type : "hasType"
+Quantity ||--|o QuantityKind : "hasQuantityKind"
+Quantity ||--}o Unit : "hasUnit"
 Species ||--|o Colour : "hasColour"
 Species ||--|o Quantity : "hasHeight"
 Species ||--|o Quantity : "hasWeight"
@@ -1803,6 +1853,44 @@ Species ||--}o Type : "hasType"
 
  *  **[Move](#Move)** : *[hasType](#hasType)*  <sub>0..\*</sub> 
  *  **[Species](#Species)** : *[hasType](#hasType)*  <sub>0..\*</sub> 
+
+
+
+
+### Unit
+
+A unit of measure.
+
+```mermaid
+erDiagram
+Quantity {
+
+}
+Unit {
+
+}
+
+Quantity ||--|o QuantityKind : "hasQuantityKind"
+Quantity ||--}o Unit : "hasUnit"
+
+```
+
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| id | <sub>1..1</sub> | uri | A unique identifier |
+| name | <sub>0..1</sub> | string | Human-readable label for the entity |
+| description | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#Thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Quantity](#Quantity)** : *[hasUnit](#hasUnit)*  <sub>0..\*</sub> 
 
 
 

@@ -1188,16 +1188,35 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "hasUnit",
-      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasUnit",
-      "description": "The unit of measure for the quantity.",
+      "name": "hasQuantityKind",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasQuantityKind",
+      "description": "The kind of quantity (e.g., Length, Mass, Time).",
       "from_schema": "http://qudt.org/2.1/vocab/unit",
-      "slot_uri": "http://qudt.org/2.1/vocab/unit/hasUnit",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
       ],
       "range": "string",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "hasUnit",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasUnit",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasUnit"
+      ],
+      "slot_uri": "http://qudt.org/schema/qudt/hasUnit",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "range": "Unit",
+      "multivalued": true,
       "@type": "SlotDefinition"
     },
     {
@@ -1209,22 +1228,6 @@
         "http://qudt.org/schema/qudt/quantityValue"
       ],
       "slot_uri": "http://qudt.org/schema/qudt/quantityValue",
-      "owner": "Quantity",
-      "domain_of": [
-        "Quantity"
-      ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "hasQuantityKind",
-      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasQuantityKind",
-      "description": "The kind of quantity (e.g., Length, Mass, Time).",
-      "from_schema": "http://qudt.org/2.1/vocab/unit",
-      "mappings": [
-        "http://qudt.org/schema/qudt/hasQuantityKind"
-      ],
-      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
       "owner": "Quantity",
       "domain_of": [
         "Quantity"
@@ -1252,6 +1255,29 @@
       "usage_slot_name": "name",
       "range": "string",
       "required": true,
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Quantity_hasQuantityKind",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/hasQuantityKind",
+      "description": "The kind of quantity (e.g., Length, Mass, Time).",
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "http://qudt.org/schema/qudt/hasQuantityKind"
+      ],
+      "is_a": "hasQuantityKind",
+      "domain": "Quantity",
+      "slot_uri": "http://qudt.org/schema/qudt/hasQuantityKind",
+      "alias": "hasQuantityKind",
+      "owner": "Quantity",
+      "domain_of": [
+        "Quantity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "hasQuantityKind",
+      "range": "QuantityKind",
+      "inlined": true,
+      "inlined_as_list": true,
       "@type": "SlotDefinition"
     }
   ],
@@ -1975,18 +2001,59 @@
       "name": "Quantity",
       "definition_uri": "http://qudt.org/2.1/vocab/unit/Quantity",
       "description": "A physical quantity.",
+      "comments": [
+        "<p class=\\\"lm-para\\\">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system. \n  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the \n  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific \n  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as \n  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>\n<p class=\\\"lm-para\\\">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points, \nvelocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p> \n<p class=\\\"lm-para\\\">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity \nkinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance \ndivided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these \nexpressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded \nas \\\"fundamental\\\" in this sense.</p>\n<p class=\\\"lm-para\\\">A quantity is distinguished from a \\\"quantity kind\\\" in that the former carries a value and the latter is a type specifier.</p>^^rdf:HTML"
+      ],
       "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "qudt:Quantity"
+      ],
       "is_a": "Thing",
       "slots": [
         "id",
         "name",
         "description",
         "hasUnit",
-        "hasQuantityKind",
+        "Quantity_hasQuantityKind",
         "hasValue"
       ],
       "slot_usage": {},
-      "class_uri": "http://qudt.org/2.1/vocab/unit/Quantity",
+      "class_uri": "http://qudt.org/schema/qudt/Quantity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "QuantityKind",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/QuantityKind",
+      "comments": [
+        "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.^^rdf:HTML"
+      ],
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "qudt:QuantityKind"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/QuantityKind",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Unit",
+      "definition_uri": "http://qudt.org/2.1/vocab/unit/Unit",
+      "description": "A unit of measure.",
+      "comments": [
+        "A <b>Unit</b> is a particular quantity value that has been chosen as a scale for measuring other quantities of the same kind (e.g., meter for length, kilogram for mass, second for time)."
+      ],
+      "from_schema": "http://qudt.org/2.1/vocab/unit",
+      "mappings": [
+        "qudt:Unit"
+      ],
+      "is_a": "Thing",
+      "slots": [
+        "id",
+        "name",
+        "description"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://qudt.org/schema/qudt/Unit",
       "@type": "ClassDefinition"
     }
   ],
@@ -1994,7 +2061,7 @@
   "source_file": "linkml_pokemon.yaml",
   "source_file_date": "2025-09-08T11:54:51",
   "source_file_size": 12469,
-  "generation_date": "2025-09-08T13:04:50",
+  "generation_date": "2025-10-25T15:09:08",
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/linkml_pokemon.context.jsonld",

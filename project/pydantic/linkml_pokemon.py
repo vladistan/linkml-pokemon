@@ -45,7 +45,19 @@ class ConfiguredBaseModel(BaseModel):
         strict = False,
     )
 
-
+    @model_serializer(mode='wrap', when_used='unless-none')
+    def treat_empty_lists_as_none(
+            self, handler: SerializerFunctionWrapHandler,
+            info: SerializationInfo) -> dict[str, Any]:
+        if info.exclude_none:
+            _instance = self.model_copy()
+            for field, field_info in type(_instance).model_fields.items():
+                if getattr(_instance, field) == [] and not(
+                        field_info.is_required()):
+                    setattr(_instance, field, None)
+        else:
+            _instance = self
+        return handler(_instance, info)
 
 
 
@@ -188,81 +200,11 @@ class Quantity(Thing):
     """
     A physical quantity.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'comments': ['<p class=\\"lm-para\\">A <b>quantity</b> is the measurement of '
-                      'an observable property of a particular object, event, or '
-                      'physical system. \n'
-                      '  A quantity is always associated with the context of '
-                      'measurement (i.e. the thing measured, the measured value, the '
-                      'accuracy of measurement, etc.) whereas the \n'
-                      '  underlying <b>quantity kind</b> is independent of any '
-                      'particular measurement. Thus, length is a quantity kind while '
-                      'the height of a rocket is a specific \n'
-                      '  quantity of length; its magnitude that may be expressed in '
-                      'meters, feet, inches, etc. Examples of physical quantities '
-                      'include physical constants, such as \n'
-                      "  the speed of light in a vacuum, Planck's constant, the "
-                      'electric permittivity of free space, and the fine structure '
-                      'constant. </p>\n'
-                      '<p class=\\"lm-para\\">In other words, quantities are '
-                      'quantifiable aspects of the world, such as the duration of a '
-                      'movie, the distance between two points, \n'
-                      'velocity of a car, the pressure of the atmosphere, and a '
-                      "person's weight; and units are used to describe their numerical "
-                      'measure.</p> \n'
-                      '<p class=\\"lm-para\\">Many <b>quantity kinds</b> are related '
-                      'to each other by various physical laws, and as a result, the '
-                      'associated units of some quantity \n'
-                      'kinds can be expressed as products (or ratios) of powers of '
-                      'other quantity kinds (e.g., momentum is mass times velocity and '
-                      'velocity is defined as distance \n'
-                      'divided by time). In this way, some quantities can be '
-                      'calculated from other measured quantities using their '
-                      'associations to the quantity kinds in these \n'
-                      'expressions. These quantity kind relationships are also '
-                      'discussed in dimensional analysis. Those that cannot be so '
-                      'expressed can be regarded \n'
-                      'as \\"fundamental\\" in this sense.</p>\n'
-                      '<p class=\\"lm-para\\">A quantity is distinguished from a '
-                      '\\"quantity kind\\" in that the former carries a value and the '
-                      'latter is a type specifier.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/2.1/vocab/unit',
-         'slot_usage': {'hasQuantityKind': {'name': 'hasQuantityKind',
-                                            'range': 'QuantityKind',
-                                            'required': False}}})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'http://qudt.org/2.1/vocab/unit'})
 
-    hasUnit: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:hasUnit'} })
-    hasQuantityKind: Optional[QuantityKind] = Field(default=None, description="""The kind of quantity (e.g., Length, Mass, Time).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    hasUnit: Optional[str] = Field(default=None, description="""The unit of measure for the quantity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity']} })
+    hasQuantityKind: Optional[str] = Field(default=None, description="""The kind of quantity (e.g., Length, Mass, Time).""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:hasQuantityKind'} })
     hasValue: Optional[str] = Field(default=None, description="""The numeric value of the quantity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:quantityValue'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class QuantityKind(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKind',
-         'comments': ['A <b>Quantity Kind</b> is any observable property that can be  '
-                      'measured and quantified numerically. Familiar examples include '
-                      'physical properties such as length, mass, time, force, energy, '
-                      'power, electric charge, etc. Less familiar examples include '
-                      'currency, interest rate, price to earning ratio, and '
-                      'information capacity.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/2.1/vocab/unit'})
-
-    pass
-
-
-class Unit(Thing):
-    """
-    A unit of measure.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Unit',
-         'comments': ['A <b>Unit</b> is a particular quantity value that has been '
-                      'chosen as a scale for measuring other quantities of the same '
-                      'kind (e.g., meter for length, kilogram for mass, second for '
-                      'time).'],
-         'from_schema': 'http://qudt.org/2.1/vocab/unit'})
-
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -281,7 +223,7 @@ class Ability(Thing):
          'class_uri': 'pokemon:Ability',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    effectDescription: Optional[list[str]] = Field(default=None, description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
+    effectDescription: Optional[list[str]] = Field(default=[], description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -342,7 +284,7 @@ class Generation(Thing):
                                                    'there are to be learned.'}},
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    featuresSpecies: Optional[list[str]] = Field(default=None, description="""['A Pokedex entry features a species']""", json_schema_extra = { "linkml_meta": {'domain_of': ['Generation'], 'slot_uri': 'pokemon:featuresSpecies'} })
+    featuresSpecies: Optional[list[str]] = Field(default=[], description="""['A Pokedex entry features a species']""", json_schema_extra = { "linkml_meta": {'domain_of': ['Generation'], 'slot_uri': 'pokemon:featuresSpecies'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -390,7 +332,7 @@ class BattleItem(Item):
 class Food(Item):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    hasFlavor: Optional[list[str]] = Field(default=None, description="""A Pokemon has a flavor""", json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food'], 'slot_uri': 'pokemon:hasFlavor'} })
+    hasFlavor: Optional[list[str]] = Field(default=[], description="""A Pokemon has a flavor""", json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food'], 'slot_uri': 'pokemon:hasFlavor'} })
     firmness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
     smoothness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
@@ -416,7 +358,7 @@ class Berry(Food):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     hasSize: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Berry'], 'slot_uri': 'pokemon:hasSize'} })
-    hasFlavor: Optional[list[str]] = Field(default=None, description="""A Pokemon has a flavor""", json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food'], 'slot_uri': 'pokemon:hasFlavor'} })
+    hasFlavor: Optional[list[str]] = Field(default=[], description="""A Pokemon has a flavor""", json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food'], 'slot_uri': 'pokemon:hasFlavor'} })
     firmness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
     smoothness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
@@ -461,8 +403,11 @@ class Pokedex(Thing):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-# A Pokemon
+# Type alias for union_of
 Pokemon = Union["Pokedex", "Type"]
+"""
+A Pokemon
+"""
 
 
 class PokedexEntry(Thing):
@@ -543,27 +488,27 @@ class Species(NamedIndividual):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     hasColour: Optional[str] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species'], 'slot_uri': 'pokemon:hasColour'} })
-    mayHaveHiddenAbility: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species',
+    mayHaveHiddenAbility: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:mayHaveHiddenAbility',
          'subproperty_of': 'mayHaveAbility'} })
-    mayHaveAbility: Optional[list[str]] = Field(default=None, description="""A Pokemon may have an ability""", json_schema_extra = { "linkml_meta": {'domain': 'Species',
+    mayHaveAbility: Optional[list[str]] = Field(default=[], description="""A Pokemon may have an ability""", json_schema_extra = { "linkml_meta": {'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:mayHaveAbility'} })
-    isAbleToApply: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Species'], 'slot_uri': 'pokemon:isAbleToApply'} })
+    isAbleToApply: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain_of': ['Species'], 'slot_uri': 'pokemon:isAbleToApply'} })
     hasHeight: Optional[Quantity] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species'], 'slot_uri': 'pokemon:hasHeight'} })
     hasWeight: Optional[Quantity] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species'], 'slot_uri': 'pokemon:hasWeight'} })
     depiction: Optional[str] = Field(default=None, description="""A depiction of the person""", json_schema_extra = { "linkml_meta": {'domain_of': ['Person', 'Species'], 'slot_uri': 'foaf:depiction'} })
-    inEggGroup: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species',
+    inEggGroup: Optional[list[str]] = Field(default=[], json_schema_extra = { "linkml_meta": {'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:inEggGroup'} })
-    hasType: Optional[list[Type]] = Field(default=None, description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
+    hasType: Optional[list[Type]] = Field(default=[], description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
     hasShape: Optional[str] = Field(default=None, description="""The shape of a berry is a measure of how good it  is for making a Potion.""", json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species'], 'slot_uri': 'pokemon:hasShape'} })
     hasGenus: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species']} })
     hasCatchRate: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:hasCatchRate'} })
-    foundIn: Optional[list[str]] = Field(default=None, description="""A place is found in a location""", json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species'], 'slot_uri': 'pokemon:foundIn'} })
+    foundIn: Optional[list[str]] = Field(default=[], description="""A place is found in a location""", json_schema_extra = { "linkml_meta": {'domain': 'Species', 'domain_of': ['Species'], 'slot_uri': 'pokemon:foundIn'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -576,8 +521,8 @@ class Move(Thing):
          'class_uri': 'pokemon:Move',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    effectDescription: Optional[list[str]] = Field(default=None, description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
-    hasType: Optional[list[Type]] = Field(default=None, description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
+    effectDescription: Optional[list[str]] = Field(default=[], description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
+    hasType: Optional[list[Type]] = Field(default=[], description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -627,8 +572,8 @@ class SpecialMove(Move):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    effectDescription: Optional[list[str]] = Field(default=None, description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
-    hasType: Optional[list[Type]] = Field(default=None, description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
+    effectDescription: Optional[list[str]] = Field(default=[], description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
+    hasType: Optional[list[Type]] = Field(default=[], description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -640,8 +585,8 @@ class PhysicalMove(Move):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    effectDescription: Optional[list[str]] = Field(default=None, description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
-    hasType: Optional[list[Type]] = Field(default=None, description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
+    effectDescription: Optional[list[str]] = Field(default=[], description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
+    hasType: Optional[list[Type]] = Field(default=[], description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -653,8 +598,8 @@ class StatusMove(Move):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
 
-    effectDescription: Optional[list[str]] = Field(default=None, description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
-    hasType: Optional[list[Type]] = Field(default=None, description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
+    effectDescription: Optional[list[str]] = Field(default=[], description="""A description of the effect of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Ability', 'Move'], 'slot_uri': 'pokemon:effectDescription'} })
+    hasType: Optional[list[Type]] = Field(default=[], description="""A Pokemon has a type""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species', 'Move'], 'slot_uri': 'pokemon:hasType'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
@@ -738,8 +683,6 @@ NamedIndividual.model_rebuild()
 Person.model_rebuild()
 Colour.model_rebuild()
 Quantity.model_rebuild()
-QuantityKind.model_rebuild()
-Unit.model_rebuild()
 Ability.model_rebuild()
 EggGroup.model_rebuild()
 Flavor.model_rebuild()

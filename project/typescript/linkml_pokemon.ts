@@ -3,6 +3,7 @@ export type NamedIndividualId = string;
 export type PersonId = string;
 export type ColourId = string;
 export type QuantityId = string;
+export type UnitId = string;
 export type AbilityId = string;
 export type BattleItemId = string;
 export type BerryId = string;
@@ -104,12 +105,23 @@ export interface Colour extends Thing {
  * A physical quantity.
  */
 export interface Quantity extends Thing {
-    /** The unit of measure for the quantity. */
-    hasUnit?: string,
+    hasUnit?: UnitId[],
     /** The kind of quantity (e.g., Length, Mass, Time). */
-    hasQuantityKind?: string,
+    hasQuantityKind?: QuantityKind,
     /** The numeric value of the quantity. */
     hasValue?: string,
+}
+
+
+
+export interface QuantityKind {
+}
+
+
+/**
+ * A unit of measure.
+ */
+export interface Unit extends Thing {
 }
 
 

@@ -12,33 +12,7 @@
 owl:NamedIndividual a sh:NodeShape ;
     sh:closed false ;
     sh:description "A Thing that requires a name" ;
-    sh:ignoredProperties ( pokemon:hasWeight pokemon:isAbleToApply pokemon:hasHeight pokemon:mayHaveAbility foaf:depiction pokemon:hasType pokemon:hasColour pokemon:mayHaveHiddenAbility pokemon:foundIn pokemon:hasGenus rdf:type pokemon:hasCatchRate pokemon:inEggGroup pokemon:hasShape ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rdfs:label ] ;
-    sh:targetClass owl:NamedIndividual .
-
-owl:Thing a sh:NodeShape ;
-    sh:closed false ;
-    sh:description "An rdfs:Resource that defines name and description" ;
-    sh:ignoredProperties ( dbpedia:cmykCoordinateBlack pokemon:mayHaveAbility foaf:depiction pokemon:hasColour pokemon:mayHaveHiddenAbility pokemon:foundIn pokemon:hasGenus pokemon:hasFlavor dbpedia:rgbCoordinateGreen pokemon:firmness rdf:type pokemon:hasCatchRate dbpedia:hsvCoordinateLightness qudt:quantityValue pokemon:inEggGroup pokemon:hasSize pokemon:hasShape pokemon:hasWeight dbpedia:rgbCoordinateRed dbpedia:hsvCoordinateHue qudt:hasQuantityKind <http://qudt.org/2.1/vocab/unit/hasUnit> dbpedia:hsvCoordinateSaturation dbpedia:cmykCoordinateMagenta pokemon:hasHeight pokemon:smoothness dbpedia:wavelength pokemon:featuresSpecies pokemon:hasType dbpedia:rgbCoordinateBlue dbpedia:cmykCoordinateCyanic pokemon:effectDescription pokemon:isAbleToApply dbpedia:cmykCoordinateYellow ) ;
+    sh:ignoredProperties ( pokemon:isAbleToApply pokemon:inEggGroup pokemon:mayHaveHiddenAbility pokemon:hasCatchRate pokemon:hasType pokemon:hasWeight pokemon:foundIn pokemon:hasShape pokemon:hasColour foaf:depiction rdf:type pokemon:mayHaveAbility pokemon:hasHeight pokemon:hasGenus ) ;
     sh:property [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
@@ -52,6 +26,32 @@ owl:Thing a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
             sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass owl:NamedIndividual .
+
+owl:Thing a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "An rdfs:Resource that defines name and description" ;
+    sh:ignoredProperties ( dbpedia:cmykCoordinateBlack pokemon:featuresSpecies dbpedia:wavelength qudt:quantityValue dbpedia:rgbCoordinateGreen qudt:hasUnit pokemon:foundIn dbpedia:cmykCoordinateYellow rdf:type pokemon:hasHeight dbpedia:hsvCoordinateHue pokemon:hasGenus pokemon:firmness pokemon:hasFlavor pokemon:isAbleToApply pokemon:inEggGroup dbpedia:rgbCoordinateBlue pokemon:smoothness pokemon:mayHaveHiddenAbility qudt:hasQuantityKind pokemon:hasCatchRate dbpedia:cmykCoordinateMagenta pokemon:hasSize pokemon:hasType pokemon:hasWeight pokemon:hasShape dbpedia:rgbCoordinateRed pokemon:hasColour foaf:depiction dbpedia:cmykCoordinateCyanic dbpedia:hsvCoordinateSaturation pokemon:mayHaveAbility dbpedia:hsvCoordinateLightness pokemon:effectDescription ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
         [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
@@ -65,12 +65,11 @@ foaf:Person a sh:NodeShape ;
     sh:description "A person is a human being" ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
+            sh:description "A description of the entity" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:label ],
+            sh:order 3 ;
+            sh:path rdfs:comment ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -79,24 +78,31 @@ foaf:Person a sh:NodeShape ;
             sh:order 1 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
             sh:description "A depiction of the person" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path foaf:depiction ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:comment ] ;
+            sh:path foaf:depiction ] ;
     sh:targetClass foaf:Person .
 
 pokemon:BattleItem a sh:NodeShape ;
     sh:closed true ;
     sh:description "Battle items are items that can be used during battles." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -108,19 +114,40 @@ pokemon:BattleItem a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ] ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:BattleItem .
 
 pokemon:Berry a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:class pokemon:Flavor ;
+            sh:description "A Pokemon has a flavor" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path pokemon:hasFlavor ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path pokemon:firmness ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path pokemon:smoothness ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -128,37 +155,10 @@ pokemon:Berry a sh:NodeShape ;
             sh:order 4 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path pokemon:hasSize ],
-        [ sh:datatype xsd:integer ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path pokemon:firmness ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path rdfs:label ],
-        [ sh:class pokemon:Flavor ;
-            sh:description "A Pokemon has a flavor" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path pokemon:hasFlavor ],
-        [ sh:datatype xsd:integer ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path pokemon:smoothness ] ;
+            sh:path pokemon:hasSize ] ;
     sh:targetClass pokemon:Berry .
 
 pokemon:Food a sh:NodeShape ;
@@ -170,6 +170,11 @@ pokemon:Food a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path rdfs:comment ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path pokemon:firmness ],
         [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
@@ -183,21 +188,16 @@ pokemon:Food a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:integer ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path pokemon:firmness ],
-        [ sh:datatype xsd:integer ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path pokemon:smoothness ],
         [ sh:class pokemon:Flavor ;
             sh:description "A Pokemon has a flavor" ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path pokemon:hasFlavor ] ;
+            sh:path pokemon:hasFlavor ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path pokemon:smoothness ] ;
     sh:targetClass pokemon:Food .
 
 pokemon:Game a sh:NodeShape ;
@@ -212,46 +212,46 @@ pokemon:Game a sh:NodeShape ;
             sh:order 0 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path rdfs:label ] ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ] ;
     sh:targetClass pokemon:Game .
 
 pokemon:Generation a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rdfs:comment ],
         [ sh:class pokemon:Species ;
             sh:description "['A Pokedex entry features a species']" ;
             sh:nodeKind sh:IRI ;
             sh:order 0 ;
-            sh:path pokemon:featuresSpecies ] ;
+            sh:path pokemon:featuresSpecies ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:Generation .
 
 pokemon:Gym a sh:NodeShape ;
@@ -259,12 +259,6 @@ pokemon:Gym a sh:NodeShape ;
     sh:description "A gym is a location that can be battled at." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -276,20 +270,19 @@ pokemon:Gym a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path linkml_common:identifier ] ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:Gym .
 
 pokemon:GymLeader a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
             sh:description "A depiction of the person" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -302,6 +295,13 @@ pokemon:GymLeader a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:label ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
@@ -339,30 +339,30 @@ pokemon:HoldItem a sh:NodeShape ;
     sh:closed true ;
     sh:description "A hold item is an item that can be held by a Pokemon." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rdfs:label ],
+            sh:order 0 ;
+            sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path rdfs:comment ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ] ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:HoldItem .
 
 pokemon:Item a sh:NodeShape ;
     sh:closed true ;
-    sh:ignoredProperties ( pokemon:firmness pokemon:smoothness rdf:type pokemon:hasSize pokemon:hasFlavor ) ;
+    sh:ignoredProperties ( pokemon:firmness pokemon:hasFlavor pokemon:smoothness rdf:type pokemon:hasSize ) ;
     sh:property [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
@@ -400,71 +400,6 @@ pokemon:Medicine a sh:NodeShape ;
     sh:closed true ;
     sh:description "Medicine items can heal various afflictions of a Pokemon." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ] ;
-    sh:targetClass pokemon:Medicine .
-
-pokemon:MoveLearning a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A move learning is a way that a Pokemon can learn a move." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:targetClass pokemon:MoveLearning .
-
-pokemon:PhysicalMove a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A physical move is a type of move that can be used during battles." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path rdfs:comment ],
-        [ sh:class pokemon:Type ;
-            sh:description "A Pokemon has a type" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 1 ;
-            sh:path pokemon:hasType ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the effect of the entity" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path pokemon:effectDescription ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path linkml_common:identifier ] ;
-    sh:targetClass pokemon:PhysicalMove .
-
-pokemon:Place a sh:NodeShape ;
-    sh:closed false ;
-    sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -484,6 +419,71 @@ pokemon:Place a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path rdfs:comment ] ;
+    sh:targetClass pokemon:Medicine .
+
+pokemon:MoveLearning a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A move learning is a way that a Pokemon can learn a move." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass pokemon:MoveLearning .
+
+pokemon:PhysicalMove a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A physical move is a type of move that can be used during battles." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class pokemon:Type ;
+            sh:description "A Pokemon has a type" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path pokemon:hasType ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the effect of the entity" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path pokemon:effectDescription ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rdfs:label ] ;
+    sh:targetClass pokemon:PhysicalMove .
+
+pokemon:Place a sh:NodeShape ;
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:Place .
 
 pokemon:Pokeball a sh:NodeShape ;
@@ -514,37 +514,6 @@ pokemon:Pokedex a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 1 ;
-            sh:path rdfs:label ] ;
-    sh:targetClass pokemon:Pokedex .
-
-pokemon:PokedexEntry a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A pokedex entry is a description of a Pokemon." ;
-    sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -556,7 +525,38 @@ pokemon:PokedexEntry a sh:NodeShape ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path linkml_common:identifier ] ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ] ;
+    sh:targetClass pokemon:Pokedex .
+
+pokemon:PokedexEntry a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A pokedex entry is a description of a Pokemon." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml_common:identifier ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 1 ;
+            sh:path rdfs:label ] ;
     sh:targetClass pokemon:PokedexEntry .
 
 pokemon:Pokemon a sh:NodeShape ;
@@ -568,13 +568,7 @@ pokemon:Pokemon a sh:NodeShape ;
 pokemon:Region a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -586,7 +580,13 @@ pokemon:Region a sh:NodeShape ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
-            sh:path rdfs:label ] ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ] ;
     sh:targetClass pokemon:Region .
 
 pokemon:SpecialMove a sh:NodeShape ;
@@ -594,6 +594,12 @@ pokemon:SpecialMove a sh:NodeShape ;
     sh:description "A special move is a type of move that can be used during battles." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
@@ -604,11 +610,6 @@ pokemon:SpecialMove a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
             sh:path pokemon:hasType ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the effect of the entity" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path pokemon:effectDescription ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -617,11 +618,10 @@ pokemon:SpecialMove a sh:NodeShape ;
             sh:order 2 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
+            sh:description "A description of the effect of the entity" ;
             sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path rdfs:comment ] ;
+            sh:order 0 ;
+            sh:path pokemon:effectDescription ] ;
     sh:targetClass pokemon:SpecialMove .
 
 pokemon:StatusMove a sh:NodeShape ;
@@ -634,6 +634,12 @@ pokemon:StatusMove a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rdfs:label ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -641,22 +647,16 @@ pokemon:StatusMove a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the effect of the entity" ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path pokemon:effectDescription ],
         [ sh:class pokemon:Type ;
             sh:description "A Pokemon has a type" ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path pokemon:hasType ] ;
+            sh:path pokemon:hasType ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the effect of the entity" ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path pokemon:effectDescription ] ;
     sh:targetClass pokemon:StatusMove .
 
 pokemon:TM a sh:NodeShape ;
@@ -712,19 +712,7 @@ pokemon:Trainer a sh:NodeShape ;
     sh:closed true ;
     sh:description "A trainer is a person who is able to catch Pokemon." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
-            sh:description "A depiction of the person" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path foaf:depiction ],
-        [ sh:datatype xsd:anyURI ;
+    sh:property [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
@@ -732,12 +720,24 @@ pokemon:Trainer a sh:NodeShape ;
             sh:order 1 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
-            sh:path rdfs:label ] ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A depiction of the person" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path foaf:depiction ] ;
     sh:targetClass pokemon:Trainer .
 
 dbpedia:Colour a sh:NodeShape ;
@@ -745,17 +745,59 @@ dbpedia:Colour a sh:NodeShape ;
     sh:description "Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others." ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:float ;
+            sh:description "Black component in CMYK color model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path dbpedia:cmykCoordinateBlack ],
+        [ sh:datatype xsd:float ;
             sh:description "Value/Lightness component in HSV color model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 6 ;
             sh:path dbpedia:hsvCoordinateLightness ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Blue component in RGB color model (0-255)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 9 ;
+            sh:path dbpedia:rgbCoordinateBlue ],
+        [ sh:datatype xsd:float ;
+            sh:description "The wavelength of the color in nanometers" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path dbpedia:wavelength ],
         [ sh:datatype xsd:float ;
             sh:description "Hue component in HSV color model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 4 ;
             sh:path dbpedia:hsvCoordinateHue ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 12 ;
+            sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 13 ;
+            sh:path rdfs:comment ],
+        [ sh:datatype xsd:float ;
+            sh:description "Magenta component in CMYK color model" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path dbpedia:cmykCoordinateMagenta ],
+        [ sh:datatype xsd:integer ;
+            sh:description "Green component in RGB color model (0-255)" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 8 ;
+            sh:path dbpedia:rgbCoordinateGreen ],
         [ sh:datatype xsd:float ;
             sh:description "Cyan component in CMYK color model" ;
             sh:maxCount 1 ;
@@ -769,35 +811,11 @@ dbpedia:Colour a sh:NodeShape ;
             sh:order 7 ;
             sh:path dbpedia:rgbCoordinateRed ],
         [ sh:datatype xsd:float ;
-            sh:description "Magenta component in CMYK color model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path dbpedia:cmykCoordinateMagenta ],
-        [ sh:datatype xsd:float ;
-            sh:description "The wavelength of the color in nanometers" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path dbpedia:wavelength ],
-        [ sh:datatype xsd:float ;
             sh:description "Yellow component in CMYK color model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path dbpedia:cmykCoordinateYellow ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Blue component in RGB color model (0-255)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 9 ;
-            sh:path dbpedia:rgbCoordinateBlue ],
-        [ sh:datatype xsd:float ;
-            sh:description "Saturation component in HSV color model" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 5 ;
-            sh:path dbpedia:hsvCoordinateSaturation ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -806,30 +824,42 @@ dbpedia:Colour a sh:NodeShape ;
             sh:order 11 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:float ;
-            sh:description "Black component in CMYK color model" ;
+            sh:description "Saturation component in HSV color model" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
+            sh:order 5 ;
+            sh:path dbpedia:hsvCoordinateSaturation ] ;
+    sh:targetClass dbpedia:Colour .
+
+qudt:QuantityKind a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:targetClass qudt:QuantityKind .
+
+qudt:Unit a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "A unit of measure." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
             sh:order 0 ;
-            sh:path dbpedia:cmykCoordinateBlack ],
+            sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 12 ;
+            sh:order 1 ;
             sh:path rdfs:label ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 13 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Green component in RGB color model (0-255)" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 8 ;
-            sh:path dbpedia:rgbCoordinateGreen ] ;
-    sh:targetClass dbpedia:Colour .
+            sh:order 2 ;
+            sh:path rdfs:comment ] ;
+    sh:targetClass qudt:Unit .
 
 pokemon:EggGroup a sh:NodeShape ;
     sh:closed true ;
@@ -860,13 +890,12 @@ pokemon:Habitat a sh:NodeShape ;
     sh:closed true ;
     sh:description "A habitat is a type of environment that certain Pokemon belong to." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
             sh:maxCount 1 ;
-            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ],
+            sh:order 2 ;
+            sh:path rdfs:comment ],
         [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
@@ -874,12 +903,13 @@ pokemon:Habitat a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
+        [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ] ;
+            sh:order 0 ;
+            sh:path linkml_common:identifier ] ;
     sh:targetClass pokemon:Habitat .
 
 pokemon:Move a sh:NodeShape ;
@@ -946,35 +976,69 @@ pokemon:Species a sh:NodeShape ;
     sh:closed true ;
     sh:description "A species is a category of Pokemon that share common features." ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:class <http://qudt.org/2.1/vocab/unit/Quantity> ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 14 ;
+            sh:path rdfs:label ],
+        [ sh:class pokemon:Ability ;
+            sh:description "A Pokemon may have an ability" ;
+            sh:nodeKind sh:IRI ;
+            sh:order 2 ;
+            sh:path pokemon:mayHaveAbility ],
+        [ sh:class pokemon:EggGroup ;
+            sh:nodeKind sh:IRI ;
+            sh:order 7 ;
+            sh:path pokemon:inEggGroup ],
+        [ sh:class qudt:Quantity ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 4 ;
             sh:path pokemon:hasHeight ],
-        [ sh:class <http://qudt.org/2.1/vocab/unit/Quantity> ;
+        [ sh:datatype xsd:string ;
+            sh:description "A depiction of the person" ;
             sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 6 ;
+            sh:path foaf:depiction ],
+        [ sh:class pokemon:Habitat ;
+            sh:description "A place is found in a location" ;
             sh:nodeKind sh:IRI ;
-            sh:order 5 ;
-            sh:path pokemon:hasWeight ],
+            sh:order 12 ;
+            sh:path pokemon:foundIn ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 15 ;
             sh:path rdfs:comment ],
-        [ sh:class pokemon:EggGroup ;
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 11 ;
+            sh:path pokemon:hasCatchRate ],
+        [ sh:class pokemon:Move ;
             sh:nodeKind sh:IRI ;
-            sh:order 7 ;
-            sh:path pokemon:inEggGroup ],
+            sh:order 3 ;
+            sh:path pokemon:isAbleToApply ],
+        [ sh:class dbpedia:Colour ;
+            sh:description "A Pokemon has a color" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path pokemon:hasColour ],
+        [ sh:class qudt:Quantity ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:order 5 ;
+            sh:path pokemon:hasWeight ],
         [ sh:class pokemon:Type ;
             sh:description "A Pokemon has a type" ;
             sh:nodeKind sh:IRI ;
             sh:order 8 ;
             sh:path pokemon:hasType ],
-        [ sh:class pokemon:Move ;
-            sh:nodeKind sh:IRI ;
-            sh:order 3 ;
-            sh:path pokemon:isAbleToApply ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -986,54 +1050,20 @@ pokemon:Species a sh:NodeShape ;
             sh:nodeKind sh:IRI ;
             sh:order 1 ;
             sh:path pokemon:mayHaveHiddenAbility ],
-        [ sh:class pokemon:Habitat ;
-            sh:description "A place is found in a location" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 12 ;
-            sh:path pokemon:foundIn ],
-        [ sh:datatype xsd:string ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 10 ;
-            sh:path pokemon:hasGenus ],
-        [ sh:class dbpedia:Colour ;
-            sh:description "A Pokemon has a color" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:order 0 ;
-            sh:path pokemon:hasColour ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 14 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:integer ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 11 ;
-            sh:path pokemon:hasCatchRate ],
-        [ sh:datatype xsd:string ;
-            sh:description "A depiction of the person" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 6 ;
-            sh:path foaf:depiction ],
         [ sh:class pokemon:Shape ;
             sh:description "The shape of a berry is a measure of how good it  is for making a Potion." ;
             sh:maxCount 1 ;
             sh:nodeKind sh:IRI ;
             sh:order 9 ;
             sh:path pokemon:hasShape ],
-        [ sh:class pokemon:Ability ;
-            sh:description "A Pokemon may have an ability" ;
-            sh:nodeKind sh:IRI ;
-            sh:order 2 ;
-            sh:path pokemon:mayHaveAbility ] ;
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 10 ;
+            sh:path pokemon:hasGenus ] ;
     sh:targetClass pokemon:Species .
 
-<http://qudt.org/2.1/vocab/unit/Quantity> a sh:NodeShape ;
+qudt:Quantity a sh:NodeShape ;
     sh:closed true ;
     sh:description "A physical quantity." ;
     sh:ignoredProperties ( rdf:type ) ;
@@ -1043,6 +1073,22 @@ pokemon:Species a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 5 ;
             sh:path rdfs:comment ],
+        [ sh:datatype xsd:string ;
+            sh:description "The numeric value of the quantity." ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path qudt:quantityValue ],
+        [ sh:class qudt:Unit ;
+            sh:nodeKind sh:IRI ;
+            sh:order 0 ;
+            sh:path qudt:hasUnit ],
+        [ sh:datatype xsd:string ;
+            sh:description "Human-readable label for the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 4 ;
+            sh:path rdfs:label ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -1050,31 +1096,13 @@ pokemon:Species a sh:NodeShape ;
             sh:nodeKind sh:Literal ;
             sh:order 3 ;
             sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "The unit of measure for the quantity." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path <http://qudt.org/2.1/vocab/unit/hasUnit> ],
-        [ sh:datatype xsd:string ;
+        [ sh:class qudt:QuantityKind ;
             sh:description "The kind of quantity (e.g., Length, Mass, Time)." ;
             sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
             sh:order 1 ;
-            sh:path qudt:hasQuantityKind ],
-        [ sh:datatype xsd:string ;
-            sh:description "Human-readable label for the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 4 ;
-            sh:path rdfs:label ],
-        [ sh:datatype xsd:string ;
-            sh:description "The numeric value of the quantity." ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path qudt:quantityValue ] ;
-    sh:targetClass <http://qudt.org/2.1/vocab/unit/Quantity> .
+            sh:path qudt:hasQuantityKind ] ;
+    sh:targetClass qudt:Quantity .
 
 pokemon:Ability a sh:NodeShape ;
     sh:closed true ;
@@ -1087,17 +1115,17 @@ pokemon:Ability a sh:NodeShape ;
             sh:order 1 ;
             sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 3 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 2 ;
             sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 3 ;
+            sh:path rdfs:comment ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the effect of the entity" ;
             sh:nodeKind sh:Literal ;
@@ -1109,18 +1137,18 @@ pokemon:Flavor a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
     sh:property [ sh:datatype xsd:string ;
-            sh:description "A description of the entity" ;
-            sh:maxCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 2 ;
-            sh:path rdfs:comment ],
-        [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rdfs:label ],
+        [ sh:datatype xsd:string ;
+            sh:description "A description of the entity" ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 2 ;
+            sh:path rdfs:comment ],
         [ sh:datatype xsd:anyURI ;
             sh:description "A unique identifier" ;
             sh:maxCount 1 ;
@@ -1133,20 +1161,20 @@ pokemon:Flavor a sh:NodeShape ;
 pokemon:Type a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:anyURI ;
-            sh:description "A unique identifier" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:Literal ;
-            sh:order 0 ;
-            sh:path linkml_common:identifier ],
-        [ sh:datatype xsd:string ;
+    sh:property [ sh:datatype xsd:string ;
             sh:description "Human-readable label for the entity" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:nodeKind sh:Literal ;
             sh:order 1 ;
             sh:path rdfs:label ],
+        [ sh:datatype xsd:anyURI ;
+            sh:description "A unique identifier" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:Literal ;
+            sh:order 0 ;
+            sh:path linkml_common:identifier ],
         [ sh:datatype xsd:string ;
             sh:description "A description of the entity" ;
             sh:maxCount 1 ;

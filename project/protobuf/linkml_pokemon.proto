@@ -176,8 +176,8 @@ message Quantity
   uri id = 0
   string name = 0
   string description = 0
-  string hasUnit = 0
-  string hasQuantityKind = 0
+ repeated  unit hasUnit = 0
+  quantityKind hasQuantityKind = 0
   string hasValue = 0
  }
 message Region
@@ -257,4 +257,11 @@ message Type
   uri id = 0
   string description = 0
   string name = 0
+ }
+// A unit of measure.
+message Unit
+ {
+  uri id = 0
+  string name = 0
+  string description = 0
  }

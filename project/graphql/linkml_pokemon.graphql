@@ -8,7 +8,7 @@ enum HabitatEnum
 
 type Ability
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     effectDescription: [String]
@@ -16,25 +16,25 @@ type Ability
 
 type BattleItem
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Berry
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     hasFlavor: [Flavor]
-    firmness: Integer
-    smoothness: Integer
+    firmness: Int
+    smoothness: Int
     hasSize: String
   }
 
 type Colour
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     black: Float
@@ -44,46 +44,46 @@ type Colour
     hue: Float
     saturation: Float
     value: Float
-    red: Integer
-    green: Integer
-    blue: Integer
+    red: Int
+    green: Int
+    blue: Int
     wavelength: Float
   }
 
 type EggGroup
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
   }
 
 type Flavor
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
   }
 
 type Food
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     hasFlavor: [Flavor]
-    firmness: Integer
-    smoothness: Integer
+    firmness: Int
+    smoothness: Int
   }
 
 type Game
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Generation
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     featuresSpecies: [Species]
@@ -91,14 +91,14 @@ type Generation
 
 type Gym
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type GymLeader
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
     depiction: String
@@ -106,28 +106,28 @@ type GymLeader
 
 type Habitat
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
   }
 
 type HM
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type HoldItem
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Item
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
@@ -142,14 +142,14 @@ type LearningThroughBreeding
 
 type Medicine
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Move
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     effectDescription: [String]
@@ -162,14 +162,14 @@ type MoveLearning
 
 interface NamedIndividual
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
   }
 
 type Person
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
     depiction: String
@@ -177,7 +177,7 @@ type Person
 
 type PhysicalMove
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     effectDescription: [String]
@@ -186,28 +186,28 @@ type PhysicalMove
 
 interface Place
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Pokeball
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Pokedex
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type PokedexEntry
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
@@ -218,31 +218,35 @@ type Pokemon
 
 type Quantity
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
-    hasUnit: String
-    hasQuantityKind: String
+    hasUnit: [Unit]
+    hasQuantityKind: QuantityKind
     hasValue: String
+  }
+
+type QuantityKind
+  {
   }
 
 type Region
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Shape
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
   }
 
 type SpecialMove
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     effectDescription: [String]
@@ -251,7 +255,7 @@ type SpecialMove
 
 type Species
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
     hasColour: Colour
@@ -265,13 +269,13 @@ type Species
     hasType: [Type]
     hasShape: Shape
     hasGenus: String
-    hasCatchRate: Integer
+    hasCatchRate: Int
     foundIn: [Habitat]
   }
 
 type StatusMove
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
     effectDescription: [String]
@@ -280,28 +284,28 @@ type StatusMove
 
 interface Thing
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type TM implements MoveLearning
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Town
   {
-    id: Uri!
+    id: String!
     name: String
     description: String
   }
 
 type Trainer
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
     depiction: String
@@ -309,7 +313,14 @@ type Trainer
 
 type Type
   {
-    id: Uri!
+    id: String!
     description: String
     name: String!
+  }
+
+type Unit
+  {
+    id: String!
+    name: String
+    description: String
   }

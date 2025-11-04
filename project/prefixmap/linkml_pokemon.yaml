@@ -24,9 +24,15 @@
       "@id": "foaf:Person"
    },
    "Quantity": {
-      "@id": "http://qudt.org/2.1/vocab/unit/Quantity"
+      "@id": "qudt:Quantity"
+   },
+   "QuantityKind": {
+      "@id": "qudt:QuantityKind"
    },
    "Thing": {
       "@id": "owl:Thing"
+   },
+   "Unit": {
+      "@id": "qudt:Unit"
    }
 }

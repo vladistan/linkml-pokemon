@@ -10,19 +10,19 @@ dynamic = [
 description = "Pokemon Ontology expressed as LinkML"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.12,<3.14"
 authors = [
     {name = "Vlad Korolev", email="vlad@v-lad.org"},
 ]
-
 dependencies = [
-  "linkml-runtime",
+    "linkml-runtime",
+
 ]
 
 [tool.uv.sources]
-linkml-runtime = { path = "../linkml-runtime", editable = true }
-linkml = { path = "../linkml", editable = true }
-grip = { git = "ssh://git@github.com/vladistan/grip.git", branch = "handle-test-sensitive-anchors" }
+linkml = { path = "../linkml/packages/linkml", editable = true }
+linkml-runtime = { path = "../linkml/packages/linkml_runtime", editable = true }
+grip = { git = "https://github.com/vladistan/grip.git", branch = "handle-test-sensitive-anchors" }
 
 [dependency-groups]
 dev = [

@@ -875,16 +875,22 @@
                     ]
                 },
                 "hasQuantityKind": {
-                    "description": "The kind of quantity (e.g., Length, Mass, Time).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityKind"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The kind of quantity (e.g., Length, Mass, Time)."
                 },
                 "hasUnit": {
-                    "description": "The unit of measure for the quantity.",
+                    "items": {
+                        "type": "string"
+                    },
                     "type": [
-                        "string",
+                        "array",
                         "null"
                     ]
                 },
@@ -911,6 +917,12 @@
                 "id"
             ],
             "title": "Quantity",
+            "type": "object"
+        },
+        "QuantityKind": {
+            "additionalProperties": false,
+            "description": "",
+            "title": "QuantityKind",
             "type": "object"
         },
         "Region": {
@@ -1321,6 +1333,35 @@
                 "name"
             ],
             "title": "Type",
+            "type": "object"
+        },
+        "Unit": {
+            "additionalProperties": false,
+            "description": "A unit of measure.",
+            "properties": {
+                "description": {
+                    "description": "A description of the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Human-readable label for the entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "id"
+            ],
+            "title": "Unit",
             "type": "object"
         }
     },

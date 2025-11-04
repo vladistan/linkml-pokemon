@@ -310,11 +310,17 @@ foaf:Person  (
 <http://qudt.org/2.1/vocab/unit/Quantity> CLOSED {
     (  $<http://qudt.org/2.1/vocab/unit/Quantity_tes> (  &owl:Thing_tes ;
           rdf:type [ owl:Thing ] ? ;
-          <http://qudt.org/2.1/vocab/unit/hasUnit> @linkml:String ? ;
-          qudt:hasQuantityKind @linkml:String ? ;
+          qudt:hasUnit @<http://qudt.org/2.1/vocab/unit/Unit> * ;
+          qudt:hasQuantityKind @<http://qudt.org/2.1/vocab/unit/QuantityKind> ? ;
           qudt:quantityValue @linkml:String ?
        ) ;
-       rdf:type [ <http://qudt.org/2.1/vocab/unit/Quantity> ]
+       rdf:type [ qudt:Quantity ]
+    )
+}
+
+<http://qudt.org/2.1/vocab/unit/QuantityKind> CLOSED {
+    (  $<http://qudt.org/2.1/vocab/unit/QuantityKind_tes> rdf:type . * ;
+       rdf:type [ qudt:QuantityKind ] ?
     )
 }
 
@@ -373,7 +379,8 @@ foaf:Person  (
 
 owl:Thing  (
     @<Ability> OR @<https://dbpedia.org/ontology/Colour> OR @<Game> OR @<Generation> OR @<Item> OR @<Move> OR @owl:NamedIndividual
-    OR @<Place> OR @<Pokedex> OR @<PokedexEntry> OR @<http://qudt.org/2.1/vocab/unit/Quantity>
+    OR @<Place> OR @<Pokedex> OR @<PokedexEntry> OR @<http://qudt.org/2.1/vocab/unit/Quantity> OR
+    @<http://qudt.org/2.1/vocab/unit/Unit>
 )
 
 owl:Thing_struct {
@@ -417,5 +424,13 @@ owl:Thing_struct {
           rdf:type [ owl:NamedIndividual ] ?
        ) ;
        rdf:type [ <Type> ]
+    )
+}
+
+<http://qudt.org/2.1/vocab/unit/Unit> CLOSED {
+    (  $<http://qudt.org/2.1/vocab/unit/Unit_tes> (  &owl:Thing_tes ;
+          rdf:type [ owl:Thing ] ?
+       ) ;
+       rdf:type [ qudt:Unit ]
     )
 }

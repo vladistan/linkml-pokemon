@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-09-08T13:04:51
+# Generation date: 2025-10-25T15:09:08
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -221,6 +221,10 @@ class GymLeaderId(TrainerId):
 
 
 class QuantityId(ThingId):
+    pass
+
+
+class UnitId(ThingId):
     pass
 
 
@@ -1165,14 +1169,14 @@ class Quantity(Thing):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("http://qudt.org/2.1/vocab/unit/Quantity")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
+    class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Quantity"
     class_model_uri: ClassVar[URIRef] = POKEMON.Quantity
 
     id: Union[str, QuantityId] = None
-    hasUnit: Optional[str] = None
-    hasQuantityKind: Optional[str] = None
+    hasUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = empty_list()
+    hasQuantityKind: Optional[Union[dict, "QuantityKind"]] = None
     hasValue: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1181,14 +1185,47 @@ class Quantity(Thing):
         if not isinstance(self.id, QuantityId):
             self.id = QuantityId(self.id)
 
-        if self.hasUnit is not None and not isinstance(self.hasUnit, str):
-            self.hasUnit = str(self.hasUnit)
+        if not isinstance(self.hasUnit, list):
+            self.hasUnit = [self.hasUnit] if self.hasUnit is not None else []
+        self.hasUnit = [v if isinstance(v, UnitId) else UnitId(v) for v in self.hasUnit]
 
-        if self.hasQuantityKind is not None and not isinstance(self.hasQuantityKind, str):
-            self.hasQuantityKind = str(self.hasQuantityKind)
+        if self.hasQuantityKind is not None and not isinstance(self.hasQuantityKind, QuantityKind):
+            self.hasQuantityKind = QuantityKind()
 
         if self.hasValue is not None and not isinstance(self.hasValue, str):
             self.hasValue = str(self.hasValue)
+
+        super().__post_init__(**kwargs)
+
+
+class QuantityKind(YAMLRoot):
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["QuantityKind"]
+    class_class_curie: ClassVar[str] = "qudt:QuantityKind"
+    class_name: ClassVar[str] = "QuantityKind"
+    class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKind
+
+
+@dataclass(repr=False)
+class Unit(Thing):
+    """
+    A unit of measure.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Unit"]
+    class_class_curie: ClassVar[str] = "qudt:Unit"
+    class_name: ClassVar[str] = "Unit"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Unit
+
+    id: Union[str, UnitId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UnitId):
+            self.id = UnitId(self.id)
 
         super().__post_init__(**kwargs)
 
@@ -1355,14 +1392,17 @@ slots.name = Slot(uri=RDFS.label, name="name", curie=RDFS.curie('label'),
 slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie('comment'),
                    model_uri=POKEMON.description, domain=None, range=Optional[str])
 
-slots.hasUnit = Slot(uri="str(uriorcurie)", name="hasUnit", curie=None,
-                   model_uri=POKEMON.hasUnit, domain=None, range=Optional[str])
+slots.hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
+                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[str])
+
+slots.hasUnit = Slot(uri=QUDT.hasUnit, name="hasUnit", curie=QUDT.curie('hasUnit'),
+                   model_uri=POKEMON.hasUnit, domain=None, range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]])
 
 slots.hasValue = Slot(uri=QUDT.quantityValue, name="hasValue", curie=QUDT.curie('quantityValue'),
                    model_uri=POKEMON.hasValue, domain=None, range=Optional[str])
 
-slots.hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[str])
-
 slots.NamedIndividual_name = Slot(uri=RDFS.label, name="NamedIndividual_name", curie=RDFS.curie('label'),
                    model_uri=POKEMON.NamedIndividual_name, domain=NamedIndividual, range=str)
+
+slots.Quantity_hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="Quantity_hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
+                   model_uri=POKEMON.Quantity_hasQuantityKind, domain=Quantity, range=Optional[Union[dict, "QuantityKind"]])
