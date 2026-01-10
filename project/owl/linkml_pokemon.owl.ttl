@@ -11,6 +11,515 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+qudt:abbreviation a owl:DatatypeProperty ;
+    rdfs:label "abbreviation" ;
+    skos:definition "An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:altSymbol a owl:DatatypeProperty ;
+    rdfs:label "altSymbol" ;
+    rdfs:subPropertyOf qudt:literal ;
+    skos:definition "An alternative symbol" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:ansiSQLName a owl:DatatypeProperty ;
+    rdfs:label "ansiSQLName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableCGSUnit a owl:ObjectProperty ;
+    rdfs:label "applicableCGSUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:applicableUnit ;
+    skos:definition "applicable CGS unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableISOUnit a owl:ObjectProperty ;
+    rdfs:label "applicableISOUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:applicableUnit ;
+    skos:definition "applicable ISO unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableImperialUnit a owl:ObjectProperty ;
+    rdfs:label "applicableImperialUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:applicableUnit ;
+    skos:definition "applicable Imperial unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicablePhysicalConstant a owl:DatatypeProperty ;
+    rdfs:label "applicablePhysicalConstant" ;
+    skos:definition "applicable physical constant" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableSIUnit a owl:ObjectProperty ;
+    rdfs:label "applicableSIUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:applicableUnit ;
+    skos:definition "applicable SI unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableSystem a owl:DatatypeProperty ;
+    rdfs:label "applicableSystem" ;
+    skos:definition "This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableUSCustomaryUnit a owl:ObjectProperty ;
+    rdfs:label "applicableUSCustomaryUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:applicableUnit ;
+    skos:definition "applicable US Customary unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:baseDimensionEnumeration a owl:ObjectProperty ;
+    rdfs:label "baseDimensionEnumeration" ;
+    rdfs:range qudt:Enumeration ;
+    skos:definition "This property associates a system of quantities with an enumeration that enumerates the base dimensions of the system in canonical order." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:basis a owl:DatatypeProperty ;
+    rdfs:label "basis" ;
+    skos:definition "basis" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:bitOrder a owl:ObjectProperty ;
+    rdfs:label "bitOrder" ;
+    rdfs:range qudt:EndianType ;
+    skos:definition "bit order" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:bits a owl:DatatypeProperty ;
+    rdfs:label "bits" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:bounded a owl:DatatypeProperty ;
+    rdfs:label "bounded" ;
+    skos:definition "bounded" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:byteOrder a owl:ObjectProperty ;
+    rdfs:label "byteOrder" ;
+    rdfs:range qudt:EndianType ;
+    skos:definition "Byte order is an enumeration of two values: 'Big Endian' and 'Little Endian' and is used to denote whether the most signiticant byte is either first or last, respectively." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:bytes a owl:DatatypeProperty ;
+    rdfs:label "bytes" ;
+    skos:definition "bytes" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:cName a owl:DatatypeProperty ;
+    rdfs:label "cName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "Datatype name in the C programming language" .
+
+qudt:cardinality a owl:DatatypeProperty ;
+    rdfs:label "cardinality" ;
+    skos:definition "cardinality" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:conversionMultiplier a owl:DatatypeProperty ;
+    rdfs:label "conversionMultiplier" ;
+    skos:definition "conversion multiplier" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:conversionMultiplierSN a owl:DatatypeProperty ;
+    rdfs:label "conversionMultiplierSN" ;
+    skos:definition "conversion multiplier scientific" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:conversionOffset a owl:DatatypeProperty ;
+    rdfs:label "conversionOffset" ;
+    skos:definition "conversion offset" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:conversionOffsetSN a owl:DatatypeProperty ;
+    rdfs:label "conversionOffsetSN" ;
+    skos:definition "conversion offset scientific" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dataEncoding a owl:ObjectProperty ;
+    rdfs:label "dataEncoding" ;
+    rdfs:range qudt:DataEncoding ;
+    skos:definition "data encoding" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:datatype a owl:DatatypeProperty ;
+    rdfs:label "datatype" ;
+    skos:definition "datatype" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dbpediaMatch a owl:DatatypeProperty ;
+    rdfs:label "dbpediaMatch" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "dbpedia match" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:default a owl:DatatypeProperty ;
+    rdfs:label "default" ;
+    skos:definition "The default element in an enumeration" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:deprecated a owl:DatatypeProperty ;
+    rdfs:label "deprecated" ;
+    skos:definition "deprecated" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:derivedCoherentUnitOfSystem a owl:DatatypeProperty ;
+    rdfs:label "derivedCoherentUnitOfSystem" ;
+    rdfs:subPropertyOf qudt:definedUnitOfSystem,
+        qudt:derivedUnitOfSystem ;
+    skos:definition "This property relates a unit of measure to the unit system in which the unit is derived from the system's base units with a proportionality constant of one." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForAmountOfSubstance a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForAmountOfSubstance" ;
+    skos:definition "dimension exponent for amount of substance" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForElectricCurrent a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForElectricCurrent" ;
+    skos:definition "dimension exponent for electric current" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForLength a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForLength" ;
+    skos:definition "dimension exponent for length" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForLuminousIntensity a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForLuminousIntensity" ;
+    skos:definition "dimension exponent for luminous intensity" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForMass a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForMass" ;
+    skos:definition "dimension exponent for mass" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForThermodynamicTemperature a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForThermodynamicTemperature" ;
+    skos:definition "dimension exponent for thermodynamic temperature" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionExponentForTime a owl:DatatypeProperty ;
+    rdfs:label "dimensionExponentForTime" ;
+    skos:definition "dimension exponent for time" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionVectorForSI a owl:ObjectProperty ;
+    rdfs:label "dimensionVectorForSI" ;
+    rdfs:range qudt:QuantityKindDimensionVectorSI ;
+    skos:definition "dimension vector for SI" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:dimensionlessExponent a owl:DatatypeProperty ;
+    rdfs:label "dimensionlessExponent" ;
+    skos:definition "dimensionless exponent" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:element a owl:DatatypeProperty ;
+    rdfs:label "element" ;
+    skos:definition "An element of an enumeration" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:encoding a owl:DatatypeProperty ;
+    rdfs:label "encoding" ;
+    skos:definition "encoding" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:exactConstant a owl:DatatypeProperty ;
+    rdfs:label "exactConstant" ;
+    skos:definition "exact constant" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:exactMatch a owl:DatatypeProperty ;
+    rdfs:label "exactMatch" ;
+    skos:definition "exact match" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:factorUnitScalar a owl:DatatypeProperty ;
+    rdfs:label "factorUnitScalar" ;
+    skos:definition "For a derived unit that is not exactly the product of its factor units, this property defines the scalar with which that product has to be multiplied with." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasAllowedUnit a owl:ObjectProperty ;
+    rdfs:label "hasAllowedUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:hasUnit ;
+    skos:definition "This property relates a unit system with a unit of measure that is not defined by or part of the system, but is allowed for use within the system. An allowed unit must be convertible to some dimensionally eqiuvalent unit that is defined by the system." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasBaseQuantityKind a owl:DatatypeProperty ;
+    rdfs:label "hasBaseQuantityKind" ;
+    rdfs:subPropertyOf qudt:hasQuantityKind ;
+    skos:definition "has base quantity kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasBaseUnit a owl:DatatypeProperty ;
+    rdfs:label "hasBaseUnit" ;
+    rdfs:subPropertyOf qudt:hasCoherentUnit ;
+    skos:definition "This property relates a system of units to a base unit defined within the system. The base units of a system are used to define the derived units of the system by expressing the derived units as products of the base units raised to a rational power." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasDerivedCoherentUnit a owl:DatatypeProperty ;
+    rdfs:label "hasDerivedCoherentUnit" ;
+    rdfs:subPropertyOf qudt:hasCoherentUnit,
+        qudt:hasDerivedUnit ;
+    skos:definition "derived coherent unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasDimensionVector a owl:ObjectProperty ;
+    rdfs:label "hasDimensionVector" ;
+    rdfs:range qudt:QuantityKindDimensionVector ;
+    skos:definition "has dimension vector" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasFactorUnit a owl:DatatypeProperty ;
+    rdfs:label "hasFactorUnit" ;
+    skos:definition "This property relates a derived unit to one of its constituent factor units" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasReferenceQuantityKind a owl:DatatypeProperty ;
+    rdfs:label "hasReferenceQuantityKind" ;
+    skos:definition "has reference quantity kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasRule a owl:DatatypeProperty ;
+    rdfs:label "hasRule" ;
+    skos:definition "has rule" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasUnitSystem a owl:DatatypeProperty ;
+    rdfs:label "hasUnitSystem" ;
+    skos:definition "has unit system" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:iec61360Code a owl:DatatypeProperty ;
+    rdfs:label "iec61360Code" ;
+    skos:definition "iec-61360 code" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:isDeltaQuantity a owl:DatatypeProperty ;
+    rdfs:label "isDeltaQuantity" ;
+    skos:definition "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets." .
+
+qudt:isReplacedBy a owl:DatatypeProperty ;
+    rdfs:label "isReplacedBy" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:isoNormativeReference a owl:DatatypeProperty ;
+    rdfs:label "isoNormativeReference" ;
+    rdfs:subPropertyOf qudt:normativeReference ;
+    skos:definition "Provides a way to reference the ISO unit definition." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:javaName a owl:DatatypeProperty ;
+    rdfs:label "javaName" ;
+    skos:definition "java name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:jsName a owl:DatatypeProperty ;
+    rdfs:label "jsName" ;
+    skos:definition "Javascript name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:latexDefinition a owl:DatatypeProperty ;
+    rdfs:label "latexDefinition" ;
+    skos:definition "latex definition" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:latexSymbol a owl:DatatypeProperty ;
+    rdfs:label "latexSymbol" ;
+    skos:definition """
+  The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form.
+  For example, the symbol for an Ohm is $ohm$.
+  This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm.
+  """ ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:mathMLdefinition a owl:DatatypeProperty ;
+    rdfs:label "mathMLdefinition" ;
+    rdfs:subPropertyOf qudt:mathDefinition ;
+    skos:definition "mathML definition" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:matlabName a owl:DatatypeProperty ;
+    rdfs:label "matlabName" ;
+    skos:definition "matlab name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:microsoftSQLServerName a owl:DatatypeProperty ;
+    rdfs:label "microsoftSQLServerName" ;
+    skos:definition "Microsoft SQL Server name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:mySQLName a owl:DatatypeProperty ;
+    rdfs:label "mySQLName" ;
+    skos:definition "MySQL name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:odbcName a owl:DatatypeProperty ;
+    rdfs:label "odbcName" ;
+    skos:definition "ODBC name" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:oleDBName a owl:DatatypeProperty ;
+    rdfs:label "oleDBName" ;
+    skos:definition "OLE DB (Object Linking and Embedding, Database, sometimes written as OLEDB or OLE-DB), an API designed by Microsoft, allows accessing data from a variety of sources in a uniform manner. The API provides a set of interfaces implemented using the Component Object Model (COM); it is otherwise unrelated to OLE. " ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:oracleSQLName a owl:DatatypeProperty ;
+    rdfs:label "oracleSQLName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:orderedType a owl:DatatypeProperty ;
+    rdfs:label "orderedType" ;
+    skos:definition "ordered type" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:plainTextDescription a owl:DatatypeProperty ;
+    rdfs:label "plainTextDescription" ;
+    skos:definition "A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:prefix a owl:ObjectProperty ;
+    rdfs:label "prefix" ;
+    rdfs:range qudt:Prefix ;
+    skos:definition "Associates a unit with the appropriate prefix, if any." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "Associates a unit with the appropriate prefix, if any." .
+
+qudt:prefixMultiplier a owl:DatatypeProperty ;
+    rdfs:label "prefixMultiplier" ;
+    skos:definition "prefix multiplier" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:protocolBuffersName a owl:DatatypeProperty ;
+    rdfs:label "protocolBuffersName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:pythonName a owl:DatatypeProperty ;
+    rdfs:label "pythonName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:qkdvDenominator a owl:ObjectProperty ;
+    rdfs:label "qkdvDenominator" ;
+    rdfs:range qudt:QuantityKindDimensionVector ;
+    skos:definition "denominator dimension vector" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:qkdvNumerator a owl:ObjectProperty ;
+    rdfs:label "qkdvNumerator" ;
+    rdfs:range qudt:QuantityKindDimensionVector ;
+    skos:definition "numerator dimension vector" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:quantityValue a owl:ObjectProperty ;
+    rdfs:label "quantityValue" ;
+    rdfs:range qudt:QuantityValue ;
+    skos:definition "quantity value" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:qudt_description a owl:DatatypeProperty ;
+    rdfs:label "qudt_description" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:qudt_value a owl:DatatypeProperty ;
+    rdfs:label "qudt_value" ;
+    skos:definition "A property to relate an observable thing with a value of any kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:rationale a owl:DatatypeProperty ;
+    rdfs:label "rationale" ;
+    rdfs:range xsd:string ;
+    skos:definition "rationale" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:relativeStandardUncertainty a owl:DatatypeProperty ;
+    rdfs:label "relativeStandardUncertainty" ;
+    skos:definition "The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:ruleType a owl:DatatypeProperty ;
+    rdfs:label "ruleType" ;
+    skos:definition "rule type" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:scalingOf a owl:DatatypeProperty ;
+    rdfs:label "scalingOf" ;
+    skos:definition "This property relates a unit to another unit it is scaled from" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:siUnitsExpression a owl:DatatypeProperty ;
+    rdfs:label "siUnitsExpression" ;
+    skos:definition "si units expression" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:standardUncertainty a owl:DatatypeProperty ;
+    rdfs:label "standardUncertainty" ;
+    skos:definition "The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:standardUncertaintySN a owl:DatatypeProperty ;
+    rdfs:label "standardUncertaintySN" ;
+    skos:definition "The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:symbol a owl:DatatypeProperty ;
+    rdfs:label "symbol" ;
+    rdfs:subPropertyOf qudt:literal ;
+    skos:definition """
+  The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form.
+  For example, the symbol for an Ohm is $ohm$.
+  This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm.
+  """ ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:systemDerivedQuantityKind a owl:DatatypeProperty ;
+    rdfs:label "systemDerivedQuantityKind" ;
+    rdfs:subPropertyOf qudt:hasQuantityKind ;
+    skos:definition "system derived quantity kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:ucumCode a owl:DatatypeProperty ;
+    rdfs:label "ucumCode" ;
+    skos:definition "<p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p>" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:udunitsCode a owl:DatatypeProperty ;
+    rdfs:label "udunitsCode" ;
+    skos:definition "The UDUNITS package supports units of physical quantities. Its C library provides for arithmetic manipulation of units and for conversion of numeric values between compatible units. The package contains an extensive unit database, which is in XML format and user-extendable. The package also contains a command-line utility for investigating units and converting values." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:uneceCommonCode a owl:DatatypeProperty ;
+    rdfs:label "uneceCommonCode" ;
+    skos:definition "The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:valueSN a owl:DatatypeProperty ;
+    rdfs:label "valueSN" ;
+    skos:definition "A property to relate an observable thing with a value of any kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:vbName a owl:DatatypeProperty ;
+    rdfs:label "vbName" ;
+    rdfs:range xsd:string ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:wikidataMatch a owl:DatatypeProperty ;
+    rdfs:label "wikidataMatch" ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "wikidata match" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
 pokemon:BattleItem a owl:Class ;
     rdfs:label "BattleItem" ;
     rdfs:subClassOf pokemon:Item ;
@@ -21,13 +530,13 @@ pokemon:Berry a owl:Class ;
     rdfs:label "Berry" ;
     rdfs:comment "Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty pokemon:hasSize ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:maxCardinality 1 ;
             owl:onProperty pokemon:hasSize ],
         pokemon:Food ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -209,17 +718,61 @@ pokemon:minLevelToLearn a owl:DatatypeProperty ;
 
 <https://pokemonkg.org/ontology.owl.ttl> a owl:Ontology ;
     rdfs:label "linkml-pokemon" ;
+    dcterms:description "Ontology covering the Pokemon world as it is presented in games and anime television series." ;
+    dcterms:issued "2019-07-27^^xsd:date" ;
     dcterms:license "MIT" ;
     dcterms:title "Pokemon Ontology" ;
     pav:createdOn "2019-07-27T00:00:00" ;
     rdfs:seeAlso <https://vladistan.github.io/linkml-pokemon> ;
     skos:definition "Ontology covering the Pokémon world as it is presented in games and anime television series" .
 
-<http://qudt.org/2.1/vocab/unit/QuantityKind> a owl:Class ;
-    rdfs:label "QuantityKind" ;
-    skos:exactMatch qudt:QuantityKind ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> ;
-    skos:note "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.^^rdf:HTML" .
+qudt:UCUMcs a owl:Class ;
+    rdfs:label "UCUMcs" ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "Lexical pattern for the case-sensitive version of UCUM code" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "Lexical pattern for the case-sensitive version of UCUM code" .
+
+qudt:UCUMcs-term a owl:Class ;
+    rdfs:label "UCUMcs-term" ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code" .
+
+qudt:definedUnitOfSystem a owl:DatatypeProperty ;
+    rdfs:label "definedUnitOfSystem" ;
+    rdfs:subPropertyOf qudt:isUnitOfSystem ;
+    skos:definition "This property relates a unit of measure with the unit system that defines the unit." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:derivedUnitOfSystem a owl:DatatypeProperty ;
+    rdfs:label "derivedUnitOfSystem" ;
+    rdfs:subPropertyOf qudt:isUnitOfSystem ;
+    skos:definition "This property relates a unit of measure to the system of units in which it is defined as a derived unit. That is, the derived unit is defined as a product of the base units for the system raised to some rational power." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasDefinedUnit a owl:ObjectProperty ;
+    rdfs:label "hasDefinedUnit" ;
+    rdfs:range qudt:Unit ;
+    rdfs:subPropertyOf qudt:hasUnit ;
+    skos:definition "This property relates a unit system with a unit of measure that is defined by the system." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasDerivedUnit a owl:DatatypeProperty ;
+    rdfs:label "hasDerivedUnit" ;
+    skos:definition "This property relates a system of units to a unit of measure that is defined within the system in terms of the base units for the system. That is, the derived unit is defined as a product of the base units for the system raised to some rational power." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:mathDefinition a owl:DatatypeProperty ;
+    rdfs:label "mathDefinition" ;
+    skos:definition "math definition" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:normativeReference a owl:DatatypeProperty ;
+    rdfs:label "normativeReference" ;
+    skos:definition "Provides a way to reference information that is an authoritative source providing a standard definition" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
 
 pokemon:Pokedex a owl:Class ;
     rdfs:label "Pokedex" ;
@@ -265,29 +818,311 @@ pokemon:locatedIn a owl:AsymmetricProperty,
     rdfs:range pokemon:Place ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-<http://qudt.org/2.1/vocab/unit/Unit> a owl:Class ;
-    rdfs:label "Unit" ;
-    rdfs:subClassOf owl:Thing ;
-    skos:definition "A unit of measure." ;
-    skos:exactMatch qudt:Unit ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> ;
-    skos:note "A <b>Unit</b> is a particular quantity value that has been chosen as a scale for measuring other quantities of the same kind (e.g., meter for length, kilogram for mass, second for time)." .
+qudt:AbstractQuantityKind a owl:Class ;
+    rdfs:label "AbstractQuantityKind" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:broader ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:broader ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:symbol ],
+        qudt:Concept ;
+    skos:definition "Quantity Kind (abstract)" ;
+    skos:exactMatch qudt:AbstractQuantityKind ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
 
-<http://qudt.org/2.1/vocab/unit/hasUnit> a owl:ObjectProperty ;
+qudt:CardinalityType a owl:Class ;
+    rdfs:label "CardinalityType" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:literal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:literal ],
+        qudt:EnumeratedValue ;
+    skos:definition """
+  In mathematics, the cardinality of a set is a measure of the number of elements of the set.
+  For example, the set $A = {2, 4, 6}$ contains 3 elements, and therefore $A$ has a cardinality of 3.
+  There are two approaches to cardinality: one which compares sets directly using bijections and injections,
+   and another which uses cardinal numbers.
+  """ ;
+    skos:exactMatch qudt:CardinalityType ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:Datatype a owl:Class ;
+    rdfs:label "Datatype" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:protocolBuffersName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:jsName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:microsoftSQLServerName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:basis ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:pythonName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:qudt_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:vbName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:oracleSQLName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:bounded ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:oleDBName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:cName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:javaName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:ansiSQLName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Datatype ;
+            owl:onProperty pokemon:basis ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:matlabName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:microsoftSQLServerName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:vbName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:cName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:protocolBuffersName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:oleDBName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:pythonName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:mySQLName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:javaName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:bounded ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:jsName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qudt_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:orderedType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:CardinalityType ;
+            owl:onProperty pokemon:cardinality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:oracleSQLName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mySQLName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:OrderedType ;
+            owl:onProperty pokemon:orderedType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:cardinality ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:ansiSQLName ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:odbcName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:matlabName ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:odbcName ],
+        qudt:Concept ;
+    skos:definition """
+   <p>A <em>Datatype</em> is a definition of the type of the "value" of a data item (for example, "all integers between 0 and 10"),
+   and the allowable operations on those values; the meaning of the data; and the way values of that type can be stored.
+  Some types are primitive - built-in to the language, with no visible internal structure.
+  For example "Boolean"; others are composite - constructed from one or more other types (of either kind).
+  For example lists, arrays, structures, unions.
+  Some languages provide strong typing, others allow implicit type conversion and/or explicit type conversion.
+  </p>""" ;
+    skos:exactMatch rdfs:Datatype ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:Encoding a owl:Class ;
+    rdfs:label "Encoding" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:bits ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:bytes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:bits ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:bytes ],
+        qudt:Concept ;
+    skos:definition "An encoding is a rule or algorithm that is used to convert data from a native, or unspecified form into a specific form that satisfies the encoding rules. Examples of encodings include character encodings, such as UTF-8." ;
+    skos:exactMatch qudt:Encoding ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:OrderedType a owl:Class ;
+    rdfs:label "OrderedType" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:literal ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:literal ],
+        qudt:EnumeratedValue ;
+    skos:definition "Describes how a data or information structure is ordered." ;
+    skos:exactMatch qudt:OrderedType ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:QuantityKindDimensionVectorSI a owl:Class ;
+    rdfs:label "QuantityKindDimensionVector_SI" ;
+    rdfs:subClassOf qudt:QuantityKindDimensionVector ;
+    skos:definition "Quantity Kind Dimension vector (SI)" ;
+    skos:exactMatch qudt:QuantityKindDimensionVector_SI ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:Rule a owl:Class ;
+    rdfs:label "Rule" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:rationale ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:RuleType ;
+            owl:onProperty pokemon:ruleType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:rationale ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:ruleType ],
+        qudt:Concept,
+        qudt:Verifiable ;
+    skos:definition "Rule" ;
+    skos:exactMatch qudt:Rule ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:RuleType a owl:Class ;
+    rdfs:label "RuleType" ;
+    rdfs:subClassOf qudt:EnumeratedValue ;
+    skos:definition "Rule Type" ;
+    skos:exactMatch qudt:RuleType ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:belongsToSystemOfQuantities a owl:ObjectProperty ;
+    rdfs:label "belongsToSystemOfQuantities" ;
+    rdfs:range qudt:SystemOfQuantityKinds ;
+    skos:definition "belongs to system of quantities" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:guidance a owl:DatatypeProperty ;
+    rdfs:label "guidance" ;
+    rdfs:range xsd:string ;
+    skos:definition "guidance" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasCoherentUnit a owl:DatatypeProperty ;
+    rdfs:label "hasCoherentUnit" ;
+    rdfs:subPropertyOf qudt:hasDefinedUnit ;
+    skos:definition "A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasQuantityKind a owl:ObjectProperty ;
+    rdfs:label "hasQuantityKind" ;
+    rdfs:range qudt:QuantityKind ;
+    skos:definition "has quantity kind" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasReciprocalUnit a owl:ObjectProperty ;
+    rdfs:label "hasReciprocalUnit" ;
+    rdfs:range qudt:Unit ;
+    skos:definition "has reciprocal unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:hasUnit a owl:ObjectProperty ;
     rdfs:label "hasUnit" ;
-    rdfs:range <http://qudt.org/2.1/vocab/unit/Unit> ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> .
+    rdfs:range qudt:Unit ;
+    skos:definition "This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:literal a owl:DatatypeProperty ;
+    rdfs:label "literal" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:omUnit a owl:DatatypeProperty ;
+    rdfs:label "omUnit" ;
+    skos:definition "om unit" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:qudt_id a owl:DatatypeProperty ;
+    rdfs:label "qudt_id" ;
+    skos:definition "The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:unitFor a owl:DatatypeProperty ;
+    rdfs:label "unitFor" ;
+    skos:definition "unit for" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
 
 foaf:Person a owl:Class ;
     rdfs:label "Person" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty foaf:depiction ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty foaf:depiction ],
         owl:NamedIndividual ;
     skos:definition "A person is a human being" ;
@@ -297,32 +1132,20 @@ foaf:Person a owl:Class ;
 <https://dbpedia.org/ontology/Colour> a owl:Class ;
     rdfs:label "Colour" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/black> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/value> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
+            owl:onProperty <https://dbpedia.org/ontology/blue> ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty <https://dbpedia.org/ontology/blue> ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/green> ],
@@ -330,71 +1153,83 @@ foaf:Person a owl:Class ;
             owl:allValuesFrom xsd:float ;
             owl:onProperty <https://dbpedia.org/ontology/black> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/value> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:maxCardinality 1 ;
             owl:onProperty <https://dbpedia.org/ontology/saturation> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/red> ],
-        [ a owl:Restriction ;
             owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/green> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/green> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/blue> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <https://dbpedia.org/ontology/value> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
+            owl:onProperty <https://dbpedia.org/ontology/hue> ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/hue> ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/green> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/blue> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty <https://dbpedia.org/ontology/blue> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:float ;
-            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/black> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/saturation> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/value> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/wavelength> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/magenta> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty <https://dbpedia.org/ontology/value> ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty <https://dbpedia.org/ontology/black> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/hue> ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty <https://dbpedia.org/ontology/red> ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty <https://dbpedia.org/ontology/cyanic> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty <https://dbpedia.org/ontology/green> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:float ;
+            owl:onProperty <https://dbpedia.org/ontology/yellow> ],
         owl:Thing ;
     skos:definition "Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others." ;
     skos:exactMatch dbpedia:Colour ;
@@ -480,15 +1315,256 @@ pokemon:mayHaveHiddenAbility a owl:ObjectProperty ;
     rdfs:range pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-<http://qudt.org/2.1/vocab/unit/hasQuantityKind> a owl:DatatypeProperty ;
-    rdfs:label "hasQuantityKind" ;
-    skos:definition "The kind of quantity (e.g., Length, Mass, Time)." ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> .
+qudt:DataEncoding a owl:Class ;
+    rdfs:label "DataEncoding" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:byteOrder ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:EndianType ;
+            owl:onProperty pokemon:bitOrder ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Encoding ;
+            owl:onProperty pokemon:encoding ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:byteOrder ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:bitOrder ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:encoding ],
+        qudt:Aspect ;
+    skos:definition "<p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>" ;
+    skos:exactMatch qudt:DataEncoding ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "<p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>^^rdf:HTML" .
 
-<http://qudt.org/2.1/vocab/unit/hasValue> a owl:DatatypeProperty ;
-    rdfs:label "hasValue" ;
-    skos:definition "The numeric value of the quantity." ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> .
+qudt:Enumeration a owl:Class ;
+    rdfs:label "Enumeration" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:default ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:EnumeratedValue ;
+            owl:onProperty pokemon:element ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:EnumeratedValue ;
+            owl:onProperty pokemon:default ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:element ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:abbreviation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:abbreviation ],
+        qudt:Concept ;
+    skos:definition """<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>""" ;
+    skos:exactMatch qudt:Enumeration ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note """<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>^^rdf:HTML""" .
+
+qudt:PhysicalConstant a owl:Class ;
+    rdfs:label "PhysicalConstant" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:normativeReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:applicableUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:ucumCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:PhysicalConstant ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:exactConstant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:isoNormativeReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty pokemon:exactConstant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:applicableSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVector ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:normativeReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isoNormativeReference ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:ucumCode ],
+        qudt:Quantity ;
+    skos:definition "A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used." ;
+    skos:exactMatch qudt:PhysicalConstant ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used.^^rdf:HTML" .
+
+qudt:Quantifiable a owl:Class ;
+    rdfs:label "Quantifiable" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty pokemon:standardUncertaintySN ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:valueSN ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:dataEncoding ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:standardUncertainty ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:datatype ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:qudt_value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:double ;
+            owl:onProperty pokemon:relativeStandardUncertainty ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:relativeStandardUncertainty ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qudt_value ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Datatype ;
+            owl:onProperty pokemon:datatype ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:decimal ;
+            owl:onProperty pokemon:standardUncertainty ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:DataEncoding ;
+            owl:onProperty pokemon:dataEncoding ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:valueSN ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:standardUncertaintySN ],
+        qudt:Aspect ;
+    skos:definition "<p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>" ;
+    skos:exactMatch qudt:Quantifiable ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "<p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>^^rdf:HTML" .
+
+qudt:QuantityValue a owl:Class ;
+    rdfs:label "QuantityValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:hasUnit ],
+        qudt:Concept,
+        qudt:Quantifiable ;
+    skos:definition "A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href=\"http://physics.nist.gov/Pubs/SP811/sec07.html\">NIST SP 811 section 7</a> for more on quantity values." ;
+    skos:exactMatch qudt:QuantityValue ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href=\\\"http://physics.nist.gov/Pubs/SP811/sec07.html\\\">NIST SP 811 section 7</a> for more on quantity values.^^rdf:HTML" .
+
+qudt:SystemOfQuantityKinds a owl:Class ;
+    rdfs:label "SystemOfQuantityKinds" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasBaseQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:hasBaseQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Enumeration ;
+            owl:onProperty pokemon:baseDimensionEnumeration ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasUnitSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:baseDimensionEnumeration ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:systemDerivedQuantityKind ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:systemDerivedQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:hasUnitSystem ],
+        qudt:Concept ;
+    skos:definition "A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention." ;
+    skos:exactMatch qudt:SystemOfQuantityKinds ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention.^^rdf:HTML" .
 
 owl:description a owl:DatatypeProperty ;
     rdfs:label "description" ;
@@ -603,7 +1679,7 @@ pokemon:hasGenus a owl:DatatypeProperty ;
 pokemon:hasHeight a owl:ObjectProperty ;
     rdfs:label "hasHeight" ;
     rdfs:domain pokemon:Species ;
-    rdfs:range <http://qudt.org/2.1/vocab/unit/Quantity> ;
+    rdfs:range qudt:Quantity ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:hasShape a owl:ObjectProperty ;
@@ -620,7 +1696,7 @@ pokemon:hasSize a owl:DatatypeProperty ;
 pokemon:hasWeight a owl:ObjectProperty ;
     rdfs:label "hasWeight" ;
     rdfs:domain pokemon:Species ;
-    rdfs:range <http://qudt.org/2.1/vocab/unit/Quantity> ;
+    rdfs:range qudt:Quantity ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:smoothness a owl:DatatypeProperty ;
@@ -629,75 +1705,51 @@ pokemon:smoothness a owl:DatatypeProperty ;
     rdfs:range xsd:integer ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
-<http://qudt.org/2.1/vocab/unit/Quantity> a owl:Class ;
-    rdfs:label "Quantity" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasUnit> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <http://qudt.org/2.1/vocab/unit/Unit> ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasUnit> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasQuantityKind> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasValue> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <http://qudt.org/2.1/vocab/unit/QuantityKind> ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasQuantityKind> ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasValue> ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasQuantityKind> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty <http://qudt.org/2.1/vocab/unit/hasValue> ],
-        owl:Thing ;
-    skos:definition "A physical quantity." ;
-    skos:exactMatch qudt:Quantity ;
-    skos:inScheme <http://qudt.org/2.1/vocab/unit> ;
-    skos:note """<p class=\\"lm-para\\">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system. 
-  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the 
-  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific 
-  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as 
-  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
-<p class=\\"lm-para\\">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points, 
-velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p> 
-<p class=\\"lm-para\\">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity 
-kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance 
-divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these 
-expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded 
-as \\"fundamental\\" in this sense.</p>
-<p class=\\"lm-para\\">A quantity is distinguished from a \\"quantity kind\\" in that the former carries a value and the latter is a type specifier.</p>^^rdf:HTML""" .
+qudt:Aspect a owl:Class ;
+    rdfs:label "Aspect" ;
+    rdfs:subClassOf owl:Thing ;
+    skos:exactMatch qudt:Aspect ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "An aspect is an abstract type class that defines properties that can be reused.^^rdf:HTML" .
+
+qudt:EndianType a owl:Class ;
+    rdfs:label "EndianType" ;
+    rdfs:subClassOf qudt:EnumeratedValue ;
+    skos:definition "Endian Type" ;
+    skos:exactMatch qudt:EndianType ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:isUnitOfSystem a owl:ObjectProperty ;
+    rdfs:label "isUnitOfSystem" ;
+    rdfs:range qudt:SystemOfUnits ;
+    skos:definition "This property relates a unit of measure with a system of units that either a) defines the unit or b) allows the unit to be used within the system." ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
 
 pokemon:Food a owl:Class ;
     rdfs:label "Food" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:smoothness ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:firmness ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:firmness ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasFlavor ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty pokemon:smoothness ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:smoothness ],
-        [ a owl:Restriction ;
             owl:allValuesFrom pokemon:Flavor ;
             owl:onProperty pokemon:hasFlavor ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:smoothness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:smoothness ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:firmness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasFlavor ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:smoothness ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:firmness ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:firmness ],
         pokemon:Item ;
     skos:inScheme <https://pokemonkg.org/ontology> .
@@ -732,18 +1784,119 @@ pokemon:hasType a owl:ObjectProperty ;
     skos:definition "A Pokemon has a type" ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+qudt:Prefix a owl:Class ;
+    rdfs:label "Prefix" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Prefix ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:UCUMcs-term ;
+            owl:onProperty pokemon:ucumCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:prefixMultiplier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:prefixMultiplier ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:ucumCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:exactMatch ],
+        qudt:Concept,
+        qudt:Verifiable ;
+    skos:definition "Prefix" ;
+    skos:exactMatch qudt:Prefix ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:applicableUnit a owl:ObjectProperty ;
+    rdfs:label "applicableUnit" ;
+    rdfs:range qudt:Unit ;
+    skos:definition "See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized" ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
 pokemon:Ability a owl:Class ;
     rdfs:label "Ability" ;
     rdfs:comment "Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon." ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
+            owl:minCardinality 0 ;
             owl:onProperty pokemon:effectDescription ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:effectDescription ],
         owl:Thing ;
     skos:exactMatch pokemon:Ability ;
     skos:inScheme <https://pokemonkg.org/ontology> .
+
+qudt:Quantity a owl:Class ;
+    rdfs:label "Quantity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:boolean ;
+            owl:onProperty pokemon:isDeltaQuantity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityValue ;
+            owl:onProperty pokemon:quantityValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:quantityValue ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isDeltaQuantity ],
+        qudt:Concept,
+        qudt:Quantifiable ;
+    skos:definition """<p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the
+  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific
+  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as
+  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
+<p class="lm-para">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points,
+velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p>
+<p class="lm-para">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity
+kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance
+divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these
+expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded
+as "fundamental" in this sense.</p>
+<p class="lm-para">A quantity is distinguished from a "quantity kind" in that the former carries a value and the latter is a type specifier.</p>""" ;
+    skos:exactMatch qudt:Quantity ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note """<p class=\\"lm-para\\">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the
+  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific
+  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as
+  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
+<p class=\\"lm-para\\">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points,
+velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p>
+<p class=\\"lm-para\\">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity
+kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance
+divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these
+expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded
+as \\"fundamental\\" in this sense.</p>
+<p class=\\"lm-para\\">A quantity is distinguished from a \\"quantity kind\\" in that the former carries a value and the latter is a type specifier.</p>^^rdf:HTML""" .
 
 owl:name a owl:DatatypeProperty ;
     rdfs:label "name" ;
@@ -757,6 +1910,73 @@ foaf:depiction a owl:DatatypeProperty ;
     skos:definition "A depiction of the person" ;
     skos:inScheme foaf: .
 
+qudt:EnumeratedValue a owl:Class ;
+    rdfs:label "EnumeratedValue" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:qudt_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qudt_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:abbreviation ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:symbol ],
+        qudt:Concept,
+        qudt:Verifiable ;
+    skos:definition """<p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of Scalar Datatype. This allows them to be used as the reference of a datatype specification.</p>""" ;
+    skos:exactMatch qudt:EnumeratedValue ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
+qudt:Verifiable a owl:Class ;
+    rdfs:label "Verifiable" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:dbpediaMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:normativeReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dbpediaMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:isoNormativeReference ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:wikidataMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:normativeReference ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isoNormativeReference ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:wikidataMatch ],
+        qudt:Aspect ;
+    skos:exactMatch qudt:Verifiable ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "An aspect class that holds properties that provide external knowledge and specifications of a given resource." .
+
 pokemon:Item a owl:Class ;
     rdfs:label "Item" ;
     rdfs:comment "An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area." ;
@@ -769,16 +1989,260 @@ pokemon:Place a owl:Class ;
     rdfs:subClassOf owl:Thing ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+qudt:SystemOfUnits a owl:Class ;
+    rdfs:label "SystemOfUnits" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom qudt:PhysicalConstant ;
+            owl:onProperty pokemon:applicablePhysicalConstant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasCoherentUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasDefinedUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasAllowedUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDefinedUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasCoherentUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasBaseUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasDerivedCoherentUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasAllowedUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Prefix ;
+            owl:onProperty pokemon:prefix ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasDerivedUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDerivedCoherentUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicablePhysicalConstant ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:hasBaseUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDerivedUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:prefix ],
+        qudt:Concept,
+        qudt:Verifiable ;
+    skos:definition "A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind." ;
+    skos:exactMatch qudt:SystemOfUnits ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.^^rdf:HTML" .
+
+qudt:QuantityKind a owl:Class ;
+    rdfs:label "QuantityKind" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:iec61360Code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableCGSUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qkdvNumerator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableCGSUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:iec61360Code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qkdvDenominator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableSIUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableUSCustomaryUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableImperialUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableSIUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:dimensionVectorForSI ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableISOUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:qkdvDenominator ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableISOUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableUSCustomaryUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:belongsToSystemOfQuantities ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:applicableImperialUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfQuantityKinds ;
+            owl:onProperty qudt:belongsToSystemOfQuantities ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVector ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVectorSI ;
+            owl:onProperty pokemon:dimensionVectorForSI ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom owl:Thing ;
+            owl:onProperty pokemon:qkdvNumerator ],
+        qudt:AbstractQuantityKind,
+        qudt:Verifiable ;
+    skos:definition "A <b>Quantity Kind</b> is any observable property that can be measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity." ;
+    skos:exactMatch qudt:QuantityKind ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.^^rdf:HTML" .
+
+qudt:QuantityKindDimensionVector a owl:Class ;
+    rdfs:label "QuantityKindDimensionVector" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForTime ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForTime ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForLength ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForAmountOfSubstance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:hasReferenceQuantityKind ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForMass ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForLength ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForElectricCurrent ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasReferenceQuantityKind ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionlessExponent ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForThermodynamicTemperature ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionlessExponent ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForMass ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForLuminousIntensity ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForThermodynamicTemperature ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForLuminousIntensity ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty pokemon:dimensionExponentForElectricCurrent ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:dimensionExponentForAmountOfSubstance ],
+        qudt:Concept ;
+    skos:definition """<p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\\theta$) as $dim \\, Q = L^{\\alpha} \\, M^{\\beta} \\, T^{\\gamma} \\, I ^{\\delta} \\, \\theta ^{\\epsilon} \\, N^{\\eta} \\, J ^{\\nu}$.</p>
+
+<p class="lm-para">The rational powers of the dimensional exponents, $\\alpha, \\, \\beta, \\, \\gamma, \\, \\delta, \\, \\epsilon, \\ , \\eta, \\, \\nu$, are positive, negative, or zero.</p>
+
+<p class="lm-para">For example, the dimension of the physical quantity kind $\\it{speed}$ is $\\ boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical quantity kind force is $\\boxed{mass \\times acceleration}$ or $\\boxed{mass \\times (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>""" ;
+    skos:exactMatch qudt:QuantityKindDimensionVector ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note """<p class=\\"lm-para\\">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\\\\theta$) as $dim \\\\, Q = L^{\\\\alpha} \\\\, M^{\\\\beta} \\\\, T^{\\\\gamma} \\\\, I ^{\\\\delta} \\\\, \\\\theta ^{\\\\epsilon} \\\\ , N^{\\\\eta} \\\\, J ^{\\\\nu}$.</p>
+
+<p class=\\"lm-para\\">The rational powers of the dimensional exponents, $\\\\alpha, \\\\, \\\\beta, \\\\, \\\\gamma, \\\\, \\\\delta, \\\\, \\\\epsilon, \\\\, \\\\eta, \\\\, \\\\nu$, are positive, negative, or zero.</p>
+
+<p class=\\"lm-para\\">For example, the dimension of the physical quantity kind $\\\\it{speed}$ is $\\\\boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical quantity kind force is $\\\\boxed{mass \\\\times acceleration}$ or $\\\\boxed{mass \\\\times (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>^^rdf:HTML""" .
+
 owl:NamedIndividual a owl:Class ;
     rdfs:label "NamedIndividual" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty owl:name ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
             owl:onProperty owl:name ],
         owl:Thing ;
     skos:definition "A Thing that requires a name" ;
@@ -789,13 +2253,13 @@ pokemon:Move a owl:Class ;
     rdfs:label "Move" ;
     rdfs:comment "A move is a special ability of a Pokemon." ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Type ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
             owl:onProperty pokemon:effectDescription ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Type ;
             owl:onProperty pokemon:hasType ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
@@ -804,25 +2268,386 @@ pokemon:Move a owl:Class ;
     skos:exactMatch pokemon:Move ;
     skos:inScheme <https://pokemonkg.org/ontology> .
 
+qudt:Concept a owl:Class ;
+    rdfs:label "Concept" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:guidance ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qudt_description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isReplacedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty qudt:guidance ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:qudt_description ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:isReplacedBy ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Rule ;
+            owl:onProperty pokemon:hasRule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:deprecated ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:plainTextDescription ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:abbreviation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:deprecated ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:qudt_id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasRule ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty qudt:qudt_id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:abbreviation ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:plainTextDescription ],
+        owl:Thing ;
+    skos:definition "The root class for all QUDT concepts." ;
+    skos:exactMatch qudt:Concept ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> ;
+    skos:note "The root class for all QUDT concepts.^^rdf:HTML" .
+
+pokemon:Species a owl:Class ;
+    rdfs:label "Species" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:integer ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:foundIn ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasGenus ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Move ;
+            owl:onProperty pokemon:isAbleToApply ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://dbpedia.org/ontology/Colour> ;
+            owl:onProperty pokemon:hasColour ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:EggGroup ;
+            owl:onProperty pokemon:inEggGroup ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Quantity ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Ability ;
+            owl:onProperty pokemon:mayHaveAbility ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Shape ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasCatchRate ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mayHaveHiddenAbility ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty foaf:depiction ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:isAbleToApply ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasShape ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Type ;
+            owl:onProperty pokemon:hasType ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:inEggGroup ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Quantity ;
+            owl:onProperty pokemon:hasHeight ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty pokemon:hasWeight ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom pokemon:Habitat ;
+            owl:onProperty pokemon:foundIn ],
+        owl:NamedIndividual ;
+    skos:definition "A species is a category of Pokemon that share common features." ;
+    skos:exactMatch pokemon:Species ;
+    skos:inScheme <https://pokemonkg.org/ontology> .
+
+qudt:Unit a owl:Class ;
+    rdfs:label "Unit" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Prefix ;
+            owl:onProperty pokemon:prefix ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:applicableSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:isUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:siUnitsExpression ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qkdvDenominator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:uneceCommonCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:udunitsCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty qudt:omUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:factorUnitScalar ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:conversionOffsetSN ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:ucumCode ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:iec61360Code ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasFactorUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:factorUnitScalar ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:derivedUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:derivedCoherentUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:derivedCoherentUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:conversionMultiplierSN ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:udunitsCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexDefinition ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:definedUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:conversionOffset ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:definedUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:UCUMcs ;
+            owl:onProperty pokemon:ucumCode ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty qudt:isUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVector ;
+            owl:onProperty pokemon:qkdvDenominator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:hasFactorUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:iec61360Code ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty pokemon:scalingOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:prefix ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:altSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:Unit ;
+            owl:onProperty qudt:hasReciprocalUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:exactMatch ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:unitFor ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:scalingOf ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:hasReciprocalUnit ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:qkdvNumerator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:conversionOffsetSN ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:SystemOfUnits ;
+            owl:onProperty pokemon:derivedUnitOfSystem ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty qudt:omUnit ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:conversionMultiplier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:conversionOffset ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVector ;
+            owl:onProperty pokemon:qkdvNumerator ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:latexSymbol ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:conversionMultiplierSN ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty qudt:unitFor ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKindDimensionVector ;
+            owl:onProperty pokemon:hasDimensionVector ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom qudt:QuantityKind ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:applicableSystem ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:siUnitsExpression ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:conversionMultiplier ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty pokemon:symbol ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:mathMLdefinition ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:hasQuantityKind ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty pokemon:uneceCommonCode ],
+        qudt:Concept,
+        qudt:Verifiable ;
+    skos:definition """
+  A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).
+  For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures).
+  Any measurement of the length can be expressed as a number multiplied by the unit meter.
+  More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  $Q = nU$.
+  """ ;
+    skos:exactMatch qudt:Unit ;
+    skos:inScheme <http://qudt.org/subset/qudt_subset> .
+
 owl:Thing a owl:Class ;
     rdfs:label "Thing" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality 1 ;
-            owl:onProperty owl:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty owl:name ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
             owl:onProperty owl:description ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:description ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty owl:description ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom xsd:string ;
+            owl:onProperty owl:name ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
             owl:onProperty owl:name ],
         [ a owl:Restriction ;
             owl:allValuesFrom xsd:anyURI ;
@@ -831,116 +2656,10 @@ owl:Thing a owl:Class ;
             owl:minCardinality 1 ;
             owl:onProperty owl:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty owl:description ] ;
+            owl:maxCardinality 1 ;
+            owl:onProperty owl:id ] ;
     skos:definition "An rdfs:Resource that defines name and description" ;
     skos:exactMatch owl:Thing ;
     skos:inScheme <http://www.w3.org/2002/07/owl> .
-
-pokemon:Species a owl:Class ;
-    rdfs:label "Species" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Type ;
-            owl:onProperty pokemon:hasType ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:mayHaveHiddenAbility ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:inEggGroup ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasGenus ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Shape ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <http://qudt.org/2.1/vocab/unit/Quantity> ;
-            owl:onProperty pokemon:hasHeight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasType ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Move ;
-            owl:onProperty pokemon:isAbleToApply ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Habitat ;
-            owl:onProperty pokemon:foundIn ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasColour ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasCatchRate ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasWeight ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasGenus ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty pokemon:hasGenus ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:isAbleToApply ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:EggGroup ;
-            owl:onProperty pokemon:inEggGroup ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:integer ;
-            owl:onProperty pokemon:hasCatchRate ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:foundIn ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
-            owl:onProperty pokemon:mayHaveHiddenAbility ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom pokemon:Ability ;
-            owl:onProperty pokemon:mayHaveAbility ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasWeight ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasShape ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasCatchRate ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://dbpedia.org/ontology/Colour> ;
-            owl:onProperty pokemon:hasColour ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty pokemon:hasColour ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty pokemon:hasHeight ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom xsd:string ;
-            owl:onProperty foaf:depiction ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <http://qudt.org/2.1/vocab/unit/Quantity> ;
-            owl:onProperty pokemon:hasWeight ],
-        owl:NamedIndividual ;
-    skos:definition "A species is a category of Pokemon that share common features." ;
-    skos:exactMatch pokemon:Species ;
-    skos:inScheme <https://pokemonkg.org/ontology> .
 
 

@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="class" role="graphics-document document" viewBox="0 0 80.4375 368" height="368" class="classDiagram" width="80.4375" id="container">
+  <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container g.classGroup text{fill:#9370DB;stroke:none;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:10px;}#container g.classGroup text .title{font-weight:bolder;}#container .nodeLabel,#container .edgeLabel{color:#131300;}#container .edgeLabel .label rect{fill:#ECECFF;}#container .label text{fill:#131300;}#container .labelBkg{background:#ECECFF;}#container .edgeLabel .label span{background:#ECECFF;}#container .classTitle{font-weight:bolder;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon,#container .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#container .divider{stroke:#9370DB;stroke-width:1;}#container g.clickable{cursor:pointer;}#container g.classGroup rect{fill:#ECECFF;stroke:#9370DB;}#container g.classGroup line{stroke:#9370DB;stroke-width:1;}#container .classLabel .box{stroke:none;stroke-width:0;fill:#ECECFF;opacity:0.5;}#container .classLabel .label{fill:#9370DB;font-size:10px;}#container .relation{stroke:#333333;stroke-width:1;fill:none;}#container .dashed-line{stroke-dasharray:3;}#container .dotted-line{stroke-dasharray:1 2;}#container #compositionStart,#container .composition{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#container #compositionEnd,#container .composition{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#container #dependencyStart,#container .dependency{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#container #dependencyStart,#container .dependency{fill:#333333!important;stroke:#333333!important;stroke-width:1;}#container #extensionStart,#container .extension{fill:transparent!important;stroke:#333333!important;stroke-width:1;}#container #extensionEnd,#container .extension{fill:transparent!important;stroke:#333333!important;stroke-width:1;}#container #aggregationStart,#container .aggregation{fill:transparent!important;stroke:#333333!important;stroke-width:1;}#container #aggregationEnd,#container .aggregation{fill:transparent!important;stroke:#333333!important;stroke-width:1;}#container #lollipopStart,#container .lollipop{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#container #lollipopEnd,#container .lollipop{fill:#ECECFF!important;stroke:#333333!important;stroke-width:1;}#container .edgeTerminals{font-size:11px;line-height:initial;}#container .classTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+  <g>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="18" class="marker aggregation class" id="container_class-aggregationStart">
+        <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="1" class="marker aggregation class" id="container_class-aggregationEnd">
+        <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="18" class="marker extension class" id="container_class-extensionStart">
+        <path d="M 1,7 L18,13 V 1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="1" class="marker extension class" id="container_class-extensionEnd">
+        <path d="M 1,1 V 13 L18,7 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="18" class="marker composition class" id="container_class-compositionStart">
+        <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="1" class="marker composition class" id="container_class-compositionEnd">
+        <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="6" class="marker dependency class" id="container_class-dependencyStart">
+        <path d="M 5,7 L9,13 L1,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="13" class="marker dependency class" id="container_class-dependencyEnd">
+        <path d="M 18,7 L9,13 L14,7 L9,1 Z"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="13" class="marker lollipop class" id="container_class-lollipopStart">
+        <circle r="6" cy="7" cx="7" fill="transparent" stroke="black"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="1" class="marker lollipop class" id="container_class-lollipopEnd">
+        <circle r="6" cy="7" cx="7" fill="transparent" stroke="black"/>
+      </marker>
+    </defs>
+    <g class="root">
+      <g class="clusters"/>
+      <g class="edgePaths">
+        <path marker-start="url(#container_class-extensionStart)" style=";" class="edge-thickness-normal edge-pattern-solid relation" id="id_Item_HM_1" d="M40.219,244L40.219,245.167C40.219,246.333,40.219,248.667,40.219,254C40.219,259.333,40.219,267.667,40.219,271.833L40.219,276"/>
+        <path marker-start="url(#container_class-extensionStart)" style=";" class="edge-thickness-normal edge-pattern-solid relation" id="id_Thing_Item_2" d="M40.219,110L40.219,111.167C40.219,112.333,40.219,114.667,40.219,120C40.219,125.333,40.219,133.667,40.219,137.833L40.219,142"/>
+      </g>
+      <g class="edgeLabels">
+        <g class="edgeLabel">
+          <g transform="translate(0, -12)" class="label">
+            <foreignObject height="24" width="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel" style=";display: inline-block"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g transform="translate(0, -12)" class="label">
+            <foreignObject height="24" width="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel" style=";display: inline-block"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+      </g>
+      <g class="nodes">
+        <g transform="translate(40.21875, 184)" id="classId-Item-0" class="node default">
+          <g class="basic label-container">
+            <path style="" fill="#ECECFF" stroke-width="0" stroke="none" d="M-28.46875 -42 L28.46875 -42 L28.46875 42 L-28.46875 42"/>
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-28.46875 -42 C-15.754503811473807 -42, -3.040257622947614 -42, 28.46875 -42 M-28.46875 -42 C-12.069995135155061 -42, 4.328759729689878 -42, 28.46875 -42 M28.46875 -42 C28.46875 -19.898728036412535, 28.46875 2.202543927174929, 28.46875 42 M28.46875 -42 C28.46875 -21.94467351719287, 28.46875 -1.889347034385743, 28.46875 42 M28.46875 42 C6.389598281961966 42, -15.689553436076068 42, -28.46875 42 M28.46875 42 C6.064203970504085 42, -16.34034205899183 42, -28.46875 42 M-28.46875 42 C-28.46875 19.01023809256127, -28.46875 -3.97952381487746, -28.46875 -42 M-28.46875 42 C-28.46875 15.015372476892551, -28.46875 -11.969255046214897, -28.46875 -42"/>
+          </g>
+          <g transform="translate(0, -18)" class="annotation-group text"/>
+          <g transform="translate(-16.46875, -18)" class="label-group text">
+            <g transform="translate(0,-12)" style="font-weight: bolder" class="label">
+              <foreignObject height="24" width="32.9375">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 84px; text-align: center;">
+                  <span style="" class="nodeLabel markdown-node-label">
+                    <p>Item</p>
+                  </span>
+                </div>
+              </foreignObject>
+            </g>
+          </g>
+          <g transform="translate(-16.46875, 30)" class="members-group text"/>
+          <g transform="translate(-16.46875, 60)" class="methods-group text"/>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-28.46875 6 C-16.9461345657459 6, -5.423519131491798 6, 28.46875 6 M-28.46875 6 C-16.903688788584326 6, -5.338627577168655 6, 28.46875 6"/>
+          </g>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-28.46875 24 C-15.535783090787037 24, -2.602816181574074 24, 28.46875 24 M-28.46875 24 C-14.93735066416034 24, -1.405951328320679 24, 28.46875 24"/>
+          </g>
+        </g>
+        <g transform="translate(40.21875, 318)" id="classId-HM-1" class="node default">
+          <g class="basic label-container">
+            <path style="" fill="#ECECFF" stroke-width="0" stroke="none" d="M-23.6171875 -42 L23.6171875 -42 L23.6171875 42 L-23.6171875 42"/>
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-23.6171875 -42 C-4.731049556618654 -42, 14.155088386762692 -42, 23.6171875 -42 M-23.6171875 -42 C-8.208426014009724 -42, 7.2003354719805515 -42, 23.6171875 -42 M23.6171875 -42 C23.6171875 -10.424688146808837, 23.6171875 21.150623706382326, 23.6171875 42 M23.6171875 -42 C23.6171875 -16.408839754757828, 23.6171875 9.182320490484344, 23.6171875 42 M23.6171875 42 C13.166141788071856 42, 2.7150960761437126 42, -23.6171875 42 M23.6171875 42 C11.75810681175602 42, -0.1009738764879593 42, -23.6171875 42 M-23.6171875 42 C-23.6171875 19.603705506738883, -23.6171875 -2.792588986522233, -23.6171875 -42 M-23.6171875 42 C-23.6171875 13.332979383607771, -23.6171875 -15.334041232784458, -23.6171875 -42"/>
+          </g>
+          <g transform="translate(0, -18)" class="annotation-group text"/>
+          <g transform="translate(-11.6171875, -18)" class="label-group text">
+            <g transform="translate(0,-12)" style="font-weight: bolder" class="label">
+              <foreignObject height="24" width="23.234375">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 73px; text-align: center;">
+                  <span style="" class="nodeLabel markdown-node-label">
+                    <p>HM</p>
+                  </span>
+                </div>
+              </foreignObject>
+            </g>
+          </g>
+          <g transform="translate(-11.6171875, 30)" class="members-group text"/>
+          <g transform="translate(-11.6171875, 60)" class="methods-group text"/>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-23.6171875 6 C-13.118800811911328 6, -2.6204141238226555 6, 23.6171875 6 M-23.6171875 6 C-6.007974900993872 6, 11.601237698012255 6, 23.6171875 6"/>
+          </g>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-23.6171875 24 C-10.289037860969426 24, 3.039111778061148 24, 23.6171875 24 M-23.6171875 24 C-13.37852575695162 24, -3.1398640139032388 24, 23.6171875 24"/>
+          </g>
+        </g>
+        <g transform="translate(40.21875, 50)" id="classId-Thing-2" class="node default">
+          <g class="basic label-container">
+            <path style="" fill="#ECECFF" stroke-width="0" stroke="none" d="M-32.21875 -42 L32.21875 -42 L32.21875 42 L-32.21875 42"/>
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-32.21875 -42 C-7.065115599458885 -42, 18.08851880108223 -42, 32.21875 -42 M-32.21875 -42 C-14.367963076515181 -42, 3.4828238469696373 -42, 32.21875 -42 M32.21875 -42 C32.21875 -22.061166707854937, 32.21875 -2.1223334157098748, 32.21875 42 M32.21875 -42 C32.21875 -9.193683152251182, 32.21875 23.612633695497635, 32.21875 42 M32.21875 42 C12.302796704941244 42, -7.613156590117512 42, -32.21875 42 M32.21875 42 C9.518996744420303 42, -13.180756511159395 42, -32.21875 42 M-32.21875 42 C-32.21875 10.991570431223945, -32.21875 -20.01685913755211, -32.21875 -42 M-32.21875 42 C-32.21875 11.333908766771323, -32.21875 -19.332182466457354, -32.21875 -42"/>
+          </g>
+          <g transform="translate(0, -18)" class="annotation-group text"/>
+          <g transform="translate(-20.21875, -18)" class="label-group text">
+            <g transform="translate(0,-12)" style="font-weight: bolder" class="label">
+              <foreignObject height="24" width="40.4375">
+                <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 90px; text-align: center;">
+                  <span style="" class="nodeLabel markdown-node-label">
+                    <p>Thing</p>
+                  </span>
+                </div>
+              </foreignObject>
+            </g>
+          </g>
+          <g transform="translate(-20.21875, 30)" class="members-group text"/>
+          <g transform="translate(-20.21875, 60)" class="methods-group text"/>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-32.21875 6 C-10.394562720853958 6, 11.429624558292083 6, 32.21875 6 M-32.21875 6 C-12.312520119344306 6, 7.593709761311388 6, 32.21875 6"/>
+          </g>
+          <g style="" class="divider">
+            <path style="" fill="none" stroke-width="1.3" stroke="#9370DB" d="M-32.21875 24 C-10.794643742541172 24, 10.629462514917655 24, 32.21875 24 M-32.21875 24 C-18.176726326107087 24, -4.134702652214173 24, 32.21875 24"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

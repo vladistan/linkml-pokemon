@@ -1,0 +1,4673 @@
+
+# LINKML-POKEMON
+
+
+**metamodel version:** 1.7.0
+
+**version:** None
+
+
+Ontology covering the Pokémon world as it is presented in games and anime television series
+
+
+## Class Diagram
+
+![class_diagram](images/class_diagram.svg)
+
+## ERD Diagrams
+
+
+### Component 1 (Ability, AbstractQuantityKind, CardinalityType...)
+
+![erd_ability](images/erd_ability.svg)
+
+### Component 2 (Berry, Flavor, Food)
+
+![erd_berry](images/erd_berry.svg)
+
+## Base Classes
+
+
+Foundational classes in the hierarchy (root classes and direct children of Thing):
+
+| Class | Description |
+| --- | --- |
+| [Ability](#ability) |  |
+| [Aspect](#aspect) |  |
+| [Colour](#colour) | Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others. |
+| [Concept](#concept) | The root class for all QUDT concepts. |
+| [Game](#game) | A game is a type of media that can be played by people. |
+| [Generation](#generation) |  |
+| [Item](#item) |  |
+| [Move](#move) |  |
+| [MoveLearning](#movelearning) | A move learning is a way that a Pokemon can learn a move. |
+| [NamedIndividual](#namedindividual) | A Thing that requires a name |
+| [Place](#place) |  |
+| [Pokedex](#pokedex) |  |
+| [PokedexEntry](#pokedexentry) | A pokedex entry is a description of a Pokemon. |
+| [Thing](#thing) | An rdfs:Resource that defines name and description |
+| [UCUMcs](#ucumcs) | Lexical pattern for the case-sensitive version of UCUM code |
+| [UCUMcs-term](#ucumcs-term) | Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code |
+
+## Standalone Classes
+
+
+These classes are completely isolated with no relationships and are not used as base classes:
+
+| Class | Description |
+| --- | --- |
+| [BattleItem](#battleitem) | Battle items are items that can be used during battles. |
+| [Gym](#gym) | A gym is a location that can be battled at. |
+| [GymLeader](#gymleader) |  |
+| [HM](#hm) | Hidden Machine |
+| [HoldItem](#holditem) | A hold item is an item that can be held by a Pokemon. |
+| [LearningByLevelingUp](#learningbylevelingup) | A move that is learned by leveling up. |
+| [LearningThroughBreeding](#learningthroughbreeding) | A move that is learned by breeding. |
+| [Medicine](#medicine) | Medicine items can heal various afflictions of a Pokemon. |
+| [Person](#person) | A person is a human being |
+| [Pokeball](#pokeball) |  |
+| [Pokemon](#pokemon) | A Pokemon |
+| [Region](#region) |  |
+| [TM](#tm) |  |
+| [Town](#town) | A town is a type of place that can be visited. |
+| [Trainer](#trainer) | A trainer is a person who is able to catch Pokemon. |
+| [Verifiable](#verifiable) |  |
+
+## Abstract Classes
+
+
+### NamedIndividual
+
+A Thing that requires a name
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+NamedIndividual:
+  is_a: Thing
+  abstract: true
+  description: A Thing that requires a name
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  slot_usage:
+    name:
+      required: true
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_namedindividual_local](images/class_namedindividual_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [EggGroup](#egggroup)
+ * [Flavor](#flavor)
+ * [Habitat](#habitat) - A habitat is a type of environment that certain Pokemon belong to.
+ * [Person](#person) - A person is a human being
+ * [Shape](#shape) - Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+ * [Species](#species) - A species is a category of Pokemon that share common features.
+ * [Type](#type)
+
+
+
+
+### Place
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Place:
+  is_a: Thing
+  abstract: true
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_place_local](images/class_place_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [Gym](#gym) - A gym is a location that can be battled at.
+ * [Region](#region)
+ * [Town](#town) - A town is a type of place that can be visited.
+
+#### Referenced by:
+
+
+
+
+
+### Thing
+
+An rdfs:Resource that defines name and description
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Thing:
+  abstract: true
+  description: An rdfs:Resource that defines name and description
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_thing_local](images/class_thing_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Children
+
+ * [Ability](#ability)
+ * [Aspect](#aspect)
+ * [Colour](#colour) - Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+ * [Concept](#concept) - The root class for all QUDT concepts.
+ * [Game](#game) - A game is a type of media that can be played by people.
+ * [Generation](#generation)
+ * [Item](#item)
+ * [Move](#move)
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+ * [Place](#place)
+ * [Pokedex](#pokedex)
+ * [PokedexEntry](#pokedexentry) - A pokedex entry is a description of a Pokemon.
+ * [UCUMcs](#ucumcs) - Lexical pattern for the case-sensitive version of UCUM code
+ * [UCUMcs-term](#ucumcs-term) - Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code
+
+
+
+
+## Classes
+
+
+### Ability
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Ability:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+  - effectDescription
+
+```
+</details>
+
+![class_ability_erd](images/class_ability_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub> 
+ *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub> 
+
+
+
+
+### AbstractQuantityKind
+
+Quantity Kind (abstract)
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+AbstractQuantityKind:
+  is_a: Concept
+  description: Quantity Kind (abstract)
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - AbstractQuantityKind_broader
+  - AbstractQuantityKind_altSymbol
+  - AbstractQuantityKind_latexSymbol
+  - AbstractQuantityKind_symbol
+  slot_usage:
+    broader:
+      range: QuantityKind
+    altSymbol:
+      required: false
+    latexSymbol:
+      required: false
+    symbol:
+      multivalued: false
+
+```
+</details>
+
+![class_abstractquantitykind_erd](images/class_abstractquantitykind_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Used as mixin by
+
+ * [QuantityKind](#quantitykind) - A <b>Quantity Kind</b> is any observable property that can be measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.
+
+
+
+
+### Aspect
+
+
+
+An aspect is an abstract type class that defines properties that can be reused.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Aspect:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_aspect_local](images/class_aspect_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [DataEncoding](#dataencoding) - <p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>
+ * [Quantifiable](#quantifiable) - <p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
+ * [Verifiable](#verifiable)
+
+
+
+
+### BattleItem
+
+Battle items are items that can be used during battles.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+BattleItem:
+  is_a: Item
+  description: Battle items are items that can be used during battles.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_battleitem_local](images/class_battleitem_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+
+
+
+### Berry
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Berry:
+  is_a: Food
+  slots:
+  - id
+  - name
+  - description
+  - hasFlavor
+  - firmness
+  - smoothness
+  - hasSize
+
+```
+</details>
+
+![class_berry_erd](images/class_berry_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[firmness](#firmness)** | <sub>0..1</sub> | integer |  |
+| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokemon has a flavor |
+| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer |  |
+| **[hasSize](#hassize)** | <sub>0..1</sub> | string |  |
+
+#### Parents
+
+ * [Food](#food)
+
+
+
+
+### CardinalityType
+
+In mathematics, the cardinality of a set is a measure of the number of elements of the set.
+  For example, the set $A = {2, 4, 6}$ contains 3 elements, and therefore $A$ has a cardinality of 3.
+  There are two approaches to cardinality: one which compares sets directly using bijections and injections,
+   and another which uses cardinal numbers.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+CardinalityType:
+  is_a: EnumeratedValue
+  description: "\n  In mathematics, the cardinality of a set is a measure of the number\
+    \ of elements of the set.\n  For example, the set $A = {2, 4, 6}$ contains 3 elements,\
+    \ and therefore $A$ has a cardinality of 3.\n  There are two approaches to cardinality:\
+    \ one which compares sets directly using bijections and injections,\n   and another\
+    \ which uses cardinal numbers.\n  "
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - EnumeratedValue_altSymbol
+  - EnumeratedValue_qudt_description
+  - EnumeratedValue_abbreviation
+  - EnumeratedValue_symbol
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - CardinalityType_literal
+  slot_usage:
+    literal:
+      multivalued: false
+
+```
+</details>
+
+![class_cardinalitytype_erd](images/class_cardinalitytype_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[literal](#literal)** | <sub>0..1</sub> | string |  |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+#### Referenced by:
+
+ *  **[Datatype](#datatype)** : cardinality  <sub>0..\*</sub> 
+
+
+
+
+### Colour
+
+Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Colour:
+  is_a: Thing
+  description: Color or colour is the visual perceptual property corresponding in
+    humans to the categories called red, yellow, blue and others.
+  slots:
+  - id
+  - name
+  - description
+  - black
+  - cyanic
+  - magenta
+  - yellow
+  - hue
+  - saturation
+  - value
+  - red
+  - green
+  - blue
+  - wavelength
+
+```
+</details>
+
+![class_colour_erd](images/class_colour_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[black](#black)** | <sub>0..1</sub> | float | Black component in CMYK color model |
+| **[blue](#blue)** | <sub>0..1</sub> | integer | Blue component in RGB color model (0-255) |
+| **[cyanic](#cyanic)** | <sub>0..1</sub> | float | Cyan component in CMYK color model |
+| **[green](#green)** | <sub>0..1</sub> | integer | Green component in RGB color model (0-255) |
+| **[hue](#hue)** | <sub>0..1</sub> | float | Hue component in HSV color model |
+| **[magenta](#magenta)** | <sub>0..1</sub> | float | Magenta component in CMYK color model |
+| **[red](#red)** | <sub>0..1</sub> | integer | Red component in RGB color model (0-255) |
+| **[saturation](#saturation)** | <sub>0..1</sub> | float | Saturation component in HSV color model |
+| **[value](#value)** | <sub>0..1</sub> | float | Value/Lightness component in HSV color model |
+| **[wavelength](#wavelength)** | <sub>0..1</sub> | float | The wavelength of the color in nanometers |
+| **[yellow](#yellow)** | <sub>0..1</sub> | float | Yellow component in CMYK color model |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Species](#species)** : hasColour  <sub>0..1</sub> 
+
+
+
+
+### Concept
+
+The root class for all QUDT concepts.
+
+The root class for all QUDT concepts.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Concept:
+  is_a: Thing
+  description: The root class for all QUDT concepts.
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    hasRule:
+      range: Rule
+    isReplacedBy:
+      multivalued: false
+    qudt_description:
+      multivalued: false
+    abbreviation:
+      multivalued: false
+    deprecated:
+      multivalued: false
+    qudt_id:
+      multivalued: false
+    plainTextDescription:
+      multivalued: false
+
+```
+</details>
+
+![class_concept_erd](images/class_concept_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [AbstractQuantityKind](#abstractquantitykind) - Quantity Kind (abstract)
+ * [Datatype](#datatype) - 
+ * [Encoding](#encoding) - An encoding is a rule or algorithm that is used to convert data from a native, or unspecified form into a specific form that satisfies the encoding rules. Examples of encodings include character encodings, such as UTF-8.
+ * [Enumeration](#enumeration) - <p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+ * [QuantityKindDimensionVector](#quantitykinddimensionvector) - <p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\theta$) as $dim \, Q = L^{\alpha} \, M^{\beta} \, T^{\gamma} \, I ^{\delta} \, \theta ^{\epsilon} \, N^{\eta} \, J ^{\nu}$.</p>
+ * [SystemOfQuantityKinds](#systemofquantitykinds) - A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention.
+
+#### Used as mixin by
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+ * [Prefix](#prefix) - Prefix
+ * [Quantity](#quantity) - <p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+ * [QuantityValue](#quantityvalue) - A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href="http://physics.nist.gov/Pubs/SP811/sec07.html">NIST SP 811 section 7</a> for more on quantity values.
+ * [Rule](#rule) - Rule
+ * [SystemOfUnits](#systemofunits) - A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.
+ * [Unit](#unit) - 
+
+
+
+
+### DataEncoding
+
+<p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>
+
+<p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+DataEncoding:
+  is_a: Aspect
+  description: <p><em>Data Encoding</em> expresses the properties that specify how
+    data is represented at the bit and byte level. These properties are applicable
+    to describing raw data.</p>
+  slots:
+  - id
+  - name
+  - description
+  - DataEncoding_bitOrder
+  - DataEncoding_encoding
+  - DataEncoding_byteOrder
+  slot_usage:
+    bitOrder:
+      range: EndianType
+      multivalued: false
+    encoding:
+      range: Encoding
+      multivalued: false
+    byteOrder:
+      multivalued: false
+
+```
+</details>
+
+![class_dataencoding_erd](images/class_dataencoding_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[bitOrder](#bitorder)** | <sub>0..1</sub> | [EndianType](#endiantype) | bit order |
+| **[byteOrder](#byteorder)** | <sub>0..1</sub> | [EndianType](#endiantype) | Byte order is an enumeration of two values: 'Big Endian' and 'Little Endian' and is used to denote whether the most signiticant byte is either first or last, respectively. |
+| **[encoding](#encoding)** | <sub>0..1</sub> | [Encoding](#encoding) | encoding |
+
+#### Parents
+
+ * [Aspect](#aspect)
+
+#### Referenced by:
+
+ *  **[Quantifiable](#quantifiable)** : dataEncoding  <sub>0..\*</sub> 
+
+
+
+
+### Datatype
+
+<p>A <em>Datatype</em> is a definition of the type of the "value" of a data item (for example, "all integers between 0 and 10"),
+   and the allowable operations on those values; the meaning of the data; and the way values of that type can be stored.
+  Some types are primitive - built-in to the language, with no visible internal structure.
+  For example "Boolean"; others are composite - constructed from one or more other types (of either kind).
+  For example lists, arrays, structures, unions.
+  Some languages provide strong typing, others allow implicit type conversion and/or explicit type conversion.
+  </p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Datatype:
+  is_a: Concept
+  description: "\n   <p>A <em>Datatype</em> is a definition of the type of the \"\
+    value\" of a data item (for example, \"all integers between 0 and 10\"),\n   and\
+    \ the allowable operations on those values; the meaning of the data; and the way\
+    \ values of that type can be stored.\n  Some types are primitive - built-in to\
+    \ the language, with no visible internal structure.\n  For example \"Boolean\"\
+    ; others are composite - constructed from one or more other types (of either kind).\n\
+    \  For example lists, arrays, structures, unions.\n  Some languages provide strong\
+    \ typing, others allow implicit type conversion and/or explicit type conversion.\n\
+    \  </p>"
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - Datatype_basis
+  - Datatype_cardinality
+  - Datatype_orderedType
+  - Datatype_ansiSQLName
+  - Datatype_cName
+  - Datatype_oracleSQLName
+  - Datatype_protocolBuffersName
+  - Datatype_pythonName
+  - Datatype_vbName
+  - Datatype_bounded
+  - Datatype_qudt_id
+  - Datatype_javaName
+  - Datatype_jsName
+  - Datatype_matlabName
+  - Datatype_microsoftSQLServerName
+  - Datatype_mySQLName
+  - Datatype_odbcName
+  - Datatype_oleDBName
+  slot_usage:
+    basis:
+      range: Datatype
+      multivalued: false
+    cardinality:
+      range: CardinalityType
+      multivalued: false
+    orderedType:
+      range: OrderedType
+      multivalued: false
+    ansiSQLName:
+      multivalued: false
+    cName:
+      multivalued: false
+    oracleSQLName:
+      multivalued: false
+    protocolBuffersName:
+      multivalued: false
+    pythonName:
+      multivalued: false
+    vbName:
+      multivalued: false
+    bounded:
+      multivalued: false
+    qudt_id:
+      multivalued: false
+    javaName:
+      multivalued: false
+    jsName:
+      multivalued: false
+    matlabName:
+      multivalued: false
+    microsoftSQLServerName:
+      multivalued: false
+    mySQLName:
+      multivalued: false
+    odbcName:
+      multivalued: false
+    oleDBName:
+      multivalued: false
+
+```
+</details>
+
+![class_datatype_erd](images/class_datatype_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[ansiSQLName](#ansisqlname)** | <sub>0..1</sub> | string |  |
+| **[basis](#basis)** | <sub>0..1</sub> | [Datatype](#datatype) | basis |
+| **[bounded](#bounded)** | <sub>0..1</sub> | string | bounded |
+| **[cName](#cname)** | <sub>0..1</sub> | string |  |
+| **[cardinality](#cardinality)** | <sub>0..1</sub> | [CardinalityType](#cardinalitytype) | cardinality |
+| **[javaName](#javaname)** | <sub>0..1</sub> | string | java name |
+| **[jsName](#jsname)** | <sub>0..1</sub> | string | Javascript name |
+| **[matlabName](#matlabname)** | <sub>0..1</sub> | string | matlab name |
+| **[microsoftSQLServerName](#microsoftsqlservername)** | <sub>0..1</sub> | string | Microsoft SQL Server name |
+| **[mySQLName](#mysqlname)** | <sub>0..1</sub> | string | MySQL name |
+| **[odbcName](#odbcname)** | <sub>0..1</sub> | string | ODBC name |
+| **[oleDBName](#oledbname)** | <sub>0..1</sub> | string | OLE DB (Object Linking and Embedding, Database, sometimes written as OLEDB or OLE-DB), an API designed by Microsoft, allows accessing data from a variety of sources in a uniform manner. The API provides a set of interfaces implemented using the Component Object Model (COM); it is otherwise unrelated to OLE. |
+| **[oracleSQLName](#oraclesqlname)** | <sub>0..1</sub> | string |  |
+| **[orderedType](#orderedtype)** | <sub>0..1</sub> | [OrderedType](#orderedtype) | ordered type |
+| **[protocolBuffersName](#protocolbuffersname)** | <sub>0..1</sub> | string |  |
+| **[pythonName](#pythonname)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[vbName](#vbname)** | <sub>0..1</sub> | string |  |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Datatype](#datatype)** : basis  <sub>0..\*</sub> 
+ *  **[Quantifiable](#quantifiable)** : datatype  <sub>0..\*</sub> 
+
+
+
+
+### EggGroup
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+EggGroup:
+  is_a: NamedIndividual
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+
+```
+</details>
+
+![class_egggroup_erd](images/class_egggroup_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Species](#species)** : inEggGroup  <sub>0..\*</sub> 
+
+
+
+
+### Encoding
+
+An encoding is a rule or algorithm that is used to convert data from a native, or unspecified form into a specific form that satisfies the encoding rules. Examples of encodings include character encodings, such as UTF-8.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Encoding:
+  is_a: Concept
+  description: An encoding is a rule or algorithm that is used to convert data from
+    a native, or unspecified form into a specific form that satisfies the encoding
+    rules. Examples of encodings include character encodings, such as UTF-8.
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - Encoding_bits
+  - Encoding_bytes
+  slot_usage:
+    bits:
+      multivalued: false
+    bytes:
+      multivalued: false
+
+```
+</details>
+
+![class_encoding_erd](images/class_encoding_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[bits](#bits)** | <sub>0..1</sub> | string |  |
+| **[bytes](#bytes)** | <sub>0..1</sub> | string | bytes |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[DataEncoding](#dataencoding)** : encoding  <sub>0..\*</sub> 
+
+
+
+
+### EndianType
+
+Endian Type
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+EndianType:
+  is_a: EnumeratedValue
+  description: Endian Type
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - EnumeratedValue_altSymbol
+  - EnumeratedValue_qudt_description
+  - EnumeratedValue_abbreviation
+  - EnumeratedValue_symbol
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_deprecated
+  - Concept_plainTextDescription
+
+```
+</details>
+
+![class_endiantype_erd](images/class_endiantype_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+#### Referenced by:
+
+ *  **[DataEncoding](#dataencoding)** : bitOrder  <sub>0..\*</sub> 
+ *  **[DataEncoding](#dataencoding)** : byteOrder  <sub>0..\*</sub> 
+
+
+
+
+### EnumeratedValue
+
+<p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of Scalar Datatype. This allows them to be used as the reference of a datatype specification.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+EnumeratedValue:
+  is_a: Verifiable
+  mixins:
+  - Concept
+  description: '<p>This class is for all enumerated and/or coded values.  For example,
+    it contains the dimension objects that are the basis elements in some abstract
+    vector space associated with a quantity kind system. Another use is for the base
+    dimensions for quantity systems. Each quantity kind system that defines a base
+    set has a corresponding ordered enumeration whose elements are the dimension objects
+    for the base quantity kinds. The order of the dimensions in the enumeration determines
+    the canonical order of the basis elements in the corresponding abstract vector
+    space.</p>
+
+
+    <p>An enumeration is a set of literals from which a single value is selected.
+    Each literal can have a tag as an integer within a standard encoding appropriate
+    to the range of integer values. Consistency of enumeration types will allow them,
+    and the enumerated values, to be referred to unambiguously either through symbolic
+    name or encoding. Enumerated values are also controlled vocabularies and as such
+    need to be standardized. Without this consistency enumeration literals can be
+    stated differently and result in  data conflicts and misinterpretations.</p>
+
+
+    <p>The tags are a set of positive whole numbers, not necessarily contiguous and
+    having no numerical significance, each corresponding to the associated literal
+    identifier. An order attribute can also be given on the enumeration elements.
+    An enumeration can itself be a member of an enumeration. This allows enumerations
+    to be enumerated in a selection. Enumerations are also subclasses of Scalar Datatype.
+    This allows them to be used as the reference of a datatype specification.</p>'
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - EnumeratedValue_altSymbol
+  - EnumeratedValue_qudt_description
+  - EnumeratedValue_abbreviation
+  - EnumeratedValue_symbol
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    altSymbol:
+      required: false
+    qudt_description:
+      multivalued: false
+    abbreviation:
+      multivalued: false
+    symbol:
+      multivalued: false
+
+```
+</details>
+
+![class_enumeratedvalue_erd](images/class_enumeratedvalue_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Children
+
+ * [CardinalityType](#cardinalitytype) - 
+ * [EndianType](#endiantype) - Endian Type
+ * [OrderedType](#orderedtype) - Describes how a data or information structure is ordered.
+ * [RuleType](#ruletype) - Rule Type
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Enumeration](#enumeration)** : default  <sub>0..\*</sub> 
+ *  **[Enumeration](#enumeration)** : element  <sub>1..\*</sub> 
+
+
+
+
+### Enumeration
+
+<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>
+
+<p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+<p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Enumeration:
+  is_a: Concept
+  description: '<p>An enumeration is a set of literals from which a single value is
+    selected. Each literal can have a tag as an integer within a standard encoding
+    appropriate to the range of integer values. Consistency of enumeration types will
+    allow them, and the enumerated values, to be referred to unambiguously either
+    through symbolic name or encoding. Enumerated values are also controlled vocabularies
+    and as such need to be standardized. Without this consistency enumeration literals
+    can be stated differently and result in  data conflicts and misinterpretations.</p>
+
+
+    <p>The tags are a set of positive whole numbers, not necessarily contiguous and
+    having no numerical significance, each corresponding to the associated literal
+    identifier. An order attribute can also be given on the enumeration elements.
+    An enumeration can itself be a member of an enumeration. This allows enumerations
+    to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar
+    Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>'
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - Enumeration_default
+  - Enumeration_element
+  - Enumeration_abbreviation
+  slot_usage:
+    default:
+      range: EnumeratedValue
+      multivalued: false
+    element:
+      range: EnumeratedValue
+      required: true
+    abbreviation:
+      multivalued: false
+
+```
+</details>
+
+![class_enumeration_erd](images/class_enumeration_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[default](#default)** | <sub>0..1</sub> | [EnumeratedValue](#enumeratedvalue) | The default element in an enumeration |
+| **[element](#element)** | <sub>1..\*</sub> | [EnumeratedValue](#enumeratedvalue) | An element of an enumeration |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[SystemOfQuantityKinds](#systemofquantitykinds)** : baseDimensionEnumeration  <sub>0..\*</sub> 
+
+
+
+
+### Flavor
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Flavor:
+  is_a: NamedIndividual
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+
+```
+</details>
+
+![class_flavor_erd](images/class_flavor_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Food](#food)** : hasFlavor  <sub>0..\*</sub> 
+
+
+
+
+### Food
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Food:
+  is_a: Item
+  slots:
+  - id
+  - name
+  - description
+  - hasFlavor
+  - firmness
+  - smoothness
+
+```
+</details>
+
+![class_food_erd](images/class_food_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[firmness](#firmness)** | <sub>0..1</sub> | integer |  |
+| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokemon has a flavor |
+| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer |  |
+
+#### Parents
+
+ * [Item](#item)
+
+#### Children
+
+ * [Berry](#berry)
+
+
+
+
+### Game
+
+A game is a type of media that can be played by people.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Game:
+  is_a: Thing
+  description: A game is a type of media that can be played by people.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_game_local](images/class_game_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+
+
+
+### Generation
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Generation:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+  - featuresSpecies
+
+```
+</details>
+
+![class_generation_erd](images/class_generation_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[featuresSpecies](#featuresspecies)** | <sub>0..\*</sub> | [Species](#species) | ['A Pokedex entry features a species'] |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+
+
+
+### Gym
+
+A gym is a location that can be battled at.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Gym:
+  is_a: Place
+  description: A gym is a location that can be battled at.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_gym_local](images/class_gym_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Place](#place)
+
+
+
+
+### GymLeader
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+GymLeader:
+  is_a: Trainer
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  - depiction
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_gymleader_local](images/class_gymleader_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+
+#### Parents
+
+ * [Trainer](#trainer) - A trainer is a person who is able to catch Pokemon.
+
+
+
+
+### HM
+
+Hidden Machine
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+HM:
+  is_a: Item
+  description: Hidden Machine
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_hm_local](images/class_hm_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+
+
+
+### Habitat
+
+A habitat is a type of environment that certain Pokemon belong to.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Habitat:
+  is_a: NamedIndividual
+  description: A habitat is a type of environment that certain Pokemon belong to.
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+
+```
+</details>
+
+![class_habitat_erd](images/class_habitat_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Species](#species)** : foundIn  <sub>0..\*</sub> 
+
+
+
+
+### HoldItem
+
+A hold item is an item that can be held by a Pokemon.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+HoldItem:
+  is_a: Item
+  description: A hold item is an item that can be held by a Pokemon.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_holditem_local](images/class_holditem_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+
+
+
+### Item
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Item:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_item_local](images/class_item_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [BattleItem](#battleitem) - Battle items are items that can be used during battles.
+ * [Food](#food)
+ * [HM](#hm) - Hidden Machine
+ * [HoldItem](#holditem) - A hold item is an item that can be held by a Pokemon.
+ * [Medicine](#medicine) - Medicine items can heal various afflictions of a Pokemon.
+ * [Pokeball](#pokeball)
+ * [TM](#tm)
+
+
+
+
+### LearningByLevelingUp
+
+A move that is learned by leveling up.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+LearningByLevelingUp:
+  is_a: MoveLearning
+  description: A move that is learned by leveling up.
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_learningbylevelingup_local](images/class_learningbylevelingup_local.svg)
+
+This class has no attributes
+
+
+#### Parents
+
+ * [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+
+
+
+
+### LearningThroughBreeding
+
+A move that is learned by breeding.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+LearningThroughBreeding:
+  is_a: MoveLearning
+  description: A move that is learned by breeding.
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_learningthroughbreeding_local](images/class_learningthroughbreeding_local.svg)
+
+This class has no attributes
+
+
+#### Parents
+
+ * [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+
+
+
+
+### Medicine
+
+Medicine items can heal various afflictions of a Pokemon.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Medicine:
+  is_a: Item
+  description: Medicine items can heal various afflictions of a Pokemon.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_medicine_local](images/class_medicine_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+
+
+
+### Move
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Move:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+  - effectDescription
+  - hasType
+
+```
+</details>
+
+![class_move_erd](images/class_move_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Children
+
+ * [PhysicalMove](#physicalmove) - A physical move is a type of move that can be used during battles.
+ * [SpecialMove](#specialmove) - A special move is a type of move that can be used during battles.
+ * [StatusMove](#statusmove) - A status move is a type of move that can be used during battles.
+
+#### Referenced by:
+
+ *  **[Species](#species)** : isAbleToApply  <sub>0..\*</sub> 
+
+
+
+
+### MoveLearning
+
+A move learning is a way that a Pokemon can learn a move.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+MoveLearning:
+  description: A move learning is a way that a Pokemon can learn a move.
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_movelearning_local](images/class_movelearning_local.svg)
+
+This class has no attributes
+
+
+#### Children
+
+ * [LearningByLevelingUp](#learningbylevelingup) - A move that is learned by leveling up.
+ * [LearningThroughBreeding](#learningthroughbreeding) - A move that is learned by breeding.
+
+#### Used as mixin by
+
+ * [TM](#tm)
+
+
+
+
+### OrderedType
+
+Describes how a data or information structure is ordered.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+OrderedType:
+  is_a: EnumeratedValue
+  description: Describes how a data or information structure is ordered.
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - EnumeratedValue_altSymbol
+  - EnumeratedValue_qudt_description
+  - EnumeratedValue_abbreviation
+  - EnumeratedValue_symbol
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - OrderedType_literal
+  slot_usage:
+    literal:
+      multivalued: false
+
+```
+</details>
+
+![class_orderedtype_erd](images/class_orderedtype_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[literal](#literal)** | <sub>0..1</sub> | string |  |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+#### Referenced by:
+
+ *  **[Datatype](#datatype)** : orderedType  <sub>0..\*</sub> 
+
+
+
+
+### Person
+
+A person is a human being
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Person:
+  is_a: NamedIndividual
+  description: A person is a human being
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  - depiction
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_person_local](images/class_person_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Children
+
+ * [Trainer](#trainer) - A trainer is a person who is able to catch Pokemon.
+
+
+
+
+### PhysicalConstant
+
+A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used.
+
+A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+PhysicalConstant:
+  is_a: Quantity
+  description: "A physical constant is a physical quantity that is generally believed\
+    \ to be both universal in nature and constant in time. It can be contrasted with\
+    \ a mathematical constant, which is a fixed numerical value but does not directly\
+    \ involve any physical measurement. There are many physical constants in science,\
+    \ some of the most widely recognized being the speed of light in vacuum c, Newton's\
+    \ gravitational constant G, Planck's constant h, the electric permittivity of\
+    \ free space \u03B50, and the elementary charge e. Physical constants can take\
+    \ many dimensional forms, or may be dimensionless depending on the system of quantities\
+    \ and units used."
+  slots:
+  - id
+  - name
+  - description
+  - Quantifiable_dataEncoding
+  - Quantifiable_datatype
+  - Quantifiable_hasUnit
+  - Quantifiable_relativeStandardUncertainty
+  - Quantifiable_standardUncertainty
+  - Quantifiable_standardUncertaintySN
+  - Quantifiable_qudt_value
+  - Quantifiable_valueSN
+  - Quantity_hasQuantityKind
+  - Quantity_quantityValue
+  - Quantity_isDeltaQuantity
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - PhysicalConstant_applicableSystem
+  - PhysicalConstant_applicableUnit
+  - PhysicalConstant_exactMatch
+  - PhysicalConstant_hasDimensionVector
+  - PhysicalConstant_ucumCode
+  - PhysicalConstant_exactConstant
+  - PhysicalConstant_altSymbol
+  - PhysicalConstant_isoNormativeReference
+  - PhysicalConstant_latexSymbol
+  - PhysicalConstant_normativeReference
+  - PhysicalConstant_symbol
+  - PhysicalConstant_latexDefinition
+  - PhysicalConstant_mathMLdefinition
+  slot_usage:
+    applicableSystem:
+      range: SystemOfUnits
+    applicableUnit:
+      range: Unit
+    exactMatch:
+      range: PhysicalConstant
+    hasDimensionVector:
+      range: QuantityKindDimensionVector
+    ucumCode:
+      required: false
+    exactConstant:
+      range: boolean
+    altSymbol:
+      required: false
+    isoNormativeReference:
+      required: false
+    latexSymbol:
+      required: false
+    normativeReference:
+      required: false
+    symbol:
+      required: false
+    latexDefinition:
+      multivalued: false
+    mathMLdefinition:
+      multivalued: false
+
+```
+</details>
+
+![class_physicalconstant_erd](images/class_physicalconstant_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dataEncoding](#dataencoding)** | <sub>0..1</sub> | [DataEncoding](#dataencoding) | data encoding |
+| **[datatype](#datatype)** | <sub>0..1</sub> | [Datatype](#datatype) | datatype |
+| **[hasQuantityKind](#hasquantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has quantity kind |
+| **[hasUnit](#hasunit)** | <sub>0..1</sub> | [Unit](#unit) | This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. |
+| **[isDeltaQuantity](#isdeltaquantity)** | <sub>0..\*</sub> | boolean | This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets. |
+| **[quantityValue](#quantityvalue)** | <sub>0..\*</sub> | [QuantityValue](#quantityvalue) | quantity value |
+| **[qudt_value](#qudt_value)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[relativeStandardUncertainty](#relativestandarduncertainty)** | <sub>0..1</sub> | double | The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. |
+| **[standardUncertainty](#standarduncertainty)** | <sub>0..1</sub> | decimal | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[standardUncertaintySN](#standarduncertaintysn)** | <sub>0..\*</sub> | double | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[valueSN](#valuesn)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[applicableSystem](#applicablesystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible. |
+| **[applicableUnit](#applicableunit)** | <sub>0..\*</sub> | [Unit](#unit) | See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized |
+| **[exactConstant](#exactconstant)** | <sub>0..\*</sub> | boolean | exact constant |
+| **[exactMatch](#exactmatch)** | <sub>0..\*</sub> | [PhysicalConstant](#physicalconstant) | exact match |
+| **[hasDimensionVector](#hasdimensionvector)** | <sub>0..\*</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | has dimension vector |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[latexDefinition](#latexdefinition)** | <sub>0..1</sub> | string | latex definition |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[mathMLdefinition](#mathmldefinition)** | <sub>0..1</sub> | string | mathML definition |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[symbol](#symbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[ucumCode](#ucumcode)** | <sub>0..\*</sub> | string | <p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [Quantity](#quantity) - <p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+
+#### Referenced by:
+
+ *  **[PhysicalConstant](#physicalconstant)** : exactMatch  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : applicablePhysicalConstant  <sub>0..\*</sub> 
+
+
+
+
+### PhysicalMove
+
+A physical move is a type of move that can be used during battles.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+PhysicalMove:
+  is_a: Move
+  description: A physical move is a type of move that can be used during battles.
+  slots:
+  - id
+  - name
+  - description
+  - effectDescription
+  - hasType
+
+```
+</details>
+
+![class_physicalmove_erd](images/class_physicalmove_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+
+#### Parents
+
+ * [Move](#move)
+
+
+
+
+### Pokeball
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Pokeball:
+  is_a: Item
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_pokeball_local](images/class_pokeball_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+
+
+
+### Pokedex
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Pokedex:
+  is_a: Thing
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_pokedex_local](images/class_pokedex_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+
+
+
+### PokedexEntry
+
+A pokedex entry is a description of a Pokemon.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+PokedexEntry:
+  is_a: Thing
+  description: A pokedex entry is a description of a Pokemon.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_pokedexentry_local](images/class_pokedexentry_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+
+
+
+
+### Pokemon
+
+A Pokemon
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Pokemon:
+  description: A Pokemon
+
+```
+</details>
+
+
+This class has no attributes
+
+
+
+
+
+### Prefix
+
+Prefix
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Prefix:
+  is_a: Verifiable
+  mixins:
+  - Concept
+  description: Prefix
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - Prefix_exactMatch
+  - Prefix_ucumCode
+  - Prefix_altSymbol
+  - Prefix_latexSymbol
+  - Prefix_symbol
+  - Prefix_prefixMultiplier
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    exactMatch:
+      range: Prefix
+    ucumCode:
+      range: UCUMcs-term
+    altSymbol:
+      required: false
+    latexSymbol:
+      required: false
+    symbol:
+      required: false
+    prefixMultiplier:
+      multivalued: false
+
+```
+</details>
+
+![class_prefix_erd](images/class_prefix_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[exactMatch](#exactmatch)** | <sub>0..\*</sub> | [Prefix](#prefix) | exact match |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[prefixMultiplier](#prefixmultiplier)** | <sub>0..1</sub> | string | prefix multiplier |
+| **[symbol](#symbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[ucumCode](#ucumcode)** | <sub>0..\*</sub> | [UCUMcs-term](#ucumcs-term) | <p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Prefix](#prefix)** : exactMatch  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : prefix  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : prefix  <sub>0..\*</sub> 
+
+
+
+
+### Quantifiable
+
+<p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
+
+<p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Quantifiable:
+  is_a: Aspect
+  description: <p><em>Quantifiable</em> ascribes to some thing the capability of being
+    measured, observed, or counted.</p>
+  slots:
+  - id
+  - name
+  - description
+  - Quantifiable_dataEncoding
+  - Quantifiable_datatype
+  - Quantifiable_hasUnit
+  - Quantifiable_relativeStandardUncertainty
+  - Quantifiable_standardUncertainty
+  - Quantifiable_standardUncertaintySN
+  - Quantifiable_qudt_value
+  - Quantifiable_valueSN
+  slot_usage:
+    dataEncoding:
+      range: DataEncoding
+      multivalued: false
+    datatype:
+      range: Datatype
+      multivalued: false
+    hasUnit:
+      range: Unit
+      multivalued: false
+    relativeStandardUncertainty:
+      range: double
+      multivalued: false
+    standardUncertainty:
+      range: decimal
+      multivalued: false
+    standardUncertaintySN:
+      range: double
+    qudt_value:
+      multivalued: false
+    valueSN:
+      multivalued: false
+
+```
+</details>
+
+![class_quantifiable_erd](images/class_quantifiable_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dataEncoding](#dataencoding)** | <sub>0..1</sub> | [DataEncoding](#dataencoding) | data encoding |
+| **[datatype](#datatype)** | <sub>0..1</sub> | [Datatype](#datatype) | datatype |
+| **[hasUnit](#hasunit)** | <sub>0..1</sub> | [Unit](#unit) | This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. |
+| **[qudt_value](#qudt_value)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[relativeStandardUncertainty](#relativestandarduncertainty)** | <sub>0..1</sub> | double | The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. |
+| **[standardUncertainty](#standarduncertainty)** | <sub>0..1</sub> | decimal | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[standardUncertaintySN](#standarduncertaintysn)** | <sub>0..\*</sub> | double | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[valueSN](#valuesn)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+
+#### Parents
+
+ * [Aspect](#aspect)
+
+#### Children
+
+ * [Quantity](#quantity) - <p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+ * [QuantityValue](#quantityvalue) - A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href="http://physics.nist.gov/Pubs/SP811/sec07.html">NIST SP 811 section 7</a> for more on quantity values.
+
+
+
+
+### Quantity
+
+<p class="lm-para">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the
+  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific
+  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as
+  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
+<p class="lm-para">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points,
+velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p>
+<p class="lm-para">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity
+kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance
+divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these
+expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded
+as "fundamental" in this sense.</p>
+<p class="lm-para">A quantity is distinguished from a "quantity kind" in that the former carries a value and the latter is a type specifier.</p>
+
+<p class=\"lm-para\">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
+  A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the
+  underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific
+  quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as
+  the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
+<p class=\"lm-para\">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points,
+velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p>
+<p class=\"lm-para\">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity
+kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance
+divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these
+expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded
+as \"fundamental\" in this sense.</p>
+<p class=\"lm-para\">A quantity is distinguished from a \"quantity kind\" in that the former carries a value and the latter is a type specifier.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Quantity:
+  is_a: Quantifiable
+  mixins:
+  - Concept
+  description: "<p class=\"lm-para\">A <b>quantity</b> is the measurement of an observable\
+    \ property of a particular object, event, or physical system.\n  A quantity is\
+    \ always associated with the context of measurement (i.e. the thing measured,\
+    \ the measured value, the accuracy of measurement, etc.) whereas the\n  underlying\
+    \ <b>quantity kind</b> is independent of any particular measurement. Thus, length\
+    \ is a quantity kind while the height of a rocket is a specific\n  quantity of\
+    \ length; its magnitude that may be expressed in meters, feet, inches, etc. Examples\
+    \ of physical quantities include physical constants, such as\n  the speed of light\
+    \ in a vacuum, Planck's constant, the electric permittivity of free space, and\
+    \ the fine structure constant. </p>\n<p class=\"lm-para\">In other words, quantities\
+    \ are quantifiable aspects of the world, such as the duration of a movie, the\
+    \ distance between two points,\nvelocity of a car, the pressure of the atmosphere,\
+    \ and a person's weight; and units are used to describe their numerical measure.</p>\n\
+    <p class=\"lm-para\">Many <b>quantity kinds</b> are related to each other by various\
+    \ physical laws, and as a result, the associated units of some quantity\nkinds\
+    \ can be expressed as products (or ratios) of powers of other quantity kinds (e.g.,\
+    \ momentum is mass times velocity and velocity is defined as distance\ndivided\
+    \ by time). In this way, some quantities can be calculated from other measured\
+    \ quantities using their associations to the quantity kinds in these\nexpressions.\
+    \ These quantity kind relationships are also discussed in dimensional analysis.\
+    \ Those that cannot be so expressed can be regarded\nas \"fundamental\" in this\
+    \ sense.</p>\n<p class=\"lm-para\">A quantity is distinguished from a \"quantity\
+    \ kind\" in that the former carries a value and the latter is a type specifier.</p>"
+  slots:
+  - id
+  - name
+  - description
+  - Quantifiable_dataEncoding
+  - Quantifiable_datatype
+  - Quantifiable_hasUnit
+  - Quantifiable_relativeStandardUncertainty
+  - Quantifiable_standardUncertainty
+  - Quantifiable_standardUncertaintySN
+  - Quantifiable_qudt_value
+  - Quantifiable_valueSN
+  - Quantity_hasQuantityKind
+  - Quantity_quantityValue
+  - Quantity_isDeltaQuantity
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    hasQuantityKind:
+      range: QuantityKind
+      required: false
+    quantityValue:
+      range: QuantityValue
+    isDeltaQuantity:
+      range: boolean
+
+```
+</details>
+
+![class_quantity_erd](images/class_quantity_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dataEncoding](#dataencoding)** | <sub>0..1</sub> | [DataEncoding](#dataencoding) | data encoding |
+| **[datatype](#datatype)** | <sub>0..1</sub> | [Datatype](#datatype) | datatype |
+| **[hasUnit](#hasunit)** | <sub>0..1</sub> | [Unit](#unit) | This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. |
+| **[qudt_value](#qudt_value)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[relativeStandardUncertainty](#relativestandarduncertainty)** | <sub>0..1</sub> | double | The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. |
+| **[standardUncertainty](#standarduncertainty)** | <sub>0..1</sub> | decimal | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[standardUncertaintySN](#standarduncertaintysn)** | <sub>0..\*</sub> | double | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[valueSN](#valuesn)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[hasQuantityKind](#hasquantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has quantity kind |
+| **[isDeltaQuantity](#isdeltaquantity)** | <sub>0..\*</sub> | boolean | This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets. |
+| **[quantityValue](#quantityvalue)** | <sub>0..\*</sub> | [QuantityValue](#quantityvalue) | quantity value |
+
+#### Parents
+
+ * [Quantifiable](#quantifiable) - <p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
+
+#### Children
+
+ * [PhysicalConstant](#physicalconstant) - A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used.
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Species](#species)** : hasHeight  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasWeight  <sub>0..1</sub> 
+
+
+
+
+### QuantityKind
+
+A <b>Quantity Kind</b> is any observable property that can be measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.
+
+A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+QuantityKind:
+  is_a: Verifiable
+  mixins:
+  - AbstractQuantityKind
+  description: A <b>Quantity Kind</b> is any observable property that can be measured
+    and quantified numerically. Familiar examples include physical properties such
+    as length, mass, time, force, energy, power, electric charge, etc. Less familiar
+    examples include currency, interest rate, price to earning ratio, and information
+    capacity.
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - belongsToSystemOfQuantities
+  - QuantityKind_dimensionVectorForSI
+  - QuantityKind_exactMatch
+  - QuantityKind_hasDimensionVector
+  - QuantityKind_iec61360Code
+  - QuantityKind_applicableCGSUnit
+  - QuantityKind_applicableISOUnit
+  - QuantityKind_applicableImperialUnit
+  - QuantityKind_applicableSIUnit
+  - QuantityKind_applicableUSCustomaryUnit
+  - QuantityKind_applicableUnit
+  - QuantityKind_qkdvDenominator
+  - QuantityKind_qkdvNumerator
+  - QuantityKind_latexDefinition
+  - QuantityKind_mathMLdefinition
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - AbstractQuantityKind_broader
+  - AbstractQuantityKind_altSymbol
+  - AbstractQuantityKind_latexSymbol
+  - AbstractQuantityKind_symbol
+  slot_usage:
+    dimensionVectorForSI:
+      range: QuantityKindDimensionVector_SI
+      multivalued: false
+    exactMatch:
+      range: QuantityKind
+    hasDimensionVector:
+      range: QuantityKindDimensionVector
+    iec61360Code:
+      range: string
+    applicableCGSUnit:
+      required: false
+    applicableISOUnit:
+      required: false
+    applicableImperialUnit:
+      required: false
+    applicableSIUnit:
+      required: false
+    applicableUSCustomaryUnit:
+      required: false
+    applicableUnit:
+      required: false
+    qkdvDenominator:
+      multivalued: false
+    qkdvNumerator:
+      multivalued: false
+    latexDefinition:
+      multivalued: false
+    mathMLdefinition:
+      multivalued: false
+
+```
+</details>
+
+![class_quantitykind_erd](images/class_quantitykind_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[applicableCGSUnit](#applicablecgsunit)** | <sub>0..\*</sub> | [Unit](#unit) | applicable CGS unit |
+| **[applicableISOUnit](#applicableisounit)** | <sub>0..\*</sub> | [Unit](#unit) | applicable ISO unit |
+| **[applicableImperialUnit](#applicableimperialunit)** | <sub>0..\*</sub> | [Unit](#unit) | applicable Imperial unit |
+| **[applicableSIUnit](#applicablesiunit)** | <sub>0..\*</sub> | [Unit](#unit) | applicable SI unit |
+| **[applicableUSCustomaryUnit](#applicableuscustomaryunit)** | <sub>0..\*</sub> | [Unit](#unit) | applicable US Customary unit |
+| **[applicableUnit](#applicableunit)** | <sub>0..\*</sub> | [Unit](#unit) | See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized |
+| **[belongsToSystemOfQuantities](#belongstosystemofquantities)** | <sub>0..\*</sub> | [SystemOfQuantityKinds](#systemofquantitykinds) | belongs to system of quantities |
+| **[dimensionVectorForSI](#dimensionvectorforsi)** | <sub>0..1</sub> | [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) | dimension vector for SI |
+| **[exactMatch](#exactmatch)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | exact match |
+| **[hasDimensionVector](#hasdimensionvector)** | <sub>0..\*</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | has dimension vector |
+| **[iec61360Code](#iec61360code)** | <sub>0..\*</sub> | string | iec-61360 code |
+| **[latexDefinition](#latexdefinition)** | <sub>0..1</sub> | string | latex definition |
+| **[mathMLdefinition](#mathmldefinition)** | <sub>0..1</sub> | string | mathML definition |
+| **[qkdvDenominator](#qkdvdenominator)** | <sub>0..1</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | denominator dimension vector |
+| **[qkdvNumerator](#qkdvnumerator)** | <sub>0..1</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | numerator dimension vector |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Uses
+
+ *  mixin: [AbstractQuantityKind](#abstractquantitykind) - Quantity Kind (abstract)
+
+#### Referenced by:
+
+ *  **[AbstractQuantityKind](#abstractquantitykind)** : broader  <sub>0..1</sub> 
+ *  **[QuantityKindDimensionVector](#quantitykinddimensionvector)** : hasReferenceQuantityKind  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : exactMatch  <sub>0..\*</sub> 
+ *  **[Quantity](#quantity)** : hasQuantityKind  <sub>0..\*</sub> 
+ *  **[SystemOfQuantityKinds](#systemofquantitykinds)** : hasBaseQuantityKind  <sub>0..\*</sub> 
+ *  **[SystemOfQuantityKinds](#systemofquantitykinds)** : hasQuantityKind  <sub>0..\*</sub> 
+ *  **[SystemOfQuantityKinds](#systemofquantitykinds)** : systemDerivedQuantityKind  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : hasQuantityKind  <sub>0..\*</sub> 
+
+
+
+
+### QuantityKindDimensionVector
+
+<p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\theta$) as $dim \, Q = L^{\alpha} \, M^{\beta} \, T^{\gamma} \, I ^{\delta} \, \theta ^{\epsilon} \, N^{\eta} \, J ^{\nu}$.</p>
+
+<p class="lm-para">The rational powers of the dimensional exponents, $\alpha, \, \beta, \, \gamma, \, \delta, \, \epsilon, \ , \eta, \, \nu$, are positive, negative, or zero.</p>
+
+<p class="lm-para">For example, the dimension of the physical quantity kind $\it{speed}$ is $\ boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical quantity kind force is $\boxed{mass \times acceleration}$ or $\boxed{mass \times (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>
+
+<p class=\"lm-para\">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\\theta$) as $dim \\, Q = L^{\\alpha} \\, M^{\\beta} \\, T^{\\gamma} \\, I ^{\\delta} \\, \\theta ^{\\epsilon} \\ , N^{\\eta} \\, J ^{\\nu}$.</p>
+
+<p class=\"lm-para\">The rational powers of the dimensional exponents, $\\alpha, \\, \\beta, \\, \\gamma, \\, \\delta, \\, \\epsilon, \\, \\eta, \\, \\nu$, are positive, negative, or zero.</p>
+
+<p class=\"lm-para\">For example, the dimension of the physical quantity kind $\\it{speed}$ is $\\boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical quantity kind force is $\\boxed{mass \\times acceleration}$ or $\\boxed{mass \\times (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+QuantityKindDimensionVector:
+  is_a: Concept
+  description: '<p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes
+    the dimensionality of a quantity kind in the context of a system of units. In
+    the SI system of units, the dimensions of a quantity kind are expressed as a product
+    of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current
+    ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature
+    ($\theta$) as $dim \, Q = L^{\alpha} \, M^{\beta} \, T^{\gamma} \, I ^{\delta}
+    \, \theta ^{\epsilon} \, N^{\eta} \, J ^{\nu}$.</p>
+
+
+    <p class="lm-para">The rational powers of the dimensional exponents, $\alpha,
+    \, \beta, \, \gamma, \, \delta, \, \epsilon, \ , \eta, \, \nu$, are positive,
+    negative, or zero.</p>
+
+
+    <p class="lm-para">For example, the dimension of the physical quantity kind $\it{speed}$
+    is $\ boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical
+    quantity kind force is $\boxed{mass \times acceleration}$ or $\boxed{mass \times
+    (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>'
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - QuantityKindDimensionVector_hasReferenceQuantityKind
+  - QuantityKindDimensionVector_latexSymbol
+  - QuantityKindDimensionVector_dimensionExponentForAmountOfSubstance
+  - QuantityKindDimensionVector_dimensionExponentForElectricCurrent
+  - QuantityKindDimensionVector_dimensionExponentForLength
+  - QuantityKindDimensionVector_dimensionExponentForLuminousIntensity
+  - QuantityKindDimensionVector_dimensionExponentForMass
+  - QuantityKindDimensionVector_dimensionExponentForThermodynamicTemperature
+  - QuantityKindDimensionVector_dimensionExponentForTime
+  - QuantityKindDimensionVector_dimensionlessExponent
+  - QuantityKindDimensionVector_latexDefinition
+  slot_usage:
+    hasReferenceQuantityKind:
+      range: QuantityKind
+    latexSymbol:
+      required: false
+    dimensionExponentForAmountOfSubstance:
+      required: true
+      multivalued: false
+    dimensionExponentForElectricCurrent:
+      required: true
+      multivalued: false
+    dimensionExponentForLength:
+      required: true
+      multivalued: false
+    dimensionExponentForLuminousIntensity:
+      required: true
+      multivalued: false
+    dimensionExponentForMass:
+      required: true
+      multivalued: false
+    dimensionExponentForThermodynamicTemperature:
+      required: true
+      multivalued: false
+    dimensionExponentForTime:
+      required: true
+      multivalued: false
+    dimensionlessExponent:
+      required: true
+      multivalued: false
+    latexDefinition:
+      multivalued: false
+
+```
+</details>
+
+![class_quantitykinddimensionvector_erd](images/class_quantitykinddimensionvector_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[dimensionExponentForAmountOfSubstance](#dimensionexponentforamountofsubstance)** | <sub>1..1</sub> | string | dimension exponent for amount of substance |
+| **[dimensionExponentForElectricCurrent](#dimensionexponentforelectriccurrent)** | <sub>1..1</sub> | string | dimension exponent for electric current |
+| **[dimensionExponentForLength](#dimensionexponentforlength)** | <sub>1..1</sub> | string | dimension exponent for length |
+| **[dimensionExponentForLuminousIntensity](#dimensionexponentforluminousintensity)** | <sub>1..1</sub> | string | dimension exponent for luminous intensity |
+| **[dimensionExponentForMass](#dimensionexponentformass)** | <sub>1..1</sub> | string | dimension exponent for mass |
+| **[dimensionExponentForThermodynamicTemperature](#dimensionexponentforthermodynamictemperature)** | <sub>1..1</sub> | string | dimension exponent for thermodynamic temperature |
+| **[dimensionExponentForTime](#dimensionexponentfortime)** | <sub>1..1</sub> | string | dimension exponent for time |
+| **[dimensionlessExponent](#dimensionlessexponent)** | <sub>1..1</sub> | string | dimensionless exponent |
+| **[hasReferenceQuantityKind](#hasreferencequantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has reference quantity kind |
+| **[latexDefinition](#latexdefinition)** | <sub>0..1</sub> | string | latex definition |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Children
+
+ * [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) - Quantity Kind Dimension vector (SI)
+
+#### Referenced by:
+
+ *  **[PhysicalConstant](#physicalconstant)** : hasDimensionVector  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : hasDimensionVector  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : qkdvDenominator  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : qkdvNumerator  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : hasDimensionVector  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : qkdvDenominator  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : qkdvNumerator  <sub>0..\*</sub> 
+
+
+
+
+### QuantityKindDimensionVectorSI
+
+Quantity Kind Dimension vector (SI)
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+QuantityKindDimensionVector_SI:
+  is_a: QuantityKindDimensionVector
+  description: Quantity Kind Dimension vector (SI)
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - QuantityKindDimensionVector_hasReferenceQuantityKind
+  - QuantityKindDimensionVector_latexSymbol
+  - QuantityKindDimensionVector_dimensionExponentForAmountOfSubstance
+  - QuantityKindDimensionVector_dimensionExponentForElectricCurrent
+  - QuantityKindDimensionVector_dimensionExponentForLength
+  - QuantityKindDimensionVector_dimensionExponentForLuminousIntensity
+  - QuantityKindDimensionVector_dimensionExponentForMass
+  - QuantityKindDimensionVector_dimensionExponentForThermodynamicTemperature
+  - QuantityKindDimensionVector_dimensionExponentForTime
+  - QuantityKindDimensionVector_dimensionlessExponent
+  - QuantityKindDimensionVector_latexDefinition
+
+```
+</details>
+
+![class_quantitykinddimensionvector_si_erd](images/class_quantitykinddimensionvector_si_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[dimensionExponentForAmountOfSubstance](#dimensionexponentforamountofsubstance)** | <sub>1..1</sub> | string | dimension exponent for amount of substance |
+| **[dimensionExponentForElectricCurrent](#dimensionexponentforelectriccurrent)** | <sub>1..1</sub> | string | dimension exponent for electric current |
+| **[dimensionExponentForLength](#dimensionexponentforlength)** | <sub>1..1</sub> | string | dimension exponent for length |
+| **[dimensionExponentForLuminousIntensity](#dimensionexponentforluminousintensity)** | <sub>1..1</sub> | string | dimension exponent for luminous intensity |
+| **[dimensionExponentForMass](#dimensionexponentformass)** | <sub>1..1</sub> | string | dimension exponent for mass |
+| **[dimensionExponentForThermodynamicTemperature](#dimensionexponentforthermodynamictemperature)** | <sub>1..1</sub> | string | dimension exponent for thermodynamic temperature |
+| **[dimensionExponentForTime](#dimensionexponentfortime)** | <sub>1..1</sub> | string | dimension exponent for time |
+| **[dimensionlessExponent](#dimensionlessexponent)** | <sub>1..1</sub> | string | dimensionless exponent |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasReferenceQuantityKind](#hasreferencequantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has reference quantity kind |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[latexDefinition](#latexdefinition)** | <sub>0..1</sub> | string | latex definition |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [QuantityKindDimensionVector](#quantitykinddimensionvector) - <p class="lm-para">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\theta$) as $dim \, Q = L^{\alpha} \, M^{\beta} \, T^{\gamma} \, I ^{\delta} \, \theta ^{\epsilon} \, N^{\eta} \, J ^{\nu}$.</p>
+
+#### Referenced by:
+
+ *  **[QuantityKind](#quantitykind)** : dimensionVectorForSI  <sub>0..\*</sub> 
+
+
+
+
+### QuantityValue
+
+A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href="http://physics.nist.gov/Pubs/SP811/sec07.html">NIST SP 811 section 7</a> for more on quantity values.
+
+A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href=\"http://physics.nist.gov/Pubs/SP811/sec07.html\">NIST SP 811 section 7</a> for more on quantity values.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+QuantityValue:
+  is_a: Quantifiable
+  mixins:
+  - Concept
+  description: A <i>Quantity Value</i> expresses the magnitude and kind of a quantity
+    and is given by the product of a numerical value <code>n</code> and a unit of
+    measure <code>U</code>. The number multiplying the unit is referred to as the
+    numerical value of the quantity expressed in that unit. Refer to <a href="http://physics.nist.gov/Pubs/SP811/sec07.html">NIST
+    SP 811 section 7</a> for more on quantity values.
+  slots:
+  - id
+  - name
+  - description
+  - Quantifiable_dataEncoding
+  - Quantifiable_datatype
+  - Quantifiable_relativeStandardUncertainty
+  - Quantifiable_standardUncertainty
+  - Quantifiable_standardUncertaintySN
+  - Quantifiable_qudt_value
+  - Quantifiable_valueSN
+  - QuantityValue_hasUnit
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    hasUnit:
+      multivalued: false
+
+```
+</details>
+
+![class_quantityvalue_erd](images/class_quantityvalue_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dataEncoding](#dataencoding)** | <sub>0..1</sub> | [DataEncoding](#dataencoding) | data encoding |
+| **[datatype](#datatype)** | <sub>0..1</sub> | [Datatype](#datatype) | datatype |
+| **[qudt_value](#qudt_value)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[relativeStandardUncertainty](#relativestandarduncertainty)** | <sub>0..1</sub> | double | The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. |
+| **[standardUncertainty](#standarduncertainty)** | <sub>0..1</sub> | decimal | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[standardUncertaintySN](#standarduncertaintysn)** | <sub>0..\*</sub> | double | The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. |
+| **[valueSN](#valuesn)** | <sub>0..1</sub> | string | A property to relate an observable thing with a value of any kind |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[hasUnit](#hasunit)** | <sub>0..1</sub> | [Unit](#unit) | This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. |
+
+#### Parents
+
+ * [Quantifiable](#quantifiable) - <p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Quantity](#quantity)** : quantityValue  <sub>0..\*</sub> 
+
+
+
+
+### Region
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Region:
+  is_a: Place
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_region_local](images/class_region_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Place](#place)
+
+
+
+
+### Rule
+
+Rule
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Rule:
+  is_a: Verifiable
+  mixins:
+  - Concept
+  description: Rule
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - Rule_ruleType
+  - Rule_rationale
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    ruleType:
+      range: RuleType
+    rationale:
+      required: false
+
+```
+</details>
+
+![class_rule_erd](images/class_rule_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[rationale](#rationale)** | <sub>0..\*</sub> | string | rationale |
+| **[ruleType](#ruletype)** | <sub>0..\*</sub> | [RuleType](#ruletype) | rule type |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[Concept](#concept)** : hasRule  <sub>0..\*</sub> 
+
+
+
+
+### RuleType
+
+Rule Type
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+RuleType:
+  is_a: EnumeratedValue
+  description: Rule Type
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - EnumeratedValue_altSymbol
+  - EnumeratedValue_qudt_description
+  - EnumeratedValue_abbreviation
+  - EnumeratedValue_symbol
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_deprecated
+  - Concept_plainTextDescription
+
+```
+</details>
+
+![class_ruletype_erd](images/class_ruletype_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[symbol](#symbol)** | <sub>0..1</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+
+#### Parents
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+
+#### Referenced by:
+
+ *  **[Rule](#rule)** : ruleType  <sub>0..\*</sub> 
+
+
+
+
+### Shape
+
+Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Shape:
+  is_a: NamedIndividual
+  description: Shapes are categories that certain Pokemon belong to, which determine
+    which Pokemon they can breed with.
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+
+```
+</details>
+
+![class_shape_erd](images/class_shape_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Species](#species)** : hasShape  <sub>0..1</sub> 
+
+
+
+
+### SpecialMove
+
+A special move is a type of move that can be used during battles.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+SpecialMove:
+  is_a: Move
+  description: A special move is a type of move that can be used during battles.
+  slots:
+  - id
+  - name
+  - description
+  - effectDescription
+  - hasType
+
+```
+</details>
+
+![class_specialmove_erd](images/class_specialmove_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+
+#### Parents
+
+ * [Move](#move)
+
+
+
+
+### Species
+
+A species is a category of Pokemon that share common features.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Species:
+  is_a: NamedIndividual
+  description: A species is a category of Pokemon that share common features.
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  - hasColour
+  - mayHaveHiddenAbility
+  - mayHaveAbility
+  - isAbleToApply
+  - hasHeight
+  - hasWeight
+  - depiction
+  - inEggGroup
+  - hasType
+  - hasShape
+  - hasGenus
+  - hasCatchRate
+  - foundIn
+
+```
+</details>
+
+![class_species_erd](images/class_species_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+| **[foundIn](#foundin)** | <sub>0..\*</sub> | [Habitat](#habitat) | A place is found in a location |
+| **[hasCatchRate](#hascatchrate)** | <sub>0..1</sub> | integer |  |
+| **[hasColour](#hascolour)** | <sub>0..1</sub> | [Colour](#colour) | A Pokemon has a color |
+| **[hasGenus](#hasgenus)** | <sub>0..1</sub> | string |  |
+| **[hasHeight](#hasheight)** | <sub>0..1</sub> | [Quantity](#quantity) |  |
+| **[hasShape](#hasshape)** | <sub>0..1</sub> | [Shape](#shape) | The shape of a berry is a measure of how good it is for making a Potion. |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+| **[hasWeight](#hasweight)** | <sub>0..1</sub> | [Quantity](#quantity) |  |
+| **[inEggGroup](#inegggroup)** | <sub>0..\*</sub> | [EggGroup](#egggroup) |  |
+| **[isAbleToApply](#isabletoapply)** | <sub>0..\*</sub> | [Move](#move) |  |
+| **[mayHaveAbility](#mayhaveability)** | <sub>0..\*</sub> | [Ability](#ability) | A Pokemon may have an ability |
+| **[mayHaveHiddenAbility](#mayhavehiddenability)** | <sub>0..\*</sub> | [Ability](#ability) |  |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub> 
+
+
+
+
+### StatusMove
+
+A status move is a type of move that can be used during battles.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+StatusMove:
+  is_a: Move
+  description: A status move is a type of move that can be used during battles.
+  slots:
+  - id
+  - name
+  - description
+  - effectDescription
+  - hasType
+
+```
+</details>
+
+![class_statusmove_erd](images/class_statusmove_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+
+#### Parents
+
+ * [Move](#move)
+
+
+
+
+### SystemOfQuantityKinds
+
+A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention.
+
+A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+SystemOfQuantityKinds:
+  is_a: Concept
+  description: "A system of quantity kinds is a set of one or more quantity kinds\
+    \ together with a set of zero or more algebraic equations that define relationships\
+    \ between quantity kinds in the set. In the physical sciences, the equations relating\
+    \ quantity kinds are typically physical laws and definitional relations, and constants\
+    \ of proportionality. Examples include Newton\u2019s First Law of Motion, Coulomb\u2019\
+    s Law, and the definition of velocity as the instantaneous change in position.\
+    \  In almost all cases, the system identifies a subset of base quantity kinds.\
+    \ The base set is chosen so that all other quantity kinds of interest can be derived\
+    \ from the base quantity kinds and the algebraic equations. If the unit system\
+    \ is explicitly associated with a quantity kind system, then the unit system must\
+    \ define at least one unit for each quantity kind.  From a scientific point of\
+    \ view, the division of quantities into base quantities and derived quantities\
+    \ is a matter of convention."
+  slots:
+  - id
+  - name
+  - description
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  - SystemOfQuantityKinds_baseDimensionEnumeration
+  - SystemOfQuantityKinds_hasBaseQuantityKind
+  - SystemOfQuantityKinds_hasQuantityKind
+  - SystemOfQuantityKinds_hasUnitSystem
+  - SystemOfQuantityKinds_systemDerivedQuantityKind
+  slot_usage:
+    baseDimensionEnumeration:
+      range: Enumeration
+      multivalued: false
+    hasBaseQuantityKind:
+      range: QuantityKind
+    hasQuantityKind:
+      range: QuantityKind
+      required: false
+    hasUnitSystem:
+      range: SystemOfUnits
+    systemDerivedQuantityKind:
+      range: QuantityKind
+
+```
+</details>
+
+![class_systemofquantitykinds_erd](images/class_systemofquantitykinds_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[abbreviation](#abbreviation)** | <sub>0..1</sub> | string | An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. |
+| **[deprecated](#deprecated)** | <sub>0..1</sub> | string | deprecated |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[hasRule](#hasrule)** | <sub>0..\*</sub> | [Rule](#rule) | has rule |
+| **[isReplacedBy](#isreplacedby)** | <sub>0..1</sub> | string |  |
+| **[plainTextDescription](#plaintextdescription)** | <sub>0..1</sub> | string | A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. |
+| **[qudt_description](#qudt_description)** | <sub>0..1</sub> | string |  |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[baseDimensionEnumeration](#basedimensionenumeration)** | <sub>0..1</sub> | [Enumeration](#enumeration) | This property associates a system of quantities with an enumeration that enumerates the base dimensions of the system in canonical order. |
+| **[hasBaseQuantityKind](#hasbasequantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has base quantity kind |
+| **[hasQuantityKind](#hasquantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has quantity kind |
+| **[hasUnitSystem](#hasunitsystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | has unit system |
+| **[systemDerivedQuantityKind](#systemderivedquantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | system derived quantity kind |
+
+#### Parents
+
+ * [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[QuantityKind](#quantitykind)** : belongsToSystemOfQuantities  <sub>0..\*</sub> 
+
+
+
+
+### SystemOfUnits
+
+A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.
+
+A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+SystemOfUnits:
+  is_a: Verifiable
+  mixins:
+  - Concept
+  description: A system of units is a set of units which are chosen as the reference
+    scales for some set of quantity kinds together with the definitions of each unit.
+    Units may be defined by experimental observation or by proportion to another unit
+    not included in the system. If the unit system is explicitly associated with a
+    quantity kind system, then the unit system must define at least one unit for each
+    quantity kind.
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - SystemOfUnits_applicablePhysicalConstant
+  - SystemOfUnits_hasAllowedUnit
+  - SystemOfUnits_hasBaseUnit
+  - SystemOfUnits_hasCoherentUnit
+  - SystemOfUnits_hasDefinedUnit
+  - SystemOfUnits_hasDerivedCoherentUnit
+  - SystemOfUnits_hasDerivedUnit
+  - SystemOfUnits_hasUnit
+  - SystemOfUnits_prefix
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    applicablePhysicalConstant:
+      range: PhysicalConstant
+    hasAllowedUnit:
+      range: Unit
+    hasBaseUnit:
+      range: Unit
+    hasCoherentUnit:
+      range: Unit
+    hasDefinedUnit:
+      range: Unit
+    hasDerivedCoherentUnit:
+      range: Unit
+    hasDerivedUnit:
+      range: Unit
+    hasUnit:
+      range: Unit
+    prefix:
+      range: Prefix
+
+```
+</details>
+
+![class_systemofunits_erd](images/class_systemofunits_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[applicablePhysicalConstant](#applicablephysicalconstant)** | <sub>0..\*</sub> | [PhysicalConstant](#physicalconstant) | applicable physical constant |
+| **[hasAllowedUnit](#hasallowedunit)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a unit system with a unit of measure that is not defined by or part of the system, but is allowed for use within the system. An allowed unit must be convertible to some dimensionally eqiuvalent unit that is defined by the system. |
+| **[hasBaseUnit](#hasbaseunit)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a system of units to a base unit defined within the system. The base units of a system are used to define the derived units of the system by expressing the derived units as products of the base units raised to a rational power. |
+| **[hasCoherentUnit](#hascoherentunit)** | <sub>0..\*</sub> | [Unit](#unit) | A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one. |
+| **[hasDefinedUnit](#hasdefinedunit)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a unit system with a unit of measure that is defined by the system. |
+| **[hasDerivedCoherentUnit](#hasderivedcoherentunit)** | <sub>0..\*</sub> | [Unit](#unit) | derived coherent unit |
+| **[hasDerivedUnit](#hasderivedunit)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a system of units to a unit of measure that is defined within the system in terms of the base units for the system. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. |
+| **[hasUnit](#hasunit)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. |
+| **[prefix](#prefix)** | <sub>0..\*</sub> | [Prefix](#prefix) | Associates a unit with the appropriate prefix, if any. |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[PhysicalConstant](#physicalconstant)** : applicableSystem  <sub>0..\*</sub> 
+ *  **[SystemOfQuantityKinds](#systemofquantitykinds)** : hasUnitSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : applicableSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : definedUnitOfSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : derivedCoherentUnitOfSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : derivedUnitOfSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : isUnitOfSystem  <sub>0..\*</sub> 
+
+
+
+
+### TM
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+TM:
+  is_a: Item
+  mixins:
+  - MoveLearning
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_tm_local](images/class_tm_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Item](#item)
+
+#### Uses
+
+ *  mixin: [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+
+
+
+
+### Town
+
+A town is a type of place that can be visited.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Town:
+  is_a: Place
+  description: A town is a type of place that can be visited.
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_town_local](images/class_town_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Place](#place)
+
+
+
+
+### Trainer
+
+A trainer is a person who is able to catch Pokemon.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Trainer:
+  is_a: Person
+  description: A trainer is a person who is able to catch Pokemon.
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  - depiction
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_trainer_local](images/class_trainer_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+
+#### Parents
+
+ * [Person](#person) - A person is a human being
+
+#### Children
+
+ * [GymLeader](#gymleader)
+
+
+
+
+### Type
+
+
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Type:
+  is_a: NamedIndividual
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+
+```
+</details>
+
+![class_type_erd](images/class_type_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Move](#move)** : hasType  <sub>0..\*</sub> 
+ *  **[Species](#species)** : hasType  <sub>0..\*</sub> 
+
+
+
+
+### UCUMcs
+
+Lexical pattern for the case-sensitive version of UCUM code
+
+Lexical pattern for the case-sensitive version of UCUM code
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+UCUMcs:
+  is_a: Thing
+  description: Lexical pattern for the case-sensitive version of UCUM code
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+![class_ucumcs_erd](images/class_ucumcs_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Unit](#unit)** : ucumCode  <sub>0..\*</sub> 
+
+
+
+
+### UCUMcs-term
+
+Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code
+
+Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+UCUMcs-term:
+  is_a: Thing
+  description: Lexical pattern for the terminal symbols in the case-sensitive version
+    of UCUM code
+  slots:
+  - id
+  - name
+  - description
+
+```
+</details>
+
+![class_ucumcs-term_erd](images/class_ucumcs-term_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+
+#### Parents
+
+ * [Thing](#thing) - An rdfs:Resource that defines name and description
+
+#### Referenced by:
+
+ *  **[Prefix](#prefix)** : ucumCode  <sub>0..\*</sub> 
+
+
+
+
+### Unit
+
+A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).
+  For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures).
+  Any measurement of the length can be expressed as a number multiplied by the unit meter.
+  More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  $Q = nU$.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Unit:
+  is_a: Verifiable
+  mixins:
+  - Concept
+  description: "\n  A unit of measure, or unit, is a particular quantity value that\
+    \ has been chosen as a scale for measuring other quantities the same kind (more\
+    \ generally of equivalent dimension).\n  For example, the meter is a quantity\
+    \ of length that has been rigorously defined and standardized by the BIPM (International\
+    \ Board of Weights and Measures).\n  Any measurement of the length can be expressed\
+    \ as a number multiplied by the unit meter.\n  More formally, the value of a physical\
+    \ quantity Q with respect to a unit (U) is expressed as the scalar multiple of\
+    \ a real number (n) and U, as  $Q = nU$.\n  "
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  - hasReciprocalUnit
+  - isUnitOfSystem
+  - omUnit
+  - unitFor
+  - Unit_applicableSystem
+  - Unit_definedUnitOfSystem
+  - Unit_derivedCoherentUnitOfSystem
+  - Unit_derivedUnitOfSystem
+  - Unit_exactMatch
+  - Unit_hasDimensionVector
+  - Unit_hasFactorUnit
+  - Unit_hasQuantityKind
+  - Unit_iec61360Code
+  - Unit_prefix
+  - Unit_qkdvDenominator
+  - Unit_qkdvNumerator
+  - Unit_scalingOf
+  - Unit_ucumCode
+  - Unit_udunitsCode
+  - Unit_uneceCommonCode
+  - Unit_altSymbol
+  - Unit_latexDefinition
+  - Unit_latexSymbol
+  - Unit_siUnitsExpression
+  - Unit_symbol
+  - Unit_conversionMultiplier
+  - Unit_conversionMultiplierSN
+  - Unit_conversionOffset
+  - Unit_conversionOffsetSN
+  - Unit_factorUnitScalar
+  - Unit_mathMLdefinition
+  - guidance
+  - Concept_qudt_id
+  - Concept_hasRule
+  - Concept_isReplacedBy
+  - Concept_qudt_description
+  - Concept_abbreviation
+  - Concept_deprecated
+  - Concept_plainTextDescription
+  slot_usage:
+    applicableSystem:
+      range: SystemOfUnits
+    definedUnitOfSystem:
+      range: SystemOfUnits
+    derivedCoherentUnitOfSystem:
+      range: SystemOfUnits
+    derivedUnitOfSystem:
+      range: SystemOfUnits
+    exactMatch:
+      range: Unit
+    hasDimensionVector:
+      range: QuantityKindDimensionVector
+      multivalued: false
+    hasQuantityKind:
+      range: QuantityKind
+    iec61360Code:
+      range: string
+    prefix:
+      range: Prefix
+    qkdvDenominator:
+      range: QuantityKindDimensionVector
+      multivalued: false
+    qkdvNumerator:
+      range: QuantityKindDimensionVector
+      multivalued: false
+    scalingOf:
+      range: Unit
+    ucumCode:
+      range: UCUMcs
+    udunitsCode:
+      range: string
+    uneceCommonCode:
+      range: string
+    altSymbol:
+      required: false
+    latexDefinition:
+      required: false
+    latexSymbol:
+      required: false
+    siUnitsExpression:
+      required: false
+    symbol:
+      required: false
+    conversionMultiplier:
+      multivalued: false
+    conversionMultiplierSN:
+      multivalued: false
+    conversionOffset:
+      multivalued: false
+    conversionOffsetSN:
+      multivalued: false
+    factorUnitScalar:
+      multivalued: false
+    mathMLdefinition:
+      multivalued: false
+
+```
+</details>
+
+![class_unit_erd](images/class_unit_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+| **[guidance](#guidance)** | <sub>0..\*</sub> | string | guidance |
+| **[qudt_id](#qudt_id)** | <sub>0..1</sub> | string | The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. |
+| **[altSymbol](#altsymbol)** | <sub>0..\*</sub> | string | An alternative symbol |
+| **[applicableSystem](#applicablesystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible. |
+| **[conversionMultiplier](#conversionmultiplier)** | <sub>0..1</sub> | string | conversion multiplier |
+| **[conversionMultiplierSN](#conversionmultipliersn)** | <sub>0..1</sub> | string | conversion multiplier scientific |
+| **[conversionOffset](#conversionoffset)** | <sub>0..1</sub> | string | conversion offset |
+| **[conversionOffsetSN](#conversionoffsetsn)** | <sub>0..1</sub> | string | conversion offset scientific |
+| **[definedUnitOfSystem](#definedunitofsystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure with the unit system that defines the unit. |
+| **[derivedCoherentUnitOfSystem](#derivedcoherentunitofsystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure to the unit system in which the unit is derived from the system's base units with a proportionality constant of one. |
+| **[derivedUnitOfSystem](#derivedunitofsystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure to the system of units in which it is defined as a derived unit. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. |
+| **[exactMatch](#exactmatch)** | <sub>0..\*</sub> | [Unit](#unit) | exact match |
+| **[factorUnitScalar](#factorunitscalar)** | <sub>0..1</sub> | string | For a derived unit that is not exactly the product of its factor units, this property defines the scalar with which that product has to be multiplied with. |
+| **[hasDimensionVector](#hasdimensionvector)** | <sub>0..1</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | has dimension vector |
+| **[hasFactorUnit](#hasfactorunit)** | <sub>0..\*</sub> | string | This property relates a derived unit to one of its constituent factor units |
+| **[hasQuantityKind](#hasquantitykind)** | <sub>0..\*</sub> | [QuantityKind](#quantitykind) | has quantity kind |
+| **[hasReciprocalUnit](#hasreciprocalunit)** | <sub>0..\*</sub> | [Unit](#unit) | has reciprocal unit |
+| **[iec61360Code](#iec61360code)** | <sub>0..\*</sub> | string | iec-61360 code |
+| **[isUnitOfSystem](#isunitofsystem)** | <sub>0..\*</sub> | [SystemOfUnits](#systemofunits) | This property relates a unit of measure with a system of units that either a) defines the unit or b) allows the unit to be used within the system. |
+| **[latexDefinition](#latexdefinition)** | <sub>0..\*</sub> | string | latex definition |
+| **[latexSymbol](#latexsymbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[mathMLdefinition](#mathmldefinition)** | <sub>0..1</sub> | string | mathML definition |
+| **[omUnit](#omunit)** | <sub>0..\*</sub> | string | om unit |
+| **[prefix](#prefix)** | <sub>0..\*</sub> | [Prefix](#prefix) | Associates a unit with the appropriate prefix, if any. |
+| **[qkdvDenominator](#qkdvdenominator)** | <sub>0..1</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | denominator dimension vector |
+| **[qkdvNumerator](#qkdvnumerator)** | <sub>0..1</sub> | [QuantityKindDimensionVector](#quantitykinddimensionvector) | numerator dimension vector |
+| **[scalingOf](#scalingof)** | <sub>0..\*</sub> | [Unit](#unit) | This property relates a unit to another unit it is scaled from |
+| **[siUnitsExpression](#siunitsexpression)** | <sub>0..\*</sub> | string | si units expression |
+| **[symbol](#symbol)** | <sub>0..\*</sub> | string | The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. |
+| **[ucumCode](#ucumcode)** | <sub>0..\*</sub> | [UCUMcs](#ucumcs) | <p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> |
+| **[udunitsCode](#udunitscode)** | <sub>0..\*</sub> | string | The UDUNITS package supports units of physical quantities. Its C library provides for arithmetic manipulation of units and for conversion of numeric values between compatible units. The package contains an extensive unit database, which is in XML format and user-extendable. The package also contains a command-line utility for investigating units and converting values. |
+| **[uneceCommonCode](#unececommoncode)** | <sub>0..\*</sub> | string | The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade. |
+| **[unitFor](#unitfor)** | <sub>0..\*</sub> | string | unit for |
+
+#### Parents
+
+ * [Verifiable](#verifiable)
+
+#### Uses
+
+ *  mixin: [Concept](#concept) - The root class for all QUDT concepts.
+
+#### Referenced by:
+
+ *  **[PhysicalConstant](#physicalconstant)** : applicableUnit  <sub>0..\*</sub> 
+ *  **[Quantifiable](#quantifiable)** : hasUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableCGSUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableISOUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableImperialUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableSIUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableUSCustomaryUnit  <sub>0..\*</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableUnit  <sub>0..\*</sub> 
+ *  **[QuantityValue](#quantityvalue)** : hasUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasAllowedUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasBaseUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasCoherentUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasDefinedUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasDerivedCoherentUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasDerivedUnit  <sub>0..\*</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : hasUnit  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : exactMatch  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : scalingOf  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : hasReciprocalUnit  <sub>0..\*</sub> 
+
+
+
+
+### Verifiable
+
+
+
+An aspect class that holds properties that provide external knowledge and specifications of a given resource.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Verifiable:
+  is_a: Aspect
+  slots:
+  - id
+  - name
+  - description
+  - Verifiable_isoNormativeReference
+  - Verifiable_normativeReference
+  - Verifiable_wikidataMatch
+  - Verifiable_dbpediaMatch
+  slot_usage:
+    isoNormativeReference:
+      required: false
+    normativeReference:
+      required: false
+    wikidataMatch:
+      required: false
+    dbpediaMatch:
+      required: false
+
+```
+</details>
+
+
+#### Local class diagram
+
+![class_verifiable_local](images/class_verifiable_local.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[dbpediaMatch](#dbpediamatch)** | <sub>0..\*</sub> | uri | dbpedia match |
+| **[isoNormativeReference](#isonormativereference)** | <sub>0..\*</sub> | string | Provides a way to reference the ISO unit definition. |
+| **[normativeReference](#normativereference)** | <sub>0..\*</sub> | string | Provides a way to reference information that is an authoritative source providing a standard definition |
+| **[wikidataMatch](#wikidatamatch)** | <sub>0..\*</sub> | uri | wikidata match |
+
+#### Parents
+
+ * [Aspect](#aspect)
+
+#### Children
+
+ * [EnumeratedValue](#enumeratedvalue) - <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
+ * [Prefix](#prefix) - Prefix
+ * [QuantityKind](#quantitykind) - A <b>Quantity Kind</b> is any observable property that can be measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.
+ * [Rule](#rule) - Rule
+ * [SystemOfUnits](#systemofunits) - A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.
+ * [Unit](#unit) - 
+
+
+
+
+## Slots
+
+| Name | Cardinality/Range | Used By |
+| --- | --- | --- |
+| <a id="id"></a>**id**<br/>A unique identifier | <sub>1..1</sub><br/>uri | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Aspect](#aspect), [BattleItem](#battleitem), [Berry](#berry), [CardinalityType](#cardinalitytype), [Colour](#colour), [Concept](#concept), [DataEncoding](#dataencoding), [Datatype](#datatype), [EggGroup](#egggroup), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [OrderedType](#orderedtype), [Person](#person), [PhysicalConstant](#physicalconstant), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Rule](#rule), [RuleType](#ruletype), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfQuantityKinds](#systemofquantitykinds), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [UCUMcs](#ucumcs), [UCUMcs-term](#ucumcs-term), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="name"></a>**name**<br/>Human-readable label for the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Aspect](#aspect), [BattleItem](#battleitem), [Berry](#berry), [CardinalityType](#cardinalitytype), [Colour](#colour), [Concept](#concept), [DataEncoding](#dataencoding), [Datatype](#datatype), [EggGroup](#egggroup), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [OrderedType](#orderedtype), [Person](#person), [PhysicalConstant](#physicalconstant), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Rule](#rule), [RuleType](#ruletype), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfQuantityKinds](#systemofquantitykinds), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [UCUMcs](#ucumcs), [UCUMcs-term](#ucumcs-term), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="description"></a>**description**<br/>A description of the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Aspect](#aspect), [BattleItem](#battleitem), [Berry](#berry), [CardinalityType](#cardinalitytype), [Colour](#colour), [Concept](#concept), [DataEncoding](#dataencoding), [Datatype](#datatype), [EggGroup](#egggroup), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [OrderedType](#orderedtype), [Person](#person), [PhysicalConstant](#physicalconstant), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Rule](#rule), [RuleType](#ruletype), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfQuantityKinds](#systemofquantitykinds), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [UCUMcs](#ucumcs), [UCUMcs-term](#ucumcs-term), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="abstractquantitykind_altsymbol"></a>**AbstractQuantityKind_altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string |  |
+| <a id="abstractquantitykind_broader"></a>**AbstractQuantityKind_broader** | <sub>0..1</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="abstractquantitykind_latexsymbol"></a>**AbstractQuantityKind_latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="abstractquantitykind_symbol"></a>**AbstractQuantityKind_symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="cardinalitytype_literal"></a>**CardinalityType_literal** | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_abbreviation"></a>**Concept_abbreviation**<br/>An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_deprecated"></a>**Concept_deprecated**<br/>deprecated | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_hasrule"></a>**Concept_hasRule**<br/>has rule | <sub>0..\*</sub><br/>[Rule](#rule) |  |
+| <a id="concept_isreplacedby"></a>**Concept_isReplacedBy** | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_plaintextdescription"></a>**Concept_plainTextDescription**<br/>A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_qudt_description"></a>**Concept_qudt_description** | <sub>0..\*</sub><br/>string |  |
+| <a id="concept_qudt_id"></a>**Concept_qudt_id**<br/>The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. | <sub>0..\*</sub><br/>string |  |
+| <a id="dataencoding_bitorder"></a>**DataEncoding_bitOrder**<br/>bit order | <sub>0..\*</sub><br/>[EndianType](#endiantype) |  |
+| <a id="dataencoding_byteorder"></a>**DataEncoding_byteOrder**<br/>Byte order is an enumeration of two values: 'Big Endian' and 'Little Endian' and is used to denote whether the most signiticant byte is either first or last, respectively. | <sub>0..\*</sub><br/>[EndianType](#endiantype) |  |
+| <a id="dataencoding_encoding"></a>**DataEncoding_encoding**<br/>encoding | <sub>0..\*</sub><br/>[Encoding](#encoding) |  |
+| <a id="datatype_ansisqlname"></a>**Datatype_ansiSQLName** | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_basis"></a>**Datatype_basis**<br/>basis | <sub>0..\*</sub><br/>[Datatype](#datatype) |  |
+| <a id="datatype_bounded"></a>**Datatype_bounded**<br/>bounded | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_cname"></a>**Datatype_cName** | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_cardinality"></a>**Datatype_cardinality**<br/>cardinality | <sub>0..\*</sub><br/>[CardinalityType](#cardinalitytype) |  |
+| <a id="datatype_javaname"></a>**Datatype_javaName**<br/>java name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_jsname"></a>**Datatype_jsName**<br/>Javascript name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_matlabname"></a>**Datatype_matlabName**<br/>matlab name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_microsoftsqlservername"></a>**Datatype_microsoftSQLServerName**<br/>Microsoft SQL Server name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_mysqlname"></a>**Datatype_mySQLName**<br/>MySQL name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_odbcname"></a>**Datatype_odbcName**<br/>ODBC name | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_oledbname"></a>**Datatype_oleDBName**<br/>OLE DB (Object Linking and Embedding, Database, sometimes written as OLEDB or OLE-DB), an API designed by Microsoft, allows accessing data from a variety of sources in a uniform manner. The API provides a set of interfaces implemented using the Component Object Model (COM); it is otherwise unrelated to OLE. | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_oraclesqlname"></a>**Datatype_oracleSQLName** | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_orderedtype"></a>**Datatype_orderedType**<br/>ordered type | <sub>0..\*</sub><br/>[OrderedType](#orderedtype) |  |
+| <a id="datatype_protocolbuffersname"></a>**Datatype_protocolBuffersName** | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_pythonname"></a>**Datatype_pythonName** | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_qudt_id"></a>**Datatype_qudt_id**<br/>The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. | <sub>0..\*</sub><br/>string |  |
+| <a id="datatype_vbname"></a>**Datatype_vbName** | <sub>0..\*</sub><br/>string |  |
+| <a id="encoding_bits"></a>**Encoding_bits** | <sub>0..\*</sub><br/>string |  |
+| <a id="encoding_bytes"></a>**Encoding_bytes**<br/>bytes | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeratedvalue_abbreviation"></a>**EnumeratedValue_abbreviation**<br/>An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeratedvalue_altsymbol"></a>**EnumeratedValue_altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeratedvalue_qudt_description"></a>**EnumeratedValue_qudt_description** | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeratedvalue_symbol"></a>**EnumeratedValue_symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeration_abbreviation"></a>**Enumeration_abbreviation**<br/>An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. | <sub>0..\*</sub><br/>string |  |
+| <a id="enumeration_default"></a>**Enumeration_default**<br/>The default element in an enumeration | <sub>0..\*</sub><br/>[EnumeratedValue](#enumeratedvalue) |  |
+| <a id="enumeration_element"></a>**Enumeration_element**<br/>An element of an enumeration | <sub>1..\*</sub><br/>[EnumeratedValue](#enumeratedvalue) |  |
+| <a id="namedindividual_name"></a>**NamedIndividual_name**<br/>Human-readable label for the entity | <sub>1..1</sub><br/>string |  |
+| <a id="orderedtype_literal"></a>**OrderedType_literal** | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_altsymbol"></a>**PhysicalConstant_altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_applicablesystem"></a>**PhysicalConstant_applicableSystem**<br/>This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="physicalconstant_applicableunit"></a>**PhysicalConstant_applicableUnit**<br/>See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="physicalconstant_exactconstant"></a>**PhysicalConstant_exactConstant**<br/>exact constant | <sub>0..\*</sub><br/>boolean |  |
+| <a id="physicalconstant_exactmatch"></a>**PhysicalConstant_exactMatch**<br/>exact match | <sub>0..\*</sub><br/>[PhysicalConstant](#physicalconstant) |  |
+| <a id="physicalconstant_hasdimensionvector"></a>**PhysicalConstant_hasDimensionVector**<br/>has dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="physicalconstant_isonormativereference"></a>**PhysicalConstant_isoNormativeReference**<br/>Provides a way to reference the ISO unit definition. | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_latexdefinition"></a>**PhysicalConstant_latexDefinition**<br/>latex definition | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_latexsymbol"></a>**PhysicalConstant_latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_mathmldefinition"></a>**PhysicalConstant_mathMLdefinition**<br/>mathML definition | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_normativereference"></a>**PhysicalConstant_normativeReference**<br/>Provides a way to reference information that is an authoritative source providing a standard definition | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_symbol"></a>**PhysicalConstant_symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="physicalconstant_ucumcode"></a>**PhysicalConstant_ucumCode**<br/><p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> | <sub>0..\*</sub><br/>string |  |
+| <a id="prefix_altsymbol"></a>**Prefix_altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string |  |
+| <a id="prefix_exactmatch"></a>**Prefix_exactMatch**<br/>exact match | <sub>0..\*</sub><br/>[Prefix](#prefix) |  |
+| <a id="prefix_latexsymbol"></a>**Prefix_latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="prefix_prefixmultiplier"></a>**Prefix_prefixMultiplier**<br/>prefix multiplier | <sub>0..\*</sub><br/>string |  |
+| <a id="prefix_symbol"></a>**Prefix_symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="prefix_ucumcode"></a>**Prefix_ucumCode**<br/><p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> | <sub>0..\*</sub><br/>[UCUMcs-term](#ucumcs-term) |  |
+| <a id="quantifiable_dataencoding"></a>**Quantifiable_dataEncoding**<br/>data encoding | <sub>0..\*</sub><br/>[DataEncoding](#dataencoding) |  |
+| <a id="quantifiable_datatype"></a>**Quantifiable_datatype**<br/>datatype | <sub>0..\*</sub><br/>[Datatype](#datatype) |  |
+| <a id="quantifiable_hasunit"></a>**Quantifiable_hasUnit**<br/>This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantifiable_qudt_value"></a>**Quantifiable_qudt_value**<br/>A property to relate an observable thing with a value of any kind | <sub>0..\*</sub><br/>string |  |
+| <a id="quantifiable_relativestandarduncertainty"></a>**Quantifiable_relativeStandardUncertainty**<br/>The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. | <sub>0..\*</sub><br/>double |  |
+| <a id="quantifiable_standarduncertainty"></a>**Quantifiable_standardUncertainty**<br/>The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. | <sub>0..\*</sub><br/>decimal |  |
+| <a id="quantifiable_standarduncertaintysn"></a>**Quantifiable_standardUncertaintySN**<br/>The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. | <sub>0..\*</sub><br/>double |  |
+| <a id="quantifiable_valuesn"></a>**Quantifiable_valueSN**<br/>A property to relate an observable thing with a value of any kind | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentforamountofsubstance"></a>**QuantityKindDimensionVector_dimensionExponentForAmountOfSubstance**<br/>dimension exponent for amount of substance | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentforelectriccurrent"></a>**QuantityKindDimensionVector_dimensionExponentForElectricCurrent**<br/>dimension exponent for electric current | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentforlength"></a>**QuantityKindDimensionVector_dimensionExponentForLength**<br/>dimension exponent for length | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentforluminousintensity"></a>**QuantityKindDimensionVector_dimensionExponentForLuminousIntensity**<br/>dimension exponent for luminous intensity | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentformass"></a>**QuantityKindDimensionVector_dimensionExponentForMass**<br/>dimension exponent for mass | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentforthermodynamictemperature"></a>**QuantityKindDimensionVector_dimensionExponentForThermodynamicTemperature**<br/>dimension exponent for thermodynamic temperature | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionexponentfortime"></a>**QuantityKindDimensionVector_dimensionExponentForTime**<br/>dimension exponent for time | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_dimensionlessexponent"></a>**QuantityKindDimensionVector_dimensionlessExponent**<br/>dimensionless exponent | <sub>1..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_hasreferencequantitykind"></a>**QuantityKindDimensionVector_hasReferenceQuantityKind**<br/>has reference quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="quantitykinddimensionvector_latexdefinition"></a>**QuantityKindDimensionVector_latexDefinition**<br/>latex definition | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykinddimensionvector_latexsymbol"></a>**QuantityKindDimensionVector_latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykind_applicablecgsunit"></a>**QuantityKind_applicableCGSUnit**<br/>applicable CGS unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_applicableisounit"></a>**QuantityKind_applicableISOUnit**<br/>applicable ISO unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_applicableimperialunit"></a>**QuantityKind_applicableImperialUnit**<br/>applicable Imperial unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_applicablesiunit"></a>**QuantityKind_applicableSIUnit**<br/>applicable SI unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_applicableuscustomaryunit"></a>**QuantityKind_applicableUSCustomaryUnit**<br/>applicable US Customary unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_applicableunit"></a>**QuantityKind_applicableUnit**<br/>See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantitykind_dimensionvectorforsi"></a>**QuantityKind_dimensionVectorForSI**<br/>dimension vector for SI | <sub>0..\*</sub><br/>[QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |  |
+| <a id="quantitykind_exactmatch"></a>**QuantityKind_exactMatch**<br/>exact match | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="quantitykind_hasdimensionvector"></a>**QuantityKind_hasDimensionVector**<br/>has dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="quantitykind_iec61360code"></a>**QuantityKind_iec61360Code**<br/>iec-61360 code | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykind_latexdefinition"></a>**QuantityKind_latexDefinition**<br/>latex definition | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykind_mathmldefinition"></a>**QuantityKind_mathMLdefinition**<br/>mathML definition | <sub>0..\*</sub><br/>string |  |
+| <a id="quantitykind_qkdvdenominator"></a>**QuantityKind_qkdvDenominator**<br/>denominator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="quantitykind_qkdvnumerator"></a>**QuantityKind_qkdvNumerator**<br/>numerator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="quantityvalue_hasunit"></a>**QuantityValue_hasUnit**<br/>This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="quantity_hasquantitykind"></a>**Quantity_hasQuantityKind**<br/>has quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="quantity_isdeltaquantity"></a>**Quantity_isDeltaQuantity**<br/>This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets. | <sub>0..\*</sub><br/>boolean |  |
+| <a id="quantity_quantityvalue"></a>**Quantity_quantityValue**<br/>quantity value | <sub>0..\*</sub><br/>[QuantityValue](#quantityvalue) |  |
+| <a id="rule_rationale"></a>**Rule_rationale**<br/>rationale | <sub>0..\*</sub><br/>string |  |
+| <a id="rule_ruletype"></a>**Rule_ruleType**<br/>rule type | <sub>0..\*</sub><br/>[RuleType](#ruletype) |  |
+| <a id="systemofquantitykinds_basedimensionenumeration"></a>**SystemOfQuantityKinds_baseDimensionEnumeration**<br/>This property associates a system of quantities with an enumeration that enumerates the base dimensions of the system in canonical order. | <sub>0..\*</sub><br/>[Enumeration](#enumeration) |  |
+| <a id="systemofquantitykinds_hasbasequantitykind"></a>**SystemOfQuantityKinds_hasBaseQuantityKind**<br/>has base quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="systemofquantitykinds_hasquantitykind"></a>**SystemOfQuantityKinds_hasQuantityKind**<br/>has quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="systemofquantitykinds_hasunitsystem"></a>**SystemOfQuantityKinds_hasUnitSystem**<br/>has unit system | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="systemofquantitykinds_systemderivedquantitykind"></a>**SystemOfQuantityKinds_systemDerivedQuantityKind**<br/>system derived quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="systemofunits_applicablephysicalconstant"></a>**SystemOfUnits_applicablePhysicalConstant**<br/>applicable physical constant | <sub>0..\*</sub><br/>[PhysicalConstant](#physicalconstant) |  |
+| <a id="systemofunits_hasallowedunit"></a>**SystemOfUnits_hasAllowedUnit**<br/>This property relates a unit system with a unit of measure that is not defined by or part of the system, but is allowed for use within the system. An allowed unit must be convertible to some dimensionally eqiuvalent unit that is defined by the system. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hasbaseunit"></a>**SystemOfUnits_hasBaseUnit**<br/>This property relates a system of units to a base unit defined within the system. The base units of a system are used to define the derived units of the system by expressing the derived units as products of the base units raised to a rational power. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hascoherentunit"></a>**SystemOfUnits_hasCoherentUnit**<br/>A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hasdefinedunit"></a>**SystemOfUnits_hasDefinedUnit**<br/>This property relates a unit system with a unit of measure that is defined by the system. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hasderivedcoherentunit"></a>**SystemOfUnits_hasDerivedCoherentUnit**<br/>derived coherent unit | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hasderivedunit"></a>**SystemOfUnits_hasDerivedUnit**<br/>This property relates a system of units to a unit of measure that is defined within the system in terms of the base units for the system. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_hasunit"></a>**SystemOfUnits_hasUnit**<br/>This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="systemofunits_prefix"></a>**SystemOfUnits_prefix**<br/>Associates a unit with the appropriate prefix, if any. | <sub>0..\*</sub><br/>[Prefix](#prefix) |  |
+| <a id="unit_altsymbol"></a>**Unit_altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_applicablesystem"></a>**Unit_applicableSystem**<br/>This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="unit_conversionmultiplier"></a>**Unit_conversionMultiplier**<br/>conversion multiplier | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_conversionmultipliersn"></a>**Unit_conversionMultiplierSN**<br/>conversion multiplier scientific | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_conversionoffset"></a>**Unit_conversionOffset**<br/>conversion offset | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_conversionoffsetsn"></a>**Unit_conversionOffsetSN**<br/>conversion offset scientific | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_definedunitofsystem"></a>**Unit_definedUnitOfSystem**<br/>This property relates a unit of measure with the unit system that defines the unit. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="unit_derivedcoherentunitofsystem"></a>**Unit_derivedCoherentUnitOfSystem**<br/>This property relates a unit of measure to the unit system in which the unit is derived from the system's base units with a proportionality constant of one. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="unit_derivedunitofsystem"></a>**Unit_derivedUnitOfSystem**<br/>This property relates a unit of measure to the system of units in which it is defined as a derived unit. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) |  |
+| <a id="unit_exactmatch"></a>**Unit_exactMatch**<br/>exact match | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="unit_factorunitscalar"></a>**Unit_factorUnitScalar**<br/>For a derived unit that is not exactly the product of its factor units, this property defines the scalar with which that product has to be multiplied with. | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_hasdimensionvector"></a>**Unit_hasDimensionVector**<br/>has dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="unit_hasfactorunit"></a>**Unit_hasFactorUnit**<br/>This property relates a derived unit to one of its constituent factor units | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_hasquantitykind"></a>**Unit_hasQuantityKind**<br/>has quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="unit_iec61360code"></a>**Unit_iec61360Code**<br/>iec-61360 code | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_latexdefinition"></a>**Unit_latexDefinition**<br/>latex definition | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_latexsymbol"></a>**Unit_latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_mathmldefinition"></a>**Unit_mathMLdefinition**<br/>mathML definition | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_prefix"></a>**Unit_prefix**<br/>Associates a unit with the appropriate prefix, if any. | <sub>0..\*</sub><br/>[Prefix](#prefix) |  |
+| <a id="unit_qkdvdenominator"></a>**Unit_qkdvDenominator**<br/>denominator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="unit_qkdvnumerator"></a>**Unit_qkdvNumerator**<br/>numerator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) |  |
+| <a id="unit_scalingof"></a>**Unit_scalingOf**<br/>This property relates a unit to another unit it is scaled from | <sub>0..\*</sub><br/>[Unit](#unit) |  |
+| <a id="unit_siunitsexpression"></a>**Unit_siUnitsExpression**<br/>si units expression | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_symbol"></a>**Unit_symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_ucumcode"></a>**Unit_ucumCode**<br/><p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> | <sub>0..\*</sub><br/>[UCUMcs](#ucumcs) |  |
+| <a id="unit_udunitscode"></a>**Unit_udunitsCode**<br/>The UDUNITS package supports units of physical quantities. Its C library provides for arithmetic manipulation of units and for conversion of numeric values between compatible units. The package contains an extensive unit database, which is in XML format and user-extendable. The package also contains a command-line utility for investigating units and converting values. | <sub>0..\*</sub><br/>string |  |
+| <a id="unit_unececommoncode"></a>**Unit_uneceCommonCode**<br/>The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade. | <sub>0..\*</sub><br/>string |  |
+| <a id="verifiable_dbpediamatch"></a>**Verifiable_dbpediaMatch**<br/>dbpedia match | <sub>0..\*</sub><br/>uri |  |
+| <a id="verifiable_isonormativereference"></a>**Verifiable_isoNormativeReference**<br/>Provides a way to reference the ISO unit definition. | <sub>0..\*</sub><br/>string |  |
+| <a id="verifiable_normativereference"></a>**Verifiable_normativeReference**<br/>Provides a way to reference information that is an authoritative source providing a standard definition | <sub>0..\*</sub><br/>string |  |
+| <a id="verifiable_wikidatamatch"></a>**Verifiable_wikidataMatch**<br/>wikidata match | <sub>0..\*</sub><br/>uri |  |
+| <a id="abbreviation"></a>**abbreviation**<br/>An abbreviation for a unit is a short ASCII string that is used in place of the full name for the unit in contexts where non-ASCII characters would be problematic, or where using the abbreviation will enhance readability. When a power of abase unit needs to be expressed, such as squares this can be done using abbreviations rather than symbols. For example, <em>sq ft</em> means <em>square foot</em>, and <em>cu ft</em> means <em>cubic foot</em>. | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [OrderedType](#orderedtype), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [RuleType](#ruletype), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="accuracy"></a>**accuracy** | <sub>0..1</sub><br/>integer |  |
+| <a id="altsymbol"></a>**altSymbol**<br/>An alternative symbol | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [RuleType](#ruletype), [Unit](#unit) |
+| <a id="ansisqlname"></a>**ansiSQLName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="applicablecgsunit"></a>**applicableCGSUnit**<br/>applicable CGS unit | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
+| <a id="applicableisounit"></a>**applicableISOUnit**<br/>applicable ISO unit | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
+| <a id="applicableimperialunit"></a>**applicableImperialUnit**<br/>applicable Imperial unit | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
+| <a id="applicablephysicalconstant"></a>**applicablePhysicalConstant**<br/>applicable physical constant | <sub>0..\*</sub><br/>string | [SystemOfUnits](#systemofunits) |
+| <a id="applicablesiunit"></a>**applicableSIUnit**<br/>applicable SI unit | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
+| <a id="applicablesystem"></a>**applicableSystem**<br/>This property relates a unit of measure with a unit system that may or may not define the unit, but within which the unit is compatible. | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Unit](#unit) |
+| <a id="applicableuscustomaryunit"></a>**applicableUSCustomaryUnit**<br/>applicable US Customary unit | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
+| <a id="applicableunit"></a>**applicableUnit**<br/>See https://github.com/qudt/qudt-public-repo/wiki/Advanced-User-Guide#4-computing-applicable-units-for-a-quantitykind on how `qudt:applicableUnit` is computed from `qudt:hasQuantityKind` and then materialized | <sub>0..\*</sub><br/>[Unit](#unit) | [PhysicalConstant](#physicalconstant), [QuantityKind](#quantitykind) |
+| <a id="basedimensionenumeration"></a>**baseDimensionEnumeration**<br/>This property associates a system of quantities with an enumeration that enumerates the base dimensions of the system in canonical order. | <sub>0..\*</sub><br/>[Enumeration](#enumeration) | [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="basepower"></a>**basePower** | <sub>0..1</sub><br/>integer |  |
+| <a id="basepowerpoints"></a>**basePowerPoints** | <sub>0..1</sub><br/>integer |  |
+| <a id="basis"></a>**basis**<br/>basis | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="belongstosystemofquantities"></a>**belongsToSystemOfQuantities**<br/>belongs to system of quantities | <sub>0..\*</sub><br/>[SystemOfQuantityKinds](#systemofquantitykinds) | [QuantityKind](#quantitykind) |
+| <a id="bitorder"></a>**bitOrder**<br/>bit order | <sub>0..\*</sub><br/>[EndianType](#endiantype) | [DataEncoding](#dataencoding) |
+| <a id="bits"></a>**bits** | <sub>0..\*</sub><br/>string | [Encoding](#encoding) |
+| <a id="black"></a>**black**<br/>Black component in CMYK color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="blue"></a>**blue**<br/>Blue component in RGB color model (0-255) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
+| <a id="bounded"></a>**bounded**<br/>bounded | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="broader"></a>**broader** | <sub>0..1</sub><br/>[QuantityKind](#quantitykind) |  |
+| <a id="byteorder"></a>**byteOrder**<br/>Byte order is an enumeration of two values: 'Big Endian' and 'Little Endian' and is used to denote whether the most signiticant byte is either first or last, respectively. | <sub>0..\*</sub><br/>[EndianType](#endiantype) | [DataEncoding](#dataencoding) |
+| <a id="bytes"></a>**bytes**<br/>bytes | <sub>0..\*</sub><br/>string | [Encoding](#encoding) |
+| <a id="cname"></a>**cName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="cardinality"></a>**cardinality**<br/>cardinality | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="containsplace"></a>**containsPlace** | <sub>0..\*</sub><br/>[Place](#place) |  |
+| <a id="conversionmultiplier"></a>**conversionMultiplier**<br/>conversion multiplier | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="conversionmultipliersn"></a>**conversionMultiplierSN**<br/>conversion multiplier scientific | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="conversionoffset"></a>**conversionOffset**<br/>conversion offset | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="conversionoffsetsn"></a>**conversionOffsetSN**<br/>conversion offset scientific | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="cyanic"></a>**cyanic**<br/>Cyan component in CMYK color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="dataencoding"></a>**dataEncoding**<br/>data encoding | <sub>0..\*</sub><br/>[DataEncoding](#dataencoding) | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="datatype"></a>**datatype**<br/>datatype | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="dbpediamatch"></a>**dbpediaMatch**<br/>dbpedia match | <sub>0..\*</sub><br/>uri | [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [Prefix](#prefix), [QuantityKind](#quantitykind), [Rule](#rule), [RuleType](#ruletype), [SystemOfUnits](#systemofunits), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="default"></a>**default**<br/>The default element in an enumeration | <sub>0..\*</sub><br/>string | [Enumeration](#enumeration) |
+| <a id="definedunitofsystem"></a>**definedUnitOfSystem**<br/>This property relates a unit of measure with the unit system that defines the unit. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [Unit](#unit) |
+| <a id="depiction"></a>**depiction**<br/>A depiction of the person | <sub>0..1</sub><br/>string | [GymLeader](#gymleader), [Person](#person), [Species](#species), [Trainer](#trainer) |
+| <a id="deprecated"></a>**deprecated**<br/>deprecated | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [Enumeration](#enumeration), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="derivedcoherentunitofsystem"></a>**derivedCoherentUnitOfSystem**<br/>This property relates a unit of measure to the unit system in which the unit is derived from the system's base units with a proportionality constant of one. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [Unit](#unit) |
+| <a id="derivedunitofsystem"></a>**derivedUnitOfSystem**<br/>This property relates a unit of measure to the system of units in which it is defined as a derived unit. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [Unit](#unit) |
+| <a id="describedinpokedex"></a>**describedInPokedex**<br/>['A Pokedex entry is described in a Pokedex'] | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
+| <a id="describespokemon"></a>**describesPokemon** | <sub>0..\*</sub><br/>[Species](#species) |  |
+| <a id="dimensionexponentforamountofsubstance"></a>**dimensionExponentForAmountOfSubstance**<br/>dimension exponent for amount of substance | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentforelectriccurrent"></a>**dimensionExponentForElectricCurrent**<br/>dimension exponent for electric current | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentforlength"></a>**dimensionExponentForLength**<br/>dimension exponent for length | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentforluminousintensity"></a>**dimensionExponentForLuminousIntensity**<br/>dimension exponent for luminous intensity | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentformass"></a>**dimensionExponentForMass**<br/>dimension exponent for mass | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentforthermodynamictemperature"></a>**dimensionExponentForThermodynamicTemperature**<br/>dimension exponent for thermodynamic temperature | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionexponentfortime"></a>**dimensionExponentForTime**<br/>dimension exponent for time | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="dimensionvectorforsi"></a>**dimensionVectorForSI**<br/>dimension vector for SI | <sub>0..\*</sub><br/>[QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) | [QuantityKind](#quantitykind) |
+| <a id="dimensionlessexponent"></a>**dimensionlessExponent**<br/>dimensionless exponent | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="effectdescription"></a>**effectDescription**<br/>A description of the effect of the entity | <sub>0..\*</sub><br/>string | [Ability](#ability), [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [StatusMove](#statusmove) |
+| <a id="element"></a>**element**<br/>An element of an enumeration | <sub>0..\*</sub><br/>string | [Enumeration](#enumeration) |
+| <a id="encoding"></a>**encoding**<br/>encoding | <sub>0..\*</sub><br/>string | [DataEncoding](#dataencoding) |
+| <a id="entrynumber"></a>**entryNumber** | <sub>0..1</sub><br/>integer |  |
+| <a id="evolvesfrom"></a>**evolvesFrom** | <sub>0..1</sub><br/>[Species](#species) |  |
+| <a id="evolvesto"></a>**evolvesTo** | <sub>0..\*</sub><br/>[Species](#species) |  |
+| <a id="exactconstant"></a>**exactConstant**<br/>exact constant | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant) |
+| <a id="exactmatch"></a>**exactMatch**<br/>exact match | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="factorunitscalar"></a>**factorUnitScalar**<br/>For a derived unit that is not exactly the product of its factor units, this property defines the scalar with which that product has to be multiplied with. | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="featuresspecies"></a>**featuresSpecies**<br/>['A Pokedex entry features a species'] | <sub>0..\*</sub><br/>[Species](#species) | [Generation](#generation) |
+| <a id="firmness"></a>**firmness** | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
+| <a id="foundin"></a>**foundIn**<br/>A place is found in a location | <sub>0..\*</sub><br/>[Habitat](#habitat) | [Species](#species) |
+| <a id="green"></a>**green**<br/>Green component in RGB color model (0-255) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
+| <a id="guidance"></a>**guidance**<br/>guidance | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Rule](#rule), [RuleType](#ruletype), [SystemOfQuantityKinds](#systemofquantitykinds), [SystemOfUnits](#systemofunits), [Unit](#unit) |
+| <a id="hasallowedunit"></a>**hasAllowedUnit**<br/>This property relates a unit system with a unit of measure that is not defined by or part of the system, but is allowed for use within the system. An allowed unit must be convertible to some dimensionally eqiuvalent unit that is defined by the system. | <sub>0..\*</sub><br/>[Unit](#unit) | [SystemOfUnits](#systemofunits) |
+| <a id="hasbasequantitykind"></a>**hasBaseQuantityKind**<br/>has base quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) | [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="hasbaseunit"></a>**hasBaseUnit**<br/>This property relates a system of units to a base unit defined within the system. The base units of a system are used to define the derived units of the system by expressing the derived units as products of the base units raised to a rational power. | <sub>0..\*</sub><br/>[Unit](#unit) | [SystemOfUnits](#systemofunits) |
+| <a id="hascatchrate"></a>**hasCatchRate** | <sub>0..1</sub><br/>integer | [Species](#species) |
+| <a id="hascoherentunit"></a>**hasCoherentUnit**<br/>A coherent unit of measurement for a unit system is a defined unit that may be expressed as a product of powers of the system's base units with the proportionality factor of one. | <sub>0..\*</sub><br/>[Unit](#unit) | [SystemOfUnits](#systemofunits) |
+| <a id="hascolour"></a>**hasColour**<br/>A Pokemon has a color | <sub>0..1</sub><br/>[Colour](#colour) | [Species](#species) |
+| <a id="hasdefinedunit"></a>**hasDefinedUnit**<br/>This property relates a unit system with a unit of measure that is defined by the system. | <sub>0..\*</sub><br/>[Unit](#unit) | [SystemOfUnits](#systemofunits) |
+| <a id="hasderivedcoherentunit"></a>**hasDerivedCoherentUnit**<br/>derived coherent unit | <sub>0..\*</sub><br/>string | [SystemOfUnits](#systemofunits) |
+| <a id="hasderivedunit"></a>**hasDerivedUnit**<br/>This property relates a system of units to a unit of measure that is defined within the system in terms of the base units for the system. That is, the derived unit is defined as a product of the base units for the system raised to some rational power. | <sub>0..\*</sub><br/>string | [SystemOfUnits](#systemofunits) |
+| <a id="hasdimensionvector"></a>**hasDimensionVector**<br/>has dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) | [PhysicalConstant](#physicalconstant), [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="hasfactorunit"></a>**hasFactorUnit**<br/>This property relates a derived unit to one of its constituent factor units | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="hasflavor"></a>**hasFlavor**<br/>A Pokemon has a flavor | <sub>0..\*</sub><br/>[Flavor](#flavor) | [Berry](#berry), [Food](#food) |
+| <a id="hasgenus"></a>**hasGenus** | <sub>0..1</sub><br/>string | [Species](#species) |
+| <a id="hasheight"></a>**hasHeight** | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
+| <a id="haspokedexentry"></a>**hasPokedexEntry** | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
+| <a id="hasquantitykind"></a>**hasQuantityKind**<br/>has quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) | [PhysicalConstant](#physicalconstant), [Quantity](#quantity), [SystemOfQuantityKinds](#systemofquantitykinds), [Unit](#unit) |
+| <a id="hasreciprocalunit"></a>**hasReciprocalUnit**<br/>has reciprocal unit | <sub>0..\*</sub><br/>[Unit](#unit) | [Unit](#unit) |
+| <a id="hasreferencequantitykind"></a>**hasReferenceQuantityKind**<br/>has reference quantity kind | <sub>0..\*</sub><br/>string | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
+| <a id="hasrule"></a>**hasRule**<br/>has rule | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [Enumeration](#enumeration), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="hasshape"></a>**hasShape**<br/>The shape of a berry is a measure of how good it is for making a Potion. | <sub>0..1</sub><br/>[Shape](#shape) | [Species](#species) |
+| <a id="hassize"></a>**hasSize** | <sub>0..1</sub><br/>string | [Berry](#berry) |
+| <a id="hastype"></a>**hasType**<br/>A Pokemon has a type | <sub>0..\*</sub><br/>[Type](#type) | [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove) |
+| <a id="hasunit"></a>**hasUnit**<br/>This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system. | <sub>0..\*</sub><br/>[Unit](#unit) | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits) |
+| <a id="hasunitsystem"></a>**hasUnitSystem**<br/>has unit system | <sub>0..\*</sub><br/>string | [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="hasweight"></a>**hasWeight** | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
+| <a id="hue"></a>**hue**<br/>Hue component in HSV color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="iec61360code"></a>**iec61360Code**<br/>iec-61360 code | <sub>0..\*</sub><br/>string | [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="inegggroup"></a>**inEggGroup** | <sub>0..\*</sub><br/>[EggGroup](#egggroup) | [Species](#species) |
+| <a id="isabletoapply"></a>**isAbleToApply** | <sub>0..\*</sub><br/>[Move](#move) | [Species](#species) |
+| <a id="isdeltaquantity"></a>**isDeltaQuantity**<br/>This property is used to identify a Quantity instance that is a measure of a change, or interval, of some property, rather than a measure of its absolute value. This is important for measurements such as temperature differences where the conversion among units would be calculated differently because of offsets. | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantity](#quantity) |
+| <a id="isreplacedby"></a>**isReplacedBy** | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [Enumeration](#enumeration), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="isunitofsystem"></a>**isUnitOfSystem**<br/>This property relates a unit of measure with a system of units that either a) defines the unit or b) allows the unit to be used within the system. | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [Unit](#unit) |
+| <a id="isonormativereference"></a>**isoNormativeReference**<br/>Provides a way to reference the ISO unit definition. | <sub>0..\*</sub><br/>string | [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [QuantityKind](#quantitykind), [Rule](#rule), [RuleType](#ruletype), [SystemOfUnits](#systemofunits), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="javaname"></a>**javaName**<br/>java name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="jsname"></a>**jsName**<br/>Javascript name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="latexdefinition"></a>**latexDefinition**<br/>latex definition | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [Unit](#unit) |
+| <a id="latexsymbol"></a>**latexSymbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [Unit](#unit) |
+| <a id="learnsmove"></a>**learnsMove** | <sub>0..\*</sub><br/>[Move](#move) |  |
+| <a id="literal"></a>**literal** | <sub>0..\*</sub><br/>string | [CardinalityType](#cardinalitytype), [OrderedType](#orderedtype) |
+| <a id="locatedin"></a>**locatedIn** | <sub>0..\*</sub><br/>[Place](#place) |  |
+| <a id="magenta"></a>**magenta**<br/>Magenta component in CMYK color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="mathdefinition"></a>**mathDefinition**<br/>math definition | <sub>0..\*</sub><br/>string |  |
+| <a id="mathmldefinition"></a>**mathMLdefinition**<br/>mathML definition | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="matlabname"></a>**matlabName**<br/>matlab name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="maxpowerpoints"></a>**maxPowerPoints** | <sub>0..1</sub><br/>integer |  |
+| <a id="mayhaveability"></a>**mayHaveAbility**<br/>A Pokemon may have an ability | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
+| <a id="mayhavehiddenability"></a>**mayHaveHiddenAbility** | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
+| <a id="microsoftsqlservername"></a>**microsoftSQLServerName**<br/>Microsoft SQL Server name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="minleveltolearn"></a>**minLevelToLearn** | <sub>0..1</sub><br/>integer |  |
+| <a id="mysqlname"></a>**mySQLName**<br/>MySQL name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="normativereference"></a>**normativeReference**<br/>Provides a way to reference information that is an authoritative source providing a standard definition | <sub>0..\*</sub><br/>string | [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [QuantityKind](#quantitykind), [Rule](#rule), [RuleType](#ruletype), [SystemOfUnits](#systemofunits), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="odbcname"></a>**odbcName**<br/>ODBC name | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="oledbname"></a>**oleDBName**<br/>OLE DB (Object Linking and Embedding, Database, sometimes written as OLEDB or OLE-DB), an API designed by Microsoft, allows accessing data from a variety of sources in a uniform manner. The API provides a set of interfaces implemented using the Component Object Model (COM); it is otherwise unrelated to OLE. | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="omunit"></a>**omUnit**<br/>om unit | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="oraclesqlname"></a>**oracleSQLName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="orderedtype"></a>**orderedType**<br/>ordered type | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="plaintextdescription"></a>**plainTextDescription**<br/>A plain text description is used to provide a description with only simple ASCII characters for cases where LaTeX , HTML or other markup would not be appropriate. | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [Enumeration](#enumeration), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="prefix"></a>**prefix**<br/>Associates a unit with the appropriate prefix, if any. | <sub>0..\*</sub><br/>[Prefix](#prefix) | [SystemOfUnits](#systemofunits), [Unit](#unit) |
+| <a id="prefixmultiplier"></a>**prefixMultiplier**<br/>prefix multiplier | <sub>0..\*</sub><br/>string | [Prefix](#prefix) |
+| <a id="protocolbuffersname"></a>**protocolBuffersName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="pythonname"></a>**pythonName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="qkdvdenominator"></a>**qkdvDenominator**<br/>denominator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) | [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="qkdvnumerator"></a>**qkdvNumerator**<br/>numerator dimension vector | <sub>0..\*</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) | [QuantityKind](#quantitykind), [Unit](#unit) |
+| <a id="quantityvalue"></a>**quantityValue**<br/>quantity value | <sub>0..\*</sub><br/>[QuantityValue](#quantityvalue) | [PhysicalConstant](#physicalconstant), [Quantity](#quantity) |
+| <a id="qudt_description"></a>**qudt_description** | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [OrderedType](#orderedtype), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [RuleType](#ruletype), [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="qudt_id"></a>**qudt_id**<br/>The "qudt:id" is an identifier string that uniquely identifies a QUDT concept. The identifier is constructed using a prefix. For example, units are coded using the pattern: "UCCCENNNN", where "CCC" is a numeric code or a category and "NNNN" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format "QNN" where "NN" is a digit string representing an exponent power, and "Q" is a qualifier that indicates with the code "P" that the power is a positive decimal exponent, or the code "N" for a negative decimal exponent, or the code "B" for binary positive exponents. | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [Concept](#concept), [Datatype](#datatype), [Encoding](#encoding), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [Enumeration](#enumeration), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Rule](#rule), [RuleType](#ruletype), [SystemOfQuantityKinds](#systemofquantitykinds), [SystemOfUnits](#systemofunits), [Unit](#unit) |
+| <a id="qudt_value"></a>**qudt_value**<br/>A property to relate an observable thing with a value of any kind | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="rationale"></a>**rationale**<br/>rationale | <sub>0..\*</sub><br/>string | [Rule](#rule) |
+| <a id="red"></a>**red**<br/>Red component in RGB color model (0-255) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
+| <a id="relativestandarduncertainty"></a>**relativeStandardUncertainty**<br/>The relative standard uncertainty of a measurement is the (absolute) standard uncertainty divided by the magnitude of the exact value. | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="ruletype"></a>**ruleType**<br/>rule type | <sub>0..\*</sub><br/>string | [Rule](#rule) |
+| <a id="saturation"></a>**saturation**<br/>Saturation component in HSV color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="scalingof"></a>**scalingOf**<br/>This property relates a unit to another unit it is scaled from | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="siunitsexpression"></a>**siUnitsExpression**<br/>si units expression | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="smoothness"></a>**smoothness** | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
+| <a id="standarduncertainty"></a>**standardUncertainty**<br/>The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="standarduncertaintysn"></a>**standardUncertaintySN**<br/>The standard uncertainty of a quantity is the estimated standard deviation of the mean taken from a series of measurements. | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="symbol"></a>**symbol**<br/>The symbol is a glyph that is used to represent some concept, typically a unit or a quantity, in a compact form. For example, the symbol for an Ohm is $ohm$. This contrasts with 'unit:abbreviation', which gives a short alphanumeric abbreviation for the unit, 'ohm' for Ohm. | <sub>0..\*</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [RuleType](#ruletype), [Unit](#unit) |
+| <a id="systemderivedquantitykind"></a>**systemDerivedQuantityKind**<br/>system derived quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) | [SystemOfQuantityKinds](#systemofquantitykinds) |
+| <a id="ucumcode"></a>**ucumCode**<br/><p><em>ucumCode</em> associates a QUDT unit with its UCUM code (case-sensitive). </p><p>In SHACL the values are derived from specific ucum properties using 'sh:values'.</p> | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Prefix](#prefix), [Unit](#unit) |
+| <a id="udunitscode"></a>**udunitsCode**<br/>The UDUNITS package supports units of physical quantities. Its C library provides for arithmetic manipulation of units and for conversion of numeric values between compatible units. The package contains an extensive unit database, which is in XML format and user-extendable. The package also contains a command-line utility for investigating units and converting values. | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="unececommoncode"></a>**uneceCommonCode**<br/>The UN/CEFACT Recommendation 20 provides three character alphabetic and alphanumeric codes for representing units of measurement for length, area, volume/capacity, mass (weight), time, and other quantities used in international trade. The codes are intended for use in manual and/or automated systems for the exchange of information between participants in international trade. | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="unitfor"></a>**unitFor**<br/>unit for | <sub>0..\*</sub><br/>string | [Unit](#unit) |
+| <a id="value"></a>**value**<br/>Value/Lightness component in HSV color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="valuesn"></a>**valueSN**<br/>A property to relate an observable thing with a value of any kind | <sub>0..\*</sub><br/>string | [PhysicalConstant](#physicalconstant), [Quantifiable](#quantifiable), [Quantity](#quantity), [QuantityValue](#quantityvalue) |
+| <a id="vbname"></a>**vbName** | <sub>0..\*</sub><br/>string | [Datatype](#datatype) |
+| <a id="wavelength"></a>**wavelength**<br/>The wavelength of the color in nanometers | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="wikidatamatch"></a>**wikidataMatch**<br/>wikidata match | <sub>0..\*</sub><br/>uri | [CardinalityType](#cardinalitytype), [EndianType](#endiantype), [EnumeratedValue](#enumeratedvalue), [OrderedType](#orderedtype), [Prefix](#prefix), [QuantityKind](#quantitykind), [Rule](#rule), [RuleType](#ruletype), [SystemOfUnits](#systemofunits), [Unit](#unit), [Verifiable](#verifiable) |
+| <a id="yellow"></a>**yellow**<br/>Yellow component in CMYK color model | <sub>0..1</sub><br/>float | [Colour](#colour) |
+
+## Enums
+
+
+### HabitatEnum
+
+
+
+| Text | Meaning: | Description |
+| --- | --- | --- |
+| Cave | pokemon:Habitat_Cave |  |
+| Forest | pokemon:Habitat_Forest |  |
+| Grassland | pokemon:Habitat_Grassland |  |
+
