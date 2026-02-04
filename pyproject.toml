@@ -16,7 +16,7 @@ authors = [
 ]
 dependencies = [
     "linkml-runtime",
-
+    "marimo>=0.19.4",
 ]
 
 [tool.uv.sources]

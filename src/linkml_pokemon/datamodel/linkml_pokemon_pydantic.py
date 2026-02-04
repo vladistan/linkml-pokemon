@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "None"
+metamodel_version = "1.7.0"
 version = "None"
 
 
@@ -1261,7 +1261,7 @@ class Species(NamedIndividual):
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     hasColour: Optional[str] = Field(default=None, description="""A Pokemon has a color""", json_schema_extra = { "linkml_meta": {'domain_of': ['Species'], 'slot_uri': 'pokemon:hasColour'} })
-    mayHaveHiddenAbility: Optional[list[str]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species',
+    mayHaveHiddenAbility: Optional[list[Literal["mayHaveAbility"]]] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Species',
          'domain_of': ['Species'],
          'slot_uri': 'pokemon:mayHaveHiddenAbility',
          'subproperty_of': 'mayHaveAbility'} })

@@ -502,7 +502,7 @@ export interface Region extends Place {
 export interface Species extends NamedIndividual {
     /** A Pokemon has a color */
     hasColour?: ColourId,
-    mayHaveHiddenAbility?: AbilityId[],
+    mayHaveHiddenAbility?: ("mayHaveAbility")[],
     /** A Pokemon may have an ability */
     mayHaveAbility?: AbilityId[],
     isAbleToApply?: MoveId[],
