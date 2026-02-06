@@ -1,0 +1,61 @@
+# SPARQL CONSTRUCT query to extract colour data from DBpedia
+# for colours used in Pokemon Knowledge Graph
+#
+# Usage: sparql -P dbpedia query extract_dbpedia_colours.rq
+# Output: RDF triples that can be loaded into Pokemon KG
+
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+  ?colour rdf:type dbpedia:Colour .
+  ?colour dbpedia:colourHexCode ?hexCode .
+  ?colour dbpedia:wavelength ?wavelength .
+  ?colour dbpedia:frequency ?frequency .
+  ?colour dbpedia:rgbCoordinateRed ?r .
+  ?colour dbpedia:rgbCoordinateGreen ?g .
+  ?colour dbpedia:rgbCoordinateBlue ?b .
+  ?colour dbpedia:cmykCoordinateCyanic ?c .
+  ?colour dbpedia:cmykCoordinateMagenta ?m .
+  ?colour dbpedia:cmykCoordinateYellow ?y .
+  ?colour dbpedia:cmykCoordinateBlack ?k .
+  ?colour dbpedia:hsvCoordinateHue ?h .
+  ?colour dbpedia:hsvCoordinateSaturation ?s .
+  ?colour dbpedia:hsvCoordinateValue ?v .
+  ?colour dbpedia:thumbnail ?thumbnail .
+  ?colour rdfs:label ?label .
+}
+WHERE {
+  VALUES ?colour {
+    dbr:Black
+    dbr:Blue
+    dbr:Brown
+    dbr:Gray
+    dbr:Green
+    dbr:Pink
+    dbr:Purple
+    dbr:Red
+    dbr:White
+    dbr:Yellow
+  }
+
+  ?colour rdf:type dbpedia:Colour .
+
+  OPTIONAL { ?colour dbpedia:colourHexCode ?hexCode }
+  OPTIONAL { ?colour dbpedia:wavelength ?wavelength }
+  OPTIONAL { ?colour dbpedia:frequency ?frequency }
+  OPTIONAL { ?colour dbpedia:rgbCoordinateRed ?r }
+  OPTIONAL { ?colour dbpedia:rgbCoordinateGreen ?g }
+  OPTIONAL { ?colour dbpedia:rgbCoordinateBlue ?b }
+  OPTIONAL { ?colour dbpedia:cmykCoordinateCyanic ?c }
+  OPTIONAL { ?colour dbpedia:cmykCoordinateMagenta ?m }
+  OPTIONAL { ?colour dbpedia:cmykCoordinateYellow ?y }
+  OPTIONAL { ?colour dbpedia:cmykCoordinateBlack ?k }
+  OPTIONAL { ?colour dbpedia:hsvCoordinateHue ?h }
+  OPTIONAL { ?colour dbpedia:hsvCoordinateSaturation ?s }
+  OPTIONAL { ?colour dbpedia:hsvCoordinateValue ?v }
+  OPTIONAL { ?colour dbpedia:thumbnail ?thumbnail }
+  OPTIONAL { ?colour rdfs:label ?label . FILTER(LANG(?label) = 'en') }
+}

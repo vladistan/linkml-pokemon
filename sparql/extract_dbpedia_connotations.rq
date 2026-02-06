@@ -1,0 +1,28 @@
+# SPARQL CONSTRUCT query to extract colour connotations from DBpedia
+# Connotations are on "Shades_of_X" resources, not the base colours
+#
+# Usage: sparql -P dbpedia query extract_dbpedia_connotations.rq
+# Output: RDF triples linking base colours to their connotations
+
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+CONSTRUCT {
+  ?baseColour dbpedia:connotation ?connotation .
+}
+WHERE {
+  VALUES (?baseColour ?shadesColour) {
+    (dbr:Black dbr:Shades_of_black)
+    (dbr:Blue dbr:Shades_of_blue)
+    (dbr:Brown dbr:Shades_of_brown)
+    (dbr:Gray dbr:Shades_of_gray)
+    (dbr:Green dbr:Shades_of_green)
+    (dbr:Pink dbr:Shades_of_pink)
+    (dbr:Purple dbr:Shades_of_purple)
+    (dbr:Red dbr:Shades_of_red)
+    (dbr:White dbr:Shades_of_white)
+    (dbr:Yellow dbr:Shades_of_yellow)
+  }
+
+  ?shadesColour dbpedia:connotation ?connotation .
+}

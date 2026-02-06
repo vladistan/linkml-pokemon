@@ -1,0 +1,65 @@
+@prefix dbo:	<http://dbpedia.org/ontology/> .
+@prefix dbr:	<http://dbpedia.org/resource/> .
+dbr:Blue	dbo:connotation	dbr:Cold ,
+		dbr:Sadness ,
+		dbr:Confidence ,
+		dbr:Water ,
+		dbr:Harmony .
+dbr:Yellow	dbo:connotation	dbr:Happiness ,
+		dbr:Sunlight ,
+		dbr:Cowardice ,
+		dbr:Summer ,
+		dbr:Easter .
+dbr:Purple	dbo:connotation	dbr:Nobility ,
+		dbr:Spirit_Day ,
+		dbr:Easter ,
+		dbr:Lent ,
+		dbr:Mardi_Gras ,
+		<http://dbpedia.org/resource/Magic_(supernatural)> ,
+		dbr:Royal_family .
+dbr:Black	dbo:connotation	dbr:Evil ,
+		dbr:Death ,
+		<http://dbpedia.org/resource/Depression_(mood)> ,
+		dbr:Darkness ,
+		dbr:Luxury_goods ,
+		dbr:Solid ,
+		dbr:Mourning .
+dbr:Brown	dbo:connotation	dbr:Thanksgiving ,
+		dbr:Dirt ,
+		dbr:Autumn ,
+		<http://dbpedia.org/resource/Earth_(classical_element)> ,
+		dbr:Chocolate .
+dbr:Green	dbo:connotation	dbr:Christmas ,
+		dbr:Nature ,
+		dbr:Earth ,
+		<http://dbpedia.org/resource/Saint_Patrick\u0027s_Day> ,
+		dbr:Money ,
+		dbr:Earth_Day .
+dbr:Red	dbo:connotation	dbr:Socialism ,
+		<http://dbpedia.org/resource/Passion_(emotion)> ,
+		dbr:Sexuality ,
+		dbr:Love .
+@prefix ns2:	<http://dbpedia.org/resource/Wikt:> .
+dbr:Red	dbo:connotation	ns2:danger ,
+		<http://dbpedia.org/resource/Valentine\u0027s_Day> ,
+		dbr:Heat ,
+		dbr:Anger ,
+		dbr:Christmas .
+dbr:White	dbo:connotation	dbr:Innocence ,
+		dbr:Knowledge ,
+		dbr:Snow ,
+		dbr:Brightness ,
+		dbr:Heaven .
+dbr:Pink	dbo:connotation	dbr:Homosexuality ,
+		dbr:Femininity ,
+		dbr:Easter ,
+		<http://dbpedia.org/resource/Valentine\u0027s_Day> ,
+		dbr:Love .
+dbr:Gray	dbo:connotation	dbr:Elegance ,
+		dbr:Boredom ,
+		dbr:Pessimism ,
+		dbr:Contentment ,
+		ns2:grey_area ,
+		dbr:Old_age ,
+		<http://dbpedia.org/resource/Depression_(mood)> ,
+		dbr:Impartiality .

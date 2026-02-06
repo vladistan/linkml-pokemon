@@ -122,11 +122,13 @@ classes:
     is_a: Thing
 
   Pokedex:
+    class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9dex"
     annotations:
       rdfs:comment: The Pokedex is an electronic device designed to catalogue and provide information regarding the various species of Pokemon featured in the Pokemon video game, anime and manga series.
     is_a: Thing
 
   Pokemon:
+    class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9mon"
     description: A Pokemon
     annotations:
       rdfs:seeAlso: "<https://dbpedia.org/resource/Pokémon>"
@@ -135,11 +137,13 @@ classes:
       - Type
 
   PokedexEntry:
+    class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9dexEntry"
     description: >-
       A pokedex entry is a description of a Pokemon.
     is_a: Thing
 
   Pokeball:
+    class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9ball"
     is_a: Item
     annotations:
       rdfs:comment: A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
@@ -270,7 +274,7 @@ slots:
       rdfs:comment: A place is contained to some extent in this place.
 
   describedInPokedex:
-    slot_uri: pokemon:describedInPokedex
+    slot_uri: "https://pokemonkg.org/ontology#describedInPok%C3%A9dex"
     range: PokedexEntry
     domain: Species
     inverse: describesPokemon
@@ -280,7 +284,7 @@ slots:
       - "A Pokedex entry is described in a Pokedex"
 
   describesPokemon:
-    slot_uri: pokemon:describesPokemon
+    slot_uri: "https://pokemonkg.org/ontology#describesPok%C3%A9mon"
     range: Species
     domain: PokedexEntry
     multivalued: true
@@ -297,7 +301,7 @@ slots:
       - "A Pokedex entry features a species"
 
   hasPokedexEntry:
-    slot_uri: pokemon:hasPokedexEntry
+    slot_uri: "https://pokemonkg.org/ontology#hasPok%C3%A9dexEntry"
     range: PokedexEntry
     domain: Pokedex
     multivalued: true
@@ -359,6 +363,7 @@ slots:
 
   hasSize:
     slot_uri: pokemon:hasSize
+    range: Quantity
     multivalued: false
     required: false
     inlined: true

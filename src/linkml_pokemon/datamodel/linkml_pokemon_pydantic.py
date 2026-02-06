@@ -168,822 +168,554 @@ class Colour(Thing):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dbpedia:Colour', 'from_schema': 'https://dbpedia.org/ontology/'})
 
-    black: Optional[float] = Field(default=None, description="""Black component in CMYK color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateBlack'} })
-    cyanic: Optional[float] = Field(default=None, description="""Cyan component in CMYK color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateCyanic'} })
-    magenta: Optional[float] = Field(default=None, description="""Magenta component in CMYK color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateMagenta'} })
-    yellow: Optional[float] = Field(default=None, description="""Yellow component in CMYK color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateYellow'} })
-    hue: Optional[float] = Field(default=None, description="""Hue component in HSV color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:hsvCoordinateHue'} })
-    saturation: Optional[float] = Field(default=None, description="""Saturation component in HSV color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:hsvCoordinateSaturation'} })
-    value: Optional[float] = Field(default=None, description="""Value/Lightness component in HSV color model""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:hsvCoordinateLightness'} })
-    red: Optional[int] = Field(default=None, description="""Red component in RGB color model (0-255)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:rgbCoordinateRed'} })
-    green: Optional[int] = Field(default=None, description="""Green component in RGB color model (0-255)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:rgbCoordinateGreen'} })
-    blue: Optional[int] = Field(default=None, description="""Blue component in RGB color model (0-255)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:rgbCoordinateBlue'} })
-    wavelength: Optional[float] = Field(default=None, description="""The wavelength of the color in nanometers""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:wavelength'} })
+    cyanic: Optional[int] = Field(default=None, description="""Cyan component in CMYK color model (0-100)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateCyanic'} })
+    magenta: Optional[int] = Field(default=None, description="""Magenta component in CMYK color model (0-100)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateMagenta'} })
+    colourYellow: Optional[int] = Field(default=None, description="""Yellow component in CMYK color model (0-100)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateYellow'} })
+    black: Optional[int] = Field(default=None, description="""Black (K) component in CMYK color model (0-100)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:cmykCoordinateBlack'} })
+    wavelength: Optional[float] = Field(default=None, description="""The wavelength of the color in meters (e.g., 4.5e-07 for blue)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:wavelength'} })
+    frequency: Optional[float] = Field(default=None, description="""The frequency of the color in Hz""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:frequency'} })
+    colourHexCode: Optional[str] = Field(default=None, description="""Hexadecimal RGB color code (e.g., \"0000FF\" for blue)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:colourHexCode'} })
+    connotation: Optional[list[str]] = Field(default=None, description="""Cultural or symbolic meanings associated with this colour""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:connotation'} })
+    thumbnail: Optional[str] = Field(default=None, description="""URL to a representative image of this colour""", json_schema_extra = { "linkml_meta": {'domain_of': ['Colour'], 'slot_uri': 'dbpedia:thumbnail'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Aspect(Thing):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Aspect',
-         'comments': ['An aspect is an abstract type class that defines properties '
-                      'that can be reused.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
+class Connotation(Thing):
+    """
+    Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'owl:Thing',
+         'from_schema': 'https://dbpedia.org/ontology/',
+         'slot_usage': {'name': {'name': 'name', 'required': True}}})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Quantifiable(Aspect):
+class Quantity(ConfiguredBaseModel):
     """
-    <p><em>Quantifiable</em> ascribes to some thing the capability of being measured, observed, or counted.</p>
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantifiable',
-         'comments': ['<p><em>Quantifiable</em> ascribes to some thing the capability '
-                      'of being measured, observed, or counted.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'dataEncoding': {'multivalued': False,
-                                         'name': 'dataEncoding',
-                                         'range': 'DataEncoding'},
-                        'datatype': {'multivalued': False,
-                                     'name': 'datatype',
-                                     'range': 'Datatype'},
-                        'hasUnit': {'multivalued': False,
-                                    'name': 'hasUnit',
-                                    'range': 'Unit'},
-                        'qudt_value': {'multivalued': False, 'name': 'qudt_value'},
-                        'relativeStandardUncertainty': {'multivalued': False,
-                                                        'name': 'relativeStandardUncertainty',
-                                                        'range': 'double'},
-                        'standardUncertainty': {'multivalued': False,
-                                                'name': 'standardUncertainty',
-                                                'range': 'decimal'},
-                        'standardUncertaintySN': {'name': 'standardUncertaintySN',
-                                                  'range': 'double'},
-                        'valueSN': {'multivalued': False, 'name': 'valueSN'}}})
-
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Concept(Thing):
-    """
-    The root class for all QUDT concepts.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Concept',
-         'comments': ['The root class for all QUDT concepts.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'abbreviation': {'multivalued': False, 'name': 'abbreviation'},
-                        'deprecated': {'multivalued': False, 'name': 'deprecated'},
-                        'hasRule': {'name': 'hasRule', 'range': 'Rule'},
-                        'isReplacedBy': {'multivalued': False, 'name': 'isReplacedBy'},
-                        'plainTextDescription': {'multivalued': False,
-                                                 'name': 'plainTextDescription'},
-                        'qudt_description': {'multivalued': False,
-                                             'name': 'qudt_description'},
-                        'qudt_id': {'multivalued': False, 'name': 'qudt_id'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class SystemOfQuantityKinds(Concept):
-    """
-    A system of quantity kinds is a set of one or more quantity kinds together with a set of zero or more algebraic equations that define relationships between quantity kinds in the set. In the physical sciences, the equations relating quantity kinds are typically physical laws and definitional relations, and constants of proportionality. Examples include Newton’s First Law of Motion, Coulomb’s Law, and the definition of velocity as the instantaneous change in position.  In almost all cases, the system identifies a subset of base quantity kinds. The base set is chosen so that all other quantity kinds of interest can be derived from the base quantity kinds and the algebraic equations. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.  From a scientific point of view, the division of quantities into base quantities and derived quantities is a matter of convention.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:SystemOfQuantityKinds',
-         'comments': ['A system of quantity kinds is a set of one or more quantity '
-                      'kinds together with a set of zero or more algebraic equations '
-                      'that define relationships between quantity kinds in the set. In '
-                      'the physical sciences, the equations relating quantity kinds '
-                      'are typically physical laws and definitional relations, and '
-                      'constants of proportionality. Examples include Newton’s First '
-                      'Law of Motion, Coulomb’s Law, and the definition of velocity as '
-                      'the instantaneous change in position.  In almost all cases, the '
-                      'system identifies a subset of base quantity kinds. The base set '
-                      'is chosen so that all other quantity kinds of interest can be '
-                      'derived from the base quantity kinds and the algebraic '
-                      'equations. If the unit system is explicitly associated with a '
-                      'quantity kind system, then the unit system must define at least '
-                      'one unit for each quantity kind.  From a scientific point of '
-                      'view, the division of quantities into base quantities and '
-                      'derived quantities is a matter of convention.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'baseDimensionEnumeration': {'multivalued': False,
-                                                     'name': 'baseDimensionEnumeration',
-                                                     'range': 'Enumeration'},
-                        'hasBaseQuantityKind': {'name': 'hasBaseQuantityKind',
-                                                'range': 'QuantityKind'},
-                        'hasQuantityKind': {'name': 'hasQuantityKind',
-                                            'range': 'QuantityKind',
-                                            'required': False},
-                        'hasUnitSystem': {'name': 'hasUnitSystem',
-                                          'range': 'SystemOfUnits'},
-                        'systemDerivedQuantityKind': {'name': 'systemDerivedQuantityKind',
-                                                      'range': 'QuantityKind'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Quantity(Concept, Quantifiable):
-    """
-    <p class=\"lm-para\">A <b>quantity</b> is the measurement of an observable property of a particular object, event, or physical system.
-      A quantity is always associated with the context of measurement (i.e. the thing measured, the measured value, the accuracy of measurement, etc.) whereas the
-      underlying <b>quantity kind</b> is independent of any particular measurement. Thus, length is a quantity kind while the height of a rocket is a specific
-      quantity of length; its magnitude that may be expressed in meters, feet, inches, etc. Examples of physical quantities include physical constants, such as
-      the speed of light in a vacuum, Planck's constant, the electric permittivity of free space, and the fine structure constant. </p>
-    <p class=\"lm-para\">In other words, quantities are quantifiable aspects of the world, such as the duration of a movie, the distance between two points,
-    velocity of a car, the pressure of the atmosphere, and a person's weight; and units are used to describe their numerical measure.</p>
-    <p class=\"lm-para\">Many <b>quantity kinds</b> are related to each other by various physical laws, and as a result, the associated units of some quantity
-    kinds can be expressed as products (or ratios) of powers of other quantity kinds (e.g., momentum is mass times velocity and velocity is defined as distance
-    divided by time). In this way, some quantities can be calculated from other measured quantities using their associations to the quantity kinds in these
-    expressions. These quantity kind relationships are also discussed in dimensional analysis. Those that cannot be so expressed can be regarded
-    as \"fundamental\" in this sense.</p>
-    <p class=\"lm-para\">A quantity is distinguished from a \"quantity kind\" in that the former carries a value and the latter is a type specifier.</p>
+    A measured quantity with kind and value
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'comments': ['<p class=\\"lm-para\\">A <b>quantity</b> is the measurement of '
-                      'an observable property of a particular object, event, or '
-                      'physical system.\n'
-                      '  A quantity is always associated with the context of '
-                      'measurement (i.e. the thing measured, the measured value, the '
-                      'accuracy of measurement, etc.) whereas the\n'
-                      '  underlying <b>quantity kind</b> is independent of any '
-                      'particular measurement. Thus, length is a quantity kind while '
-                      'the height of a rocket is a specific\n'
-                      '  quantity of length; its magnitude that may be expressed in '
-                      'meters, feet, inches, etc. Examples of physical quantities '
-                      'include physical constants, such as\n'
-                      "  the speed of light in a vacuum, Planck's constant, the "
-                      'electric permittivity of free space, and the fine structure '
-                      'constant. </p>\n'
-                      '<p class=\\"lm-para\\">In other words, quantities are '
-                      'quantifiable aspects of the world, such as the duration of a '
-                      'movie, the distance between two points,\n'
-                      'velocity of a car, the pressure of the atmosphere, and a '
-                      "person's weight; and units are used to describe their numerical "
-                      'measure.</p>\n'
-                      '<p class=\\"lm-para\\">Many <b>quantity kinds</b> are related '
-                      'to each other by various physical laws, and as a result, the '
-                      'associated units of some quantity\n'
-                      'kinds can be expressed as products (or ratios) of powers of '
-                      'other quantity kinds (e.g., momentum is mass times velocity and '
-                      'velocity is defined as distance\n'
-                      'divided by time). In this way, some quantities can be '
-                      'calculated from other measured quantities using their '
-                      'associations to the quantity kinds in these\n'
-                      'expressions. These quantity kind relationships are also '
-                      'discussed in dimensional analysis. Those that cannot be so '
-                      'expressed can be regarded\n'
-                      'as \\"fundamental\\" in this sense.</p>\n'
-                      '<p class=\\"lm-para\\">A quantity is distinguished from a '
-                      '\\"quantity kind\\" in that the former carries a value and the '
-                      'latter is a type specifier.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'hasQuantityKind': {'name': 'hasQuantityKind',
-                                            'range': 'QuantityKind',
-                                            'required': False},
-                        'isDeltaQuantity': {'name': 'isDeltaQuantity',
-                                            'range': 'boolean'},
-                        'quantityValue': {'name': 'quantityValue',
-                                          'range': 'QuantityValue'}}})
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    quantityValue: Optional[list[QuantityValue]] = Field(default=None, description="""The value component of a quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:quantityValue'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
-class PhysicalConstant(Quantity):
+class QuantityValue(ConfiguredBaseModel):
     """
-    A physical constant is a physical quantity that is generally believed to be both universal in nature and constant in time. It can be contrasted with a mathematical constant, which is a fixed numerical value but does not directly involve any physical measurement. There are many physical constants in science, some of the most widely recognized being the speed of light in vacuum c, Newton's gravitational constant G, Planck's constant h, the electric permittivity of free space ε0, and the elementary charge e. Physical constants can take many dimensional forms, or may be dimensionless depending on the system of quantities and units used.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:PhysicalConstant',
-         'comments': ['A physical constant is a physical quantity that is generally '
-                      'believed to be both universal in nature and constant in time. '
-                      'It can be contrasted with a mathematical constant, which is a '
-                      'fixed numerical value but does not directly involve any '
-                      'physical measurement. There are many physical constants in '
-                      'science, some of the most widely recognized being the speed of '
-                      "light in vacuum c, Newton's gravitational constant G, Planck's "
-                      'constant h, the electric permittivity of free space ε0, and the '
-                      'elementary charge e. Physical constants can take many '
-                      'dimensional forms, or may be dimensionless depending on the '
-                      'system of quantities and units used.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'altSymbol': {'name': 'altSymbol', 'required': False},
-                        'applicableSystem': {'name': 'applicableSystem',
-                                             'range': 'SystemOfUnits'},
-                        'applicableUnit': {'name': 'applicableUnit', 'range': 'Unit'},
-                        'exactConstant': {'name': 'exactConstant', 'range': 'boolean'},
-                        'exactMatch': {'name': 'exactMatch',
-                                       'range': 'PhysicalConstant'},
-                        'hasDimensionVector': {'name': 'hasDimensionVector',
-                                               'range': 'QuantityKindDimensionVector'},
-                        'isoNormativeReference': {'name': 'isoNormativeReference',
-                                                  'required': False},
-                        'latexDefinition': {'multivalued': False,
-                                            'name': 'latexDefinition'},
-                        'latexSymbol': {'name': 'latexSymbol', 'required': False},
-                        'mathMLdefinition': {'multivalued': False,
-                                             'name': 'mathMLdefinition'},
-                        'normativeReference': {'name': 'normativeReference',
-                                               'required': False},
-                        'symbol': {'name': 'symbol', 'required': False},
-                        'ucumCode': {'name': 'ucumCode', 'required': False}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Encoding(Concept):
-    """
-    An encoding is a rule or algorithm that is used to convert data from a native, or unspecified form into a specific form that satisfies the encoding rules. Examples of encodings include character encodings, such as UTF-8.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Encoding',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'bits': {'multivalued': False, 'name': 'bits'},
-                        'bytes': {'multivalued': False, 'name': 'bytes'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Enumeration(Concept):
-    """
-    <p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
-
-    <p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of <em>Scalar Datatype</em>. This allows them to be used as the reference of a datatype specification.</p>
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Enumeration',
-         'comments': ['<p>An enumeration is a set of literals from which a single '
-                      'value is selected. Each literal can have a tag as an integer '
-                      'within a standard encoding appropriate to the range of integer '
-                      'values. Consistency of enumeration types will allow them, and '
-                      'the enumerated values, to be referred to unambiguously either '
-                      'through symbolic name or encoding. Enumerated values are also '
-                      'controlled vocabularies and as such need to be standardized. '
-                      'Without this consistency enumeration literals can be stated '
-                      'differently and result in  data conflicts and '
-                      'misinterpretations.</p>\n'
-                      '\n'
-                      '<p>The tags are a set of positive whole numbers, not '
-                      'necessarily contiguous and having no numerical significance, '
-                      'each corresponding to the associated literal identifier. An '
-                      'order attribute can also be given on the enumeration elements. '
-                      'An enumeration can itself be a member of an enumeration. This '
-                      'allows enumerations to be enumerated in a selection. '
-                      'Enumerations are also subclasses of <em>Scalar Datatype</em>. '
-                      'This allows them to be used as the reference of a datatype '
-                      'specification.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'abbreviation': {'multivalued': False, 'name': 'abbreviation'},
-                        'default': {'multivalued': False,
-                                    'name': 'default',
-                                    'range': 'EnumeratedValue'},
-                        'element': {'name': 'element',
-                                    'range': 'EnumeratedValue',
-                                    'required': True}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class AbstractQuantityKind(Concept):
-    """
-    Quantity Kind (abstract)
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:AbstractQuantityKind',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'altSymbol': {'name': 'altSymbol', 'required': False},
-                        'broader': {'name': 'broader', 'range': 'QuantityKind'},
-                        'latexSymbol': {'name': 'latexSymbol', 'required': False},
-                        'symbol': {'multivalued': False, 'name': 'symbol'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class QuantityValue(Concept, Quantifiable):
-    """
-    A <i>Quantity Value</i> expresses the magnitude and kind of a quantity and is given by the product of a numerical value <code>n</code> and a unit of measure <code>U</code>. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to <a href=\"http://physics.nist.gov/Pubs/SP811/sec07.html\">NIST SP 811 section 7</a> for more on quantity values.
+    Numeric value with unit
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityValue',
-         'comments': ['A <i>Quantity Value</i> expresses the magnitude and kind of a '
-                      'quantity and is given by the product of a numerical value '
-                      '<code>n</code> and a unit of measure <code>U</code>. The number '
-                      'multiplying the unit is referred to as the numerical value of '
-                      'the quantity expressed in that unit. Refer to <a '
-                      'href=\\"http://physics.nist.gov/Pubs/SP811/sec07.html\\">NIST '
-                      'SP 811 section 7</a> for more on quantity values.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'hasUnit': {'multivalued': False, 'name': 'hasUnit'}}})
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    numericValue: Optional[float] = Field(default=None, description="""Numeric value of a quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue'], 'slot_uri': 'qudt:value'} })
+    unit: Optional[Unit] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue'], 'slot_uri': 'qudt:unit'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
-class DataEncoding(Aspect):
+class QuantityKind(ConfiguredBaseModel):
     """
-    <p><em>Data Encoding</em> expresses the properties that specify how data is represented at the bit and byte level. These properties are applicable to describing raw data.</p>
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:DataEncoding',
-         'comments': ['<p><em>Data Encoding</em> expresses the properties that specify '
-                      'how data is represented at the bit and byte level. These '
-                      'properties are applicable to describing raw '
-                      'data.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'bitOrder': {'multivalued': False,
-                                     'name': 'bitOrder',
-                                     'range': 'EndianType'},
-                        'byteOrder': {'multivalued': False, 'name': 'byteOrder'},
-                        'encoding': {'multivalued': False,
-                                     'name': 'encoding',
-                                     'range': 'Encoding'}}})
-
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class UCUMcs(Thing):
-    """
-    Lexical pattern for the case-sensitive version of UCUM code
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Lexical pattern for the case-sensitive version of UCUM code'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
-
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Datatype(Concept):
-    """
-    
-       <p>A <em>Datatype</em> is a definition of the type of the \"value\" of a data item (for example, \"all integers between 0 and 10\"),
-       and the allowable operations on those values; the meaning of the data; and the way values of that type can be stored.
-      Some types are primitive - built-in to the language, with no visible internal structure.
-      For example \"Boolean\"; others are composite - constructed from one or more other types (of either kind).
-      For example lists, arrays, structures, unions.
-      Some languages provide strong typing, others allow implicit type conversion and/or explicit type conversion.
-      </p>
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'rdfs:Datatype',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'ansiSQLName': {'multivalued': False, 'name': 'ansiSQLName'},
-                        'basis': {'multivalued': False,
-                                  'name': 'basis',
-                                  'range': 'Datatype'},
-                        'bounded': {'multivalued': False, 'name': 'bounded'},
-                        'cName': {'multivalued': False, 'name': 'cName'},
-                        'cardinality': {'multivalued': False,
-                                        'name': 'cardinality',
-                                        'range': 'CardinalityType'},
-                        'javaName': {'multivalued': False, 'name': 'javaName'},
-                        'jsName': {'multivalued': False, 'name': 'jsName'},
-                        'matlabName': {'multivalued': False, 'name': 'matlabName'},
-                        'microsoftSQLServerName': {'multivalued': False,
-                                                   'name': 'microsoftSQLServerName'},
-                        'mySQLName': {'multivalued': False, 'name': 'mySQLName'},
-                        'odbcName': {'multivalued': False, 'name': 'odbcName'},
-                        'oleDBName': {'multivalued': False, 'name': 'oleDBName'},
-                        'oracleSQLName': {'multivalued': False,
-                                          'name': 'oracleSQLName'},
-                        'orderedType': {'multivalued': False,
-                                        'name': 'orderedType',
-                                        'range': 'OrderedType'},
-                        'protocolBuffersName': {'multivalued': False,
-                                                'name': 'protocolBuffersName'},
-                        'pythonName': {'multivalued': False, 'name': 'pythonName'},
-                        'qudt_id': {'multivalued': False, 'name': 'qudt_id'},
-                        'vbName': {'multivalued': False, 'name': 'vbName'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Verifiable(Aspect):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Verifiable',
-         'comments': ['An aspect class that holds properties that provide external '
-                      'knowledge and specifications of a given resource.'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'dbpediaMatch': {'name': 'dbpediaMatch', 'required': False},
-                        'isoNormativeReference': {'name': 'isoNormativeReference',
-                                                  'required': False},
-                        'normativeReference': {'name': 'normativeReference',
-                                               'required': False},
-                        'wikidataMatch': {'name': 'wikidataMatch', 'required': False}}})
-
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class SystemOfUnits(Verifiable, Concept):
-    """
-    A system of units is a set of units which are chosen as the reference scales for some set of quantity kinds together with the definitions of each unit. Units may be defined by experimental observation or by proportion to another unit not included in the system. If the unit system is explicitly associated with a quantity kind system, then the unit system must define at least one unit for each quantity kind.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:SystemOfUnits',
-         'comments': ['A system of units is a set of units which are chosen as the '
-                      'reference scales for some set of quantity kinds together with '
-                      'the definitions of each unit. Units may be defined by '
-                      'experimental observation or by proportion to another unit not '
-                      'included in the system. If the unit system is explicitly '
-                      'associated with a quantity kind system, then the unit system '
-                      'must define at least one unit for each quantity '
-                      'kind.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'applicablePhysicalConstant': {'name': 'applicablePhysicalConstant',
-                                                       'range': 'PhysicalConstant'},
-                        'hasAllowedUnit': {'name': 'hasAllowedUnit', 'range': 'Unit'},
-                        'hasBaseUnit': {'name': 'hasBaseUnit', 'range': 'Unit'},
-                        'hasCoherentUnit': {'name': 'hasCoherentUnit', 'range': 'Unit'},
-                        'hasDefinedUnit': {'name': 'hasDefinedUnit', 'range': 'Unit'},
-                        'hasDerivedCoherentUnit': {'name': 'hasDerivedCoherentUnit',
-                                                   'range': 'Unit'},
-                        'hasDerivedUnit': {'name': 'hasDerivedUnit', 'range': 'Unit'},
-                        'hasUnit': {'name': 'hasUnit', 'range': 'Unit'},
-                        'prefix': {'name': 'prefix', 'range': 'Prefix'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Prefix(Verifiable, Concept):
-    """
-    Prefix
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Prefix',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'altSymbol': {'name': 'altSymbol', 'required': False},
-                        'exactMatch': {'name': 'exactMatch', 'range': 'Prefix'},
-                        'latexSymbol': {'name': 'latexSymbol', 'required': False},
-                        'prefixMultiplier': {'multivalued': False,
-                                             'name': 'prefixMultiplier'},
-                        'symbol': {'name': 'symbol', 'required': False},
-                        'ucumCode': {'name': 'ucumCode', 'range': 'UCUMcs-term'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class EnumeratedValue(Verifiable, Concept):
-    """
-    <p>This class is for all enumerated and/or coded values.  For example, it contains the dimension objects that are the basis elements in some abstract vector space associated with a quantity kind system. Another use is for the base dimensions for quantity systems. Each quantity kind system that defines a base set has a corresponding ordered enumeration whose elements are the dimension objects for the base quantity kinds. The order of the dimensions in the enumeration determines the canonical order of the basis elements in the corresponding abstract vector space.</p>
-
-    <p>An enumeration is a set of literals from which a single value is selected. Each literal can have a tag as an integer within a standard encoding appropriate to the range of integer values. Consistency of enumeration types will allow them, and the enumerated values, to be referred to unambiguously either through symbolic name or encoding. Enumerated values are also controlled vocabularies and as such need to be standardized. Without this consistency enumeration literals can be stated differently and result in  data conflicts and misinterpretations.</p>
-
-    <p>The tags are a set of positive whole numbers, not necessarily contiguous and having no numerical significance, each corresponding to the associated literal identifier. An order attribute can also be given on the enumeration elements. An enumeration can itself be a member of an enumeration. This allows enumerations to be enumerated in a selection. Enumerations are also subclasses of Scalar Datatype. This allows them to be used as the reference of a datatype specification.</p>
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:EnumeratedValue',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'abbreviation': {'multivalued': False, 'name': 'abbreviation'},
-                        'altSymbol': {'name': 'altSymbol', 'required': False},
-                        'qudt_description': {'multivalued': False,
-                                             'name': 'qudt_description'},
-                        'symbol': {'multivalued': False, 'name': 'symbol'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class EndianType(EnumeratedValue):
-    """
-    Endian Type
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:EndianType',
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class RuleType(EnumeratedValue):
-    """
-    Rule Type
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:RuleType',
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class CardinalityType(EnumeratedValue):
-    """
-    
-      In mathematics, the cardinality of a set is a measure of the number of elements of the set.
-      For example, the set $A = {2, 4, 6}$ contains 3 elements, and therefore $A$ has a cardinality of 3.
-      There are two approaches to cardinality: one which compares sets directly using bijections and injections,
-       and another which uses cardinal numbers.
-      
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:CardinalityType',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'literal': {'multivalued': False, 'name': 'literal'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class OrderedType(EnumeratedValue):
-    """
-    Describes how a data or information structure is ordered.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:OrderedType',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'literal': {'multivalued': False, 'name': 'literal'}}})
-
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class Unit(Verifiable, Concept):
-    """
-    
-      A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension).
-      For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures).
-      Any measurement of the length can be expressed as a number multiplied by the unit meter.
-      More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  $Q = nU$.
-      
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Unit',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'altSymbol': {'name': 'altSymbol', 'required': False},
-                        'applicableSystem': {'name': 'applicableSystem',
-                                             'range': 'SystemOfUnits'},
-                        'conversionMultiplier': {'multivalued': False,
-                                                 'name': 'conversionMultiplier'},
-                        'conversionMultiplierSN': {'multivalued': False,
-                                                   'name': 'conversionMultiplierSN'},
-                        'conversionOffset': {'multivalued': False,
-                                             'name': 'conversionOffset'},
-                        'conversionOffsetSN': {'multivalued': False,
-                                               'name': 'conversionOffsetSN'},
-                        'definedUnitOfSystem': {'name': 'definedUnitOfSystem',
-                                                'range': 'SystemOfUnits'},
-                        'derivedCoherentUnitOfSystem': {'name': 'derivedCoherentUnitOfSystem',
-                                                        'range': 'SystemOfUnits'},
-                        'derivedUnitOfSystem': {'name': 'derivedUnitOfSystem',
-                                                'range': 'SystemOfUnits'},
-                        'exactMatch': {'name': 'exactMatch', 'range': 'Unit'},
-                        'factorUnitScalar': {'multivalued': False,
-                                             'name': 'factorUnitScalar'},
-                        'hasDimensionVector': {'multivalued': False,
-                                               'name': 'hasDimensionVector',
-                                               'range': 'QuantityKindDimensionVector'},
-                        'hasFactorUnit': {'name': 'hasFactorUnit'},
-                        'hasQuantityKind': {'name': 'hasQuantityKind',
-                                            'range': 'QuantityKind'},
-                        'iec61360Code': {'name': 'iec61360Code', 'range': 'string'},
-                        'latexDefinition': {'name': 'latexDefinition',
-                                            'required': False},
-                        'latexSymbol': {'name': 'latexSymbol', 'required': False},
-                        'mathMLdefinition': {'multivalued': False,
-                                             'name': 'mathMLdefinition'},
-                        'prefix': {'name': 'prefix', 'range': 'Prefix'},
-                        'qkdvDenominator': {'multivalued': False,
-                                            'name': 'qkdvDenominator',
-                                            'range': 'QuantityKindDimensionVector'},
-                        'qkdvNumerator': {'multivalued': False,
-                                          'name': 'qkdvNumerator',
-                                          'range': 'QuantityKindDimensionVector'},
-                        'scalingOf': {'name': 'scalingOf', 'range': 'Unit'},
-                        'siUnitsExpression': {'name': 'siUnitsExpression',
-                                              'required': False},
-                        'symbol': {'name': 'symbol', 'required': False},
-                        'ucumCode': {'name': 'ucumCode', 'range': 'UCUMcs'},
-                        'udunitsCode': {'name': 'udunitsCode', 'range': 'string'},
-                        'uneceCommonCode': {'name': 'uneceCommonCode',
-                                            'range': 'string'}}})
-
-    hasReciprocalUnit: Optional[list[str]] = Field(default=None, description="""has reciprocal unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:hasReciprocalUnit'} })
-    isUnitOfSystem: Optional[list[str]] = Field(default=None, description="""This property relates a unit of measure with a system of units that either a) defines the unit or b) allows the unit to be used within the system.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
-    omUnit: Optional[list[str]] = Field(default=None, description="""om unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:omUnit'} })
-    unitFor: Optional[list[str]] = Field(default=None, description="""unit for""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:unitFor'} })
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-
-
-class QuantityKind(Verifiable, AbstractQuantityKind):
-    """
-    A <b>Quantity Kind</b> is any observable property that can be measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity.
+    Kind of quantity (e.g., Length, Mass, Height, Weight)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKind',
-         'comments': ['A <b>Quantity Kind</b> is any observable property that can be  '
-                      'measured and quantified numerically. Familiar examples include '
-                      'physical properties such as length, mass, time, force, energy, '
-                      'power, electric charge, etc. Less familiar examples include '
-                      'currency, interest rate, price to earning ratio, and '
-                      'information capacity.^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['AbstractQuantityKind'],
-         'slot_usage': {'applicableCGSUnit': {'name': 'applicableCGSUnit',
-                                              'required': False},
-                        'applicableISOUnit': {'name': 'applicableISOUnit',
-                                              'required': False},
-                        'applicableImperialUnit': {'name': 'applicableImperialUnit',
-                                                   'required': False},
-                        'applicableSIUnit': {'name': 'applicableSIUnit',
-                                             'required': False},
-                        'applicableUSCustomaryUnit': {'name': 'applicableUSCustomaryUnit',
-                                                      'required': False},
-                        'applicableUnit': {'name': 'applicableUnit', 'required': False},
-                        'dimensionVectorForSI': {'multivalued': False,
-                                                 'name': 'dimensionVectorForSI',
-                                                 'range': 'QuantityKindDimensionVector_SI'},
-                        'exactMatch': {'name': 'exactMatch', 'range': 'QuantityKind'},
-                        'hasDimensionVector': {'name': 'hasDimensionVector',
-                                               'range': 'QuantityKindDimensionVector'},
-                        'iec61360Code': {'name': 'iec61360Code', 'range': 'string'},
-                        'latexDefinition': {'multivalued': False,
-                                            'name': 'latexDefinition'},
-                        'mathMLdefinition': {'multivalued': False,
-                                             'name': 'mathMLdefinition'},
-                        'qkdvDenominator': {'multivalued': False,
-                                            'name': 'qkdvDenominator'},
-                        'qkdvNumerator': {'multivalued': False,
-                                          'name': 'qkdvNumerator'}}})
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    belongsToSystemOfQuantities: Optional[list[str]] = Field(default=None, description="""belongs to system of quantities""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:belongsToSystemOfQuantities'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
+         'slot_uri': 'qudt:abbreviation'} })
+    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    applicableUnit: Optional[list[Unit]] = Field(default=None, description="""Units applicable to a quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:applicableUnit'} })
+    broader: Optional[list[QuantityKind]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:broader'} })
+    exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
 
 
-class UCUMcs-term(Thing):
+class Unit(ConfiguredBaseModel):
     """
-    Lexical pattern for the terminal symbols in the case-sensitive version of UCUM code
+    Unit of measurement
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'comments': ['Lexical pattern for the terminal symbols in the case-sensitive '
-                      'version of UCUM code'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Unit', 'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
+         'slot_uri': 'qudt:abbreviation'} })
+    conversionMultiplier: Optional[float] = Field(default=None, description="""Multiplier to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionMultiplier'} })
+    conversionOffset: Optional[float] = Field(default=None, description="""Offset to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionOffset'} })
+    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    isUnitOfSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
+    applicableSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
+    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    scalingOf: Optional[Unit] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
+    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
-class QuantityKindDimensionVector(Concept):
+class DerivedUnit(Unit):
     """
-    <p class=\"lm-para\">A  <em>Quantity Kind Dimension Vector</em> describes the dimensionality of a quantity kind in the context of a system of units. In the SI system of units, the dimensions of a quantity kind are expressed as a product of the basic physical dimensions mass ($M$), length ($L$), time ($T$) current ($I$), amount of substance ($N$), luminous intensity ($J$) and absolute temperature ($\theta$) as $dim \, Q = L^{\alpha} \, M^{\beta} \, T^{\gamma} \, I ^{\delta} \, \theta ^{\epsilon} \, N^{\eta} \, J ^{\nu}$.</p>
+    Unit derived from base units (e.g., KiloM)
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:DerivedUnit',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    <p class=\"lm-para\">The rational powers of the dimensional exponents, $\alpha, \, \beta, \, \gamma, \, \delta, \, \epsilon, \ , \eta, \, \nu$, are positive, negative, or zero.</p>
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
+         'slot_uri': 'qudt:abbreviation'} })
+    conversionMultiplier: Optional[float] = Field(default=None, description="""Multiplier to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionMultiplier'} })
+    conversionOffset: Optional[float] = Field(default=None, description="""Offset to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionOffset'} })
+    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    isUnitOfSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
+    applicableSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
+    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    scalingOf: Optional[Unit] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
+    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
-    <p class=\"lm-para\">For example, the dimension of the physical quantity kind $\it{speed}$ is $\ boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension of the physical quantity kind force is $\boxed{mass \times acceleration}$ or $\boxed{mass \times (length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ respectively.</p>
+
+class SystemOfUnits(ConfiguredBaseModel):
+    """
+    A coherent system of units (e.g., SI, CGS)
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:SystemOfUnits',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
+         'slot_uri': 'qudt:abbreviation'} })
+    hasBaseUnit: Optional[list[Unit]] = Field(default=None, description="""Base units defined by this system""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemOfUnits'], 'slot_uri': 'qudt:hasBaseUnit'} })
+    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class QuantityKindDimensionVector(ConfiguredBaseModel):
+    """
+    Dimension vector expressing quantity in base dimensions
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKindDimensionVector',
-         'comments': ['<p class=\\"lm-para\\">A  <em>Quantity Kind Dimension '
-                      'Vector</em> describes the dimensionality of a quantity kind in '
-                      'the context of a system of units. In the SI system of units, '
-                      'the dimensions of a quantity kind are expressed as a product of '
-                      'the basic physical dimensions mass ($M$), length ($L$), time '
-                      '($T$) current ($I$), amount of substance ($N$), luminous '
-                      'intensity ($J$) and absolute temperature ($\\\\theta$) as $dim '
-                      '\\\\, Q = L^{\\\\alpha} \\\\, M^{\\\\beta} \\\\, T^{\\\\gamma} '
-                      '\\\\, I ^{\\\\delta} \\\\, \\\\theta ^{\\\\epsilon} \\\\ , '
-                      'N^{\\\\eta} \\\\, J ^{\\\\nu}$.</p>\n'
-                      '\n'
-                      '<p class=\\"lm-para\\">The rational powers of the dimensional '
-                      'exponents, $\\\\alpha, \\\\, \\\\beta, \\\\, \\\\gamma, \\\\, '
-                      '\\\\delta, \\\\, \\\\epsilon, \\\\, \\\\eta, \\\\, \\\\nu$, are '
-                      'positive, negative, or zero.</p>\n'
-                      '\n'
-                      '<p class=\\"lm-para\\">For example, the dimension of the '
-                      'physical quantity kind $\\\\it{speed}$ is '
-                      '$\\\\boxed{length/time}$, $L/T$ or $LT^{-1}$, and the dimension '
-                      'of the physical quantity kind force is $\\\\boxed{mass '
-                      '\\\\times acceleration}$ or $\\\\boxed{mass \\\\times '
-                      '(length/time)/time}$, $ML/T^2$ or $MLT^{-2}$ '
-                      'respectively.</p>^^rdf:HTML'],
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'slot_usage': {'dimensionExponentForAmountOfSubstance': {'multivalued': False,
-                                                                  'name': 'dimensionExponentForAmountOfSubstance',
-                                                                  'required': True},
-                        'dimensionExponentForElectricCurrent': {'multivalued': False,
-                                                                'name': 'dimensionExponentForElectricCurrent',
-                                                                'required': True},
-                        'dimensionExponentForLength': {'multivalued': False,
-                                                       'name': 'dimensionExponentForLength',
-                                                       'required': True},
-                        'dimensionExponentForLuminousIntensity': {'multivalued': False,
-                                                                  'name': 'dimensionExponentForLuminousIntensity',
-                                                                  'required': True},
-                        'dimensionExponentForMass': {'multivalued': False,
-                                                     'name': 'dimensionExponentForMass',
-                                                     'required': True},
-                        'dimensionExponentForThermodynamicTemperature': {'multivalued': False,
-                                                                         'name': 'dimensionExponentForThermodynamicTemperature',
-                                                                         'required': True},
-                        'dimensionExponentForTime': {'multivalued': False,
-                                                     'name': 'dimensionExponentForTime',
-                                                     'required': True},
-                        'dimensionlessExponent': {'multivalued': False,
-                                                  'name': 'dimensionlessExponent',
-                                                  'required': True},
-                        'hasReferenceQuantityKind': {'name': 'hasReferenceQuantityKind',
-                                                     'range': 'QuantityKind'},
-                        'latexDefinition': {'multivalued': False,
-                                            'name': 'latexDefinition'},
-                        'latexSymbol': {'name': 'latexSymbol', 'required': False}}})
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    dimensionExponentForLength: Optional[int] = Field(default=None, description="""Exponent for length dimension (L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLength'} })
+    dimensionExponentForMass: Optional[int] = Field(default=None, description="""Exponent for mass dimension (M)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForMass'} })
+    dimensionExponentForTime: Optional[int] = Field(default=None, description="""Exponent for time dimension (T)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForTime'} })
+    dimensionExponentForElectricCurrent: Optional[int] = Field(default=None, description="""Exponent for electric current dimension (I)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForElectricCurrent'} })
+    dimensionExponentForThermodynamicTemperature: Optional[int] = Field(default=None, description="""Exponent for temperature dimension (Θ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForThermodynamicTemperature'} })
+    dimensionExponentForAmountOfSubstance: Optional[int] = Field(default=None, description="""Exponent for amount of substance dimension (N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForAmountOfSubstance'} })
+    dimensionExponentForLuminousIntensity: Optional[int] = Field(default=None, description="""Exponent for luminous intensity dimension (J)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
+    dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionlessExponent'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
 class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
     """
-    Quantity Kind Dimension vector (SI)
+    SI dimension vector
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKindDimensionVector_SI',
-         'from_schema': 'http://qudt.org/subset/qudt_subset'})
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    dimensionExponentForLength: Optional[int] = Field(default=None, description="""Exponent for length dimension (L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLength'} })
+    dimensionExponentForMass: Optional[int] = Field(default=None, description="""Exponent for mass dimension (M)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForMass'} })
+    dimensionExponentForTime: Optional[int] = Field(default=None, description="""Exponent for time dimension (T)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForTime'} })
+    dimensionExponentForElectricCurrent: Optional[int] = Field(default=None, description="""Exponent for electric current dimension (I)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForElectricCurrent'} })
+    dimensionExponentForThermodynamicTemperature: Optional[int] = Field(default=None, description="""Exponent for temperature dimension (Θ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForThermodynamicTemperature'} })
+    dimensionExponentForAmountOfSubstance: Optional[int] = Field(default=None, description="""Exponent for amount of substance dimension (N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForAmountOfSubstance'} })
+    dimensionExponentForLuminousIntensity: Optional[int] = Field(default=None, description="""Exponent for luminous intensity dimension (J)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
+    dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionlessExponent'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
-class Rule(Verifiable, Concept):
+class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
     """
-    Rule
+    CGS dimension vector
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Rule',
-         'from_schema': 'http://qudt.org/subset/qudt_subset',
-         'mixins': ['Concept'],
-         'slot_usage': {'rationale': {'name': 'rationale', 'required': False},
-                        'ruleType': {'name': 'ruleType', 'range': 'RuleType'}}})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKindDimensionVector_CGS',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    guidance: Optional[list[str]] = Field(default=None, description="""guidance""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:guidance'} })
-    qudt_id: Optional[str] = Field(default=None, description="""The \"qudt:id\" is an identifier string that uniquely identifies a QUDT concept.  The identifier is constructed using a prefix. For example, units are coded using the pattern: \"UCCCENNNN\", where \"CCC\" is a numeric code or a category and \"NNNN\" is a digit string for a member element of that category. For scaled units there may be an addition field that has the format \"QNN\" where \"NN\" is a digit string representing an exponent power, and \"Q\" is a qualifier that indicates with the code \"P\" that the power is a positive decimal exponent, or the code \"N\" for a negative decimal exponent, or the code \"B\" for binary positive exponents.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:id'} })
-    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
-    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
-    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    dimensionExponentForLength: Optional[int] = Field(default=None, description="""Exponent for length dimension (L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLength'} })
+    dimensionExponentForMass: Optional[int] = Field(default=None, description="""Exponent for mass dimension (M)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForMass'} })
+    dimensionExponentForTime: Optional[int] = Field(default=None, description="""Exponent for time dimension (T)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForTime'} })
+    dimensionExponentForElectricCurrent: Optional[int] = Field(default=None, description="""Exponent for electric current dimension (I)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForElectricCurrent'} })
+    dimensionExponentForThermodynamicTemperature: Optional[int] = Field(default=None, description="""Exponent for temperature dimension (Θ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForThermodynamicTemperature'} })
+    dimensionExponentForAmountOfSubstance: Optional[int] = Field(default=None, description="""Exponent for amount of substance dimension (N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForAmountOfSubstance'} })
+    dimensionExponentForLuminousIntensity: Optional[int] = Field(default=None, description="""Exponent for luminous intensity dimension (J)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
+    dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionlessExponent'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
+    """
+    Imperial dimension vector
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKindDimensionVector_Imperial',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    dimensionExponentForLength: Optional[int] = Field(default=None, description="""Exponent for length dimension (L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLength'} })
+    dimensionExponentForMass: Optional[int] = Field(default=None, description="""Exponent for mass dimension (M)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForMass'} })
+    dimensionExponentForTime: Optional[int] = Field(default=None, description="""Exponent for time dimension (T)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForTime'} })
+    dimensionExponentForElectricCurrent: Optional[int] = Field(default=None, description="""Exponent for electric current dimension (I)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForElectricCurrent'} })
+    dimensionExponentForThermodynamicTemperature: Optional[int] = Field(default=None, description="""Exponent for temperature dimension (Θ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForThermodynamicTemperature'} })
+    dimensionExponentForAmountOfSubstance: Optional[int] = Field(default=None, description="""Exponent for amount of substance dimension (N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForAmountOfSubstance'} })
+    dimensionExponentForLuminousIntensity: Optional[int] = Field(default=None, description="""Exponent for luminous intensity dimension (J)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
+    dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionlessExponent'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
+    """
+    ISO dimension vector
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKindDimensionVector_ISO',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:latexSymbol'} })
+    dimensionExponentForLength: Optional[int] = Field(default=None, description="""Exponent for length dimension (L)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLength'} })
+    dimensionExponentForMass: Optional[int] = Field(default=None, description="""Exponent for mass dimension (M)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForMass'} })
+    dimensionExponentForTime: Optional[int] = Field(default=None, description="""Exponent for time dimension (T)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForTime'} })
+    dimensionExponentForElectricCurrent: Optional[int] = Field(default=None, description="""Exponent for electric current dimension (I)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForElectricCurrent'} })
+    dimensionExponentForThermodynamicTemperature: Optional[int] = Field(default=None, description="""Exponent for temperature dimension (Θ)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForThermodynamicTemperature'} })
+    dimensionExponentForAmountOfSubstance: Optional[int] = Field(default=None, description="""Exponent for amount of substance dimension (N)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForAmountOfSubstance'} })
+    dimensionExponentForLuminousIntensity: Optional[int] = Field(default=None, description="""Exponent for luminous intensity dimension (J)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
+    dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
+         'slot_uri': 'qudt:dimensionlessExponent'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class Prefix(ConfiguredBaseModel):
+    """
+    Unit prefix (e.g., Kilo, Milli)
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Prefix', 'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
+    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
+    exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class DecimalPrefix(Prefix):
+    """
+    Decimal prefix (powers of 10)
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:DecimalPrefix',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
+    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
+    exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
+
+
+class BinaryPrefix(Prefix):
+    """
+    Binary prefix (powers of 1024)
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:BinaryPrefix',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
+    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
+    exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:dbpediaMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
+         'slot_uri': 'qudt:informativeReference'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:plainTextDescription'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
+                       'QuantityValue',
+                       'QuantityKind',
+                       'Unit',
+                       'SystemOfUnits',
+                       'QuantityKindDimensionVector',
+                       'Prefix'],
+         'slot_uri': 'qudt:deprecated'} })
 
 
 class Ability(Thing):
@@ -1133,7 +865,7 @@ class Berry(Food):
                                                    'negation.'}},
          'from_schema': 'https://pokemonkg.org/ontology'})
 
-    hasSize: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Berry'], 'slot_uri': 'pokemon:hasSize'} })
+    hasSize: Optional[Quantity] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain_of': ['Berry'], 'slot_uri': 'pokemon:hasSize'} })
     hasFlavor: Optional[list[str]] = Field(default=None, description="""A Pokemon has a flavor""", json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food'], 'slot_uri': 'pokemon:hasFlavor'} })
     firmness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
     smoothness: Optional[int] = Field(default=None, json_schema_extra = { "linkml_meta": {'domain': 'Food', 'domain_of': ['Food']} })
@@ -1172,6 +904,7 @@ class Pokedex(Thing):
                                                    'various species of Pokemon '
                                                    'featured in the Pokemon video '
                                                    'game, anime and manga series.'}},
+         'class_uri': 'https://pokemonkg.org/ontology#Pok%C3%A9dex',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
@@ -1187,7 +920,8 @@ class PokedexEntry(Thing):
     """
     A pokedex entry is a description of a Pokemon.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://pokemonkg.org/ontology'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'https://pokemonkg.org/ontology#Pok%C3%A9dexEntry',
+         'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
     name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
@@ -1200,6 +934,7 @@ class Pokeball(Item):
                                                    "is critical to a Trainer's quest, "
                                                    'used for catching and storing '
                                                    'Pokémon.'}},
+         'class_uri': 'https://pokemonkg.org/ontology#Pok%C3%A9ball',
          'from_schema': 'https://pokemonkg.org/ontology'})
 
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
@@ -1455,33 +1190,21 @@ Thing.model_rebuild()
 NamedIndividual.model_rebuild()
 Person.model_rebuild()
 Colour.model_rebuild()
-Aspect.model_rebuild()
-Quantifiable.model_rebuild()
-Concept.model_rebuild()
-SystemOfQuantityKinds.model_rebuild()
+Connotation.model_rebuild()
 Quantity.model_rebuild()
-PhysicalConstant.model_rebuild()
-Encoding.model_rebuild()
-Enumeration.model_rebuild()
-AbstractQuantityKind.model_rebuild()
 QuantityValue.model_rebuild()
-DataEncoding.model_rebuild()
-UCUMcs.model_rebuild()
-Datatype.model_rebuild()
-Verifiable.model_rebuild()
-SystemOfUnits.model_rebuild()
-Prefix.model_rebuild()
-EnumeratedValue.model_rebuild()
-EndianType.model_rebuild()
-RuleType.model_rebuild()
-CardinalityType.model_rebuild()
-OrderedType.model_rebuild()
-Unit.model_rebuild()
 QuantityKind.model_rebuild()
-UCUMcs-term.model_rebuild()
+Unit.model_rebuild()
+DerivedUnit.model_rebuild()
+SystemOfUnits.model_rebuild()
 QuantityKindDimensionVector.model_rebuild()
 QuantityKindDimensionVectorSI.model_rebuild()
-Rule.model_rebuild()
+QuantityKindDimensionVectorCGS.model_rebuild()
+QuantityKindDimensionVectorImperial.model_rebuild()
+QuantityKindDimensionVectorISO.model_rebuild()
+Prefix.model_rebuild()
+DecimalPrefix.model_rebuild()
+BinaryPrefix.model_rebuild()
 Ability.model_rebuild()
 EggGroup.model_rebuild()
 Flavor.model_rebuild()
