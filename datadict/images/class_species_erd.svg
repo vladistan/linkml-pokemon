@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="er" role="graphics-document document" viewBox="0 0 1849.1009521484375 640" height="640" width="1849.1009521484375" id="container">
+<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="er" role="graphics-document document" viewBox="0 0 1545.823974609375 640" height="640" width="1545.823974609375" id="container">
   <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .entityBox{fill:#ECECFF;stroke:#9370DB;}#container .attributeBoxOdd{fill:#ffffff;stroke:#9370DB;}#container .attributeBoxEven{fill:#f2f2f2;stroke:#9370DB;}#container .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#container .relationshipLabelBox rect{opacity:0.5;}#container .relationshipLine{stroke:#333333;}#container .entityTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container #MD_PARENT_START{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container #MD_PARENT_END{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
   <g/>
   <defs>
@@ -55,22 +55,20 @@
       <path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"/>
     </marker>
   </defs>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M721.683,95L721.683,103.333C721.683,111.667,721.683,128.333,721.683,145C721.683,161.667,721.683,178.333,721.683,186.667L721.683,195" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1479.101,445L1479.101,453.333C1479.101,461.667,1479.101,478.333,1499.934,497.083C1520.767,515.833,1562.434,536.667,1583.267,547.083L1604.101,557.5" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M820,415.435L736.444,428.696C652.888,441.957,485.777,468.478,402.221,490.073C318.665,511.667,318.665,528.333,318.665,536.667L318.665,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M820,420.048L770.223,432.54C720.445,445.032,620.89,470.016,571.113,490.841C521.335,511.667,521.335,528.333,521.335,536.667L521.335,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M820,436.929L803.556,446.607C787.112,456.286,754.223,475.643,737.779,493.655C721.335,511.667,721.335,528.333,721.335,536.667L721.335,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M892.299,445L897.254,453.333C902.209,461.667,912.12,478.333,917.075,495C922.03,511.667,922.03,528.333,922.03,536.667L922.03,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M920,424.596L954.319,436.33C988.638,448.064,1057.275,471.532,1091.594,491.599C1125.913,511.667,1125.913,528.333,1125.913,536.667L1125.913,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M920,417.029L988.183,430.025C1056.367,443.02,1192.734,469.01,1260.917,490.338C1329.101,511.667,1329.101,528.333,1329.101,536.667L1329.101,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M671.683,242.186L604.736,255.155C537.789,268.124,403.894,294.062,336.947,315.364C270,336.667,270,353.333,270,361.667L270,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M771.683,261.998L788.069,271.665C804.455,281.332,837.228,300.666,853.614,318.666C870,336.667,870,353.333,870,361.667L870,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M771.683,237.07L922.919,250.891C1074.155,264.713,1376.628,292.357,1527.864,314.512C1679.101,336.667,1679.101,353.333,1679.101,361.667L1679.101,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M671.683,239.213L571.402,252.678C471.122,266.142,270.561,293.071,170.28,314.869C70,336.667,70,353.333,70,361.667L70,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M671.683,249.883L638.069,261.569C604.455,273.255,537.228,296.628,503.614,316.647C470,336.667,470,353.333,470,361.667L470,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M699.533,270L694.611,278.333C689.689,286.667,679.844,303.333,674.922,320C670,336.667,670,353.333,670,361.667L670,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M771.683,238.276L889.586,251.897C1007.489,265.517,1243.295,292.759,1361.198,314.713C1479.101,336.667,1479.101,353.333,1479.101,361.667L1479.101,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M771.683,236.451L947.919,250.376C1124.155,264.3,1476.628,292.15,1652.864,320.658C1829.101,349.167,1829.101,378.333,1829.101,407.5C1829.101,436.667,1829.101,465.833,1808.267,490.833C1787.434,515.833,1745.767,536.667,1724.934,547.083L1704.101,557.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M270,445L270,453.333C270,461.667,270,478.333,270,495C270,511.667,270,528.333,270,536.667L270,545" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M720.348,95L720.348,103.333C720.348,111.667,720.348,128.333,720.348,145C720.348,161.667,720.348,178.333,720.348,186.667L720.348,195" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1175.824,445L1175.824,453.333C1175.824,461.667,1175.824,478.333,1208.95,498.319C1242.076,518.304,1308.327,541.608,1341.452,553.26L1374.578,564.912" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M820,422.066L778.275,434.222C736.551,446.378,653.102,470.689,611.377,491.178C569.652,511.667,569.652,528.333,569.652,536.667L569.652,545" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M848.72,445L843.992,453.333C839.263,461.667,829.805,478.333,825.076,495C820.348,511.667,820.348,528.333,820.348,536.667L820.348,545" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M920,435.867L937.372,445.722C954.743,455.578,989.487,475.289,1006.859,493.478C1024.23,511.667,1024.23,528.333,1024.23,536.667L1024.23,545" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M670.348,242.215L603.623,255.179C536.898,268.143,403.449,294.072,336.725,315.369C270,336.667,270,353.333,270,361.667L270,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M770.348,261.734L786.956,271.445C803.565,281.156,836.783,300.578,853.391,318.622C870,336.667,870,353.333,870,361.667L870,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M770.348,239.175L871.26,252.645C972.173,266.116,1173.999,293.058,1274.911,314.862C1375.824,336.667,1375.824,353.333,1375.824,361.667L1375.824,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M670.348,239.227L570.29,252.689C470.232,266.151,270.116,293.076,170.058,314.871C70,336.667,70,353.333,70,361.667L70,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M670.348,249.976L636.956,261.646C603.565,273.317,536.783,296.659,503.391,316.663C470,336.667,470,353.333,470,361.667L470,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M698.77,270L693.975,278.333C689.18,286.667,679.59,303.333,674.795,320C670,336.667,670,353.333,670,361.667L670,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M770.348,242.105L837.927,255.088C905.507,268.07,1040.665,294.035,1108.245,315.351C1175.824,336.667,1175.824,353.333,1175.824,361.667L1175.824,370" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M770.348,237.932L896.26,251.61C1022.173,265.288,1273.999,292.644,1399.911,320.905C1525.824,349.167,1525.824,378.333,1525.824,407.5C1525.824,436.667,1525.824,465.833,1516.182,488.75C1506.539,511.667,1487.254,528.333,1477.612,536.667L1467.969,545" class="er relationshipLine"/>
   <g transform="translate(20,370 )" id="entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930" class="er entityLabel">Ability</text>
@@ -83,7 +81,7 @@
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054" class="er entityLabel">EggGroup</text>
   </g>
-  <g transform="translate(671.6827774047852,20 )" id="entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8">
+  <g transform="translate(670.34765625,20 )" id="entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8" class="er entityLabel">Generation</text>
   </g>
@@ -91,7 +89,7 @@
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f" class="er entityLabel">Habitat</text>
   </g>
-  <g transform="translate(1429.1007461547852,370 )" id="entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de">
+  <g transform="translate(1125.82421875,370 )" id="entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de" class="er entityLabel">Move</text>
   </g>
@@ -99,72 +97,60 @@
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785" class="er entityLabel">Quantity</text>
   </g>
-  <g transform="translate(1629.1007461547852,370 )" id="entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372">
+  <g transform="translate(1325.82421875,370 )" id="entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372" class="er entityLabel">Shape</text>
   </g>
-  <g transform="translate(671.6827774047852,195 )" id="entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c">
+  <g transform="translate(670.34765625,195 )" id="entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c" class="er entityLabel">Species</text>
   </g>
-  <g transform="translate(1604.1007461547852,545 )" id="entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829">
+  <g transform="translate(1374.578125,545 )" id="entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829" class="er entityLabel">Type</text>
   </g>
-  <g transform="translate(265.99463653564453,545 )" id="entity-DataEncoding-e949680e-a6e4-55c9-9325-aa69226f3e53">
-    <rect height="75" width="105.34048461914062" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(52.67024230957031,37.5)" y="0" x="0" id="text-entity-DataEncoding-e949680e-a6e4-55c9-9325-aa69226f3e53" class="er entityLabel">DataEncoding</text>
-  </g>
-  <g transform="translate(471.33512115478516,545 )" id="entity-Datatype-eedb5402-d0cc-52bf-9fb8-7b914f648cbe">
+  <g transform="translate(220,545 )" id="entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Datatype-eedb5402-d0cc-52bf-9fb8-7b914f648cbe" class="er entityLabel">Datatype</text>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf" class="er entityLabel">Connotation</text>
   </g>
-  <g transform="translate(671.3351211547852,545 )" id="entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739">
+  <g transform="translate(519.65234375,545 )" id="entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739" class="er entityLabel">Unit</text>
   </g>
-  <g transform="translate(871.3351211547852,545 )" id="entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff">
+  <g transform="translate(769.65234375,545 )" id="entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff">
     <rect height="75" width="101.390625" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50.6953125,37.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff" class="er entityLabel">QuantityKind</text>
   </g>
-  <g transform="translate(1072.7257461547852,545 )" id="entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b">
+  <g transform="translate(971.04296875,545 )" id="entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b">
     <rect height="75" width="106.375" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(53.1875,37.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b" class="er entityLabel">QuantityValue</text>
   </g>
-  <g transform="translate(1279.1007461547852,545 )" id="entity-Rule-886caf8e-59ff-5db3-a492-27242971196f">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Rule-886caf8e-59ff-5db3-a492-27242971196f" class="er entityLabel">Rule</text>
-  </g>
-  <rect height="14" width="86.44854736328125" y="138" x="678.4587097167969" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="145" x="721.6829833984375" id="rel1" class="er relationshipLabel">featuresSpecies</text>
-  <rect height="14" width="44.34375" y="508.36761474609375" x="1502.884521484375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="515.3676147460938" x="1525.056396484375" id="rel2" class="er relationshipLabel">hasType</text>
-  <rect height="14" width="74.90850830078125" y="451.49639892578125" x="519.2048645019531" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="458.49639892578125" x="556.6591186523438" id="rel3" class="er relationshipLabel">dataEncoding</text>
-  <rect height="14" width="48.328125" y="455.72509765625" x="631.794921875" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="462.72509765625" x="655.958984375" id="rel4" class="er relationshipLabel">datatype</text>
-  <rect height="14" width="42.40423583984375" y="471.7652587890625" x="733.1327819824219" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="478.7652587890625" x="754.3348999023438" id="rel5" class="er relationshipLabel">hasUnit</text>
-  <rect height="14" width="90.4375" y="485.3724670410156" x="871.0343017578125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="492.3724670410156" x="916.2530517578125" id="rel6" class="er relationshipLabel">hasQuantityKind</text>
-  <rect height="14" width="75.265625" y="460.0628662109375" x="1001.2147216796875" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="467.0628662109375" x="1038.8475341796875" id="rel7" class="er relationshipLabel">quantityValue</text>
-  <rect height="14" width="43.296875" y="452.9281005859375" x="1116.3917236328125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="459.9281005859375" x="1138.0401611328125" id="rel8" class="er relationshipLabel">hasRule</text>
-  <rect height="14" width="54.9803466796875" y="278.0701904296875" x="429.788330078125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="285.0701904296875" x="457.27850341796875" id="rel9" class="er relationshipLabel">hasColour</text>
-  <rect height="14" width="117.872802734375" y="296.82867431640625" x="778.23193359375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="303.82867431640625" x="837.1683349609375" id="rel10" class="er relationshipLabel">hasHeight, hasWeight</text>
-  <rect height="14" width="52.8125" y="273.6324768066406" x="1209.42236328125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="280.6324768066406" x="1235.82861328125" id="rel11" class="er relationshipLabel">hasShape</text>
-  <rect height="14" width="212.95346069335938" y="275.42816162109375" x="252.41310119628906" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.42816162109375" x="358.88983154296875" id="rel12" class="er relationshipLabel">mayHaveAbility, mayHaveHiddenAbility</text>
-  <rect height="14" width="62.046875" y="285.3389587402344" x="523.8748779296875" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="292.3389587402344" x="554.8983154296875" id="rel13" class="er relationshipLabel">inEggGroup</text>
-  <rect height="14" width="42.6875" y="310.4033508300781" x="654.384033203125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="317.4033508300781" x="675.727783203125" id="rel14" class="er relationshipLabel">foundIn</text>
-  <rect height="14" width="76.0684814453125" y="274.6309814453125" x="1098.6901245117188" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="281.6309814453125" x="1136.724365234375" id="rel15" class="er relationshipLabel">isAbleToApply</text>
-  <rect height="14" width="44.34375" y="285.199462890625" x="1402.4044189453125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="292.199462890625" x="1424.5762939453125" id="rel16" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="66.109375" y="488" x="236.9453125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="495" x="270" id="rel1" class="er relationshipLabel">connotation</text>
+  <rect height="14" width="86.44854736328125" y="138" x="677.1237487792969" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="145" x="720.3480224609375" id="rel2" class="er relationshipLabel">featuresSpecies</text>
+  <rect height="14" width="44.34375" y="515.4642944335938" x="1237.050048828125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="522.4642944335938" x="1259.221923828125" id="rel3" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="42.40423583984375" y="457.6390380859375" x="658.3035583496094" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="464.6390380859375" x="679.5056762695312" id="rel4" class="er relationshipLabel">hasUnit</text>
+  <rect height="14" width="90.4375" y="485.583251953125" x="780.5755615234375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="492.583251953125" x="825.7943115234375" id="rel5" class="er relationshipLabel">hasQuantityKind</text>
+  <rect height="14" width="75.265625" y="470.7847595214844" x="950.896728515625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="477.7847595214844" x="988.529541015625" id="rel6" class="er relationshipLabel">quantityValue</text>
+  <rect height="14" width="54.9803466796875" y="278.0964050292969" x="429.1075439453125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="285.0964050292969" x="456.59771728515625" id="rel7" class="er relationshipLabel">hasColour</text>
+  <rect height="14" width="117.87274169921875" y="296.58563232421875" x="777.5870056152344" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="303.58563232421875" x="836.5233764648438" id="rel8" class="er relationshipLabel">hasHeight, hasWeight</text>
+  <rect height="14" width="52.8125" y="275.3954772949219" x="1058.6068115234375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.3954772949219" x="1085.0130615234375" id="rel9" class="er relationshipLabel">hasShape</text>
+  <rect height="14" width="212.95346069335938" y="275.4400329589844" x="251.7370147705078" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.4400329589844" x="358.2137451171875" id="rel10" class="er relationshipLabel">mayHaveAbility, mayHaveHiddenAbility</text>
+  <rect height="14" width="62.046875" y="285.4281311035156" x="523.1910400390625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="292.4281311035156" x="554.2144775390625" id="rel11" class="er relationshipLabel">inEggGroup</text>
+  <rect height="14" width="42.6875" y="310.5221862792969" x="654.1987915039062" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="317.5221862792969" x="675.5425415039062" id="rel12" class="er relationshipLabel">foundIn</text>
+  <rect height="14" width="76.0684814453125" y="277.9967346191406" x="948.5771484375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="284.9967346191406" x="986.6113891601562" id="rel13" class="er relationshipLabel">isAbleToApply</text>
+  <rect height="14" width="44.34375" y="287.2335205078125" x="1224.7926025390625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="294.2335205078125" x="1246.9644775390625" id="rel14" class="er relationshipLabel">hasType</text>
 </svg>
