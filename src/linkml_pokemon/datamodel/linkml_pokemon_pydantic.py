@@ -195,34 +195,84 @@ class Connotation(Thing):
     description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Quantity(ConfiguredBaseModel):
+class Concept(Thing):
+    """
+    The root class for all QUDT concepts
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'qudt:Concept',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+
+
+class Aspect(ConfiguredBaseModel):
+    """
+    An abstract type class that defines properties that can be reused
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'qudt:Aspect',
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixin': True})
+
+    pass
+
+
+class Quantifiable(Aspect):
+    """
+    Ascribes to some thing the capability of being measured, observed, or counted
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantifiable',
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixin': True})
+
+    hasUnit: Optional[str] = Field(default=None, description="""Unit associated with a quantifiable entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:hasUnit'} })
+    standardUncertainty: Optional[Decimal] = Field(default=None, description="""Standard uncertainty of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:standardUncertainty'} })
+    relativeStandardUncertainty: Optional[float] = Field(default=None, description="""Relative standard uncertainty of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:relativeStandardUncertainty'} })
+
+
+class Verifiable(Aspect):
+    """
+    Holds properties that provide external knowledge and specifications of a given resource
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Verifiable',
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixin': True})
+
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+
+
+class Quantity(Quantifiable, Concept):
     """
     A measured quantity with kind and value
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Quantity',
-         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixins': ['Quantifiable']})
 
-    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
-    quantityValue: Optional[list[QuantityValue]] = Field(default=None, description="""The value component of a quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:quantityValue'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    hasQuantityKind: Optional[list[str]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    quantityValue: Optional[list[str]] = Field(default=None, description="""The value component of a quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity'], 'slot_uri': 'qudt:quantityValue'} })
+    hasUnit: Optional[str] = Field(default=None, description="""Unit associated with a quantifiable entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:hasUnit'} })
+    standardUncertainty: Optional[Decimal] = Field(default=None, description="""Standard uncertainty of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:standardUncertainty'} })
+    relativeStandardUncertainty: Optional[float] = Field(default=None, description="""Relative standard uncertainty of the measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantifiable'], 'slot_uri': 'qudt:relativeStandardUncertainty'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class QuantityValue(ConfiguredBaseModel):
+class QuantityValue(Concept):
     """
     Numeric value with unit
     """
@@ -230,103 +280,95 @@ class QuantityValue(ConfiguredBaseModel):
          'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
     numericValue: Optional[float] = Field(default=None, description="""Numeric value of a quantity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue'], 'slot_uri': 'qudt:value'} })
-    unit: Optional[Unit] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue'], 'slot_uri': 'qudt:unit'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    unit: Optional[str] = Field(default=None, description="""Unit of measurement""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityValue'], 'slot_uri': 'qudt:unit'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class QuantityKind(ConfiguredBaseModel):
+class AbstractQuantityKind(Concept):
+    """
+    Abstract base for quantity kinds, constraining symbol and broader
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'qudt:AbstractQuantityKind',
+         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
+    broader: Optional[list[str]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind'], 'slot_uri': 'qudt:broader'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
+
+
+class QuantityKind(AbstractQuantityKind, Verifiable):
     """
     Kind of quantity (e.g., Length, Mass, Height, Weight)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:QuantityKind',
-         'from_schema': 'https://pokemonkg.org/schema/qudt'})
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixins': ['Verifiable']})
 
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
     latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
          'slot_uri': 'qudt:latexSymbol'} })
-    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
-         'slot_uri': 'qudt:abbreviation'} })
-    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
-    applicableUnit: Optional[list[Unit]] = Field(default=None, description="""Units applicable to a quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:applicableUnit'} })
-    broader: Optional[list[QuantityKind]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:broader'} })
+    hasDimensionVector: Optional[str] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    applicableUnit: Optional[list[str]] = Field(default=None, description="""Units applicable to a quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind'], 'slot_uri': 'qudt:applicableUnit'} })
     exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
+    broader: Optional[list[str]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind'], 'slot_uri': 'qudt:broader'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Unit(ConfiguredBaseModel):
+class Unit(Verifiable, Concept):
     """
     Unit of measurement
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Unit', 'from_schema': 'https://pokemonkg.org/schema/qudt'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Unit',
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixins': ['Verifiable']})
 
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
     latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
          'slot_uri': 'qudt:latexSymbol'} })
-    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
-         'slot_uri': 'qudt:abbreviation'} })
     conversionMultiplier: Optional[float] = Field(default=None, description="""Multiplier to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionMultiplier'} })
     conversionOffset: Optional[float] = Field(default=None, description="""Offset to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionOffset'} })
-    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
-    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
-    isUnitOfSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
-    applicableSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
-    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
-    scalingOf: Optional[Unit] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
+    hasDimensionVector: Optional[str] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    hasQuantityKind: Optional[list[str]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    isUnitOfSystem: Optional[list[str]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
+    applicableSystem: Optional[list[str]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
+    prefix: Optional[str] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    scalingOf: Optional[str] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
     ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class DerivedUnit(Unit):
@@ -336,76 +378,50 @@ class DerivedUnit(Unit):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:DerivedUnit',
          'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
     latexSymbol: Optional[str] = Field(default=None, description="""LaTeX representation of symbol""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'QuantityKindDimensionVector'],
          'slot_uri': 'qudt:latexSymbol'} })
-    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
-         'slot_uri': 'qudt:abbreviation'} })
     conversionMultiplier: Optional[float] = Field(default=None, description="""Multiplier to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionMultiplier'} })
     conversionOffset: Optional[float] = Field(default=None, description="""Offset to convert to base unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:conversionOffset'} })
-    hasDimensionVector: Optional[QuantityKindDimensionVector] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
-    hasQuantityKind: Optional[list[QuantityKind]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
-    isUnitOfSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
-    applicableSystem: Optional[list[SystemOfUnits]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
-    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
-    scalingOf: Optional[Unit] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
+    hasDimensionVector: Optional[str] = Field(default=None, description="""Dimension vector for a unit or quantity kind""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit'], 'slot_uri': 'qudt:hasDimensionVector'} })
+    hasQuantityKind: Optional[list[str]] = Field(default=None, description="""Associates a quantity with its kind (e.g., Height, Weight)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity', 'Unit'], 'slot_uri': 'qudt:hasQuantityKind'} })
+    isUnitOfSystem: Optional[list[str]] = Field(default=None, description="""System of units this unit belongs to""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:isUnitOfSystem'} })
+    applicableSystem: Optional[list[str]] = Field(default=None, description="""Systems where this unit is applicable""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:applicableSystem'} })
+    prefix: Optional[str] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    scalingOf: Optional[str] = Field(default=None, description="""Base unit this unit is a scaling of""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit'], 'slot_uri': 'qudt:scalingOf'} })
     ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class SystemOfUnits(ConfiguredBaseModel):
+class SystemOfUnits(Concept):
     """
     A coherent system of units (e.g., SI, CGS)
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:SystemOfUnits',
          'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits'],
-         'slot_uri': 'qudt:abbreviation'} })
-    hasBaseUnit: Optional[list[Unit]] = Field(default=None, description="""Base units defined by this system""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemOfUnits'], 'slot_uri': 'qudt:hasBaseUnit'} })
-    prefix: Optional[Prefix] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    hasBaseUnit: Optional[list[str]] = Field(default=None, description="""Base units defined by this system""", json_schema_extra = { "linkml_meta": {'domain_of': ['SystemOfUnits'], 'slot_uri': 'qudt:hasBaseUnit'} })
+    prefix: Optional[str] = Field(default=None, description="""Prefix for a unit (e.g., Kilo, Milli)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'SystemOfUnits'], 'slot_uri': 'qudt:prefix'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class QuantityKindDimensionVector(ConfiguredBaseModel):
+class QuantityKindDimensionVector(Concept):
     """
     Dimension vector expressing quantity in base dimensions
     """
@@ -430,22 +446,12 @@ class QuantityKindDimensionVector(ConfiguredBaseModel):
          'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
     dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
          'slot_uri': 'qudt:dimensionlessExponent'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
@@ -473,22 +479,12 @@ class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
          'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
     dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
          'slot_uri': 'qudt:dimensionlessExponent'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
@@ -516,22 +512,12 @@ class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
          'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
     dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
          'slot_uri': 'qudt:dimensionlessExponent'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
@@ -559,22 +545,12 @@ class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
          'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
     dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
          'slot_uri': 'qudt:dimensionlessExponent'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
@@ -602,54 +578,38 @@ class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
          'slot_uri': 'qudt:dimensionExponentForLuminousIntensity'} })
     dimensionlessExponent: Optional[int] = Field(default=None, description="""Dimensionless exponent""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKindDimensionVector'],
          'slot_uri': 'qudt:dimensionlessExponent'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
-class Prefix(ConfiguredBaseModel):
+class Prefix(Verifiable, Concept):
     """
     Unit prefix (e.g., Kilo, Milli)
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Prefix', 'from_schema': 'https://pokemonkg.org/schema/qudt'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:Prefix',
+         'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'mixins': ['Verifiable']})
 
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
     prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
     ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
     exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class DecimalPrefix(Prefix):
@@ -659,63 +619,22 @@ class DecimalPrefix(Prefix):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:DecimalPrefix',
          'from_schema': 'https://pokemonkg.org/schema/qudt'})
 
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
+    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['AbstractQuantityKind', 'Unit', 'Prefix'],
+         'slot_uri': 'qudt:symbol'} })
     prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
     ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
     exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
-
-
-class BinaryPrefix(Prefix):
-    """
-    Binary prefix (powers of 1024)
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'qudt:BinaryPrefix',
-         'from_schema': 'https://pokemonkg.org/schema/qudt'})
-
-    symbol: Optional[str] = Field(default=None, description="""Symbol for a unit (e.g., \"m\" for meter)""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'Prefix'], 'slot_uri': 'qudt:symbol'} })
-    prefixMultiplier: Optional[float] = Field(default=None, description="""Numeric multiplier for the prefix (e.g., 1000 for Kilo)""", json_schema_extra = { "linkml_meta": {'domain_of': ['Prefix'], 'slot_uri': 'qudt:prefixMultiplier'} })
-    ucumCode: Optional[str] = Field(default=None, description="""UCUM code for the unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Unit', 'Prefix'], 'slot_uri': 'qudt:ucumCode'} })
-    exactMatch: Optional[list[str]] = Field(default=None, description="""Equivalent quantity kind or unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Prefix'], 'slot_uri': 'qudt:exactMatch'} })
-    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:dbpediaMatch'} })
-    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['QuantityKind', 'Unit', 'SystemOfUnits', 'Prefix'],
-         'slot_uri': 'qudt:informativeReference'} })
-    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:plainTextDescription'} })
-    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Quantity',
-                       'QuantityValue',
-                       'QuantityKind',
-                       'Unit',
-                       'SystemOfUnits',
-                       'QuantityKindDimensionVector',
-                       'Prefix'],
-         'slot_uri': 'qudt:deprecated'} })
+    dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:dbpediaMatch'} })
+    wikidataMatch: Optional[str] = Field(default=None, description="""Wikidata URI for this entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:wikidataMatch'} })
+    informativeReference: Optional[list[str]] = Field(default=None, description="""Informative reference URL""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:informativeReference'} })
+    isoNormativeReference: Optional[list[str]] = Field(default=None, description="""ISO normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:isoNormativeReference'} })
+    normativeReference: Optional[list[str]] = Field(default=None, description="""Normative reference URI""", json_schema_extra = { "linkml_meta": {'domain_of': ['Verifiable'], 'slot_uri': 'qudt:normativeReference'} })
+    abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:abbreviation'} })
+    deprecated: Optional[bool] = Field(default=None, description="""Whether this entity is deprecated""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:deprecated'} })
+    plainTextDescription: Optional[str] = Field(default=None, description="""Plain text description""", json_schema_extra = { "linkml_meta": {'domain_of': ['Concept'], 'slot_uri': 'qudt:plainTextDescription'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'linkml_common:identifier'} })
+    name: Optional[str] = Field(default=None, description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Thing'], 'slot_uri': 'rdfs:comment'} })
 
 
 class Ability(Thing):
@@ -1191,8 +1110,13 @@ NamedIndividual.model_rebuild()
 Person.model_rebuild()
 Colour.model_rebuild()
 Connotation.model_rebuild()
+Concept.model_rebuild()
+Aspect.model_rebuild()
+Quantifiable.model_rebuild()
+Verifiable.model_rebuild()
 Quantity.model_rebuild()
 QuantityValue.model_rebuild()
+AbstractQuantityKind.model_rebuild()
 QuantityKind.model_rebuild()
 Unit.model_rebuild()
 DerivedUnit.model_rebuild()
@@ -1204,7 +1128,6 @@ QuantityKindDimensionVectorImperial.model_rebuild()
 QuantityKindDimensionVectorISO.model_rebuild()
 Prefix.model_rebuild()
 DecimalPrefix.model_rebuild()
-BinaryPrefix.model_rebuild()
 Ability.model_rebuild()
 EggGroup.model_rebuild()
 Flavor.model_rebuild()

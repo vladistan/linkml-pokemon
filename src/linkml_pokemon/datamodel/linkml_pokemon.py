@@ -1,5 +1,5 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-08T17:25:47
+# Generation date: 2026-02-09T12:09:33
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
@@ -56,8 +56,8 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Boolean, Double, Float, Integer, String, Uri
-from linkml_runtime.utils.metamodelcore import Bool, URI
+from linkml_runtime.linkml_model.types import Boolean, Decimal, Double, Float, Integer, String, Uri
+from linkml_runtime.utils.metamodelcore import Bool, Decimal, URI
 
 metamodel_version = "1.7.0"
 version = None
@@ -221,6 +221,66 @@ class TrainerId(PersonId):
 
 
 class GymLeaderId(TrainerId):
+    pass
+
+
+class ConceptId(ThingId):
+    pass
+
+
+class QuantityId(ConceptId):
+    pass
+
+
+class QuantityValueId(ConceptId):
+    pass
+
+
+class AbstractQuantityKindId(ConceptId):
+    pass
+
+
+class QuantityKindId(AbstractQuantityKindId):
+    pass
+
+
+class UnitId(ConceptId):
+    pass
+
+
+class DerivedUnitId(UnitId):
+    pass
+
+
+class SystemOfUnitsId(ConceptId):
+    pass
+
+
+class QuantityKindDimensionVectorId(ConceptId):
+    pass
+
+
+class QuantityKindDimensionVectorSIId(QuantityKindDimensionVectorId):
+    pass
+
+
+class QuantityKindDimensionVectorCGSId(QuantityKindDimensionVectorId):
+    pass
+
+
+class QuantityKindDimensionVectorImperialId(QuantityKindDimensionVectorId):
+    pass
+
+
+class QuantityKindDimensionVectorISOId(QuantityKindDimensionVectorId):
+    pass
+
+
+class PrefixId(ConceptId):
+    pass
+
+
+class DecimalPrefixId(PrefixId):
     pass
 
 
@@ -1181,7 +1241,118 @@ class GymLeader(Trainer):
 
 
 @dataclass(repr=False)
-class Quantity(YAMLRoot):
+class Concept(Thing):
+    """
+    The root class for all QUDT concepts
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Concept"]
+    class_class_curie: ClassVar[str] = "qudt:Concept"
+    class_name: ClassVar[str] = "Concept"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Concept
+
+    id: Union[str, ConceptId] = None
+    abbreviation: Optional[str] = None
+    deprecated: Optional[Union[bool, Bool]] = None
+    plainTextDescription: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
+            self.abbreviation = str(self.abbreviation)
+
+        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
+            self.deprecated = Bool(self.deprecated)
+
+        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
+            self.plainTextDescription = str(self.plainTextDescription)
+
+        super().__post_init__(**kwargs)
+
+
+class Aspect(YAMLRoot):
+    """
+    An abstract type class that defines properties that can be reused
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Aspect"]
+    class_class_curie: ClassVar[str] = "qudt:Aspect"
+    class_name: ClassVar[str] = "Aspect"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Aspect
+
+
+@dataclass(repr=False)
+class Quantifiable(Aspect):
+    """
+    Ascribes to some thing the capability of being measured, observed, or counted
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Quantifiable"]
+    class_class_curie: ClassVar[str] = "qudt:Quantifiable"
+    class_name: ClassVar[str] = "Quantifiable"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Quantifiable
+
+    hasUnit: Optional[Union[str, UnitId]] = None
+    standardUncertainty: Optional[Decimal] = None
+    relativeStandardUncertainty: Optional[float] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.hasUnit is not None and not isinstance(self.hasUnit, UnitId):
+            self.hasUnit = UnitId(self.hasUnit)
+
+        if self.standardUncertainty is not None and not isinstance(self.standardUncertainty, Decimal):
+            self.standardUncertainty = Decimal(self.standardUncertainty)
+
+        if self.relativeStandardUncertainty is not None and not isinstance(self.relativeStandardUncertainty, float):
+            self.relativeStandardUncertainty = float(self.relativeStandardUncertainty)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Verifiable(Aspect):
+    """
+    Holds properties that provide external knowledge and specifications of a given resource
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["Verifiable"]
+    class_class_curie: ClassVar[str] = "qudt:Verifiable"
+    class_name: ClassVar[str] = "Verifiable"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Verifiable
+
+    dbpediaMatch: Optional[Union[str, URI]] = None
+    wikidataMatch: Optional[Union[str, URI]] = None
+    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
+            self.dbpediaMatch = URI(self.dbpediaMatch)
+
+        if self.wikidataMatch is not None and not isinstance(self.wikidataMatch, URI):
+            self.wikidataMatch = URI(self.wikidataMatch)
+
+        if not isinstance(self.informativeReference, list):
+            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
+        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
+
+        if not isinstance(self.isoNormativeReference, list):
+            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
+        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+
+        if not isinstance(self.normativeReference, list):
+            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
+        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Quantity(Concept):
     """
     A measured quantity with kind and value
     """
@@ -1192,31 +1363,41 @@ class Quantity(YAMLRoot):
     class_name: ClassVar[str] = "Quantity"
     class_model_uri: ClassVar[URIRef] = POKEMON.Quantity
 
-    hasQuantityKind: Optional[Union[Union[dict, "QuantityKind"], list[Union[dict, "QuantityKind"]]]] = empty_list()
-    quantityValue: Optional[Union[Union[dict, "QuantityValue"], list[Union[dict, "QuantityValue"]]]] = empty_list()
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
+    id: Union[str, QuantityId] = None
+    hasQuantityKind: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
+    quantityValue: Optional[Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]] = empty_list()
+    hasUnit: Optional[Union[str, UnitId]] = None
+    standardUncertainty: Optional[Decimal] = None
+    relativeStandardUncertainty: Optional[float] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityId):
+            self.id = QuantityId(self.id)
+
         if not isinstance(self.hasQuantityKind, list):
             self.hasQuantityKind = [self.hasQuantityKind] if self.hasQuantityKind is not None else []
-        self.hasQuantityKind = [v if isinstance(v, QuantityKind) else QuantityKind(**as_dict(v)) for v in self.hasQuantityKind]
+        self.hasQuantityKind = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.hasQuantityKind]
 
         if not isinstance(self.quantityValue, list):
             self.quantityValue = [self.quantityValue] if self.quantityValue is not None else []
-        self.quantityValue = [v if isinstance(v, QuantityValue) else QuantityValue(**as_dict(v)) for v in self.quantityValue]
+        self.quantityValue = [v if isinstance(v, QuantityValueId) else QuantityValueId(v) for v in self.quantityValue]
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
+        if self.hasUnit is not None and not isinstance(self.hasUnit, UnitId):
+            self.hasUnit = UnitId(self.hasUnit)
 
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
+        if self.standardUncertainty is not None and not isinstance(self.standardUncertainty, Decimal):
+            self.standardUncertainty = Decimal(self.standardUncertainty)
+
+        if self.relativeStandardUncertainty is not None and not isinstance(self.relativeStandardUncertainty, float):
+            self.relativeStandardUncertainty = float(self.relativeStandardUncertainty)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class QuantityValue(YAMLRoot):
+class QuantityValue(Concept):
     """
     Numeric value with unit
     """
@@ -1227,29 +1408,54 @@ class QuantityValue(YAMLRoot):
     class_name: ClassVar[str] = "QuantityValue"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityValue
 
+    id: Union[str, QuantityValueId] = None
     numericValue: Optional[float] = None
-    unit: Optional[Union[dict, "Unit"]] = None
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
+    unit: Optional[Union[str, UnitId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityValueId):
+            self.id = QuantityValueId(self.id)
+
         if self.numericValue is not None and not isinstance(self.numericValue, float):
             self.numericValue = float(self.numericValue)
 
-        if self.unit is not None and not isinstance(self.unit, Unit):
-            self.unit = Unit(**as_dict(self.unit))
-
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
-
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
+        if self.unit is not None and not isinstance(self.unit, UnitId):
+            self.unit = UnitId(self.unit)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class QuantityKind(YAMLRoot):
+class AbstractQuantityKind(Concept):
+    """
+    Abstract base for quantity kinds, constraining symbol and broader
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = QUDT["AbstractQuantityKind"]
+    class_class_curie: ClassVar[str] = "qudt:AbstractQuantityKind"
+    class_name: ClassVar[str] = "AbstractQuantityKind"
+    class_model_uri: ClassVar[URIRef] = POKEMON.AbstractQuantityKind
+
+    id: Union[str, AbstractQuantityKindId] = None
+    symbol: Optional[str] = None
+    broader: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.symbol is not None and not isinstance(self.symbol, str):
+            self.symbol = str(self.symbol)
+
+        if not isinstance(self.broader, list):
+            self.broader = [self.broader] if self.broader is not None else []
+        self.broader = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.broader]
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class QuantityKind(AbstractQuantityKind):
     """
     Kind of quantity (e.g., Length, Mass, Height, Weight)
     """
@@ -1260,61 +1466,60 @@ class QuantityKind(YAMLRoot):
     class_name: ClassVar[str] = "QuantityKind"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKind
 
-    symbol: Optional[str] = None
+    id: Union[str, QuantityKindId] = None
     latexSymbol: Optional[str] = None
-    abbreviation: Optional[str] = None
-    hasDimensionVector: Optional[Union[dict, "QuantityKindDimensionVector"]] = None
-    applicableUnit: Optional[Union[Union[dict, "Unit"], list[Union[dict, "Unit"]]]] = empty_list()
-    broader: Optional[Union[Union[dict, "QuantityKind"], list[Union[dict, "QuantityKind"]]]] = empty_list()
+    hasDimensionVector: Optional[Union[str, QuantityKindDimensionVectorId]] = None
+    applicableUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = empty_list()
     exactMatch: Optional[Union[str, list[str]]] = empty_list()
-    deprecated: Optional[Union[bool, Bool]] = None
     dbpediaMatch: Optional[Union[str, URI]] = None
+    wikidataMatch: Optional[Union[str, URI]] = None
     informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    plainTextDescription: Optional[str] = None
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.symbol is not None and not isinstance(self.symbol, str):
-            self.symbol = str(self.symbol)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindId):
+            self.id = QuantityKindId(self.id)
 
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
 
-        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
-            self.abbreviation = str(self.abbreviation)
-
-        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVector):
-            self.hasDimensionVector = QuantityKindDimensionVector(**as_dict(self.hasDimensionVector))
+        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVectorId):
+            self.hasDimensionVector = QuantityKindDimensionVectorId(self.hasDimensionVector)
 
         if not isinstance(self.applicableUnit, list):
             self.applicableUnit = [self.applicableUnit] if self.applicableUnit is not None else []
-        self.applicableUnit = [v if isinstance(v, Unit) else Unit(**as_dict(v)) for v in self.applicableUnit]
-
-        if not isinstance(self.broader, list):
-            self.broader = [self.broader] if self.broader is not None else []
-        self.broader = [v if isinstance(v, QuantityKind) else QuantityKind(**as_dict(v)) for v in self.broader]
+        self.applicableUnit = [v if isinstance(v, UnitId) else UnitId(v) for v in self.applicableUnit]
 
         if not isinstance(self.exactMatch, list):
             self.exactMatch = [self.exactMatch] if self.exactMatch is not None else []
         self.exactMatch = [v if isinstance(v, str) else str(v) for v in self.exactMatch]
 
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
-
         if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
             self.dbpediaMatch = URI(self.dbpediaMatch)
+
+        if self.wikidataMatch is not None and not isinstance(self.wikidataMatch, URI):
+            self.wikidataMatch = URI(self.wikidataMatch)
 
         if not isinstance(self.informativeReference, list):
             self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
         self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
+        if not isinstance(self.isoNormativeReference, list):
+            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
+        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+
+        if not isinstance(self.normativeReference, list):
+            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
+        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class Unit(YAMLRoot):
+class Unit(Concept):
     """
     Unit of measurement
     """
@@ -1325,32 +1530,35 @@ class Unit(YAMLRoot):
     class_name: ClassVar[str] = "Unit"
     class_model_uri: ClassVar[URIRef] = POKEMON.Unit
 
+    id: Union[str, UnitId] = None
     symbol: Optional[str] = None
     latexSymbol: Optional[str] = None
-    abbreviation: Optional[str] = None
     conversionMultiplier: Optional[float] = None
     conversionOffset: Optional[float] = None
-    hasDimensionVector: Optional[Union[dict, "QuantityKindDimensionVector"]] = None
-    hasQuantityKind: Optional[Union[Union[dict, QuantityKind], list[Union[dict, QuantityKind]]]] = empty_list()
-    isUnitOfSystem: Optional[Union[Union[dict, "SystemOfUnits"], list[Union[dict, "SystemOfUnits"]]]] = empty_list()
-    applicableSystem: Optional[Union[Union[dict, "SystemOfUnits"], list[Union[dict, "SystemOfUnits"]]]] = empty_list()
-    prefix: Optional[Union[dict, "Prefix"]] = None
-    scalingOf: Optional[Union[dict, "Unit"]] = None
+    hasDimensionVector: Optional[Union[str, QuantityKindDimensionVectorId]] = None
+    hasQuantityKind: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
+    isUnitOfSystem: Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]] = empty_list()
+    applicableSystem: Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]] = empty_list()
+    prefix: Optional[Union[str, PrefixId]] = None
+    scalingOf: Optional[Union[str, UnitId]] = None
     ucumCode: Optional[str] = None
     dbpediaMatch: Optional[Union[str, URI]] = None
+    wikidataMatch: Optional[Union[str, URI]] = None
     informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, UnitId):
+            self.id = UnitId(self.id)
+
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
 
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
-
-        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
-            self.abbreviation = str(self.abbreviation)
 
         if self.conversionMultiplier is not None and not isinstance(self.conversionMultiplier, float):
             self.conversionMultiplier = float(self.conversionMultiplier)
@@ -1358,26 +1566,26 @@ class Unit(YAMLRoot):
         if self.conversionOffset is not None and not isinstance(self.conversionOffset, float):
             self.conversionOffset = float(self.conversionOffset)
 
-        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVector):
-            self.hasDimensionVector = QuantityKindDimensionVector(**as_dict(self.hasDimensionVector))
+        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVectorId):
+            self.hasDimensionVector = QuantityKindDimensionVectorId(self.hasDimensionVector)
 
         if not isinstance(self.hasQuantityKind, list):
             self.hasQuantityKind = [self.hasQuantityKind] if self.hasQuantityKind is not None else []
-        self.hasQuantityKind = [v if isinstance(v, QuantityKind) else QuantityKind(**as_dict(v)) for v in self.hasQuantityKind]
+        self.hasQuantityKind = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.hasQuantityKind]
 
         if not isinstance(self.isUnitOfSystem, list):
             self.isUnitOfSystem = [self.isUnitOfSystem] if self.isUnitOfSystem is not None else []
-        self.isUnitOfSystem = [v if isinstance(v, SystemOfUnits) else SystemOfUnits(**as_dict(v)) for v in self.isUnitOfSystem]
+        self.isUnitOfSystem = [v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v) for v in self.isUnitOfSystem]
 
         if not isinstance(self.applicableSystem, list):
             self.applicableSystem = [self.applicableSystem] if self.applicableSystem is not None else []
-        self.applicableSystem = [v if isinstance(v, SystemOfUnits) else SystemOfUnits(**as_dict(v)) for v in self.applicableSystem]
+        self.applicableSystem = [v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v) for v in self.applicableSystem]
 
-        if self.prefix is not None and not isinstance(self.prefix, Prefix):
-            self.prefix = Prefix(**as_dict(self.prefix))
+        if self.prefix is not None and not isinstance(self.prefix, PrefixId):
+            self.prefix = PrefixId(self.prefix)
 
-        if self.scalingOf is not None and not isinstance(self.scalingOf, Unit):
-            self.scalingOf = Unit(**as_dict(self.scalingOf))
+        if self.scalingOf is not None and not isinstance(self.scalingOf, UnitId):
+            self.scalingOf = UnitId(self.scalingOf)
 
         if self.ucumCode is not None and not isinstance(self.ucumCode, str):
             self.ucumCode = str(self.ucumCode)
@@ -1385,19 +1593,25 @@ class Unit(YAMLRoot):
         if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
             self.dbpediaMatch = URI(self.dbpediaMatch)
 
+        if self.wikidataMatch is not None and not isinstance(self.wikidataMatch, URI):
+            self.wikidataMatch = URI(self.wikidataMatch)
+
         if not isinstance(self.informativeReference, list):
             self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
         self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
+        if not isinstance(self.isoNormativeReference, list):
+            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
+        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
 
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
+        if not isinstance(self.normativeReference, list):
+            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
+        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
 
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class DerivedUnit(Unit):
     """
     Unit derived from base units (e.g., KiloM)
@@ -1409,9 +1623,19 @@ class DerivedUnit(Unit):
     class_name: ClassVar[str] = "DerivedUnit"
     class_model_uri: ClassVar[URIRef] = POKEMON.DerivedUnit
 
+    id: Union[str, DerivedUnitId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DerivedUnitId):
+            self.id = DerivedUnitId(self.id)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
-class SystemOfUnits(YAMLRoot):
+class SystemOfUnits(Concept):
     """
     A coherent system of units (e.g., SI, CGS)
     """
@@ -1422,43 +1646,28 @@ class SystemOfUnits(YAMLRoot):
     class_name: ClassVar[str] = "SystemOfUnits"
     class_model_uri: ClassVar[URIRef] = POKEMON.SystemOfUnits
 
-    abbreviation: Optional[str] = None
-    hasBaseUnit: Optional[Union[Union[dict, Unit], list[Union[dict, Unit]]]] = empty_list()
-    prefix: Optional[Union[dict, "Prefix"]] = None
-    dbpediaMatch: Optional[Union[str, URI]] = None
-    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
+    id: Union[str, SystemOfUnitsId] = None
+    hasBaseUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = empty_list()
+    prefix: Optional[Union[str, PrefixId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self.abbreviation is not None and not isinstance(self.abbreviation, str):
-            self.abbreviation = str(self.abbreviation)
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SystemOfUnitsId):
+            self.id = SystemOfUnitsId(self.id)
 
         if not isinstance(self.hasBaseUnit, list):
             self.hasBaseUnit = [self.hasBaseUnit] if self.hasBaseUnit is not None else []
-        self.hasBaseUnit = [v if isinstance(v, Unit) else Unit(**as_dict(v)) for v in self.hasBaseUnit]
+        self.hasBaseUnit = [v if isinstance(v, UnitId) else UnitId(v) for v in self.hasBaseUnit]
 
-        if self.prefix is not None and not isinstance(self.prefix, Prefix):
-            self.prefix = Prefix(**as_dict(self.prefix))
-
-        if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
-            self.dbpediaMatch = URI(self.dbpediaMatch)
-
-        if not isinstance(self.informativeReference, list):
-            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
-        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
-
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
-
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
+        if self.prefix is not None and not isinstance(self.prefix, PrefixId):
+            self.prefix = PrefixId(self.prefix)
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
-class QuantityKindDimensionVector(YAMLRoot):
+class QuantityKindDimensionVector(Concept):
     """
     Dimension vector expressing quantity in base dimensions
     """
@@ -1469,6 +1678,7 @@ class QuantityKindDimensionVector(YAMLRoot):
     class_name: ClassVar[str] = "QuantityKindDimensionVector"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKindDimensionVector
 
+    id: Union[str, QuantityKindDimensionVectorId] = None
     latexSymbol: Optional[str] = None
     dimensionExponentForLength: Optional[int] = None
     dimensionExponentForMass: Optional[int] = None
@@ -1478,10 +1688,13 @@ class QuantityKindDimensionVector(YAMLRoot):
     dimensionExponentForAmountOfSubstance: Optional[int] = None
     dimensionExponentForLuminousIntensity: Optional[int] = None
     dimensionlessExponent: Optional[int] = None
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindDimensionVectorId):
+            self.id = QuantityKindDimensionVectorId(self.id)
+
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
 
@@ -1509,15 +1722,10 @@ class QuantityKindDimensionVector(YAMLRoot):
         if self.dimensionlessExponent is not None and not isinstance(self.dimensionlessExponent, int):
             self.dimensionlessExponent = int(self.dimensionlessExponent)
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
-
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
-
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
     """
     SI dimension vector
@@ -1529,7 +1737,18 @@ class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
     class_name: ClassVar[str] = "QuantityKindDimensionVector_SI"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKindDimensionVectorSI
 
+    id: Union[str, QuantityKindDimensionVectorSIId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindDimensionVectorSIId):
+            self.id = QuantityKindDimensionVectorSIId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
     """
     CGS dimension vector
@@ -1541,7 +1760,18 @@ class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
     class_name: ClassVar[str] = "QuantityKindDimensionVector_CGS"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKindDimensionVectorCGS
 
+    id: Union[str, QuantityKindDimensionVectorCGSId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindDimensionVectorCGSId):
+            self.id = QuantityKindDimensionVectorCGSId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
     """
     Imperial dimension vector
@@ -1553,7 +1783,18 @@ class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
     class_name: ClassVar[str] = "QuantityKindDimensionVector_Imperial"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKindDimensionVectorImperial
 
+    id: Union[str, QuantityKindDimensionVectorImperialId] = None
 
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindDimensionVectorImperialId):
+            self.id = QuantityKindDimensionVectorImperialId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
     """
     ISO dimension vector
@@ -1565,9 +1806,19 @@ class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
     class_name: ClassVar[str] = "QuantityKindDimensionVector_ISO"
     class_model_uri: ClassVar[URIRef] = POKEMON.QuantityKindDimensionVectorISO
 
+    id: Union[str, QuantityKindDimensionVectorISOId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, QuantityKindDimensionVectorISOId):
+            self.id = QuantityKindDimensionVectorISOId(self.id)
+
+        super().__post_init__(**kwargs)
+
 
 @dataclass(repr=False)
-class Prefix(YAMLRoot):
+class Prefix(Concept):
     """
     Unit prefix (e.g., Kilo, Milli)
     """
@@ -1578,16 +1829,23 @@ class Prefix(YAMLRoot):
     class_name: ClassVar[str] = "Prefix"
     class_model_uri: ClassVar[URIRef] = POKEMON.Prefix
 
+    id: Union[str, PrefixId] = None
     symbol: Optional[str] = None
     prefixMultiplier: Optional[float] = None
     ucumCode: Optional[str] = None
     exactMatch: Optional[Union[str, list[str]]] = empty_list()
     dbpediaMatch: Optional[Union[str, URI]] = None
+    wikidataMatch: Optional[Union[str, URI]] = None
     informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    plainTextDescription: Optional[str] = None
-    deprecated: Optional[Union[bool, Bool]] = None
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, PrefixId):
+            self.id = PrefixId(self.id)
+
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
 
@@ -1604,19 +1862,25 @@ class Prefix(YAMLRoot):
         if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
             self.dbpediaMatch = URI(self.dbpediaMatch)
 
+        if self.wikidataMatch is not None and not isinstance(self.wikidataMatch, URI):
+            self.wikidataMatch = URI(self.wikidataMatch)
+
         if not isinstance(self.informativeReference, list):
             self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
         self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
-            self.plainTextDescription = str(self.plainTextDescription)
+        if not isinstance(self.isoNormativeReference, list):
+            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
+        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
 
-        if self.deprecated is not None and not isinstance(self.deprecated, Bool):
-            self.deprecated = Bool(self.deprecated)
+        if not isinstance(self.normativeReference, list):
+            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
+        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
 
         super().__post_init__(**kwargs)
 
 
+@dataclass(repr=False)
 class DecimalPrefix(Prefix):
     """
     Decimal prefix (powers of 10)
@@ -1628,17 +1892,15 @@ class DecimalPrefix(Prefix):
     class_name: ClassVar[str] = "DecimalPrefix"
     class_model_uri: ClassVar[URIRef] = POKEMON.DecimalPrefix
 
+    id: Union[str, DecimalPrefixId] = None
 
-class BinaryPrefix(Prefix):
-    """
-    Binary prefix (powers of 1024)
-    """
-    _inherited_slots: ClassVar[list[str]] = []
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, DecimalPrefixId):
+            self.id = DecimalPrefixId(self.id)
 
-    class_class_uri: ClassVar[URIRef] = QUDT["BinaryPrefix"]
-    class_class_curie: ClassVar[str] = "qudt:BinaryPrefix"
-    class_name: ClassVar[str] = "BinaryPrefix"
-    class_model_uri: ClassVar[URIRef] = POKEMON.BinaryPrefix
+        super().__post_init__(**kwargs)
 
 
 # Enumerations
@@ -1798,16 +2060,16 @@ slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie(
                    model_uri=POKEMON.description, domain=None, range=Optional[str])
 
 slots.hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[Union[Union[dict, QuantityKind], list[Union[dict, QuantityKind]]]])
+                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]])
 
 slots.quantityValue = Slot(uri=QUDT.quantityValue, name="quantityValue", curie=QUDT.curie('quantityValue'),
-                   model_uri=POKEMON.quantityValue, domain=None, range=Optional[Union[Union[dict, QuantityValue], list[Union[dict, QuantityValue]]]])
+                   model_uri=POKEMON.quantityValue, domain=None, range=Optional[Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]])
 
 slots.numericValue = Slot(uri=QUDT.value, name="numericValue", curie=QUDT.curie('value'),
                    model_uri=POKEMON.numericValue, domain=None, range=Optional[float])
 
 slots.unit = Slot(uri=QUDT.unit, name="unit", curie=QUDT.curie('unit'),
-                   model_uri=POKEMON.unit, domain=None, range=Optional[Union[dict, Unit]])
+                   model_uri=POKEMON.unit, domain=None, range=Optional[Union[str, UnitId]])
 
 slots.symbol = Slot(uri=QUDT.symbol, name="symbol", curie=QUDT.curie('symbol'),
                    model_uri=POKEMON.symbol, domain=None, range=Optional[str])
@@ -1822,22 +2084,22 @@ slots.conversionOffset = Slot(uri=QUDT.conversionOffset, name="conversionOffset"
                    model_uri=POKEMON.conversionOffset, domain=None, range=Optional[float])
 
 slots.hasDimensionVector = Slot(uri=QUDT.hasDimensionVector, name="hasDimensionVector", curie=QUDT.curie('hasDimensionVector'),
-                   model_uri=POKEMON.hasDimensionVector, domain=None, range=Optional[Union[dict, QuantityKindDimensionVector]])
+                   model_uri=POKEMON.hasDimensionVector, domain=None, range=Optional[Union[str, QuantityKindDimensionVectorId]])
 
 slots.isUnitOfSystem = Slot(uri=QUDT.isUnitOfSystem, name="isUnitOfSystem", curie=QUDT.curie('isUnitOfSystem'),
-                   model_uri=POKEMON.isUnitOfSystem, domain=None, range=Optional[Union[Union[dict, SystemOfUnits], list[Union[dict, SystemOfUnits]]]])
+                   model_uri=POKEMON.isUnitOfSystem, domain=None, range=Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]])
 
 slots.applicableSystem = Slot(uri=QUDT.applicableSystem, name="applicableSystem", curie=QUDT.curie('applicableSystem'),
-                   model_uri=POKEMON.applicableSystem, domain=None, range=Optional[Union[Union[dict, SystemOfUnits], list[Union[dict, SystemOfUnits]]]])
+                   model_uri=POKEMON.applicableSystem, domain=None, range=Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]])
 
 slots.applicableUnit = Slot(uri=QUDT.applicableUnit, name="applicableUnit", curie=QUDT.curie('applicableUnit'),
-                   model_uri=POKEMON.applicableUnit, domain=None, range=Optional[Union[Union[dict, Unit], list[Union[dict, Unit]]]])
+                   model_uri=POKEMON.applicableUnit, domain=None, range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]])
 
 slots.prefix = Slot(uri=QUDT.prefix, name="prefix", curie=QUDT.curie('prefix'),
-                   model_uri=POKEMON.prefix, domain=None, range=Optional[Union[dict, Prefix]])
+                   model_uri=POKEMON.prefix, domain=None, range=Optional[Union[str, PrefixId]])
 
 slots.scalingOf = Slot(uri=QUDT.scalingOf, name="scalingOf", curie=QUDT.curie('scalingOf'),
-                   model_uri=POKEMON.scalingOf, domain=None, range=Optional[Union[dict, Unit]])
+                   model_uri=POKEMON.scalingOf, domain=None, range=Optional[Union[str, UnitId]])
 
 slots.ucumCode = Slot(uri=QUDT.ucumCode, name="ucumCode", curie=QUDT.curie('ucumCode'),
                    model_uri=POKEMON.ucumCode, domain=None, range=Optional[str])
@@ -1846,7 +2108,7 @@ slots.latexSymbol = Slot(uri=QUDT.latexSymbol, name="latexSymbol", curie=QUDT.cu
                    model_uri=POKEMON.latexSymbol, domain=None, range=Optional[str])
 
 slots.broader = Slot(uri=QUDT.broader, name="broader", curie=QUDT.curie('broader'),
-                   model_uri=POKEMON.broader, domain=None, range=Optional[Union[Union[dict, QuantityKind], list[Union[dict, QuantityKind]]]])
+                   model_uri=POKEMON.broader, domain=None, range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]])
 
 slots.exactMatch = Slot(uri=QUDT.exactMatch, name="exactMatch", curie=QUDT.curie('exactMatch'),
                    model_uri=POKEMON.exactMatch, domain=None, range=Optional[Union[str, list[str]]])
@@ -1879,10 +2141,28 @@ slots.dimensionlessExponent = Slot(uri=QUDT.dimensionlessExponent, name="dimensi
                    model_uri=POKEMON.dimensionlessExponent, domain=None, range=Optional[int])
 
 slots.hasBaseUnit = Slot(uri=QUDT.hasBaseUnit, name="hasBaseUnit", curie=QUDT.curie('hasBaseUnit'),
-                   model_uri=POKEMON.hasBaseUnit, domain=None, range=Optional[Union[Union[dict, Unit], list[Union[dict, Unit]]]])
+                   model_uri=POKEMON.hasBaseUnit, domain=None, range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]])
 
 slots.prefixMultiplier = Slot(uri=QUDT.prefixMultiplier, name="prefixMultiplier", curie=QUDT.curie('prefixMultiplier'),
                    model_uri=POKEMON.prefixMultiplier, domain=None, range=Optional[float])
+
+slots.hasUnit = Slot(uri=QUDT.hasUnit, name="hasUnit", curie=QUDT.curie('hasUnit'),
+                   model_uri=POKEMON.hasUnit, domain=None, range=Optional[Union[str, UnitId]])
+
+slots.standardUncertainty = Slot(uri=QUDT.standardUncertainty, name="standardUncertainty", curie=QUDT.curie('standardUncertainty'),
+                   model_uri=POKEMON.standardUncertainty, domain=None, range=Optional[Decimal])
+
+slots.relativeStandardUncertainty = Slot(uri=QUDT.relativeStandardUncertainty, name="relativeStandardUncertainty", curie=QUDT.curie('relativeStandardUncertainty'),
+                   model_uri=POKEMON.relativeStandardUncertainty, domain=None, range=Optional[float])
+
+slots.wikidataMatch = Slot(uri=QUDT.wikidataMatch, name="wikidataMatch", curie=QUDT.curie('wikidataMatch'),
+                   model_uri=POKEMON.wikidataMatch, domain=None, range=Optional[Union[str, URI]])
+
+slots.isoNormativeReference = Slot(uri=QUDT.isoNormativeReference, name="isoNormativeReference", curie=QUDT.curie('isoNormativeReference'),
+                   model_uri=POKEMON.isoNormativeReference, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
+
+slots.normativeReference = Slot(uri=QUDT.normativeReference, name="normativeReference", curie=QUDT.curie('normativeReference'),
+                   model_uri=POKEMON.normativeReference, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
 
 slots.dbpediaMatch = Slot(uri=QUDT.dbpediaMatch, name="dbpediaMatch", curie=QUDT.curie('dbpediaMatch'),
                    model_uri=POKEMON.dbpediaMatch, domain=None, range=Optional[Union[str, URI]])

@@ -5,6 +5,7 @@ id: https://pokemonkg.org/schema/qudt
 version: 0.1.0
 imports:
 - linkml:types
+- ./owl
 license: CC-BY-4.0
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -177,6 +178,40 @@ slots:
     slot_uri: qudt:prefixMultiplier
     range: double
 
+  # --- Quantifiable properties (mixin for Quantity) ---
+  hasUnit:
+    description: Unit associated with a quantifiable entity
+    slot_uri: qudt:hasUnit
+    range: Unit
+
+  standardUncertainty:
+    description: Standard uncertainty of the measurement
+    slot_uri: qudt:standardUncertainty
+    range: decimal
+
+  relativeStandardUncertainty:
+    description: Relative standard uncertainty of the measurement
+    slot_uri: qudt:relativeStandardUncertainty
+    range: double
+
+  # --- Verifiable properties (mixin for Unit, QuantityKind, Prefix) ---
+  wikidataMatch:
+    description: Wikidata URI for this entity
+    slot_uri: qudt:wikidataMatch
+    range: uri
+
+  isoNormativeReference:
+    description: ISO normative reference URI
+    slot_uri: qudt:isoNormativeReference
+    range: uri
+    multivalued: true
+
+  normativeReference:
+    description: Normative reference URI
+    slot_uri: qudt:normativeReference
+    range: uri
+    multivalued: true
+
   # --- Common metadata ---
   dbpediaMatch:
     description: DBpedia URI for this entity
@@ -198,49 +233,98 @@ slots:
 # CLASSES
 # =============================================================================
 classes:
+  # --- Abstract base classes ---
+  Concept:
+    description: The root class for all QUDT concepts
+    class_uri: qudt:Concept
+    is_a: Thing
+    abstract: true
+    slots:
+      - abbreviation
+      - deprecated
+      - plainTextDescription
+
+  Aspect:
+    description: >-
+      An abstract type class that defines properties that can be reused
+    class_uri: qudt:Aspect
+    abstract: true
+    mixin: true
+
+  Quantifiable:
+    description: >-
+      Ascribes to some thing the capability of being measured, observed, or counted
+    class_uri: qudt:Quantifiable
+    is_a: Aspect
+    mixin: true
+    slots:
+      - hasUnit
+      - standardUncertainty
+      - relativeStandardUncertainty
+
+  Verifiable:
+    description: >-
+      Holds properties that provide external knowledge and specifications of a given resource
+    class_uri: qudt:Verifiable
+    is_a: Aspect
+    mixin: true
+    slots:
+      - dbpediaMatch
+      - wikidataMatch
+      - informativeReference
+      - isoNormativeReference
+      - normativeReference
+
   # --- Core measurement classes ---
   Quantity:
     description: A measured quantity with kind and value
     class_uri: qudt:Quantity
+    is_a: Concept
+    mixins:
+      - Quantifiable
     slots:
       - hasQuantityKind
       - quantityValue
-      - plainTextDescription
-      - deprecated
 
   QuantityValue:
     description: Numeric value with unit
     class_uri: qudt:QuantityValue
+    is_a: Concept
     slots:
       - numericValue
       - unit
-      - plainTextDescription
-      - deprecated
+
+  AbstractQuantityKind:
+    description: Abstract base for quantity kinds, constraining symbol and broader
+    class_uri: qudt:AbstractQuantityKind
+    is_a: Concept
+    abstract: true
+    slots:
+      - symbol
+      - broader
 
   QuantityKind:
     description: Kind of quantity (e.g., Length, Mass, Height, Weight)
     class_uri: qudt:QuantityKind
+    is_a: AbstractQuantityKind
+    mixins:
+      - Verifiable
     slots:
-      - symbol
       - latexSymbol
-      - abbreviation
       - hasDimensionVector
       - applicableUnit
-      - broader
       - exactMatch
-      - deprecated
-      - dbpediaMatch
-      - informativeReference
-      - plainTextDescription
 
   # --- Unit classes ---
   Unit:
     description: Unit of measurement
     class_uri: qudt:Unit
+    is_a: Concept
+    mixins:
+      - Verifiable
     slots:
       - symbol
       - latexSymbol
-      - abbreviation
       - conversionMultiplier
       - conversionOffset
       - hasDimensionVector
@@ -250,10 +334,6 @@ classes:
       - prefix
       - scalingOf
       - ucumCode
-      - dbpediaMatch
-      - informativeReference
-      - plainTextDescription
-      - deprecated
 
   DerivedUnit:
     description: Unit derived from base units (e.g., KiloM)
@@ -264,19 +344,16 @@ classes:
   SystemOfUnits:
     description: A coherent system of units (e.g., SI, CGS)
     class_uri: qudt:SystemOfUnits
+    is_a: Concept
     slots:
-      - abbreviation
       - hasBaseUnit
       - prefix
-      - dbpediaMatch
-      - informativeReference
-      - plainTextDescription
-      - deprecated
 
   # --- Dimension Vector classes ---
   QuantityKindDimensionVector:
     description: Dimension vector expressing quantity in base dimensions
     class_uri: qudt:QuantityKindDimensionVector
+    is_a: Concept
     slots:
       - latexSymbol
       - dimensionExponentForLength
@@ -287,8 +364,6 @@ classes:
       - dimensionExponentForAmountOfSubstance
       - dimensionExponentForLuminousIntensity
       - dimensionlessExponent
-      - plainTextDescription
-      - deprecated
 
   QuantityKindDimensionVector_SI:
     description: SI dimension vector
@@ -314,22 +389,17 @@ classes:
   Prefix:
     description: Unit prefix (e.g., Kilo, Milli)
     class_uri: qudt:Prefix
+    is_a: Concept
+    mixins:
+      - Verifiable
     slots:
       - symbol
       - prefixMultiplier
       - ucumCode
       - exactMatch
-      - dbpediaMatch
-      - informativeReference
-      - plainTextDescription
-      - deprecated
 
   DecimalPrefix:
     description: Decimal prefix (powers of 10)
     class_uri: qudt:DecimalPrefix
     is_a: Prefix
 
-  BinaryPrefix:
-    description: Binary prefix (powers of 1024)
-    class_uri: qudt:BinaryPrefix
-    is_a: Prefix
