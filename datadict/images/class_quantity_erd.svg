@@ -109,9 +109,9 @@
     <rect height="75" width="194.19308471679688" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(97.09654235839844,37.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b" class="er entityLabel">QuantityKindDimensionVector</text>
   </g>
-  <g transform="translate(445.6953125,195 )" id="entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346">
+  <g transform="translate(445.6953125,195 )" id="entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346" class="er entityLabel">Colour</text>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1" class="er entityLabel">Color</text>
   </g>
   <g transform="translate(645.6953125,195 )" id="entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
@@ -163,8 +163,8 @@
   <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="681.0198974609375" x="179.5276641845703" id="rel8" class="er relationshipLabel">applicableUnit</text>
   <rect height="14" width="22.400115966796875" y="505.0372314453125" x="332.8380889892578" class="er relationshipLabelBox"/>
   <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="512.0372314453125" x="344.03814697265625" id="rel9" class="er relationshipLabel">unit</text>
-  <rect height="14" width="54.9803466796875" y="100.8741455078125" x="733.6126708984375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="107.8741455078125" x="761.1028442382812" id="rel10" class="er relationshipLabel">hasColour</text>
+  <rect height="14" width="47.99627685546875" y="100.8741455078125" x="737.1047058105469" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="107.8741455078125" x="761.1028442382812" id="rel10" class="er relationshipLabel">hasColor</text>
   <rect height="14" width="117.872802734375" y="99.66381072998047" x="518.1851806640625" class="er relationshipLabelBox"/>
   <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="106.66381072998047" x="577.12158203125" id="rel11" class="er relationshipLabel">hasHeight, hasWeight</text>
   <rect height="14" width="52.8125" y="104.08753204345703" x="832.9147338867188" class="er relationshipLabelBox"/>

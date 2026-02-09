@@ -25,20 +25,20 @@ Foundational classes in the hierarchy (root classes and direct children of Thing
 
 | Class | Description |
 | --- | --- |
-| [Ability](#ability) |  |
+| [Ability](#ability) | Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon. |
 | [Aspect](#aspect) | An abstract type class that defines properties that can be reused |
-| [Colour](#colour) | Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others. |
+| [Color](#color) | Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others. |
 | [Concept](#concept) | The root class for all QUDT concepts |
-| [Connotation](#connotation) | Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources. |
+| [Connotation](#connotation) | Cultural or symbolic meaning associated with a color. Imported from DBpedia as generic owl:Thing resources. |
 | [Game](#game) | A game is a type of media that can be played by people. |
-| [Generation](#generation) |  |
-| [Item](#item) |  |
-| [Move](#move) |  |
-| [MoveLearning](#movelearning) | A move learning is a way that a Pokemon can learn a move. |
+| [Generation](#generation) | Generations refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned. |
+| [Item](#item) | An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area. |
+| [Move](#move) | A move is a special ability of a Pokémon. |
+| [MoveLearning](#movelearning) | A move learning is a way that a Pokémon can learn a move. |
 | [NamedIndividual](#namedindividual) | A Thing that requires a name |
-| [Place](#place) |  |
-| [Pokedex](#pokedex) |  |
-| [PokedexEntry](#pokedexentry) | A pokedex entry is a description of a Pokemon. |
+| [Place](#place) | Entities that have a somewhat fixed, physical extension. |
+| [Pokedex](#pokedex) | The Pokédex is an electronic device designed to catalog and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series. |
+| [PokedexEntry](#pokedexentry) | A Pokédex entry is a description of a Pokémon. |
 | [Thing](#thing) | An rdfs:Resource that defines name and description |
 
 ## Standalone Classes
@@ -51,23 +51,23 @@ These classes are completely isolated with no relationships and are not used as 
 | [BattleItem](#battleitem) | Battle items are items that can be used during battles. |
 | [DecimalPrefix](#decimalprefix) | Decimal prefix (powers of 10) |
 | [Gym](#gym) | A gym is a location that can be battled at. |
-| [GymLeader](#gymleader) |  |
+| [GymLeader](#gymleader) | A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym. |
 | [HM](#hm) | Hidden Machine |
-| [HoldItem](#holditem) | A hold item is an item that can be held by a Pokemon. |
+| [HoldItem](#holditem) | A hold item is an item that can be held by a Pokémon. |
 | [LearningByLevelingUp](#learningbylevelingup) | A move that is learned by leveling up. |
 | [LearningThroughBreeding](#learningthroughbreeding) | A move that is learned by breeding. |
-| [Medicine](#medicine) | Medicine items can heal various afflictions of a Pokemon. |
+| [Medicine](#medicine) | Medicine items can heal various afflictions of a Pokémon. |
 | [Person](#person) | A person is a human being |
-| [Pokeball](#pokeball) |  |
-| [Pokemon](#pokemon) | A Pokemon |
+| [Pokeball](#pokeball) | A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon. |
+| [Pokemon](#pokemon) | A Pokémon |
 | [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs) | CGS dimension vector |
 | [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso) | ISO dimension vector |
 | [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial) | Imperial dimension vector |
 | [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) | SI dimension vector |
-| [Region](#region) |  |
-| [TM](#tm) |  |
+| [Region](#region) | Regions are areas in the Pokémon universe that are smaller parts of a nation. |
+| [TM](#tm) | A Technical Machine is an item that can be used to teach a Pokémon a move. |
 | [Town](#town) | A town is a type of place that can be visited. |
-| [Trainer](#trainer) | A trainer is a person who is able to catch Pokemon. |
+| [Trainer](#trainer) | A trainer is a person who is able to catch Pokémon. |
 
 ## Abstract Classes
 
@@ -230,20 +230,20 @@ NamedIndividual:
 
 #### Children
 
- * [EggGroup](#egggroup)
- * [Flavor](#flavor)
- * [Habitat](#habitat) - A habitat is a type of environment that certain Pokemon belong to.
+ * [EggGroup](#egggroup) - Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
+ * [Flavor](#flavor) - Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokémon can eat them.
+ * [Habitat](#habitat) - A habitat is a type of environment that certain Pokémon belong to.
  * [Person](#person) - A person is a human being
- * [Shape](#shape) - Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
- * [Species](#species) - A species is a category of Pokemon that share common features.
- * [Type](#type)
+ * [Shape](#shape) - Shapes are categories that certain Pokémon belong to, which determine which Pokémon they can breed with.
+ * [Species](#species) - A species is a category of Pokémon that share common features.
+ * [Type](#type) - All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
 
 
 
 
 ### Place
 
-
+Entities that have a somewhat fixed, physical extension.
 
 
 #### YAML Definition
@@ -255,6 +255,7 @@ NamedIndividual:
 Place:
   is_a: Thing
   abstract: true
+  description: Entities that have a somewhat fixed, physical extension.
   slots:
   - id
   - name
@@ -283,7 +284,7 @@ Place:
 #### Children
 
  * [Gym](#gym) - A gym is a location that can be battled at.
- * [Region](#region)
+ * [Region](#region) - Regions are areas in the Pokémon universe that are smaller parts of a nation.
  * [Town](#town) - A town is a type of place that can be visited.
 
 #### Referenced by:
@@ -329,18 +330,18 @@ Thing:
 
 #### Children
 
- * [Ability](#ability)
- * [Colour](#colour) - Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+ * [Ability](#ability) - Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon.
+ * [Color](#color) - Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
  * [Concept](#concept) - The root class for all QUDT concepts
- * [Connotation](#connotation) - Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources.
+ * [Connotation](#connotation) - Cultural or symbolic meaning associated with a color. Imported from DBpedia as generic owl:Thing resources.
  * [Game](#game) - A game is a type of media that can be played by people.
- * [Generation](#generation)
- * [Item](#item)
- * [Move](#move)
+ * [Generation](#generation) - Generations refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned.
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
+ * [Move](#move) - A move is a special ability of a Pokémon.
  * [NamedIndividual](#namedindividual) - A Thing that requires a name
- * [Place](#place)
- * [Pokedex](#pokedex)
- * [PokedexEntry](#pokedexentry) - A pokedex entry is a description of a Pokemon.
+ * [Place](#place) - Entities that have a somewhat fixed, physical extension.
+ * [Pokedex](#pokedex) - The Pokédex is an electronic device designed to catalog and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series.
+ * [PokedexEntry](#pokedexentry) - A Pokédex entry is a description of a Pokémon.
 
 
 
@@ -350,7 +351,7 @@ Thing:
 
 ### Ability
 
-
+Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon.
 
 
 #### YAML Definition
@@ -361,6 +362,10 @@ Thing:
 ```yaml
 Ability:
   is_a: Thing
+  description: "Abilities were introduced in Generation III as an all new game mechanic.\
+    \ Each and every Pok\xE9mon has an ability, and can only have one at a time. Some\
+    \ abilities are exclusive to certain Pok\xE9mon and Evolution lines, while others\
+    \ are known by many Pok\xE9mon."
   slots:
   - id
   - name
@@ -387,8 +392,8 @@ Ability:
 
 #### Referenced by:
 
- *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub> 
- *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub> 
+ *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub>
+ *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub>
 
 
 
@@ -430,14 +435,14 @@ BattleItem:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 
 
 ### Berry
 
-
+Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.
 
 
 #### YAML Definition
@@ -448,6 +453,11 @@ BattleItem:
 ```yaml
 Berry:
   is_a: Food
+  description: "Berries are small, juicy, fleshy fruit. As in the real world, a large\
+    \ variety exists in the Pok\xE9mon world, with a large range of flavors, names,\
+    \ and effects. First found in the Generation II games, many Berries have since\
+    \ became critical help items in battle, where their various effects include HP\
+    \ and status condition restoration, stat enhancement, and even damage negation."
   slots:
   - id
   - name
@@ -469,21 +479,21 @@ Berry:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[firmness](#firmness)** | <sub>0..1</sub> | integer |  |
-| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokemon has a flavor |
-| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer |  |
-| **[hasSize](#hassize)** | <sub>0..1</sub> | [Quantity](#quantity) |  |
+| **[firmness](#firmness)** | <sub>0..1</sub> | integer | How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making. |
+| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokémon has a flavor |
+| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer | How smooth a berry or food item is, affecting its use in Pokéblock or Poffin making. |
+| **[hasSize](#hassize)** | <sub>0..1</sub> | [Quantity](#quantity) | The physical size of an entity, expressed as a quantity with unit. |
 
 #### Parents
 
- * [Food](#food)
+ * [Food](#food) - Food items are consumable items in the Pokémon world that can have flavors, firmness, and smoothness attributes.
 
 
 
 
-### Colour
+### Color
 
-Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
 
 
 #### YAML Definition
@@ -492,28 +502,30 @@ Color or colour is the visual perceptual property corresponding in humans to the
 <summary>Click to expand</summary>
 
 ```yaml
-Colour:
+Color:
   is_a: Thing
-  description: Color or colour is the visual perceptual property corresponding in
-    humans to the categories called red, yellow, blue and others.
+  mixins:
+  - CmykColor
+  description: Color is the visual perceptual property corresponding in humans to
+    the categories called red, yellow, blue and others.
   slots:
   - id
   - name
   - description
-  - cyanic
-  - magenta
-  - colourYellow
-  - black
   - wavelength
   - frequency
-  - colourHexCode
+  - colorHexCode
   - connotation
   - thumbnail
+  - cmykC
+  - cmykM
+  - cmykY
+  - cmykK
 
 ```
 </details>
 
-![class_colour_erd](images/class_colour_erd.svg)
+![class_color_erd](images/class_color_erd.svg)
 
 #### Attributes
 
@@ -522,30 +534,34 @@ Colour:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[black](#black)** | <sub>0..1</sub> | integer | Black (K) component in CMYK color model (0-100) |
-| **[colourHexCode](#colourhexcode)** | <sub>0..1</sub> | string | Hexadecimal RGB color code (e.g., "0000FF" for blue) |
-| **[colourYellow](#colouryellow)** | <sub>0..1</sub> | integer | Yellow component in CMYK color model (0-100) |
-| **[connotation](#connotation)** | <sub>0..\*</sub> | [Connotation](#connotation) | Cultural or symbolic meanings associated with this colour |
-| **[cyanic](#cyanic)** | <sub>0..1</sub> | integer | Cyan component in CMYK color model (0-100) |
+| **[cmykC](#cmykc)** | <sub>0..1</sub> | integer | Cyan component in CMYK color model (0-100) |
+| **[cmykK](#cmykk)** | <sub>0..1</sub> | integer | Black (K) component in CMYK color model (0-100) |
+| **[cmykM](#cmykm)** | <sub>0..1</sub> | integer | Magenta component in CMYK color model (0-100) |
+| **[cmykY](#cmyky)** | <sub>0..1</sub> | integer | Yellow component in CMYK color model (0-100) |
+| **[colorHexCode](#colorhexcode)** | <sub>0..1</sub> | string | Hexadecimal RGB color code (e.g., "0000FF" for blue) |
+| **[connotation](#connotation)** | <sub>0..\*</sub> | [Connotation](#connotation) | Cultural or symbolic meanings associated with this color |
 | **[frequency](#frequency)** | <sub>0..1</sub> | float | The frequency of the color in Hz |
-| **[magenta](#magenta)** | <sub>0..1</sub> | integer | Magenta component in CMYK color model (0-100) |
-| **[thumbnail](#thumbnail)** | <sub>0..1</sub> | uri | URL to a representative image of this colour |
+| **[thumbnail](#thumbnail)** | <sub>0..1</sub> | uri | URL to a representative image of this color |
 | **[wavelength](#wavelength)** | <sub>0..1</sub> | float | The wavelength of the color in meters (e.g., 4.5e-07 for blue) |
 
 #### Parents
 
  * [Thing](#thing) - An rdfs:Resource that defines name and description
 
+#### Uses
+
+ *  mixin: [CmykColor](#cmykcolor) - CMYK color space coordinates (0-100).
+
 #### Referenced by:
 
- *  **[Species](#species)** : hasColour  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasColor  <sub>0..1</sub>
 
 
 
 
 ### Connotation
 
-Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources.
+Cultural or symbolic meaning associated with a color. Imported from DBpedia as generic owl:Thing resources.
 
 
 #### YAML Definition
@@ -556,7 +572,7 @@ Cultural or symbolic meaning associated with a colour. Imported from DBpedia as 
 ```yaml
 Connotation:
   is_a: Thing
-  description: Cultural or symbolic meaning associated with a colour. Imported from
+  description: Cultural or symbolic meaning associated with a color. Imported from
     DBpedia as generic owl:Thing resources.
   slots:
   - id
@@ -585,7 +601,7 @@ Connotation:
 
 #### Referenced by:
 
- *  **[Colour](#colour)** : connotation  <sub>0..\*</sub> 
+ *  **[Color](#color)** : connotation  <sub>0..\*</sub>
 
 
 
@@ -735,7 +751,7 @@ DerivedUnit:
 
 ### EggGroup
 
-
+Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
 
 
 #### YAML Definition
@@ -746,6 +762,9 @@ DerivedUnit:
 ```yaml
 EggGroup:
   is_a: NamedIndividual
+  description: "Egg group is a category that determines which Pok\xE9mon are able\
+    \ to interbreed. The concept was introduced in Generation II, along with breeding.\
+    \ Similar to types, a Pok\xE9mon may belong to either one or two egg groups."
   slots:
   - id
   - description
@@ -770,14 +789,14 @@ EggGroup:
 
 #### Referenced by:
 
- *  **[Species](#species)** : inEggGroup  <sub>0..\*</sub> 
+ *  **[Species](#species)** : inEggGroup  <sub>0..\*</sub>
 
 
 
 
 ### Flavor
 
-
+Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokémon can eat them.
 
 
 #### YAML Definition
@@ -788,6 +807,9 @@ EggGroup:
 ```yaml
 Flavor:
   is_a: NamedIndividual
+  description: "Flavor is a special set of attributes that certain foods in the Pok\xE9\
+    mon world have. Most of the foods can have more than one flavor, and the flavor\
+    \ determines which Pok\xE9mon can eat them."
   slots:
   - id
   - description
@@ -812,14 +834,14 @@ Flavor:
 
 #### Referenced by:
 
- *  **[Food](#food)** : hasFlavor  <sub>0..\*</sub> 
+ *  **[Food](#food)** : hasFlavor  <sub>0..\*</sub>
 
 
 
 
 ### Food
 
-
+Food items are consumable items in the Pokémon world that can have flavors, firmness, and smoothness attributes.
 
 
 #### YAML Definition
@@ -830,6 +852,8 @@ Flavor:
 ```yaml
 Food:
   is_a: Item
+  description: "Food items are consumable items in the Pok\xE9mon world that can have\
+    \ flavors, firmness, and smoothness attributes."
   slots:
   - id
   - name
@@ -850,17 +874,17 @@ Food:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[firmness](#firmness)** | <sub>0..1</sub> | integer |  |
-| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokemon has a flavor |
-| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer |  |
+| **[firmness](#firmness)** | <sub>0..1</sub> | integer | How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making. |
+| **[hasFlavor](#hasflavor)** | <sub>0..\*</sub> | [Flavor](#flavor) | A Pokémon has a flavor |
+| **[smoothness](#smoothness)** | <sub>0..1</sub> | integer | How smooth a berry or food item is, affecting its use in Pokéblock or Poffin making. |
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 #### Children
 
- * [Berry](#berry)
+ * [Berry](#berry) - Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.
 
 
 
@@ -909,7 +933,7 @@ Game:
 
 ### Generation
 
-
+Generations refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned.
 
 
 #### YAML Definition
@@ -920,6 +944,10 @@ Game:
 ```yaml
 Generation:
   is_a: Thing
+  description: "Generations refers to the Pok\xE9mon game series. It is a group of\
+    \ games that were released at or around the same time. It also means that games\
+    \ in the same generation are compatible with the others, containing the same Pok\xE9\
+    mon and the number of moves there are to be learned."
   slots:
   - id
   - name
@@ -938,7 +966,7 @@ Generation:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[featuresSpecies](#featuresspecies)** | <sub>0..\*</sub> | [Species](#species) | ['A Pokedex entry features a species'] |
+| **[featuresSpecies](#featuresspecies)** | <sub>0..\*</sub> | [Species](#species) | ['A Pokédex entry features a species'] |
 
 #### Parents
 
@@ -984,14 +1012,14 @@ Gym:
 
 #### Parents
 
- * [Place](#place)
+ * [Place](#place) - Entities that have a somewhat fixed, physical extension.
 
 
 
 
 ### GymLeader
 
-
+A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
 
 
 #### YAML Definition
@@ -1002,6 +1030,10 @@ Gym:
 ```yaml
 GymLeader:
   is_a: Trainer
+  description: "A gym leader is the highest ranking member and owner of an official\
+    \ Pok\xE9mon gym. Gym leaders use their gym and their Pok\xE9mon to test the skills\
+    \ of trainers that challenge them, and if said trainers win a battle, the gym\
+    \ leader will gift them a badge that's unique to that specific gym."
   slots:
   - id
   - description
@@ -1027,7 +1059,7 @@ GymLeader:
 
 #### Parents
 
- * [Trainer](#trainer) - A trainer is a person who is able to catch Pokemon.
+ * [Trainer](#trainer) - A trainer is a person who is able to catch Pokémon.
 
 
 
@@ -1069,14 +1101,14 @@ HM:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 
 
 ### Habitat
 
-A habitat is a type of environment that certain Pokemon belong to.
+A habitat is a type of environment that certain Pokémon belong to.
 
 
 #### YAML Definition
@@ -1087,7 +1119,8 @@ A habitat is a type of environment that certain Pokemon belong to.
 ```yaml
 Habitat:
   is_a: NamedIndividual
-  description: A habitat is a type of environment that certain Pokemon belong to.
+  description: "A habitat is a type of environment that certain Pok\xE9mon belong\
+    \ to."
   slots:
   - id
   - description
@@ -1112,14 +1145,14 @@ Habitat:
 
 #### Referenced by:
 
- *  **[Species](#species)** : foundIn  <sub>0..\*</sub> 
+ *  **[Species](#species)** : foundIn  <sub>0..\*</sub>
 
 
 
 
 ### HoldItem
 
-A hold item is an item that can be held by a Pokemon.
+A hold item is an item that can be held by a Pokémon.
 
 
 #### YAML Definition
@@ -1130,7 +1163,7 @@ A hold item is an item that can be held by a Pokemon.
 ```yaml
 HoldItem:
   is_a: Item
-  description: A hold item is an item that can be held by a Pokemon.
+  description: "A hold item is an item that can be held by a Pok\xE9mon."
   slots:
   - id
   - name
@@ -1154,14 +1187,14 @@ HoldItem:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 
 
 ### Item
 
-
+An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 #### YAML Definition
@@ -1172,6 +1205,10 @@ HoldItem:
 ```yaml
 Item:
   is_a: Thing
+  description: "An item is an object in the Pok\xE9mon games which the player can\
+    \ pick up, keep in their Bag, and use in some manner. They have various uses,\
+    \ including healing, powering up, helping one to catch Pok\xE9mon, or to access\
+    \ a new area."
   slots:
   - id
   - name
@@ -1200,12 +1237,12 @@ Item:
 #### Children
 
  * [BattleItem](#battleitem) - Battle items are items that can be used during battles.
- * [Food](#food)
+ * [Food](#food) - Food items are consumable items in the Pokémon world that can have flavors, firmness, and smoothness attributes.
  * [HM](#hm) - Hidden Machine
- * [HoldItem](#holditem) - A hold item is an item that can be held by a Pokemon.
- * [Medicine](#medicine) - Medicine items can heal various afflictions of a Pokemon.
- * [Pokeball](#pokeball)
- * [TM](#tm)
+ * [HoldItem](#holditem) - A hold item is an item that can be held by a Pokémon.
+ * [Medicine](#medicine) - Medicine items can heal various afflictions of a Pokémon.
+ * [Pokeball](#pokeball) - A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
+ * [TM](#tm) - A Technical Machine is an item that can be used to teach a Pokémon a move.
 
 
 
@@ -1238,7 +1275,7 @@ This class has no attributes
 
 #### Parents
 
- * [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+ * [MoveLearning](#movelearning) - A move learning is a way that a Pokémon can learn a move.
 
 
 
@@ -1271,14 +1308,14 @@ This class has no attributes
 
 #### Parents
 
- * [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+ * [MoveLearning](#movelearning) - A move learning is a way that a Pokémon can learn a move.
 
 
 
 
 ### Medicine
 
-Medicine items can heal various afflictions of a Pokemon.
+Medicine items can heal various afflictions of a Pokémon.
 
 
 #### YAML Definition
@@ -1289,7 +1326,7 @@ Medicine items can heal various afflictions of a Pokemon.
 ```yaml
 Medicine:
   is_a: Item
-  description: Medicine items can heal various afflictions of a Pokemon.
+  description: "Medicine items can heal various afflictions of a Pok\xE9mon."
   slots:
   - id
   - name
@@ -1313,14 +1350,14 @@ Medicine:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 
 
 ### Move
 
-
+A move is a special ability of a Pokémon.
 
 
 #### YAML Definition
@@ -1331,6 +1368,7 @@ Medicine:
 ```yaml
 Move:
   is_a: Thing
+  description: "A move is a special ability of a Pok\xE9mon."
   slots:
   - id
   - name
@@ -1351,7 +1389,7 @@ Move:
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
 | **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
-| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokémon has a type |
 
 #### Parents
 
@@ -1365,14 +1403,14 @@ Move:
 
 #### Referenced by:
 
- *  **[Species](#species)** : isAbleToApply  <sub>0..\*</sub> 
+ *  **[Species](#species)** : isAbleToApply  <sub>0..\*</sub>
 
 
 
 
 ### MoveLearning
 
-A move learning is a way that a Pokemon can learn a move.
+A move learning is a way that a Pokémon can learn a move.
 
 
 #### YAML Definition
@@ -1382,7 +1420,7 @@ A move learning is a way that a Pokemon can learn a move.
 
 ```yaml
 MoveLearning:
-  description: A move learning is a way that a Pokemon can learn a move.
+  description: "A move learning is a way that a Pok\xE9mon can learn a move."
 
 ```
 </details>
@@ -1402,7 +1440,7 @@ This class has no attributes
 
 #### Used as mixin by
 
- * [TM](#tm)
+ * [TM](#tm) - A Technical Machine is an item that can be used to teach a Pokémon a move.
 
 
 
@@ -1450,7 +1488,7 @@ Person:
 
 #### Children
 
- * [Trainer](#trainer) - A trainer is a person who is able to catch Pokemon.
+ * [Trainer](#trainer) - A trainer is a person who is able to catch Pokémon.
 
 
 
@@ -1489,18 +1527,18 @@ PhysicalMove:
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
 | **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
-| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokémon has a type |
 
 #### Parents
 
- * [Move](#move)
+ * [Move](#move) - A move is a special ability of a Pokémon.
 
 
 
 
 ### Pokeball
 
-
+A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
 
 
 #### YAML Definition
@@ -1511,6 +1549,8 @@ PhysicalMove:
 ```yaml
 Pokeball:
   is_a: Item
+  description: "A Pok\xE9 Ball is a type of item that is critical to a Trainer's quest,\
+    \ used for catching and storing Pok\xE9mon."
   slots:
   - id
   - name
@@ -1534,14 +1574,14 @@ Pokeball:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 
 
 
 ### Pokedex
 
-
+The Pokédex is an electronic device designed to catalog and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series.
 
 
 #### YAML Definition
@@ -1552,6 +1592,9 @@ Pokeball:
 ```yaml
 Pokedex:
   is_a: Thing
+  description: "The Pok\xE9dex is an electronic device designed to catalog and provide\
+    \ information regarding the various species of Pok\xE9mon featured in the Pok\xE9\
+    mon video game, anime and manga series."
   slots:
   - id
   - name
@@ -1582,7 +1625,7 @@ Pokedex:
 
 ### PokedexEntry
 
-A pokedex entry is a description of a Pokemon.
+A Pokédex entry is a description of a Pokémon.
 
 
 #### YAML Definition
@@ -1593,7 +1636,7 @@ A pokedex entry is a description of a Pokemon.
 ```yaml
 PokedexEntry:
   is_a: Thing
-  description: A pokedex entry is a description of a Pokemon.
+  description: "A Pok\xE9dex entry is a description of a Pok\xE9mon."
   slots:
   - id
   - name
@@ -1627,7 +1670,7 @@ PokedexEntry:
 
 ### Pokemon
 
-A Pokemon
+A Pokémon
 
 
 #### YAML Definition
@@ -1637,7 +1680,7 @@ A Pokemon
 
 ```yaml
 Pokemon:
-  description: A Pokemon
+  description: "A Pok\xE9mon"
 
 ```
 </details>
@@ -1721,8 +1764,8 @@ Prefix:
 
 #### Referenced by:
 
- *  **[SystemOfUnits](#systemofunits)** : prefix  <sub>0..1</sub> 
- *  **[Unit](#unit)** : prefix  <sub>0..1</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : prefix  <sub>0..1</sub>
+ *  **[Unit](#unit)** : prefix  <sub>0..1</sub>
 
 
 
@@ -1787,9 +1830,9 @@ Quantity:
 
 #### Referenced by:
 
- *  **[Species](#species)** : hasHeight  <sub>0..1</sub> 
- *  **[Berry](#berry)** : hasSize  <sub>0..1</sub> 
- *  **[Species](#species)** : hasWeight  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasHeight  <sub>0..1</sub>
+ *  **[Berry](#berry)** : hasSize  <sub>0..1</sub>
+ *  **[Species](#species)** : hasWeight  <sub>0..1</sub>
 
 
 
@@ -1866,9 +1909,9 @@ QuantityKind:
 
 #### Referenced by:
 
- *  **[AbstractQuantityKind](#abstractquantitykind)** : broader  <sub>0..\*</sub> 
- *  **[Quantity](#quantity)** : hasQuantityKind  <sub>0..\*</sub> 
- *  **[Unit](#unit)** : hasQuantityKind  <sub>0..\*</sub> 
+ *  **[AbstractQuantityKind](#abstractquantitykind)** : broader  <sub>0..\*</sub>
+ *  **[Quantity](#quantity)** : hasQuantityKind  <sub>0..\*</sub>
+ *  **[Unit](#unit)** : hasQuantityKind  <sub>0..\*</sub>
 
 
 
@@ -1942,8 +1985,8 @@ QuantityKindDimensionVector:
 
 #### Referenced by:
 
- *  **[QuantityKind](#quantitykind)** : hasDimensionVector  <sub>0..1</sub> 
- *  **[Unit](#unit)** : hasDimensionVector  <sub>0..1</sub> 
+ *  **[QuantityKind](#quantitykind)** : hasDimensionVector  <sub>0..1</sub>
+ *  **[Unit](#unit)** : hasDimensionVector  <sub>0..1</sub>
 
 
 
@@ -2260,14 +2303,14 @@ QuantityValue:
 
 #### Referenced by:
 
- *  **[Quantity](#quantity)** : quantityValue  <sub>0..\*</sub> 
+ *  **[Quantity](#quantity)** : quantityValue  <sub>0..\*</sub>
 
 
 
 
 ### Region
 
-
+Regions are areas in the Pokémon universe that are smaller parts of a nation.
 
 
 #### YAML Definition
@@ -2278,6 +2321,8 @@ QuantityValue:
 ```yaml
 Region:
   is_a: Place
+  description: "Regions are areas in the Pok\xE9mon universe that are smaller parts\
+    \ of a nation."
   slots:
   - id
   - name
@@ -2301,14 +2346,14 @@ Region:
 
 #### Parents
 
- * [Place](#place)
+ * [Place](#place) - Entities that have a somewhat fixed, physical extension.
 
 
 
 
 ### Shape
 
-Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+Shapes are categories that certain Pokémon belong to, which determine which Pokémon they can breed with.
 
 
 #### YAML Definition
@@ -2319,8 +2364,8 @@ Shapes are categories that certain Pokemon belong to, which determine which Poke
 ```yaml
 Shape:
   is_a: NamedIndividual
-  description: Shapes are categories that certain Pokemon belong to, which determine
-    which Pokemon they can breed with.
+  description: "Shapes are categories that certain Pok\xE9mon belong to, which determine\
+    \ which Pok\xE9mon they can breed with."
   slots:
   - id
   - description
@@ -2345,7 +2390,7 @@ Shape:
 
 #### Referenced by:
 
- *  **[Species](#species)** : hasShape  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasShape  <sub>0..1</sub>
 
 
 
@@ -2384,18 +2429,18 @@ SpecialMove:
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
 | **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
-| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokémon has a type |
 
 #### Parents
 
- * [Move](#move)
+ * [Move](#move) - A move is a special ability of a Pokémon.
 
 
 
 
 ### Species
 
-A species is a category of Pokemon that share common features.
+A species is a category of Pokémon that share common features.
 
 
 #### YAML Definition
@@ -2406,12 +2451,12 @@ A species is a category of Pokemon that share common features.
 ```yaml
 Species:
   is_a: NamedIndividual
-  description: A species is a category of Pokemon that share common features.
+  description: "A species is a category of Pok\xE9mon that share common features."
   slots:
   - id
   - description
   - NamedIndividual_name
-  - hasColour
+  - hasColor
   - mayHaveHiddenAbility
   - mayHaveAbility
   - isAbleToApply
@@ -2439,17 +2484,17 @@ Species:
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
 | **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
 | **[foundIn](#foundin)** | <sub>0..\*</sub> | [Habitat](#habitat) | A place is found in a location |
-| **[hasCatchRate](#hascatchrate)** | <sub>0..1</sub> | integer |  |
-| **[hasColour](#hascolour)** | <sub>0..1</sub> | [Colour](#colour) | A Pokemon has a color |
-| **[hasGenus](#hasgenus)** | <sub>0..1</sub> | string |  |
-| **[hasHeight](#hasheight)** | <sub>0..1</sub> | [Quantity](#quantity) |  |
+| **[hasCatchRate](#hascatchrate)** | <sub>0..1</sub> | integer | Determines how easy a Pokémon species is to catch, with higher values meaning easier capture. |
+| **[hasColor](#hascolor)** | <sub>0..1</sub> | [Color](#color) | A Pokémon has a color |
+| **[hasGenus](#hasgenus)** | <sub>0..1</sub> | string | The species category label shown in the Pokédex, such as "Seed Pokémon" for Bulbasaur. |
+| **[hasHeight](#hasheight)** | <sub>0..1</sub> | [Quantity](#quantity) | How tall a Pokémon species is, expressed as a quantity with unit. |
 | **[hasShape](#hasshape)** | <sub>0..1</sub> | [Shape](#shape) | The shape of a berry is a measure of how good it is for making a Potion. |
-| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
-| **[hasWeight](#hasweight)** | <sub>0..1</sub> | [Quantity](#quantity) |  |
-| **[inEggGroup](#inegggroup)** | <sub>0..\*</sub> | [EggGroup](#egggroup) |  |
-| **[isAbleToApply](#isabletoapply)** | <sub>0..\*</sub> | [Move](#move) |  |
-| **[mayHaveAbility](#mayhaveability)** | <sub>0..\*</sub> | [Ability](#ability) | A Pokemon may have an ability |
-| **[mayHaveHiddenAbility](#mayhavehiddenability)** | <sub>0..\*</sub> | [Ability](#ability) |  |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokémon has a type |
+| **[hasWeight](#hasweight)** | <sub>0..1</sub> | [Quantity](#quantity) | How heavy a Pokémon species is, expressed as a quantity with unit. |
+| **[inEggGroup](#inegggroup)** | <sub>0..\*</sub> | [EggGroup](#egggroup) | Which egg group a species belongs to, controlling which Pokémon can breed together. |
+| **[isAbleToApply](#isabletoapply)** | <sub>0..\*</sub> | [Move](#move) | Moves that a Pokémon can use in battle or in the overworld. |
+| **[mayHaveAbility](#mayhaveability)** | <sub>0..\*</sub> | [Ability](#ability) | A Pokémon may have an ability |
+| **[mayHaveHiddenAbility](#mayhavehiddenability)** | <sub>0..\*</sub> | [Ability](#ability) | A special ability only obtainable through specific encounters or events, not through normal gameplay. |
 
 #### Parents
 
@@ -2457,7 +2502,7 @@ Species:
 
 #### Referenced by:
 
- *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub> 
+ *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub>
 
 
 
@@ -2496,11 +2541,11 @@ StatusMove:
 | **[name](#name)** | <sub>0..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
 | **[effectDescription](#effectdescription)** | <sub>0..\*</sub> | string | A description of the effect of the entity |
-| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokemon has a type |
+| **[hasType](#hastype)** | <sub>0..\*</sub> | [Type](#type) | A Pokémon has a type |
 
 #### Parents
 
- * [Move](#move)
+ * [Move](#move) - A move is a special ability of a Pokémon.
 
 
 
@@ -2553,15 +2598,15 @@ SystemOfUnits:
 
 #### Referenced by:
 
- *  **[Unit](#unit)** : applicableSystem  <sub>0..\*</sub> 
- *  **[Unit](#unit)** : isUnitOfSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : applicableSystem  <sub>0..\*</sub>
+ *  **[Unit](#unit)** : isUnitOfSystem  <sub>0..\*</sub>
 
 
 
 
 ### TM
 
-
+A Technical Machine is an item that can be used to teach a Pokémon a move.
 
 
 #### YAML Definition
@@ -2574,6 +2619,8 @@ TM:
   is_a: Item
   mixins:
   - MoveLearning
+  description: "A Technical Machine is an item that can be used to teach a Pok\xE9\
+    mon a move."
   slots:
   - id
   - name
@@ -2597,11 +2644,11 @@ TM:
 
 #### Parents
 
- * [Item](#item)
+ * [Item](#item) - An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
 
 #### Uses
 
- *  mixin: [MoveLearning](#movelearning) - A move learning is a way that a Pokemon can learn a move.
+ *  mixin: [MoveLearning](#movelearning) - A move learning is a way that a Pokémon can learn a move.
 
 
 
@@ -2643,14 +2690,14 @@ Town:
 
 #### Parents
 
- * [Place](#place)
+ * [Place](#place) - Entities that have a somewhat fixed, physical extension.
 
 
 
 
 ### Trainer
 
-A trainer is a person who is able to catch Pokemon.
+A trainer is a person who is able to catch Pokémon.
 
 
 #### YAML Definition
@@ -2661,7 +2708,7 @@ A trainer is a person who is able to catch Pokemon.
 ```yaml
 Trainer:
   is_a: Person
-  description: A trainer is a person who is able to catch Pokemon.
+  description: "A trainer is a person who is able to catch Pok\xE9mon."
   slots:
   - id
   - description
@@ -2691,14 +2738,14 @@ Trainer:
 
 #### Children
 
- * [GymLeader](#gymleader)
+ * [GymLeader](#gymleader) - A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
 
 
 
 
 ### Type
 
-
+All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
 
 
 #### YAML Definition
@@ -2709,6 +2756,8 @@ Trainer:
 ```yaml
 Type:
   is_a: NamedIndividual
+  description: "All Pok\xE9mon creatures and their moves are assigned certain types.\
+    \ Each type has several strengths and weaknesses in both attack and defense."
   slots:
   - id
   - description
@@ -2733,8 +2782,8 @@ Type:
 
 #### Referenced by:
 
- *  **[Move](#move)** : hasType  <sub>0..\*</sub> 
- *  **[Species](#species)** : hasType  <sub>0..\*</sub> 
+ *  **[Move](#move)** : hasType  <sub>0..\*</sub>
+ *  **[Species](#species)** : hasType  <sub>0..\*</sub>
 
 
 
@@ -2825,11 +2874,11 @@ Unit:
 
 #### Referenced by:
 
- *  **[QuantityKind](#quantitykind)** : applicableUnit  <sub>0..\*</sub> 
- *  **[SystemOfUnits](#systemofunits)** : hasBaseUnit  <sub>0..\*</sub> 
- *  **[Quantifiable](#quantifiable)** : hasUnit  <sub>0..1</sub> 
- *  **[Unit](#unit)** : scalingOf  <sub>0..1</sub> 
- *  **[QuantityValue](#quantityvalue)** : unit  <sub>0..1</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableUnit  <sub>0..\*</sub>
+ *  **[SystemOfUnits](#systemofunits)** : hasBaseUnit  <sub>0..\*</sub>
+ *  **[Quantifiable](#quantifiable)** : hasUnit  <sub>0..1</sub>
+ *  **[Unit](#unit)** : scalingOf  <sub>0..1</sub>
+ *  **[QuantityValue](#quantityvalue)** : unit  <sub>0..1</sub>
 
 
 
@@ -2868,6 +2917,43 @@ This class has no attributes
 
  * [Quantifiable](#quantifiable) - Ascribes to some thing the capability of being measured, observed, or counted
  * [Verifiable](#verifiable) - Holds properties that provide external knowledge and specifications of a given resource
+
+### CmykColor
+
+CMYK color space coordinates (0-100).
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+CmykColor:
+  mixin: true
+  description: CMYK color space coordinates (0-100).
+  slots:
+  - cmykC
+  - cmykM
+  - cmykY
+  - cmykK
+
+```
+</details>
+
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[cmykC](#cmykc)** | <sub>0..1</sub> | integer | Cyan component in CMYK color model (0-100) |
+| **[cmykK](#cmykk)** | <sub>0..1</sub> | integer | Black (K) component in CMYK color model (0-100) |
+| **[cmykM](#cmykm)** | <sub>0..1</sub> | integer | Magenta component in CMYK color model (0-100) |
+| **[cmykY](#cmyky)** | <sub>0..1</sub> | integer | Yellow component in CMYK color model (0-100) |
+
+#### Used as mixin by
+
+ * [Color](#color) - Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
 
 ### Quantifiable
 
@@ -2966,31 +3052,32 @@ Verifiable:
 
 | Name | Cardinality/Range | Used By |
 | --- | --- | --- |
-| <a id="id"></a>**id**<br/>A unique identifier | <sub>1..1</sub><br/>uri | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Colour](#colour), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
-| <a id="name"></a>**name**<br/>Human-readable label for the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Colour](#colour), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
-| <a id="description"></a>**description**<br/>A description of the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Colour](#colour), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="id"></a>**id**<br/>A unique identifier | <sub>1..1</sub><br/>uri | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="name"></a>**name**<br/>Human-readable label for the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="description"></a>**description**<br/>A description of the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
 | <a id="connotation_name"></a>**Connotation_name**<br/>Human-readable label for the entity | <sub>1..1</sub><br/>string |  |
 | <a id="namedindividual_name"></a>**NamedIndividual_name**<br/>Human-readable label for the entity | <sub>1..1</sub><br/>string |  |
 | <a id="abbreviation"></a>**abbreviation**<br/>Short alphanumeric abbreviation for a unit | <sub>0..1</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits), [Unit](#unit) |
-| <a id="accuracy"></a>**accuracy** | <sub>0..1</sub><br/>integer |  |
+| <a id="accuracy"></a>**accuracy**<br/>Chance of a move successfully hitting the target, as a percentage. | <sub>0..1</sub><br/>integer |  |
 | <a id="applicablesystem"></a>**applicableSystem**<br/>Systems where this unit is applicable | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [DerivedUnit](#derivedunit), [Unit](#unit) |
 | <a id="applicableunit"></a>**applicableUnit**<br/>Units applicable to a quantity kind | <sub>0..\*</sub><br/>[Unit](#unit) | [QuantityKind](#quantitykind) |
-| <a id="basepower"></a>**basePower** | <sub>0..1</sub><br/>integer |  |
-| <a id="basepowerpoints"></a>**basePowerPoints** | <sub>0..1</sub><br/>integer |  |
-| <a id="black"></a>**black**<br/>Black (K) component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
+| <a id="basepower"></a>**basePower**<br/>Base damage output of a move before applying type effectiveness and stat modifiers. | <sub>0..1</sub><br/>integer |  |
+| <a id="basepowerpoints"></a>**basePowerPoints**<br/>Starting number of times a move can be used before needing restoration. | <sub>0..1</sub><br/>integer |  |
 | <a id="broader"></a>**broader**<br/>Broader/parent quantity kind | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) | [AbstractQuantityKind](#abstractquantitykind), [QuantityKind](#quantitykind) |
-| <a id="colourhexcode"></a>**colourHexCode**<br/>Hexadecimal RGB color code (e.g., "0000FF" for blue) | <sub>0..1</sub><br/>string | [Colour](#colour) |
-| <a id="colouryellow"></a>**colourYellow**<br/>Yellow component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
-| <a id="connotation"></a>**connotation**<br/>Cultural or symbolic meanings associated with this colour | <sub>0..\*</sub><br/>[Connotation](#connotation) | [Colour](#colour) |
-| <a id="containsplace"></a>**containsPlace** | <sub>0..\*</sub><br/>[Place](#place) |  |
+| <a id="cmykc"></a>**cmykC**<br/>Cyan component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [CmykColor](#cmykcolor), [Color](#color) |
+| <a id="cmykk"></a>**cmykK**<br/>Black (K) component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [CmykColor](#cmykcolor), [Color](#color) |
+| <a id="cmykm"></a>**cmykM**<br/>Magenta component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [CmykColor](#cmykcolor), [Color](#color) |
+| <a id="cmyky"></a>**cmykY**<br/>Yellow component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [CmykColor](#cmykcolor), [Color](#color) |
+| <a id="colorhexcode"></a>**colorHexCode**<br/>Hexadecimal RGB color code (e.g., "0000FF" for blue) | <sub>0..1</sub><br/>string | [Color](#color) |
+| <a id="connotation"></a>**connotation**<br/>Cultural or symbolic meanings associated with this color | <sub>0..\*</sub><br/>[Connotation](#connotation) | [Color](#color) |
+| <a id="containsplace"></a>**containsPlace**<br/>A place is contained to some extent in this place. | <sub>0..\*</sub><br/>[Place](#place) |  |
 | <a id="conversionmultiplier"></a>**conversionMultiplier**<br/>Multiplier to convert to base unit | <sub>0..1</sub><br/>double | [DerivedUnit](#derivedunit), [Unit](#unit) |
 | <a id="conversionoffset"></a>**conversionOffset**<br/>Offset to convert to base unit | <sub>0..1</sub><br/>double | [DerivedUnit](#derivedunit), [Unit](#unit) |
-| <a id="cyanic"></a>**cyanic**<br/>Cyan component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
 | <a id="dbpediamatch"></a>**dbpediaMatch**<br/>DBpedia URI for this entity | <sub>0..1</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
 | <a id="depiction"></a>**depiction**<br/>A depiction of the person | <sub>0..1</sub><br/>string | [GymLeader](#gymleader), [Person](#person), [Species](#species), [Trainer](#trainer) |
 | <a id="deprecated"></a>**deprecated**<br/>Whether this entity is deprecated | <sub>0..1</sub><br/>boolean | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits), [Unit](#unit) |
-| <a id="describedinpokedex"></a>**describedInPokedex**<br/>['A Pokedex entry is described in a Pokedex'] | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
-| <a id="describespokemon"></a>**describesPokemon** | <sub>0..\*</sub><br/>[Species](#species) |  |
+| <a id="describedinpokedex"></a>**describedInPokedex**<br/>['A Pokédex entry is described in a Pokédex'] | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
+| <a id="describespokemon"></a>**describesPokemon**<br/>A Pokémon that is described by this Pokédex entry. | <sub>0..\*</sub><br/>[Species](#species) |  |
 | <a id="dimensionexponentforamountofsubstance"></a>**dimensionExponentForAmountOfSubstance**<br/>Exponent for amount of substance dimension (N) | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
 | <a id="dimensionexponentforelectriccurrent"></a>**dimensionExponentForElectricCurrent**<br/>Exponent for electric current dimension (I) | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
 | <a id="dimensionexponentforlength"></a>**dimensionExponentForLength**<br/>Exponent for length dimension (L) | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
@@ -3000,41 +3087,40 @@ Verifiable:
 | <a id="dimensionexponentfortime"></a>**dimensionExponentForTime**<br/>Exponent for time dimension (T) | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
 | <a id="dimensionlessexponent"></a>**dimensionlessExponent**<br/>Dimensionless exponent | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
 | <a id="effectdescription"></a>**effectDescription**<br/>A description of the effect of the entity | <sub>0..\*</sub><br/>string | [Ability](#ability), [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [StatusMove](#statusmove) |
-| <a id="entrynumber"></a>**entryNumber** | <sub>0..1</sub><br/>integer |  |
-| <a id="evolvesfrom"></a>**evolvesFrom** | <sub>0..1</sub><br/>[Species](#species) |  |
-| <a id="evolvesto"></a>**evolvesTo** | <sub>0..\*</sub><br/>[Species](#species) |  |
+| <a id="entrynumber"></a>**entryNumber**<br/>The unique number identifying this entry within a Pokédex. | <sub>0..1</sub><br/>integer |  |
+| <a id="evolvesfrom"></a>**evolvesFrom**<br/>This species evolves the other species. | <sub>0..1</sub><br/>[Species](#species) |  |
+| <a id="evolvesto"></a>**evolvesTo**<br/>A Pokémon evolves to another Pokémon. | <sub>0..\*</sub><br/>[Species](#species) |  |
 | <a id="exactmatch"></a>**exactMatch**<br/>Equivalent quantity kind or unit | <sub>0..\*</sub><br/>string | [DecimalPrefix](#decimalprefix), [Prefix](#prefix), [QuantityKind](#quantitykind) |
-| <a id="featuresspecies"></a>**featuresSpecies**<br/>['A Pokedex entry features a species'] | <sub>0..\*</sub><br/>[Species](#species) | [Generation](#generation) |
-| <a id="firmness"></a>**firmness** | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
+| <a id="featuresspecies"></a>**featuresSpecies**<br/>['A Pokédex entry features a species'] | <sub>0..\*</sub><br/>[Species](#species) | [Generation](#generation) |
+| <a id="firmness"></a>**firmness**<br/>How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making. | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
 | <a id="foundin"></a>**foundIn**<br/>A place is found in a location | <sub>0..\*</sub><br/>[Habitat](#habitat) | [Species](#species) |
-| <a id="frequency"></a>**frequency**<br/>The frequency of the color in Hz | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="frequency"></a>**frequency**<br/>The frequency of the color in Hz | <sub>0..1</sub><br/>float | [Color](#color) |
 | <a id="hasbaseunit"></a>**hasBaseUnit**<br/>Base units defined by this system | <sub>0..\*</sub><br/>[Unit](#unit) | [SystemOfUnits](#systemofunits) |
-| <a id="hascatchrate"></a>**hasCatchRate** | <sub>0..1</sub><br/>integer | [Species](#species) |
-| <a id="hascolour"></a>**hasColour**<br/>A Pokemon has a color | <sub>0..1</sub><br/>[Colour](#colour) | [Species](#species) |
+| <a id="hascatchrate"></a>**hasCatchRate**<br/>Determines how easy a Pokémon species is to catch, with higher values meaning easier capture. | <sub>0..1</sub><br/>integer | [Species](#species) |
+| <a id="hascolor"></a>**hasColor**<br/>A Pokémon has a color | <sub>0..1</sub><br/>[Color](#color) | [Species](#species) |
 | <a id="hasdimensionvector"></a>**hasDimensionVector**<br/>Dimension vector for a unit or quantity kind | <sub>0..1</sub><br/>[QuantityKindDimensionVector](#quantitykinddimensionvector) | [DerivedUnit](#derivedunit), [QuantityKind](#quantitykind), [Unit](#unit) |
-| <a id="hasflavor"></a>**hasFlavor**<br/>A Pokemon has a flavor | <sub>0..\*</sub><br/>[Flavor](#flavor) | [Berry](#berry), [Food](#food) |
-| <a id="hasgenus"></a>**hasGenus** | <sub>0..1</sub><br/>string | [Species](#species) |
-| <a id="hasheight"></a>**hasHeight** | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
-| <a id="haspokedexentry"></a>**hasPokedexEntry** | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
+| <a id="hasflavor"></a>**hasFlavor**<br/>A Pokémon has a flavor | <sub>0..\*</sub><br/>[Flavor](#flavor) | [Berry](#berry), [Food](#food) |
+| <a id="hasgenus"></a>**hasGenus**<br/>The species category label shown in the Pokédex, such as "Seed Pokémon" for Bulbasaur. | <sub>0..1</sub><br/>string | [Species](#species) |
+| <a id="hasheight"></a>**hasHeight**<br/>How tall a Pokémon species is, expressed as a quantity with unit. | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
+| <a id="haspokedexentry"></a>**hasPokedexEntry**<br/>A Pokédex entry in which this Pokémon is described. | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
 | <a id="hasquantitykind"></a>**hasQuantityKind**<br/>Associates a quantity with its kind (e.g., Height, Weight) | <sub>0..\*</sub><br/>[QuantityKind](#quantitykind) | [DerivedUnit](#derivedunit), [Quantity](#quantity), [Unit](#unit) |
 | <a id="hasshape"></a>**hasShape**<br/>The shape of a berry is a measure of how good it is for making a Potion. | <sub>0..1</sub><br/>[Shape](#shape) | [Species](#species) |
-| <a id="hassize"></a>**hasSize** | <sub>0..1</sub><br/>[Quantity](#quantity) | [Berry](#berry) |
-| <a id="hastype"></a>**hasType**<br/>A Pokemon has a type | <sub>0..\*</sub><br/>[Type](#type) | [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove) |
+| <a id="hassize"></a>**hasSize**<br/>The physical size of an entity, expressed as a quantity with unit. | <sub>0..1</sub><br/>[Quantity](#quantity) | [Berry](#berry) |
+| <a id="hastype"></a>**hasType**<br/>A Pokémon has a type | <sub>0..\*</sub><br/>[Type](#type) | [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove) |
 | <a id="hasunit"></a>**hasUnit**<br/>Unit associated with a quantifiable entity | <sub>0..1</sub><br/>[Unit](#unit) | [Quantifiable](#quantifiable), [Quantity](#quantity) |
-| <a id="hasweight"></a>**hasWeight** | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
-| <a id="inegggroup"></a>**inEggGroup** | <sub>0..\*</sub><br/>[EggGroup](#egggroup) | [Species](#species) |
+| <a id="hasweight"></a>**hasWeight**<br/>How heavy a Pokémon species is, expressed as a quantity with unit. | <sub>0..1</sub><br/>[Quantity](#quantity) | [Species](#species) |
+| <a id="inegggroup"></a>**inEggGroup**<br/>Which egg group a species belongs to, controlling which Pokémon can breed together. | <sub>0..\*</sub><br/>[EggGroup](#egggroup) | [Species](#species) |
 | <a id="informativereference"></a>**informativeReference**<br/>Informative reference URL | <sub>0..\*</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
-| <a id="isabletoapply"></a>**isAbleToApply** | <sub>0..\*</sub><br/>[Move](#move) | [Species](#species) |
+| <a id="isabletoapply"></a>**isAbleToApply**<br/>Moves that a Pokémon can use in battle or in the overworld. | <sub>0..\*</sub><br/>[Move](#move) | [Species](#species) |
 | <a id="isunitofsystem"></a>**isUnitOfSystem**<br/>System of units this unit belongs to | <sub>0..\*</sub><br/>[SystemOfUnits](#systemofunits) | [DerivedUnit](#derivedunit), [Unit](#unit) |
 | <a id="isonormativereference"></a>**isoNormativeReference**<br/>ISO normative reference URI | <sub>0..\*</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
 | <a id="latexsymbol"></a>**latexSymbol**<br/>LaTeX representation of symbol | <sub>0..1</sub><br/>string | [DerivedUnit](#derivedunit), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [Unit](#unit) |
-| <a id="learnsmove"></a>**learnsMove** | <sub>0..\*</sub><br/>[Move](#move) |  |
-| <a id="locatedin"></a>**locatedIn** | <sub>0..\*</sub><br/>[Place](#place) |  |
-| <a id="magenta"></a>**magenta**<br/>Magenta component in CMYK color model (0-100) | <sub>0..1</sub><br/>integer | [Colour](#colour) |
-| <a id="maxpowerpoints"></a>**maxPowerPoints** | <sub>0..1</sub><br/>integer |  |
-| <a id="mayhaveability"></a>**mayHaveAbility**<br/>A Pokemon may have an ability | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
-| <a id="mayhavehiddenability"></a>**mayHaveHiddenAbility** | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
-| <a id="minleveltolearn"></a>**minLevelToLearn** | <sub>0..1</sub><br/>integer |  |
+| <a id="learnsmove"></a>**learnsMove**<br/>The move acquired through this particular learning method. | <sub>0..\*</sub><br/>[Move](#move) |  |
+| <a id="locatedin"></a>**locatedIn**<br/>This place is located to some extent in another place. | <sub>0..\*</sub><br/>[Place](#place) |  |
+| <a id="maxpowerpoints"></a>**maxPowerPoints**<br/>Maximum times a move can be used after PP-enhancing items are applied. | <sub>0..1</sub><br/>integer |  |
+| <a id="mayhaveability"></a>**mayHaveAbility**<br/>A Pokémon may have an ability | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
+| <a id="mayhavehiddenability"></a>**mayHaveHiddenAbility**<br/>A special ability only obtainable through specific encounters or events, not through normal gameplay. | <sub>0..\*</sub><br/>[Ability](#ability) | [Species](#species) |
+| <a id="minleveltolearn"></a>**minLevelToLearn**<br/>The minimum level a Pokémon needs to reach to learn this move. | <sub>0..1</sub><br/>integer |  |
 | <a id="normativereference"></a>**normativeReference**<br/>Normative reference URI | <sub>0..\*</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
 | <a id="numericvalue"></a>**numericValue**<br/>Numeric value of a quantity | <sub>0..1</sub><br/>double | [QuantityValue](#quantityvalue) |
 | <a id="plaintextdescription"></a>**plainTextDescription**<br/>Plain text description | <sub>0..1</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits), [Unit](#unit) |
@@ -3043,13 +3129,13 @@ Verifiable:
 | <a id="quantityvalue"></a>**quantityValue**<br/>The value component of a quantity | <sub>0..\*</sub><br/>[QuantityValue](#quantityvalue) | [Quantity](#quantity) |
 | <a id="relativestandarduncertainty"></a>**relativeStandardUncertainty**<br/>Relative standard uncertainty of the measurement | <sub>0..1</sub><br/>double | [Quantifiable](#quantifiable), [Quantity](#quantity) |
 | <a id="scalingof"></a>**scalingOf**<br/>Base unit this unit is a scaling of | <sub>0..1</sub><br/>[Unit](#unit) | [DerivedUnit](#derivedunit), [Unit](#unit) |
-| <a id="smoothness"></a>**smoothness** | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
+| <a id="smoothness"></a>**smoothness**<br/>How smooth a berry or food item is, affecting its use in Pokéblock or Poffin making. | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
 | <a id="standarduncertainty"></a>**standardUncertainty**<br/>Standard uncertainty of the measurement | <sub>0..1</sub><br/>decimal | [Quantifiable](#quantifiable), [Quantity](#quantity) |
 | <a id="symbol"></a>**symbol**<br/>Symbol for a unit (e.g., "m" for meter) | <sub>0..1</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit) |
-| <a id="thumbnail"></a>**thumbnail**<br/>URL to a representative image of this colour | <sub>0..1</sub><br/>uri | [Colour](#colour) |
+| <a id="thumbnail"></a>**thumbnail**<br/>URL to a representative image of this color | <sub>0..1</sub><br/>uri | [Color](#color) |
 | <a id="ucumcode"></a>**ucumCode**<br/>UCUM code for the unit | <sub>0..1</sub><br/>string | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Unit](#unit) |
 | <a id="unit"></a>**unit**<br/>Unit of measurement | <sub>0..1</sub><br/>[Unit](#unit) | [QuantityValue](#quantityvalue) |
-| <a id="wavelength"></a>**wavelength**<br/>The wavelength of the color in meters (e.g., 4.5e-07 for blue) | <sub>0..1</sub><br/>float | [Colour](#colour) |
+| <a id="wavelength"></a>**wavelength**<br/>The wavelength of the color in meters (e.g., 4.5e-07 for blue) | <sub>0..1</sub><br/>float | [Color](#color) |
 | <a id="wikidatamatch"></a>**wikidataMatch**<br/>Wikidata URI for this entity | <sub>0..1</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
 
 ## Enums
@@ -3064,4 +3150,3 @@ Verifiable:
 | Cave | pokemon:Habitat_Cave |  |
 | Forest | pokemon:Habitat_Forest |  |
 | Grassland | pokemon:Habitat_Grassland |  |
-

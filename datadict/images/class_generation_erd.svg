@@ -72,9 +72,9 @@
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
     <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c" class="er entityLabel">Species</text>
   </g>
-  <g transform="translate(20,370 )" id="entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346">
+  <g transform="translate(20,370 )" id="entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346" class="er entityLabel">Colour</text>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1" class="er entityLabel">Color</text>
   </g>
   <g transform="translate(220,370 )" id="entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
@@ -106,8 +106,8 @@
   </g>
   <rect height="14" width="86.44854736328125" y="138" x="726.7757263183594" class="er relationshipLabelBox"/>
   <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="145" x="770" id="rel1" class="er relationshipLabel">featuresSpecies</text>
-  <rect height="14" width="54.980377197265625" y="275.0309143066406" x="355.85670471191406" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.0309143066406" x="383.3468933105469" id="rel2" class="er relationshipLabel">hasColour</text>
+  <rect height="14" width="47.996307373046875" y="275.0309143066406" x="359.34873962402344" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.0309143066406" x="383.3468933105469" id="rel2" class="er relationshipLabel">hasColor</text>
   <rect height="14" width="117.87274169921875" y="277.22344970703125" x="422.95654296875" class="er relationshipLabelBox"/>
   <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="284.22344970703125" x="481.8929138183594" id="rel3" class="er relationshipLabel">hasHeight, hasWeight</text>
   <rect height="14" width="52.8125" y="282.6547546386719" x="553.2688598632812" class="er relationshipLabelBox"/>

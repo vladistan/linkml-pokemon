@@ -56,9 +56,9 @@
     </marker>
   </defs>
   <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M70,95L70,103.333C70,111.667,70,128.333,70,145C70,161.667,70,178.333,70,186.667L70,195" class="er relationshipLine"/>
-  <g transform="translate(20,20 )" id="entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346">
+  <g transform="translate(20,20 )" id="entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346" class="er entityLabel">Colour</text>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1" class="er entityLabel">Color</text>
   </g>
   <g transform="translate(20,195 )" id="entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf">
     <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
