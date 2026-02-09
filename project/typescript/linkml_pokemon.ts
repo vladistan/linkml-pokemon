@@ -1,7 +1,7 @@
 export type ThingId = string;
 export type NamedIndividualId = string;
 export type PersonId = string;
-export type ColourId = string;
+export type ColorId = string;
 export type ConnotationId = string;
 export type ConceptId = string;
 export type QuantityId = string;
@@ -50,7 +50,7 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-    
+
     Cave = "Cave",
     Forest = "Forest",
     Grassland = "Grassland",
@@ -87,32 +87,39 @@ export interface Person extends NamedIndividual {
 
 
 /**
- * Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+ * CMYK color space coordinates (0-100).
  */
-export interface Colour extends Thing {
+export interface CmykColor {
     /** Cyan component in CMYK color model (0-100) */
-    cyanic?: number,
+    cmykC?: number,
     /** Magenta component in CMYK color model (0-100) */
-    magenta?: number,
+    cmykM?: number,
     /** Yellow component in CMYK color model (0-100) */
-    colourYellow?: number,
+    cmykY?: number,
     /** Black (K) component in CMYK color model (0-100) */
-    black?: number,
+    cmykK?: number,
+}
+
+
+/**
+ * Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and others.
+ */
+export interface Color extends Thing, CmykColor {
     /** The wavelength of the color in meters (e.g., 4.5e-07 for blue) */
     wavelength?: number,
     /** The frequency of the color in Hz */
     frequency?: number,
     /** Hexadecimal RGB color code (e.g., "0000FF" for blue) */
-    colourHexCode?: string,
-    /** Cultural or symbolic meanings associated with this colour */
+    colorHexCode?: string,
+    /** Cultural or symbolic meanings associated with this color */
     connotation?: ConnotationId[],
-    /** URL to a representative image of this colour */
+    /** URL to a representative image of this color */
     thumbnail?: string,
 }
 
 
 /**
- * Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources.
+ * Cultural or symbolic meaning associated with a color. Imported from DBpedia as generic owl:Thing resources.
  */
 export interface Connotation extends Thing {
 }
@@ -338,7 +345,9 @@ export interface DecimalPrefix extends Prefix {
 }
 
 
-
+/**
+ * Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others are known by many Pokémon.
+ */
 export interface Ability extends Thing {
     /** A description of the effect of the entity */
     effectDescription?: string[],
@@ -352,27 +361,38 @@ export interface BattleItem extends Item {
 }
 
 
-
+/**
+ * Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.
+ */
 export interface Berry extends Food {
+    /** The physical size of an entity, expressed as a quantity with unit. */
     hasSize?: Quantity,
 }
 
 
-
+/**
+ * Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
+ */
 export interface EggGroup extends NamedIndividual {
 }
 
 
-
+/**
+ * Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokémon can eat them.
+ */
 export interface Flavor extends NamedIndividual {
 }
 
 
-
+/**
+ * Food items are consumable items in the Pokémon world that can have flavors, firmness, and smoothness attributes.
+ */
 export interface Food extends Item {
-    /** A Pokemon has a flavor */
+    /** A Pokémon has a flavor */
     hasFlavor?: FlavorId[],
+    /** How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making. */
     firmness?: number,
+    /** How smooth a berry or food item is, affecting its use in Pokéblock or Poffin making. */
     smoothness?: number,
 }
 
@@ -384,9 +404,11 @@ export interface Game extends Thing {
 }
 
 
-
+/**
+ * Generations refers to the Pokémon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokémon and the number of moves there are to be learned.
+ */
 export interface Generation extends Thing {
-    /** ['A Pokedex entry features a species'] */
+    /** ['A Pokédex entry features a species'] */
     featuresSpecies?: SpeciesId[],
 }
 
@@ -398,7 +420,9 @@ export interface Gym extends Place {
 }
 
 
-
+/**
+ * A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
+ */
 export interface GymLeader extends Trainer {
 }
 
@@ -411,102 +435,121 @@ export interface HM extends Item {
 
 
 /**
- * A habitat is a type of environment that certain Pokemon belong to.
+ * A habitat is a type of environment that certain Pokémon belong to.
  */
 export interface Habitat extends NamedIndividual {
 }
 
 
 /**
- * A hold item is an item that can be held by a Pokemon.
+ * A hold item is an item that can be held by a Pokémon.
  */
 export interface HoldItem extends Item {
 }
 
 
-
+/**
+ * An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
+ */
 export interface Item extends Thing {
 }
 
 
-
+/**
+ * The Pokédex is an electronic device designed to catalog and provide information regarding the various species of Pokémon featured in the Pokémon video game, anime and manga series.
+ */
 export interface Pokedex extends Thing {
 }
 
 
 /**
- * A Pokemon
+ * A Pokémon
  */
 export interface Pokemon {
 }
 
 
 /**
- * A pokedex entry is a description of a Pokemon.
+ * A Pokédex entry is a description of a Pokémon.
  */
 export interface PokedexEntry extends Thing {
 }
 
 
-
+/**
+ * A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
+ */
 export interface Pokeball extends Item {
 }
 
 
-
+/**
+ * Entities that have a somewhat fixed, physical extension.
+ */
 export interface Place extends Thing {
 }
 
 
 /**
- * Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+ * Shapes are categories that certain Pokémon belong to, which determine which Pokémon they can breed with.
  */
 export interface Shape extends NamedIndividual {
 }
 
 
-
+/**
+ * Regions are areas in the Pokémon universe that are smaller parts of a nation.
+ */
 export interface Region extends Place {
 }
 
 
 /**
- * A species is a category of Pokemon that share common features.
+ * A species is a category of Pokémon that share common features.
  */
 export interface Species extends NamedIndividual {
-    /** A Pokemon has a color */
-    hasColour?: ColourId,
+    /** A Pokémon has a color */
+    hasColor?: ColorId,
+    /** A special ability only obtainable through specific encounters or events, not through normal gameplay. */
     mayHaveHiddenAbility?: ("mayHaveAbility")[],
-    /** A Pokemon may have an ability */
+    /** A Pokémon may have an ability */
     mayHaveAbility?: AbilityId[],
+    /** Moves that a Pokémon can use in battle or in the overworld. */
     isAbleToApply?: MoveId[],
+    /** How tall a Pokémon species is, expressed as a quantity with unit. */
     hasHeight?: Quantity,
+    /** How heavy a Pokémon species is, expressed as a quantity with unit. */
     hasWeight?: Quantity,
     /** A depiction of the person */
     depiction?: string,
+    /** Which egg group a species belongs to, controlling which Pokémon can breed together. */
     inEggGroup?: EggGroupId[],
-    /** A Pokemon has a type */
+    /** A Pokémon has a type */
     hasType?: Type[],
-    /** The shape of a berry is a measure of how good it  is for making a Potion. */
+    /** The shape of a berry is a measure of how good it is for making a Potion. */
     hasShape?: ShapeId,
+    /** The species category label shown in the Pokédex, such as "Seed Pokémon" for Bulbasaur. */
     hasGenus?: string,
+    /** Determines how easy a Pokémon species is to catch, with higher values meaning easier capture. */
     hasCatchRate?: number,
     /** A place is found in a location */
     foundIn?: HabitatId[],
 }
 
 
-
+/**
+ * A move is a special ability of a Pokémon.
+ */
 export interface Move extends Thing {
     /** A description of the effect of the entity */
     effectDescription?: string[],
-    /** A Pokemon has a type */
+    /** A Pokémon has a type */
     hasType?: Type[],
 }
 
 
 /**
- * A move learning is a way that a Pokemon can learn a move.
+ * A move learning is a way that a Pokémon can learn a move.
  */
 export interface MoveLearning {
 }
@@ -527,7 +570,7 @@ export interface LearningThroughBreeding extends MoveLearning {
 
 
 /**
- * Medicine items can heal various afflictions of a Pokemon.
+ * Medicine items can heal various afflictions of a Pokémon.
  */
 export interface Medicine extends Item {
 }
@@ -554,7 +597,9 @@ export interface StatusMove extends Move {
 }
 
 
-
+/**
+ * A Technical Machine is an item that can be used to teach a Pokémon a move.
+ */
 export interface TM extends Item, MoveLearning {
 }
 
@@ -567,15 +612,14 @@ export interface Town extends Place {
 
 
 /**
- * A trainer is a person who is able to catch Pokemon.
+ * A trainer is a person who is able to catch Pokémon.
  */
 export interface Trainer extends Person {
 }
 
 
-
+/**
+ * All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
+ */
 export interface Type extends NamedIndividual {
 }
-
-
-

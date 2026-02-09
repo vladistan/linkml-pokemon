@@ -514,8 +514,8 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[mayHaveAbility](#mayHaveAbility)*  <sub>0..\*</sub> 
- *  **[Species](#Species)** : *[mayHaveHiddenAbility](#mayHaveHiddenAbility)*  <sub>0..\*</sub> 
+ *  **[Species](#Species)** : *[mayHaveAbility](#mayHaveAbility)*  <sub>0..\*</sub>
+ *  **[Species](#Species)** : *[mayHaveHiddenAbility](#mayHaveHiddenAbility)*  <sub>0..\*</sub>
 
 
 
@@ -638,7 +638,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[hasColour](#hasColour)*  <sub>0..1</sub> 
+ *  **[Species](#Species)** : *[hasColour](#hasColour)*  <sub>0..1</sub>
 
 
 
@@ -684,7 +684,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[inEggGroup](#inEggGroup)*  <sub>0..\*</sub> 
+ *  **[Species](#Species)** : *[inEggGroup](#inEggGroup)*  <sub>0..\*</sub>
 
 
 
@@ -721,7 +721,7 @@ Food ||--}o Flavor : "hasFlavor"
 
 #### Referenced by:
 
- *  **[Food](#Food)** : *[hasFlavor](#hasFlavor)*  <sub>0..\*</sub> 
+ *  **[Food](#Food)** : *[hasFlavor](#hasFlavor)*  <sub>0..\*</sub>
 
 
 
@@ -972,7 +972,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[foundIn](#foundIn)*  <sub>0..\*</sub> 
+ *  **[Species](#Species)** : *[foundIn](#foundIn)*  <sub>0..\*</sub>
 
 
 
@@ -1179,7 +1179,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[isAbleToApply](#isAbleToApply)*  <sub>0..\*</sub> 
+ *  **[Species](#Species)** : *[isAbleToApply](#isAbleToApply)*  <sub>0..\*</sub>
 
 
 
@@ -1440,8 +1440,8 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[hasHeight](#hasHeight)*  <sub>0..1</sub> 
- *  **[Species](#Species)** : *[hasWeight](#hasWeight)*  <sub>0..1</sub> 
+ *  **[Species](#Species)** : *[hasHeight](#hasHeight)*  <sub>0..1</sub>
+ *  **[Species](#Species)** : *[hasWeight](#hasWeight)*  <sub>0..1</sub>
 
 
 
@@ -1470,7 +1470,7 @@ This class has no attributes
 
 #### Referenced by:
 
- *  **[Quantity](#Quantity)** : *[Quantity_hasQuantityKind](#Quantity_hasQuantityKind)*  <sub>0..1</sub> 
+ *  **[Quantity](#Quantity)** : *[Quantity_hasQuantityKind](#Quantity_hasQuantityKind)*  <sub>0..1</sub>
 
 
 
@@ -1545,7 +1545,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Species](#Species)** : *[hasShape](#hasShape)*  <sub>0..1</sub> 
+ *  **[Species](#Species)** : *[hasShape](#hasShape)*  <sub>0..1</sub>
 
 
 
@@ -1667,7 +1667,7 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Generation](#Generation)** : *[featuresSpecies](#featuresSpecies)*  <sub>0..\*</sub> 
+ *  **[Generation](#Generation)** : *[featuresSpecies](#featuresSpecies)*  <sub>0..\*</sub>
 
 
 
@@ -1851,8 +1851,8 @@ Species ||--}o Type : "hasType"
 
 #### Referenced by:
 
- *  **[Move](#Move)** : *[hasType](#hasType)*  <sub>0..\*</sub> 
- *  **[Species](#Species)** : *[hasType](#hasType)*  <sub>0..\*</sub> 
+ *  **[Move](#Move)** : *[hasType](#hasType)*  <sub>0..\*</sub>
+ *  **[Species](#Species)** : *[hasType](#hasType)*  <sub>0..\*</sub>
 
 
 
@@ -1890,7 +1890,7 @@ Quantity ||--}o Unit : "hasUnit"
 
 #### Referenced by:
 
- *  **[Quantity](#Quantity)** : *[hasUnit](#hasUnit)*  <sub>0..\*</sub> 
+ *  **[Quantity](#Quantity)** : *[hasUnit](#hasUnit)*  <sub>0..\*</sub>
 
 
 
@@ -1907,4 +1907,3 @@ Quantity ||--}o Unit : "hasUnit"
 | Cave | pokemon:Habitat_Cave |  |
 | Forest | pokemon:Habitat_Forest |  |
 | Grassland | pokemon:Habitat_Grassland |  |
-

@@ -1,87 +1,52 @@
 # Auto generated from linkml_pokemon.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-02-09T12:09:33
+# Generation date: 2026-02-09T19:07:01
 # Schema: linkml-pokemon
 #
 # id: https://pokemonkg.org/ontology
 # description: Ontology covering the Pokémon world as it is presented in games and anime television series
 # license: MIT
 
-import dataclasses
-import re
 from dataclasses import dataclass
-from datetime import (
-    date,
-    datetime,
-    time
-)
-from typing import (
-    Any,
-    ClassVar,
-    Dict,
-    List,
-    Optional,
-    Union
-)
+from typing import Any, ClassVar, Optional, Union
 
-from jsonasobj2 import (
-    JsonObj,
-    as_dict
-)
-from linkml_runtime.linkml_model.meta import (
-    EnumDefinition,
-    PermissibleValue,
-    PvFormulaOptions
-)
+from jsonasobj2 import as_dict
+from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue
 from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from linkml_runtime.utils.formatutils import (
-    camelcase,
-    sfx,
-    underscore
-)
-from linkml_runtime.utils.metamodelcore import (
-    bnode,
-    empty_dict,
-    empty_list
-)
+from linkml_runtime.utils.metamodelcore import empty_dict, empty_list
 from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.yamlutils import (
-    YAMLRoot,
-    extended_float,
-    extended_int,
-    extended_str
-)
-from rdflib import (
-    Namespace,
-    URIRef
-)
+from linkml_runtime.utils.yamlutils import YAMLRoot
+from rdflib import URIRef
 
-from linkml_runtime.linkml_model.types import Boolean, Decimal, Double, Float, Integer, String, Uri
+from linkml_runtime.linkml_model.types import Decimal
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URI
 
 metamodel_version = "1.7.0"
 version = None
 
 # Namespaces
-PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
-DBPEDIA = CurieNamespace('dbpedia', 'http://dbpedia.org/ontology/')
-EXAMPLE = CurieNamespace('example', 'https://example.org/')
-FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
-LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
-LINKML_COMMON = CurieNamespace('linkml_common', 'https://w3id.org/linkml/common/')
-LINKML_POKEMON = CurieNamespace('linkml_pokemon', 'https://w3id.org/vladistan/linkml-pokemon/')
-OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
-POKEMON = CurieNamespace('pokemon', 'https://pokemonkg.org/ontology#')
-QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
-RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
-RDFS = CurieNamespace('rdfs', 'http://www.w3.org/2000/01/rdf-schema#')
-SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-XML = CurieNamespace('xml', 'http://www.w3.org/XML/1998/namespace')
-XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
+PATO = CurieNamespace("PATO", "http://purl.obolibrary.org/obo/PATO_")
+DBPEDIA = CurieNamespace("dbpedia", "http://dbpedia.org/ontology/")
+EXAMPLE = CurieNamespace("example", "https://example.org/")
+FOAF = CurieNamespace("foaf", "http://xmlns.com/foaf/0.1/")
+LINKML = CurieNamespace("linkml", "https://w3id.org/linkml/")
+LINKML_COMMON = CurieNamespace("linkml_common", "https://w3id.org/linkml/common/")
+LINKML_POKEMON = CurieNamespace(
+    "linkml_pokemon", "https://w3id.org/vladistan/linkml-pokemon/"
+)
+OWL = CurieNamespace("owl", "http://www.w3.org/2002/07/owl#")
+POKEMON = CurieNamespace("pokemon", "https://pokemonkg.org/ontology#")
+QUDT = CurieNamespace("qudt", "http://qudt.org/schema/qudt/")
+RDF = CurieNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+RDFS = CurieNamespace("rdfs", "http://www.w3.org/2000/01/rdf-schema#")
+SCHEMA = CurieNamespace("schema", "http://schema.org/")
+XML = CurieNamespace("xml", "http://www.w3.org/XML/1998/namespace")
+XSD = CurieNamespace("xsd", "http://www.w3.org/2001/XMLSchema#")
 DEFAULT_ = POKEMON
 
 
 # Types
+
 
 # Class references
 class ThingId(URI):
@@ -176,7 +141,7 @@ class TownId(PlaceId):
     pass
 
 
-class ColourId(ThingId):
+class ColorId(ThingId):
     pass
 
 
@@ -286,8 +251,9 @@ class DecimalPrefixId(PrefixId):
 
 class Pokemon(YAMLRoot):
     """
-    A Pokemon
+    A Pokémon
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Pok%C3%A9mon"]
@@ -298,8 +264,9 @@ class Pokemon(YAMLRoot):
 
 class MoveLearning(YAMLRoot):
     """
-    A move learning is a way that a Pokemon can learn a move.
+    A move learning is a way that a Pokémon can learn a move.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["MoveLearning"]
@@ -312,6 +279,7 @@ class LearningByLevelingUp(MoveLearning):
     """
     A move that is learned by leveling up.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["LearningByLevelingUp"]
@@ -324,6 +292,7 @@ class LearningThroughBreeding(MoveLearning):
     """
     A move that is learned by breeding.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["LearningThroughBreeding"]
@@ -333,10 +302,45 @@ class LearningThroughBreeding(MoveLearning):
 
 
 @dataclass(repr=False)
+class CmykColor(YAMLRoot):
+    """
+    CMYK color space coordinates (0-100).
+    """
+
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = URIRef("https://dbpedia.org/ontology/CmykColor")
+    class_class_curie: ClassVar[str] = None
+    class_name: ClassVar[str] = "CmykColor"
+    class_model_uri: ClassVar[URIRef] = POKEMON.CmykColor
+
+    cmykC: Optional[int] = None
+    cmykM: Optional[int] = None
+    cmykY: Optional[int] = None
+    cmykK: Optional[int] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.cmykC is not None and not isinstance(self.cmykC, int):
+            self.cmykC = int(self.cmykC)
+
+        if self.cmykM is not None and not isinstance(self.cmykM, int):
+            self.cmykM = int(self.cmykM)
+
+        if self.cmykY is not None and not isinstance(self.cmykY, int):
+            self.cmykY = int(self.cmykY)
+
+        if self.cmykK is not None and not isinstance(self.cmykK, int):
+            self.cmykK = int(self.cmykK)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
 class Thing(YAMLRoot):
     """
     An rdfs:Resource that defines name and description
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OWL["Thing"]
@@ -365,6 +369,12 @@ class Thing(YAMLRoot):
 
 @dataclass(repr=False)
 class Ability(Thing):
+    """
+    Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon has an ability,
+    and can only have one at a time. Some abilities are exclusive to certain Pokémon and Evolution lines, while others
+    are known by many Pokémon.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Ability"]
@@ -382,8 +392,12 @@ class Ability(Thing):
             self.id = AbilityId(self.id)
 
         if not isinstance(self.effectDescription, list):
-            self.effectDescription = [self.effectDescription] if self.effectDescription is not None else []
-        self.effectDescription = [v if isinstance(v, str) else str(v) for v in self.effectDescription]
+            self.effectDescription = (
+                [self.effectDescription] if self.effectDescription is not None else []
+            )
+        self.effectDescription = [
+            v if isinstance(v, str) else str(v) for v in self.effectDescription
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -393,6 +407,7 @@ class Game(Thing):
     """
     A game is a type of media that can be played by people.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Game"]
@@ -413,6 +428,12 @@ class Game(Thing):
 
 @dataclass(repr=False)
 class Generation(Thing):
+    """
+    Generations refers to the Pokémon game series. It is a group of games that were released at or around the same
+    time. It also means that games in the same generation are compatible with the others, containing the same Pokémon
+    and the number of moves there are to be learned.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Generation"]
@@ -421,7 +442,9 @@ class Generation(Thing):
     class_model_uri: ClassVar[URIRef] = POKEMON.Generation
 
     id: Union[str, GenerationId] = None
-    featuresSpecies: Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]] = empty_list()
+    featuresSpecies: Optional[
+        Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]
+    ] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -430,14 +453,24 @@ class Generation(Thing):
             self.id = GenerationId(self.id)
 
         if not isinstance(self.featuresSpecies, list):
-            self.featuresSpecies = [self.featuresSpecies] if self.featuresSpecies is not None else []
-        self.featuresSpecies = [v if isinstance(v, SpeciesId) else SpeciesId(v) for v in self.featuresSpecies]
+            self.featuresSpecies = (
+                [self.featuresSpecies] if self.featuresSpecies is not None else []
+            )
+        self.featuresSpecies = [
+            v if isinstance(v, SpeciesId) else SpeciesId(v)
+            for v in self.featuresSpecies
+        ]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
 class Item(Thing):
+    """
+    An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner.
+    They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Item"]
@@ -461,6 +494,7 @@ class BattleItem(Item):
     """
     Battle items are items that can be used during battles.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["BattleItem"]
@@ -481,6 +515,10 @@ class BattleItem(Item):
 
 @dataclass(repr=False)
 class Food(Item):
+    """
+    Food items are consumable items in the Pokémon world that can have flavors, firmness, and smoothness attributes.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Food"]
@@ -489,7 +527,9 @@ class Food(Item):
     class_model_uri: ClassVar[URIRef] = POKEMON.Food
 
     id: Union[str, FoodId] = None
-    hasFlavor: Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]] = empty_list()
+    hasFlavor: Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]] = (
+        empty_list()
+    )
     firmness: Optional[int] = None
     smoothness: Optional[int] = None
 
@@ -501,7 +541,9 @@ class Food(Item):
 
         if not isinstance(self.hasFlavor, list):
             self.hasFlavor = [self.hasFlavor] if self.hasFlavor is not None else []
-        self.hasFlavor = [v if isinstance(v, FlavorId) else FlavorId(v) for v in self.hasFlavor]
+        self.hasFlavor = [
+            v if isinstance(v, FlavorId) else FlavorId(v) for v in self.hasFlavor
+        ]
 
         if self.firmness is not None and not isinstance(self.firmness, int):
             self.firmness = int(self.firmness)
@@ -514,6 +556,13 @@ class Food(Item):
 
 @dataclass(repr=False)
 class Berry(Food):
+    """
+    Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a
+    large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became
+    critical help items in battle, where their various effects include HP and status condition restoration, stat
+    enhancement, and even damage negation.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Berry"]
@@ -541,6 +590,7 @@ class HM(Item):
     """
     Hidden Machine
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["HM"]
@@ -562,8 +612,9 @@ class HM(Item):
 @dataclass(repr=False)
 class HoldItem(Item):
     """
-    A hold item is an item that can be held by a Pokemon.
+    A hold item is an item that can be held by a Pokémon.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["HoldItem"]
@@ -584,6 +635,11 @@ class HoldItem(Item):
 
 @dataclass(repr=False)
 class Pokedex(Thing):
+    """
+    The Pokédex is an electronic device designed to catalog and provide information regarding the various species of
+    Pokémon featured in the Pokémon video game, anime and manga series.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Pok%C3%A9dex"]
@@ -605,8 +661,9 @@ class Pokedex(Thing):
 @dataclass(repr=False)
 class PokedexEntry(Thing):
     """
-    A pokedex entry is a description of a Pokemon.
+    A Pokédex entry is a description of a Pokémon.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Pok%C3%A9dexEntry"]
@@ -627,6 +684,10 @@ class PokedexEntry(Thing):
 
 @dataclass(repr=False)
 class Pokeball(Item):
+    """
+    A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Pok%C3%A9ball"]
@@ -647,6 +708,10 @@ class Pokeball(Item):
 
 @dataclass(repr=False)
 class Place(Thing):
+    """
+    Entities that have a somewhat fixed, physical extension.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Place"]
@@ -656,11 +721,13 @@ class Place(Thing):
 
     id: Union[str, PlaceId] = None
 
+
 @dataclass(repr=False)
 class Gym(Place):
     """
     A gym is a location that can be battled at.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Gym"]
@@ -681,6 +748,10 @@ class Gym(Place):
 
 @dataclass(repr=False)
 class Region(Place):
+    """
+    Regions are areas in the Pokémon universe that are smaller parts of a nation.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Region"]
@@ -701,6 +772,10 @@ class Region(Place):
 
 @dataclass(repr=False)
 class Move(Thing):
+    """
+    A move is a special ability of a Pokémon.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Move"]
@@ -710,7 +785,9 @@ class Move(Thing):
 
     id: Union[str, MoveId] = None
     effectDescription: Optional[Union[str, list[str]]] = empty_list()
-    hasType: Optional[Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]] = empty_dict()
+    hasType: Optional[
+        Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]
+    ] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -719,10 +796,16 @@ class Move(Thing):
             self.id = MoveId(self.id)
 
         if not isinstance(self.effectDescription, list):
-            self.effectDescription = [self.effectDescription] if self.effectDescription is not None else []
-        self.effectDescription = [v if isinstance(v, str) else str(v) for v in self.effectDescription]
+            self.effectDescription = (
+                [self.effectDescription] if self.effectDescription is not None else []
+            )
+        self.effectDescription = [
+            v if isinstance(v, str) else str(v) for v in self.effectDescription
+        ]
 
-        self._normalize_inlined_as_list(slot_name="hasType", slot_type=Type, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(
+            slot_name="hasType", slot_type=Type, key_name="id", keyed=True
+        )
 
         super().__post_init__(**kwargs)
 
@@ -730,8 +813,9 @@ class Move(Thing):
 @dataclass(repr=False)
 class Medicine(Item):
     """
-    Medicine items can heal various afflictions of a Pokemon.
+    Medicine items can heal various afflictions of a Pokémon.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Medicine"]
@@ -755,6 +839,7 @@ class SpecialMove(Move):
     """
     A special move is a type of move that can be used during battles.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["SpecialMove"]
@@ -778,6 +863,7 @@ class PhysicalMove(Move):
     """
     A physical move is a type of move that can be used during battles.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["PhysicalMove"]
@@ -801,6 +887,7 @@ class StatusMove(Move):
     """
     A status move is a type of move that can be used during battles.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["StatusMove"]
@@ -821,6 +908,10 @@ class StatusMove(Move):
 
 @dataclass(repr=False)
 class TM(Item):
+    """
+    A Technical Machine is an item that can be used to teach a Pokémon a move.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["TM"]
@@ -844,6 +935,7 @@ class Town(Place):
     """
     A town is a type of place that can be visited.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Town"]
@@ -863,46 +955,37 @@ class Town(Place):
 
 
 @dataclass(repr=False)
-class Colour(Thing):
+class Color(Thing):
     """
-    Color or colour is the visual perceptual property corresponding in humans to the categories called red, yellow,
-    blue and others.
+    Color is the visual perceptual property corresponding in humans to the categories called red, yellow, blue and
+    others.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = DBPEDIA["Colour"]
     class_class_curie: ClassVar[str] = "dbpedia:Colour"
-    class_name: ClassVar[str] = "Colour"
-    class_model_uri: ClassVar[URIRef] = POKEMON.Colour
+    class_name: ClassVar[str] = "Color"
+    class_model_uri: ClassVar[URIRef] = POKEMON.Color
 
-    id: Union[str, ColourId] = None
-    cyanic: Optional[int] = None
-    magenta: Optional[int] = None
-    colourYellow: Optional[int] = None
-    black: Optional[int] = None
+    id: Union[str, ColorId] = None
     wavelength: Optional[float] = None
     frequency: Optional[float] = None
-    colourHexCode: Optional[str] = None
-    connotation: Optional[Union[Union[str, ConnotationId], list[Union[str, ConnotationId]]]] = empty_list()
+    colorHexCode: Optional[str] = None
+    connotation: Optional[
+        Union[Union[str, ConnotationId], list[Union[str, ConnotationId]]]
+    ] = empty_list()
     thumbnail: Optional[Union[str, URI]] = None
+    cmykC: Optional[int] = None
+    cmykM: Optional[int] = None
+    cmykY: Optional[int] = None
+    cmykK: Optional[int] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, ColourId):
-            self.id = ColourId(self.id)
-
-        if self.cyanic is not None and not isinstance(self.cyanic, int):
-            self.cyanic = int(self.cyanic)
-
-        if self.magenta is not None and not isinstance(self.magenta, int):
-            self.magenta = int(self.magenta)
-
-        if self.colourYellow is not None and not isinstance(self.colourYellow, int):
-            self.colourYellow = int(self.colourYellow)
-
-        if self.black is not None and not isinstance(self.black, int):
-            self.black = int(self.black)
+        if not isinstance(self.id, ColorId):
+            self.id = ColorId(self.id)
 
         if self.wavelength is not None and not isinstance(self.wavelength, float):
             self.wavelength = float(self.wavelength)
@@ -910,15 +993,32 @@ class Colour(Thing):
         if self.frequency is not None and not isinstance(self.frequency, float):
             self.frequency = float(self.frequency)
 
-        if self.colourHexCode is not None and not isinstance(self.colourHexCode, str):
-            self.colourHexCode = str(self.colourHexCode)
+        if self.colorHexCode is not None and not isinstance(self.colorHexCode, str):
+            self.colorHexCode = str(self.colorHexCode)
 
         if not isinstance(self.connotation, list):
-            self.connotation = [self.connotation] if self.connotation is not None else []
-        self.connotation = [v if isinstance(v, ConnotationId) else ConnotationId(v) for v in self.connotation]
+            self.connotation = (
+                [self.connotation] if self.connotation is not None else []
+            )
+        self.connotation = [
+            v if isinstance(v, ConnotationId) else ConnotationId(v)
+            for v in self.connotation
+        ]
 
         if self.thumbnail is not None and not isinstance(self.thumbnail, URI):
             self.thumbnail = URI(self.thumbnail)
+
+        if self.cmykC is not None and not isinstance(self.cmykC, int):
+            self.cmykC = int(self.cmykC)
+
+        if self.cmykM is not None and not isinstance(self.cmykM, int):
+            self.cmykM = int(self.cmykM)
+
+        if self.cmykY is not None and not isinstance(self.cmykY, int):
+            self.cmykY = int(self.cmykY)
+
+        if self.cmykK is not None and not isinstance(self.cmykK, int):
+            self.cmykK = int(self.cmykK)
 
         super().__post_init__(**kwargs)
 
@@ -926,8 +1026,9 @@ class Colour(Thing):
 @dataclass(repr=False)
 class Connotation(Thing):
     """
-    Cultural or symbolic meaning associated with a colour. Imported from DBpedia as generic owl:Thing resources.
+    Cultural or symbolic meaning associated with a color. Imported from DBpedia as generic owl:Thing resources.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OWL["Thing"]
@@ -957,6 +1058,7 @@ class NamedIndividual(Thing):
     """
     A Thing that requires a name
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = OWL["NamedIndividual"]
@@ -978,6 +1080,11 @@ class NamedIndividual(Thing):
 
 @dataclass(repr=False)
 class EggGroup(NamedIndividual):
+    """
+    Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in
+    Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["EggGroup"]
@@ -999,6 +1106,11 @@ class EggGroup(NamedIndividual):
 
 @dataclass(repr=False)
 class Flavor(NamedIndividual):
+    """
+    Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have
+    more than one flavor, and the flavor determines which Pokémon can eat them.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Flavor"]
@@ -1021,8 +1133,9 @@ class Flavor(NamedIndividual):
 @dataclass(repr=False)
 class Habitat(NamedIndividual):
     """
-    A habitat is a type of environment that certain Pokemon belong to.
+    A habitat is a type of environment that certain Pokémon belong to.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Habitat"]
@@ -1045,8 +1158,9 @@ class Habitat(NamedIndividual):
 @dataclass(repr=False)
 class Shape(NamedIndividual):
     """
-    Shapes are categories that certain Pokemon belong to, which determine which Pokemon they can breed with.
+    Shapes are categories that certain Pokémon belong to, which determine which Pokémon they can breed with.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Shape"]
@@ -1069,8 +1183,9 @@ class Shape(NamedIndividual):
 @dataclass(repr=False)
 class Species(NamedIndividual):
     """
-    A species is a category of Pokemon that share common features.
+    A species is a category of Pokémon that share common features.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Species"]
@@ -1080,19 +1195,31 @@ class Species(NamedIndividual):
 
     id: Union[str, SpeciesId] = None
     name: str = None
-    hasColour: Optional[Union[str, ColourId]] = None
-    mayHaveHiddenAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
-    mayHaveAbility: Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]] = empty_list()
-    isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = empty_list()
+    hasColor: Optional[Union[str, ColorId]] = None
+    mayHaveHiddenAbility: Optional[
+        Union[Union[str, AbilityId], list[Union[str, AbilityId]]]
+    ] = empty_list()
+    mayHaveAbility: Optional[
+        Union[Union[str, AbilityId], list[Union[str, AbilityId]]]
+    ] = empty_list()
+    isAbleToApply: Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]] = (
+        empty_list()
+    )
     hasHeight: Optional[Union[dict, "Quantity"]] = None
     hasWeight: Optional[Union[dict, "Quantity"]] = None
     depiction: Optional[str] = None
-    inEggGroup: Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]] = empty_list()
-    hasType: Optional[Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]] = empty_dict()
+    inEggGroup: Optional[
+        Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]
+    ] = empty_list()
+    hasType: Optional[
+        Union[dict[Union[str, TypeId], Union[dict, "Type"]], list[Union[dict, "Type"]]]
+    ] = empty_dict()
     hasShape: Optional[Union[str, ShapeId]] = None
     hasGenus: Optional[str] = None
     hasCatchRate: Optional[int] = None
-    foundIn: Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]] = empty_list()
+    foundIn: Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]] = (
+        empty_list()
+    )
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1100,20 +1227,35 @@ class Species(NamedIndividual):
         if not isinstance(self.id, SpeciesId):
             self.id = SpeciesId(self.id)
 
-        if self.hasColour is not None and not isinstance(self.hasColour, ColourId):
-            self.hasColour = ColourId(self.hasColour)
+        if self.hasColor is not None and not isinstance(self.hasColor, ColorId):
+            self.hasColor = ColorId(self.hasColor)
 
         if not isinstance(self.mayHaveHiddenAbility, list):
-            self.mayHaveHiddenAbility = [self.mayHaveHiddenAbility] if self.mayHaveHiddenAbility is not None else []
-        self.mayHaveHiddenAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveHiddenAbility]
+            self.mayHaveHiddenAbility = (
+                [self.mayHaveHiddenAbility]
+                if self.mayHaveHiddenAbility is not None
+                else []
+            )
+        self.mayHaveHiddenAbility = [
+            v if isinstance(v, AbilityId) else AbilityId(v)
+            for v in self.mayHaveHiddenAbility
+        ]
 
         if not isinstance(self.mayHaveAbility, list):
-            self.mayHaveAbility = [self.mayHaveAbility] if self.mayHaveAbility is not None else []
-        self.mayHaveAbility = [v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveAbility]
+            self.mayHaveAbility = (
+                [self.mayHaveAbility] if self.mayHaveAbility is not None else []
+            )
+        self.mayHaveAbility = [
+            v if isinstance(v, AbilityId) else AbilityId(v) for v in self.mayHaveAbility
+        ]
 
         if not isinstance(self.isAbleToApply, list):
-            self.isAbleToApply = [self.isAbleToApply] if self.isAbleToApply is not None else []
-        self.isAbleToApply = [v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply]
+            self.isAbleToApply = (
+                [self.isAbleToApply] if self.isAbleToApply is not None else []
+            )
+        self.isAbleToApply = [
+            v if isinstance(v, MoveId) else MoveId(v) for v in self.isAbleToApply
+        ]
 
         if self.hasHeight is not None and not isinstance(self.hasHeight, Quantity):
             self.hasHeight = Quantity(**as_dict(self.hasHeight))
@@ -1126,9 +1268,13 @@ class Species(NamedIndividual):
 
         if not isinstance(self.inEggGroup, list):
             self.inEggGroup = [self.inEggGroup] if self.inEggGroup is not None else []
-        self.inEggGroup = [v if isinstance(v, EggGroupId) else EggGroupId(v) for v in self.inEggGroup]
+        self.inEggGroup = [
+            v if isinstance(v, EggGroupId) else EggGroupId(v) for v in self.inEggGroup
+        ]
 
-        self._normalize_inlined_as_list(slot_name="hasType", slot_type=Type, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(
+            slot_name="hasType", slot_type=Type, key_name="id", keyed=True
+        )
 
         if self.hasShape is not None and not isinstance(self.hasShape, ShapeId):
             self.hasShape = ShapeId(self.hasShape)
@@ -1141,13 +1287,20 @@ class Species(NamedIndividual):
 
         if not isinstance(self.foundIn, list):
             self.foundIn = [self.foundIn] if self.foundIn is not None else []
-        self.foundIn = [v if isinstance(v, HabitatId) else HabitatId(v) for v in self.foundIn]
+        self.foundIn = [
+            v if isinstance(v, HabitatId) else HabitatId(v) for v in self.foundIn
+        ]
 
         super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
 class Type(NamedIndividual):
+    """
+    All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses
+    in both attack and defense.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Type"]
@@ -1172,6 +1325,7 @@ class Person(NamedIndividual):
     """
     A person is a human being
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = FOAF["Person"]
@@ -1198,8 +1352,9 @@ class Person(NamedIndividual):
 @dataclass(repr=False)
 class Trainer(Person):
     """
-    A trainer is a person who is able to catch Pokemon.
+    A trainer is a person who is able to catch Pokémon.
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["Trainer"]
@@ -1221,6 +1376,12 @@ class Trainer(Person):
 
 @dataclass(repr=False)
 class GymLeader(Trainer):
+    """
+    A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and
+    their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym
+    leader will gift them a badge that's unique to that specific gym.
+    """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = POKEMON["GymLeader"]
@@ -1245,6 +1406,7 @@ class Concept(Thing):
     """
     The root class for all QUDT concepts
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Concept"]
@@ -1264,7 +1426,9 @@ class Concept(Thing):
         if self.deprecated is not None and not isinstance(self.deprecated, Bool):
             self.deprecated = Bool(self.deprecated)
 
-        if self.plainTextDescription is not None and not isinstance(self.plainTextDescription, str):
+        if self.plainTextDescription is not None and not isinstance(
+            self.plainTextDescription, str
+        ):
             self.plainTextDescription = str(self.plainTextDescription)
 
         super().__post_init__(**kwargs)
@@ -1274,6 +1438,7 @@ class Aspect(YAMLRoot):
     """
     An abstract type class that defines properties that can be reused
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Aspect"]
@@ -1287,6 +1452,7 @@ class Quantifiable(Aspect):
     """
     Ascribes to some thing the capability of being measured, observed, or counted
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Quantifiable"]
@@ -1302,10 +1468,14 @@ class Quantifiable(Aspect):
         if self.hasUnit is not None and not isinstance(self.hasUnit, UnitId):
             self.hasUnit = UnitId(self.hasUnit)
 
-        if self.standardUncertainty is not None and not isinstance(self.standardUncertainty, Decimal):
+        if self.standardUncertainty is not None and not isinstance(
+            self.standardUncertainty, Decimal
+        ):
             self.standardUncertainty = Decimal(self.standardUncertainty)
 
-        if self.relativeStandardUncertainty is not None and not isinstance(self.relativeStandardUncertainty, float):
+        if self.relativeStandardUncertainty is not None and not isinstance(
+            self.relativeStandardUncertainty, float
+        ):
             self.relativeStandardUncertainty = float(self.relativeStandardUncertainty)
 
         super().__post_init__(**kwargs)
@@ -1316,6 +1486,7 @@ class Verifiable(Aspect):
     """
     Holds properties that provide external knowledge and specifications of a given resource
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Verifiable"]
@@ -1325,9 +1496,15 @@ class Verifiable(Aspect):
 
     dbpediaMatch: Optional[Union[str, URI]] = None
     wikidataMatch: Optional[Union[str, URI]] = None
-    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.dbpediaMatch is not None and not isinstance(self.dbpediaMatch, URI):
@@ -1337,16 +1514,32 @@ class Verifiable(Aspect):
             self.wikidataMatch = URI(self.wikidataMatch)
 
         if not isinstance(self.informativeReference, list):
-            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
-        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
+            self.informativeReference = (
+                [self.informativeReference]
+                if self.informativeReference is not None
+                else []
+            )
+        self.informativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.informativeReference
+        ]
 
         if not isinstance(self.isoNormativeReference, list):
-            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
-        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+            self.isoNormativeReference = (
+                [self.isoNormativeReference]
+                if self.isoNormativeReference is not None
+                else []
+            )
+        self.isoNormativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference
+        ]
 
         if not isinstance(self.normativeReference, list):
-            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
-        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
+            self.normativeReference = (
+                [self.normativeReference] if self.normativeReference is not None else []
+            )
+        self.normativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.normativeReference
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -1356,6 +1549,7 @@ class Quantity(Concept):
     """
     A measured quantity with kind and value
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
@@ -1364,8 +1558,12 @@ class Quantity(Concept):
     class_model_uri: ClassVar[URIRef] = POKEMON.Quantity
 
     id: Union[str, QuantityId] = None
-    hasQuantityKind: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
-    quantityValue: Optional[Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]] = empty_list()
+    hasQuantityKind: Optional[
+        Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]
+    ] = empty_list()
+    quantityValue: Optional[
+        Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]
+    ] = empty_list()
     hasUnit: Optional[Union[str, UnitId]] = None
     standardUncertainty: Optional[Decimal] = None
     relativeStandardUncertainty: Optional[float] = None
@@ -1377,20 +1575,34 @@ class Quantity(Concept):
             self.id = QuantityId(self.id)
 
         if not isinstance(self.hasQuantityKind, list):
-            self.hasQuantityKind = [self.hasQuantityKind] if self.hasQuantityKind is not None else []
-        self.hasQuantityKind = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.hasQuantityKind]
+            self.hasQuantityKind = (
+                [self.hasQuantityKind] if self.hasQuantityKind is not None else []
+            )
+        self.hasQuantityKind = [
+            v if isinstance(v, QuantityKindId) else QuantityKindId(v)
+            for v in self.hasQuantityKind
+        ]
 
         if not isinstance(self.quantityValue, list):
-            self.quantityValue = [self.quantityValue] if self.quantityValue is not None else []
-        self.quantityValue = [v if isinstance(v, QuantityValueId) else QuantityValueId(v) for v in self.quantityValue]
+            self.quantityValue = (
+                [self.quantityValue] if self.quantityValue is not None else []
+            )
+        self.quantityValue = [
+            v if isinstance(v, QuantityValueId) else QuantityValueId(v)
+            for v in self.quantityValue
+        ]
 
         if self.hasUnit is not None and not isinstance(self.hasUnit, UnitId):
             self.hasUnit = UnitId(self.hasUnit)
 
-        if self.standardUncertainty is not None and not isinstance(self.standardUncertainty, Decimal):
+        if self.standardUncertainty is not None and not isinstance(
+            self.standardUncertainty, Decimal
+        ):
             self.standardUncertainty = Decimal(self.standardUncertainty)
 
-        if self.relativeStandardUncertainty is not None and not isinstance(self.relativeStandardUncertainty, float):
+        if self.relativeStandardUncertainty is not None and not isinstance(
+            self.relativeStandardUncertainty, float
+        ):
             self.relativeStandardUncertainty = float(self.relativeStandardUncertainty)
 
         super().__post_init__(**kwargs)
@@ -1401,6 +1613,7 @@ class QuantityValue(Concept):
     """
     Numeric value with unit
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityValue"]
@@ -1432,6 +1645,7 @@ class AbstractQuantityKind(Concept):
     """
     Abstract base for quantity kinds, constraining symbol and broader
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["AbstractQuantityKind"]
@@ -1441,7 +1655,9 @@ class AbstractQuantityKind(Concept):
 
     id: Union[str, AbstractQuantityKindId] = None
     symbol: Optional[str] = None
-    broader: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
+    broader: Optional[
+        Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]
+    ] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.symbol is not None and not isinstance(self.symbol, str):
@@ -1449,7 +1665,10 @@ class AbstractQuantityKind(Concept):
 
         if not isinstance(self.broader, list):
             self.broader = [self.broader] if self.broader is not None else []
-        self.broader = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.broader]
+        self.broader = [
+            v if isinstance(v, QuantityKindId) else QuantityKindId(v)
+            for v in self.broader
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -1459,6 +1678,7 @@ class QuantityKind(AbstractQuantityKind):
     """
     Kind of quantity (e.g., Length, Mass, Height, Weight)
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKind"]
@@ -1469,13 +1689,21 @@ class QuantityKind(AbstractQuantityKind):
     id: Union[str, QuantityKindId] = None
     latexSymbol: Optional[str] = None
     hasDimensionVector: Optional[Union[str, QuantityKindDimensionVectorId]] = None
-    applicableUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = empty_list()
+    applicableUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = (
+        empty_list()
+    )
     exactMatch: Optional[Union[str, list[str]]] = empty_list()
     dbpediaMatch: Optional[Union[str, URI]] = None
     wikidataMatch: Optional[Union[str, URI]] = None
-    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1486,12 +1714,20 @@ class QuantityKind(AbstractQuantityKind):
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
 
-        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVectorId):
-            self.hasDimensionVector = QuantityKindDimensionVectorId(self.hasDimensionVector)
+        if self.hasDimensionVector is not None and not isinstance(
+            self.hasDimensionVector, QuantityKindDimensionVectorId
+        ):
+            self.hasDimensionVector = QuantityKindDimensionVectorId(
+                self.hasDimensionVector
+            )
 
         if not isinstance(self.applicableUnit, list):
-            self.applicableUnit = [self.applicableUnit] if self.applicableUnit is not None else []
-        self.applicableUnit = [v if isinstance(v, UnitId) else UnitId(v) for v in self.applicableUnit]
+            self.applicableUnit = (
+                [self.applicableUnit] if self.applicableUnit is not None else []
+            )
+        self.applicableUnit = [
+            v if isinstance(v, UnitId) else UnitId(v) for v in self.applicableUnit
+        ]
 
         if not isinstance(self.exactMatch, list):
             self.exactMatch = [self.exactMatch] if self.exactMatch is not None else []
@@ -1504,16 +1740,32 @@ class QuantityKind(AbstractQuantityKind):
             self.wikidataMatch = URI(self.wikidataMatch)
 
         if not isinstance(self.informativeReference, list):
-            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
-        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
+            self.informativeReference = (
+                [self.informativeReference]
+                if self.informativeReference is not None
+                else []
+            )
+        self.informativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.informativeReference
+        ]
 
         if not isinstance(self.isoNormativeReference, list):
-            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
-        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+            self.isoNormativeReference = (
+                [self.isoNormativeReference]
+                if self.isoNormativeReference is not None
+                else []
+            )
+        self.isoNormativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference
+        ]
 
         if not isinstance(self.normativeReference, list):
-            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
-        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
+            self.normativeReference = (
+                [self.normativeReference] if self.normativeReference is not None else []
+            )
+        self.normativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.normativeReference
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -1523,6 +1775,7 @@ class Unit(Concept):
     """
     Unit of measurement
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Unit"]
@@ -1536,17 +1789,29 @@ class Unit(Concept):
     conversionMultiplier: Optional[float] = None
     conversionOffset: Optional[float] = None
     hasDimensionVector: Optional[Union[str, QuantityKindDimensionVectorId]] = None
-    hasQuantityKind: Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]] = empty_list()
-    isUnitOfSystem: Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]] = empty_list()
-    applicableSystem: Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]] = empty_list()
+    hasQuantityKind: Optional[
+        Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]
+    ] = empty_list()
+    isUnitOfSystem: Optional[
+        Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]
+    ] = empty_list()
+    applicableSystem: Optional[
+        Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]
+    ] = empty_list()
     prefix: Optional[Union[str, PrefixId]] = None
     scalingOf: Optional[Union[str, UnitId]] = None
     ucumCode: Optional[str] = None
     dbpediaMatch: Optional[Union[str, URI]] = None
     wikidataMatch: Optional[Union[str, URI]] = None
-    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1560,26 +1825,49 @@ class Unit(Concept):
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
 
-        if self.conversionMultiplier is not None and not isinstance(self.conversionMultiplier, float):
+        if self.conversionMultiplier is not None and not isinstance(
+            self.conversionMultiplier, float
+        ):
             self.conversionMultiplier = float(self.conversionMultiplier)
 
-        if self.conversionOffset is not None and not isinstance(self.conversionOffset, float):
+        if self.conversionOffset is not None and not isinstance(
+            self.conversionOffset, float
+        ):
             self.conversionOffset = float(self.conversionOffset)
 
-        if self.hasDimensionVector is not None and not isinstance(self.hasDimensionVector, QuantityKindDimensionVectorId):
-            self.hasDimensionVector = QuantityKindDimensionVectorId(self.hasDimensionVector)
+        if self.hasDimensionVector is not None and not isinstance(
+            self.hasDimensionVector, QuantityKindDimensionVectorId
+        ):
+            self.hasDimensionVector = QuantityKindDimensionVectorId(
+                self.hasDimensionVector
+            )
 
         if not isinstance(self.hasQuantityKind, list):
-            self.hasQuantityKind = [self.hasQuantityKind] if self.hasQuantityKind is not None else []
-        self.hasQuantityKind = [v if isinstance(v, QuantityKindId) else QuantityKindId(v) for v in self.hasQuantityKind]
+            self.hasQuantityKind = (
+                [self.hasQuantityKind] if self.hasQuantityKind is not None else []
+            )
+        self.hasQuantityKind = [
+            v if isinstance(v, QuantityKindId) else QuantityKindId(v)
+            for v in self.hasQuantityKind
+        ]
 
         if not isinstance(self.isUnitOfSystem, list):
-            self.isUnitOfSystem = [self.isUnitOfSystem] if self.isUnitOfSystem is not None else []
-        self.isUnitOfSystem = [v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v) for v in self.isUnitOfSystem]
+            self.isUnitOfSystem = (
+                [self.isUnitOfSystem] if self.isUnitOfSystem is not None else []
+            )
+        self.isUnitOfSystem = [
+            v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v)
+            for v in self.isUnitOfSystem
+        ]
 
         if not isinstance(self.applicableSystem, list):
-            self.applicableSystem = [self.applicableSystem] if self.applicableSystem is not None else []
-        self.applicableSystem = [v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v) for v in self.applicableSystem]
+            self.applicableSystem = (
+                [self.applicableSystem] if self.applicableSystem is not None else []
+            )
+        self.applicableSystem = [
+            v if isinstance(v, SystemOfUnitsId) else SystemOfUnitsId(v)
+            for v in self.applicableSystem
+        ]
 
         if self.prefix is not None and not isinstance(self.prefix, PrefixId):
             self.prefix = PrefixId(self.prefix)
@@ -1597,16 +1885,32 @@ class Unit(Concept):
             self.wikidataMatch = URI(self.wikidataMatch)
 
         if not isinstance(self.informativeReference, list):
-            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
-        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
+            self.informativeReference = (
+                [self.informativeReference]
+                if self.informativeReference is not None
+                else []
+            )
+        self.informativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.informativeReference
+        ]
 
         if not isinstance(self.isoNormativeReference, list):
-            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
-        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+            self.isoNormativeReference = (
+                [self.isoNormativeReference]
+                if self.isoNormativeReference is not None
+                else []
+            )
+        self.isoNormativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference
+        ]
 
         if not isinstance(self.normativeReference, list):
-            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
-        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
+            self.normativeReference = (
+                [self.normativeReference] if self.normativeReference is not None else []
+            )
+        self.normativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.normativeReference
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -1616,6 +1920,7 @@ class DerivedUnit(Unit):
     """
     Unit derived from base units (e.g., KiloM)
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["DerivedUnit"]
@@ -1639,6 +1944,7 @@ class SystemOfUnits(Concept):
     """
     A coherent system of units (e.g., SI, CGS)
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["SystemOfUnits"]
@@ -1647,7 +1953,9 @@ class SystemOfUnits(Concept):
     class_model_uri: ClassVar[URIRef] = POKEMON.SystemOfUnits
 
     id: Union[str, SystemOfUnitsId] = None
-    hasBaseUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = empty_list()
+    hasBaseUnit: Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]] = (
+        empty_list()
+    )
     prefix: Optional[Union[str, PrefixId]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -1657,8 +1965,12 @@ class SystemOfUnits(Concept):
             self.id = SystemOfUnitsId(self.id)
 
         if not isinstance(self.hasBaseUnit, list):
-            self.hasBaseUnit = [self.hasBaseUnit] if self.hasBaseUnit is not None else []
-        self.hasBaseUnit = [v if isinstance(v, UnitId) else UnitId(v) for v in self.hasBaseUnit]
+            self.hasBaseUnit = (
+                [self.hasBaseUnit] if self.hasBaseUnit is not None else []
+            )
+        self.hasBaseUnit = [
+            v if isinstance(v, UnitId) else UnitId(v) for v in self.hasBaseUnit
+        ]
 
         if self.prefix is not None and not isinstance(self.prefix, PrefixId):
             self.prefix = PrefixId(self.prefix)
@@ -1671,6 +1983,7 @@ class QuantityKindDimensionVector(Concept):
     """
     Dimension vector expressing quantity in base dimensions
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKindDimensionVector"]
@@ -1698,28 +2011,53 @@ class QuantityKindDimensionVector(Concept):
         if self.latexSymbol is not None and not isinstance(self.latexSymbol, str):
             self.latexSymbol = str(self.latexSymbol)
 
-        if self.dimensionExponentForLength is not None and not isinstance(self.dimensionExponentForLength, int):
+        if self.dimensionExponentForLength is not None and not isinstance(
+            self.dimensionExponentForLength, int
+        ):
             self.dimensionExponentForLength = int(self.dimensionExponentForLength)
 
-        if self.dimensionExponentForMass is not None and not isinstance(self.dimensionExponentForMass, int):
+        if self.dimensionExponentForMass is not None and not isinstance(
+            self.dimensionExponentForMass, int
+        ):
             self.dimensionExponentForMass = int(self.dimensionExponentForMass)
 
-        if self.dimensionExponentForTime is not None and not isinstance(self.dimensionExponentForTime, int):
+        if self.dimensionExponentForTime is not None and not isinstance(
+            self.dimensionExponentForTime, int
+        ):
             self.dimensionExponentForTime = int(self.dimensionExponentForTime)
 
-        if self.dimensionExponentForElectricCurrent is not None and not isinstance(self.dimensionExponentForElectricCurrent, int):
-            self.dimensionExponentForElectricCurrent = int(self.dimensionExponentForElectricCurrent)
+        if self.dimensionExponentForElectricCurrent is not None and not isinstance(
+            self.dimensionExponentForElectricCurrent, int
+        ):
+            self.dimensionExponentForElectricCurrent = int(
+                self.dimensionExponentForElectricCurrent
+            )
 
-        if self.dimensionExponentForThermodynamicTemperature is not None and not isinstance(self.dimensionExponentForThermodynamicTemperature, int):
-            self.dimensionExponentForThermodynamicTemperature = int(self.dimensionExponentForThermodynamicTemperature)
+        if (
+            self.dimensionExponentForThermodynamicTemperature is not None
+            and not isinstance(self.dimensionExponentForThermodynamicTemperature, int)
+        ):
+            self.dimensionExponentForThermodynamicTemperature = int(
+                self.dimensionExponentForThermodynamicTemperature
+            )
 
-        if self.dimensionExponentForAmountOfSubstance is not None and not isinstance(self.dimensionExponentForAmountOfSubstance, int):
-            self.dimensionExponentForAmountOfSubstance = int(self.dimensionExponentForAmountOfSubstance)
+        if self.dimensionExponentForAmountOfSubstance is not None and not isinstance(
+            self.dimensionExponentForAmountOfSubstance, int
+        ):
+            self.dimensionExponentForAmountOfSubstance = int(
+                self.dimensionExponentForAmountOfSubstance
+            )
 
-        if self.dimensionExponentForLuminousIntensity is not None and not isinstance(self.dimensionExponentForLuminousIntensity, int):
-            self.dimensionExponentForLuminousIntensity = int(self.dimensionExponentForLuminousIntensity)
+        if self.dimensionExponentForLuminousIntensity is not None and not isinstance(
+            self.dimensionExponentForLuminousIntensity, int
+        ):
+            self.dimensionExponentForLuminousIntensity = int(
+                self.dimensionExponentForLuminousIntensity
+            )
 
-        if self.dimensionlessExponent is not None and not isinstance(self.dimensionlessExponent, int):
+        if self.dimensionlessExponent is not None and not isinstance(
+            self.dimensionlessExponent, int
+        ):
             self.dimensionlessExponent = int(self.dimensionlessExponent)
 
         super().__post_init__(**kwargs)
@@ -1730,6 +2068,7 @@ class QuantityKindDimensionVectorSI(QuantityKindDimensionVector):
     """
     SI dimension vector
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKindDimensionVector_SI"]
@@ -1753,6 +2092,7 @@ class QuantityKindDimensionVectorCGS(QuantityKindDimensionVector):
     """
     CGS dimension vector
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKindDimensionVector_CGS"]
@@ -1776,6 +2116,7 @@ class QuantityKindDimensionVectorImperial(QuantityKindDimensionVector):
     """
     Imperial dimension vector
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKindDimensionVector_Imperial"]
@@ -1799,6 +2140,7 @@ class QuantityKindDimensionVectorISO(QuantityKindDimensionVector):
     """
     ISO dimension vector
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["QuantityKindDimensionVector_ISO"]
@@ -1822,6 +2164,7 @@ class Prefix(Concept):
     """
     Unit prefix (e.g., Kilo, Milli)
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["Prefix"]
@@ -1836,9 +2179,15 @@ class Prefix(Concept):
     exactMatch: Optional[Union[str, list[str]]] = empty_list()
     dbpediaMatch: Optional[Union[str, URI]] = None
     wikidataMatch: Optional[Union[str, URI]] = None
-    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
-    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = empty_list()
+    informativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    isoNormativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
+    normativeReference: Optional[Union[Union[str, URI], list[Union[str, URI]]]] = (
+        empty_list()
+    )
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1849,7 +2198,9 @@ class Prefix(Concept):
         if self.symbol is not None and not isinstance(self.symbol, str):
             self.symbol = str(self.symbol)
 
-        if self.prefixMultiplier is not None and not isinstance(self.prefixMultiplier, float):
+        if self.prefixMultiplier is not None and not isinstance(
+            self.prefixMultiplier, float
+        ):
             self.prefixMultiplier = float(self.prefixMultiplier)
 
         if self.ucumCode is not None and not isinstance(self.ucumCode, str):
@@ -1866,16 +2217,32 @@ class Prefix(Concept):
             self.wikidataMatch = URI(self.wikidataMatch)
 
         if not isinstance(self.informativeReference, list):
-            self.informativeReference = [self.informativeReference] if self.informativeReference is not None else []
-        self.informativeReference = [v if isinstance(v, URI) else URI(v) for v in self.informativeReference]
+            self.informativeReference = (
+                [self.informativeReference]
+                if self.informativeReference is not None
+                else []
+            )
+        self.informativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.informativeReference
+        ]
 
         if not isinstance(self.isoNormativeReference, list):
-            self.isoNormativeReference = [self.isoNormativeReference] if self.isoNormativeReference is not None else []
-        self.isoNormativeReference = [v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference]
+            self.isoNormativeReference = (
+                [self.isoNormativeReference]
+                if self.isoNormativeReference is not None
+                else []
+            )
+        self.isoNormativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.isoNormativeReference
+        ]
 
         if not isinstance(self.normativeReference, list):
-            self.normativeReference = [self.normativeReference] if self.normativeReference is not None else []
-        self.normativeReference = [v if isinstance(v, URI) else URI(v) for v in self.normativeReference]
+            self.normativeReference = (
+                [self.normativeReference] if self.normativeReference is not None else []
+            )
+        self.normativeReference = [
+            v if isinstance(v, URI) else URI(v) for v in self.normativeReference
+        ]
 
         super().__post_init__(**kwargs)
 
@@ -1885,6 +2252,7 @@ class DecimalPrefix(Prefix):
     """
     Decimal prefix (powers of 10)
     """
+
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = QUDT["DecimalPrefix"]
@@ -1905,276 +2273,789 @@ class DecimalPrefix(Prefix):
 
 # Enumerations
 class HabitatEnum(EnumDefinitionImpl):
-
-    Cave = PermissibleValue(
-        text="Cave",
-        meaning=POKEMON["Habitat_Cave"])
-    Forest = PermissibleValue(
-        text="Forest",
-        meaning=POKEMON["Habitat_Forest"])
-    Grassland = PermissibleValue(
-        text="Grassland",
-        meaning=POKEMON["Habitat_Grassland"])
+    Cave = PermissibleValue(text="Cave", meaning=POKEMON["Habitat_Cave"])
+    Forest = PermissibleValue(text="Forest", meaning=POKEMON["Habitat_Forest"])
+    Grassland = PermissibleValue(text="Grassland", meaning=POKEMON["Habitat_Grassland"])
 
     _defn = EnumDefinition(
         name="HabitatEnum",
     )
 
+
 # Slots
 class slots:
     pass
 
-slots.effectDescription = Slot(uri=POKEMON.effectDescription, name="effectDescription", curie=POKEMON.curie('effectDescription'),
-                   model_uri=POKEMON.effectDescription, domain=None, range=Optional[Union[str, list[str]]])
 
-slots.containsPlace = Slot(uri=POKEMON.contains_place, name="containsPlace", curie=POKEMON.curie('contains_place'),
-                   model_uri=POKEMON.containsPlace, domain=Place, range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]])
-
-slots.describedInPokedex = Slot(uri=POKEMON['describedInPok%C3%A9dex'], name="describedInPokedex", curie=POKEMON.curie('describedInPok%C3%A9dex'),
-                   model_uri=POKEMON.describedInPokedex, domain=Species, range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]])
-
-slots.describesPokemon = Slot(uri=POKEMON['describesPok%C3%A9mon'], name="describesPokemon", curie=POKEMON.curie('describesPok%C3%A9mon'),
-                   model_uri=POKEMON.describesPokemon, domain=PokedexEntry, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
-
-slots.featuresSpecies = Slot(uri=POKEMON.featuresSpecies, name="featuresSpecies", curie=POKEMON.curie('featuresSpecies'),
-                   model_uri=POKEMON.featuresSpecies, domain=None, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
-
-slots.hasPokedexEntry = Slot(uri=POKEMON['hasPok%C3%A9dexEntry'], name="hasPokedexEntry", curie=POKEMON.curie('hasPok%C3%A9dexEntry'),
-                   model_uri=POKEMON.hasPokedexEntry, domain=Pokedex, range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]])
-
-slots.evolvesFrom = Slot(uri=POKEMON.evolvesFrom, name="evolvesFrom", curie=POKEMON.curie('evolvesFrom'),
-                   model_uri=POKEMON.evolvesFrom, domain=Species, range=Optional[Union[str, SpeciesId]])
-
-slots.evolvesTo = Slot(uri=POKEMON.evolvesTo, name="evolvesTo", curie=POKEMON.curie('evolvesTo'),
-                   model_uri=POKEMON.evolvesTo, domain=Species, range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]])
-
-slots.foundIn = Slot(uri=POKEMON.foundIn, name="foundIn", curie=POKEMON.curie('foundIn'),
-                   model_uri=POKEMON.foundIn, domain=Species, range=Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]])
-
-slots.hasColour = Slot(uri=POKEMON.hasColour, name="hasColour", curie=POKEMON.curie('hasColour'),
-                   model_uri=POKEMON.hasColour, domain=None, range=Optional[Union[str, ColourId]])
-
-slots.hasFlavor = Slot(uri=POKEMON.hasFlavor, name="hasFlavor", curie=POKEMON.curie('hasFlavor'),
-                   model_uri=POKEMON.hasFlavor, domain=Food, range=Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]])
-
-slots.hasType = Slot(uri=POKEMON.hasType, name="hasType", curie=POKEMON.curie('hasType'),
-                   model_uri=POKEMON.hasType, domain=None, range=Optional[Union[dict[Union[str, TypeId], Union[dict, Type]], list[Union[dict, Type]]]])
-
-slots.hasSize = Slot(uri=POKEMON.hasSize, name="hasSize", curie=POKEMON.curie('hasSize'),
-                   model_uri=POKEMON.hasSize, domain=None, range=Optional[Union[dict, Quantity]])
-
-slots.hasHeight = Slot(uri=POKEMON.hasHeight, name="hasHeight", curie=POKEMON.curie('hasHeight'),
-                   model_uri=POKEMON.hasHeight, domain=Species, range=Optional[Union[dict, "Quantity"]])
-
-slots.hasWeight = Slot(uri=POKEMON.hasWeight, name="hasWeight", curie=POKEMON.curie('hasWeight'),
-                   model_uri=POKEMON.hasWeight, domain=Species, range=Optional[Union[dict, "Quantity"]])
-
-slots.hasCatchRate = Slot(uri=POKEMON.hasCatchRate, name="hasCatchRate", curie=POKEMON.curie('hasCatchRate'),
-                   model_uri=POKEMON.hasCatchRate, domain=Species, range=Optional[int])
-
-slots.hasShape = Slot(uri=POKEMON.hasShape, name="hasShape", curie=POKEMON.curie('hasShape'),
-                   model_uri=POKEMON.hasShape, domain=Species, range=Optional[Union[str, ShapeId]])
-
-slots.learnsMove = Slot(uri=POKEMON.learnsMove, name="learnsMove", curie=POKEMON.curie('learnsMove'),
-                   model_uri=POKEMON.learnsMove, domain=MoveLearning, range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]])
-
-slots.locatedIn = Slot(uri=POKEMON.locatedIn, name="locatedIn", curie=POKEMON.curie('locatedIn'),
-                   model_uri=POKEMON.locatedIn, domain=Place, range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]])
-
-slots.inEggGroup = Slot(uri=POKEMON.inEggGroup, name="inEggGroup", curie=POKEMON.curie('inEggGroup'),
-                   model_uri=POKEMON.inEggGroup, domain=Species, range=Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]])
-
-slots.mayHaveAbility = Slot(uri=POKEMON.mayHaveAbility, name="mayHaveAbility", curie=POKEMON.curie('mayHaveAbility'),
-                   model_uri=POKEMON.mayHaveAbility, domain=Species, range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]])
-
-slots.mayHaveHiddenAbility = Slot(uri=POKEMON.mayHaveHiddenAbility, name="mayHaveHiddenAbility", curie=POKEMON.curie('mayHaveHiddenAbility'),
-                   model_uri=POKEMON.mayHaveHiddenAbility, domain=Species, range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]])
-
-slots.isAbleToApply = Slot(uri=POKEMON.isAbleToApply, name="isAbleToApply", curie=POKEMON.curie('isAbleToApply'),
-                   model_uri=POKEMON.isAbleToApply, domain=None, range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]])
-
-slots.firmness = Slot(uri=POKEMON.firmness, name="firmness", curie=POKEMON.curie('firmness'),
-                   model_uri=POKEMON.firmness, domain=Food, range=Optional[int])
-
-slots.accuracy = Slot(uri=POKEMON.accuracy, name="accuracy", curie=POKEMON.curie('accuracy'),
-                   model_uri=POKEMON.accuracy, domain=Move, range=Optional[int])
-
-slots.basePower = Slot(uri=POKEMON.basePower, name="basePower", curie=POKEMON.curie('basePower'),
-                   model_uri=POKEMON.basePower, domain=Move, range=Optional[int])
-
-slots.basePowerPoints = Slot(uri=POKEMON.basePowerPoints, name="basePowerPoints", curie=POKEMON.curie('basePowerPoints'),
-                   model_uri=POKEMON.basePowerPoints, domain=Move, range=Optional[int])
-
-slots.entryNumber = Slot(uri=POKEMON.entryNumber, name="entryNumber", curie=POKEMON.curie('entryNumber'),
-                   model_uri=POKEMON.entryNumber, domain=PokedexEntry, range=Optional[int])
-
-slots.hasGenus = Slot(uri=POKEMON.hasGenus, name="hasGenus", curie=POKEMON.curie('hasGenus'),
-                   model_uri=POKEMON.hasGenus, domain=Species, range=Optional[str])
-
-slots.maxPowerPoints = Slot(uri=POKEMON.maxPowerPoints, name="maxPowerPoints", curie=POKEMON.curie('maxPowerPoints'),
-                   model_uri=POKEMON.maxPowerPoints, domain=Move, range=Optional[int])
-
-slots.minLevelToLearn = Slot(uri=POKEMON.minLevelToLearn, name="minLevelToLearn", curie=POKEMON.curie('minLevelToLearn'),
-                   model_uri=POKEMON.minLevelToLearn, domain=None, range=Optional[int])
-
-slots.smoothness = Slot(uri=POKEMON.smoothness, name="smoothness", curie=POKEMON.curie('smoothness'),
-                   model_uri=POKEMON.smoothness, domain=Food, range=Optional[int])
-
-slots.depiction = Slot(uri=FOAF.depiction, name="depiction", curie=FOAF.curie('depiction'),
-                   model_uri=POKEMON.depiction, domain=None, range=Optional[str])
-
-slots.cyanic = Slot(uri=DBPEDIA.cmykCoordinateCyanic, name="cyanic", curie=DBPEDIA.curie('cmykCoordinateCyanic'),
-                   model_uri=POKEMON.cyanic, domain=None, range=Optional[int])
-
-slots.magenta = Slot(uri=DBPEDIA.cmykCoordinateMagenta, name="magenta", curie=DBPEDIA.curie('cmykCoordinateMagenta'),
-                   model_uri=POKEMON.magenta, domain=None, range=Optional[int])
-
-slots.colourYellow = Slot(uri=DBPEDIA.cmykCoordinateYellow, name="colourYellow", curie=DBPEDIA.curie('cmykCoordinateYellow'),
-                   model_uri=POKEMON.colourYellow, domain=None, range=Optional[int])
-
-slots.black = Slot(uri=DBPEDIA.cmykCoordinateBlack, name="black", curie=DBPEDIA.curie('cmykCoordinateBlack'),
-                   model_uri=POKEMON.black, domain=None, range=Optional[int])
-
-slots.wavelength = Slot(uri=DBPEDIA.wavelength, name="wavelength", curie=DBPEDIA.curie('wavelength'),
-                   model_uri=POKEMON.wavelength, domain=None, range=Optional[float])
-
-slots.frequency = Slot(uri=DBPEDIA.frequency, name="frequency", curie=DBPEDIA.curie('frequency'),
-                   model_uri=POKEMON.frequency, domain=None, range=Optional[float])
-
-slots.colourHexCode = Slot(uri=DBPEDIA.colourHexCode, name="colourHexCode", curie=DBPEDIA.curie('colourHexCode'),
-                   model_uri=POKEMON.colourHexCode, domain=None, range=Optional[str])
-
-slots.connotation = Slot(uri=DBPEDIA.connotation, name="connotation", curie=DBPEDIA.curie('connotation'),
-                   model_uri=POKEMON.connotation, domain=None, range=Optional[Union[Union[str, ConnotationId], list[Union[str, ConnotationId]]]])
-
-slots.thumbnail = Slot(uri=DBPEDIA.thumbnail, name="thumbnail", curie=DBPEDIA.curie('thumbnail'),
-                   model_uri=POKEMON.thumbnail, domain=None, range=Optional[Union[str, URI]])
-
-slots.id = Slot(uri=LINKML_COMMON.identifier, name="id", curie=LINKML_COMMON.curie('identifier'),
-                   model_uri=POKEMON.id, domain=None, range=URIRef)
-
-slots.name = Slot(uri=RDFS.label, name="name", curie=RDFS.curie('label'),
-                   model_uri=POKEMON.name, domain=None, range=Optional[str])
-
-slots.description = Slot(uri=RDFS.comment, name="description", curie=RDFS.curie('comment'),
-                   model_uri=POKEMON.description, domain=None, range=Optional[str])
-
-slots.hasQuantityKind = Slot(uri=QUDT.hasQuantityKind, name="hasQuantityKind", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=POKEMON.hasQuantityKind, domain=None, range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]])
-
-slots.quantityValue = Slot(uri=QUDT.quantityValue, name="quantityValue", curie=QUDT.curie('quantityValue'),
-                   model_uri=POKEMON.quantityValue, domain=None, range=Optional[Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]])
-
-slots.numericValue = Slot(uri=QUDT.value, name="numericValue", curie=QUDT.curie('value'),
-                   model_uri=POKEMON.numericValue, domain=None, range=Optional[float])
-
-slots.unit = Slot(uri=QUDT.unit, name="unit", curie=QUDT.curie('unit'),
-                   model_uri=POKEMON.unit, domain=None, range=Optional[Union[str, UnitId]])
-
-slots.symbol = Slot(uri=QUDT.symbol, name="symbol", curie=QUDT.curie('symbol'),
-                   model_uri=POKEMON.symbol, domain=None, range=Optional[str])
-
-slots.abbreviation = Slot(uri=QUDT.abbreviation, name="abbreviation", curie=QUDT.curie('abbreviation'),
-                   model_uri=POKEMON.abbreviation, domain=None, range=Optional[str])
-
-slots.conversionMultiplier = Slot(uri=QUDT.conversionMultiplier, name="conversionMultiplier", curie=QUDT.curie('conversionMultiplier'),
-                   model_uri=POKEMON.conversionMultiplier, domain=None, range=Optional[float])
-
-slots.conversionOffset = Slot(uri=QUDT.conversionOffset, name="conversionOffset", curie=QUDT.curie('conversionOffset'),
-                   model_uri=POKEMON.conversionOffset, domain=None, range=Optional[float])
-
-slots.hasDimensionVector = Slot(uri=QUDT.hasDimensionVector, name="hasDimensionVector", curie=QUDT.curie('hasDimensionVector'),
-                   model_uri=POKEMON.hasDimensionVector, domain=None, range=Optional[Union[str, QuantityKindDimensionVectorId]])
-
-slots.isUnitOfSystem = Slot(uri=QUDT.isUnitOfSystem, name="isUnitOfSystem", curie=QUDT.curie('isUnitOfSystem'),
-                   model_uri=POKEMON.isUnitOfSystem, domain=None, range=Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]])
-
-slots.applicableSystem = Slot(uri=QUDT.applicableSystem, name="applicableSystem", curie=QUDT.curie('applicableSystem'),
-                   model_uri=POKEMON.applicableSystem, domain=None, range=Optional[Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]])
-
-slots.applicableUnit = Slot(uri=QUDT.applicableUnit, name="applicableUnit", curie=QUDT.curie('applicableUnit'),
-                   model_uri=POKEMON.applicableUnit, domain=None, range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]])
-
-slots.prefix = Slot(uri=QUDT.prefix, name="prefix", curie=QUDT.curie('prefix'),
-                   model_uri=POKEMON.prefix, domain=None, range=Optional[Union[str, PrefixId]])
-
-slots.scalingOf = Slot(uri=QUDT.scalingOf, name="scalingOf", curie=QUDT.curie('scalingOf'),
-                   model_uri=POKEMON.scalingOf, domain=None, range=Optional[Union[str, UnitId]])
-
-slots.ucumCode = Slot(uri=QUDT.ucumCode, name="ucumCode", curie=QUDT.curie('ucumCode'),
-                   model_uri=POKEMON.ucumCode, domain=None, range=Optional[str])
-
-slots.latexSymbol = Slot(uri=QUDT.latexSymbol, name="latexSymbol", curie=QUDT.curie('latexSymbol'),
-                   model_uri=POKEMON.latexSymbol, domain=None, range=Optional[str])
-
-slots.broader = Slot(uri=QUDT.broader, name="broader", curie=QUDT.curie('broader'),
-                   model_uri=POKEMON.broader, domain=None, range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]])
-
-slots.exactMatch = Slot(uri=QUDT.exactMatch, name="exactMatch", curie=QUDT.curie('exactMatch'),
-                   model_uri=POKEMON.exactMatch, domain=None, range=Optional[Union[str, list[str]]])
-
-slots.deprecated = Slot(uri=QUDT.deprecated, name="deprecated", curie=QUDT.curie('deprecated'),
-                   model_uri=POKEMON.deprecated, domain=None, range=Optional[Union[bool, Bool]])
-
-slots.dimensionExponentForLength = Slot(uri=QUDT.dimensionExponentForLength, name="dimensionExponentForLength", curie=QUDT.curie('dimensionExponentForLength'),
-                   model_uri=POKEMON.dimensionExponentForLength, domain=None, range=Optional[int])
-
-slots.dimensionExponentForMass = Slot(uri=QUDT.dimensionExponentForMass, name="dimensionExponentForMass", curie=QUDT.curie('dimensionExponentForMass'),
-                   model_uri=POKEMON.dimensionExponentForMass, domain=None, range=Optional[int])
-
-slots.dimensionExponentForTime = Slot(uri=QUDT.dimensionExponentForTime, name="dimensionExponentForTime", curie=QUDT.curie('dimensionExponentForTime'),
-                   model_uri=POKEMON.dimensionExponentForTime, domain=None, range=Optional[int])
-
-slots.dimensionExponentForElectricCurrent = Slot(uri=QUDT.dimensionExponentForElectricCurrent, name="dimensionExponentForElectricCurrent", curie=QUDT.curie('dimensionExponentForElectricCurrent'),
-                   model_uri=POKEMON.dimensionExponentForElectricCurrent, domain=None, range=Optional[int])
-
-slots.dimensionExponentForThermodynamicTemperature = Slot(uri=QUDT.dimensionExponentForThermodynamicTemperature, name="dimensionExponentForThermodynamicTemperature", curie=QUDT.curie('dimensionExponentForThermodynamicTemperature'),
-                   model_uri=POKEMON.dimensionExponentForThermodynamicTemperature, domain=None, range=Optional[int])
-
-slots.dimensionExponentForAmountOfSubstance = Slot(uri=QUDT.dimensionExponentForAmountOfSubstance, name="dimensionExponentForAmountOfSubstance", curie=QUDT.curie('dimensionExponentForAmountOfSubstance'),
-                   model_uri=POKEMON.dimensionExponentForAmountOfSubstance, domain=None, range=Optional[int])
-
-slots.dimensionExponentForLuminousIntensity = Slot(uri=QUDT.dimensionExponentForLuminousIntensity, name="dimensionExponentForLuminousIntensity", curie=QUDT.curie('dimensionExponentForLuminousIntensity'),
-                   model_uri=POKEMON.dimensionExponentForLuminousIntensity, domain=None, range=Optional[int])
-
-slots.dimensionlessExponent = Slot(uri=QUDT.dimensionlessExponent, name="dimensionlessExponent", curie=QUDT.curie('dimensionlessExponent'),
-                   model_uri=POKEMON.dimensionlessExponent, domain=None, range=Optional[int])
-
-slots.hasBaseUnit = Slot(uri=QUDT.hasBaseUnit, name="hasBaseUnit", curie=QUDT.curie('hasBaseUnit'),
-                   model_uri=POKEMON.hasBaseUnit, domain=None, range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]])
-
-slots.prefixMultiplier = Slot(uri=QUDT.prefixMultiplier, name="prefixMultiplier", curie=QUDT.curie('prefixMultiplier'),
-                   model_uri=POKEMON.prefixMultiplier, domain=None, range=Optional[float])
-
-slots.hasUnit = Slot(uri=QUDT.hasUnit, name="hasUnit", curie=QUDT.curie('hasUnit'),
-                   model_uri=POKEMON.hasUnit, domain=None, range=Optional[Union[str, UnitId]])
-
-slots.standardUncertainty = Slot(uri=QUDT.standardUncertainty, name="standardUncertainty", curie=QUDT.curie('standardUncertainty'),
-                   model_uri=POKEMON.standardUncertainty, domain=None, range=Optional[Decimal])
-
-slots.relativeStandardUncertainty = Slot(uri=QUDT.relativeStandardUncertainty, name="relativeStandardUncertainty", curie=QUDT.curie('relativeStandardUncertainty'),
-                   model_uri=POKEMON.relativeStandardUncertainty, domain=None, range=Optional[float])
-
-slots.wikidataMatch = Slot(uri=QUDT.wikidataMatch, name="wikidataMatch", curie=QUDT.curie('wikidataMatch'),
-                   model_uri=POKEMON.wikidataMatch, domain=None, range=Optional[Union[str, URI]])
-
-slots.isoNormativeReference = Slot(uri=QUDT.isoNormativeReference, name="isoNormativeReference", curie=QUDT.curie('isoNormativeReference'),
-                   model_uri=POKEMON.isoNormativeReference, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
-
-slots.normativeReference = Slot(uri=QUDT.normativeReference, name="normativeReference", curie=QUDT.curie('normativeReference'),
-                   model_uri=POKEMON.normativeReference, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
-
-slots.dbpediaMatch = Slot(uri=QUDT.dbpediaMatch, name="dbpediaMatch", curie=QUDT.curie('dbpediaMatch'),
-                   model_uri=POKEMON.dbpediaMatch, domain=None, range=Optional[Union[str, URI]])
-
-slots.informativeReference = Slot(uri=QUDT.informativeReference, name="informativeReference", curie=QUDT.curie('informativeReference'),
-                   model_uri=POKEMON.informativeReference, domain=None, range=Optional[Union[Union[str, URI], list[Union[str, URI]]]])
-
-slots.plainTextDescription = Slot(uri=QUDT.plainTextDescription, name="plainTextDescription", curie=QUDT.curie('plainTextDescription'),
-                   model_uri=POKEMON.plainTextDescription, domain=None, range=Optional[str])
-
-slots.Connotation_name = Slot(uri=RDFS.label, name="Connotation_name", curie=RDFS.curie('label'),
-                   model_uri=POKEMON.Connotation_name, domain=Connotation, range=str)
-
-slots.NamedIndividual_name = Slot(uri=RDFS.label, name="NamedIndividual_name", curie=RDFS.curie('label'),
-                   model_uri=POKEMON.NamedIndividual_name, domain=NamedIndividual, range=str)
+slots.effectDescription = Slot(
+    uri=POKEMON.effectDescription,
+    name="effectDescription",
+    curie=POKEMON.curie("effectDescription"),
+    model_uri=POKEMON.effectDescription,
+    domain=None,
+    range=Optional[Union[str, list[str]]],
+)
+
+slots.containsPlace = Slot(
+    uri=POKEMON.contains_place,
+    name="containsPlace",
+    curie=POKEMON.curie("contains_place"),
+    model_uri=POKEMON.containsPlace,
+    domain=Place,
+    range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]],
+)
+
+slots.describedInPokedex = Slot(
+    uri=POKEMON["describedInPok%C3%A9dex"],
+    name="describedInPokedex",
+    curie=POKEMON.curie("describedInPok%C3%A9dex"),
+    model_uri=POKEMON.describedInPokedex,
+    domain=Species,
+    range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]],
+)
+
+slots.describesPokemon = Slot(
+    uri=POKEMON["describesPok%C3%A9mon"],
+    name="describesPokemon",
+    curie=POKEMON.curie("describesPok%C3%A9mon"),
+    model_uri=POKEMON.describesPokemon,
+    domain=PokedexEntry,
+    range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]],
+)
+
+slots.featuresSpecies = Slot(
+    uri=POKEMON.featuresSpecies,
+    name="featuresSpecies",
+    curie=POKEMON.curie("featuresSpecies"),
+    model_uri=POKEMON.featuresSpecies,
+    domain=None,
+    range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]],
+)
+
+slots.hasPokedexEntry = Slot(
+    uri=POKEMON["hasPok%C3%A9dexEntry"],
+    name="hasPokedexEntry",
+    curie=POKEMON.curie("hasPok%C3%A9dexEntry"),
+    model_uri=POKEMON.hasPokedexEntry,
+    domain=Pokedex,
+    range=Optional[Union[Union[str, PokedexEntryId], list[Union[str, PokedexEntryId]]]],
+)
+
+slots.evolvesFrom = Slot(
+    uri=POKEMON.evolvesFrom,
+    name="evolvesFrom",
+    curie=POKEMON.curie("evolvesFrom"),
+    model_uri=POKEMON.evolvesFrom,
+    domain=Species,
+    range=Optional[Union[str, SpeciesId]],
+)
+
+slots.evolvesTo = Slot(
+    uri=POKEMON.evolvesTo,
+    name="evolvesTo",
+    curie=POKEMON.curie("evolvesTo"),
+    model_uri=POKEMON.evolvesTo,
+    domain=Species,
+    range=Optional[Union[Union[str, SpeciesId], list[Union[str, SpeciesId]]]],
+)
+
+slots.foundIn = Slot(
+    uri=POKEMON.foundIn,
+    name="foundIn",
+    curie=POKEMON.curie("foundIn"),
+    model_uri=POKEMON.foundIn,
+    domain=Species,
+    range=Optional[Union[Union[str, HabitatId], list[Union[str, HabitatId]]]],
+)
+
+slots.hasColor = Slot(
+    uri=POKEMON.hasColour,
+    name="hasColor",
+    curie=POKEMON.curie("hasColour"),
+    model_uri=POKEMON.hasColor,
+    domain=None,
+    range=Optional[Union[str, ColorId]],
+)
+
+slots.hasFlavor = Slot(
+    uri=POKEMON.hasFlavor,
+    name="hasFlavor",
+    curie=POKEMON.curie("hasFlavor"),
+    model_uri=POKEMON.hasFlavor,
+    domain=Food,
+    range=Optional[Union[Union[str, FlavorId], list[Union[str, FlavorId]]]],
+)
+
+slots.hasType = Slot(
+    uri=POKEMON.hasType,
+    name="hasType",
+    curie=POKEMON.curie("hasType"),
+    model_uri=POKEMON.hasType,
+    domain=None,
+    range=Optional[
+        Union[dict[Union[str, TypeId], Union[dict, Type]], list[Union[dict, Type]]]
+    ],
+)
+
+slots.hasSize = Slot(
+    uri=POKEMON.hasSize,
+    name="hasSize",
+    curie=POKEMON.curie("hasSize"),
+    model_uri=POKEMON.hasSize,
+    domain=None,
+    range=Optional[Union[dict, Quantity]],
+)
+
+slots.hasHeight = Slot(
+    uri=POKEMON.hasHeight,
+    name="hasHeight",
+    curie=POKEMON.curie("hasHeight"),
+    model_uri=POKEMON.hasHeight,
+    domain=Species,
+    range=Optional[Union[dict, "Quantity"]],
+)
+
+slots.hasWeight = Slot(
+    uri=POKEMON.hasWeight,
+    name="hasWeight",
+    curie=POKEMON.curie("hasWeight"),
+    model_uri=POKEMON.hasWeight,
+    domain=Species,
+    range=Optional[Union[dict, "Quantity"]],
+)
+
+slots.hasCatchRate = Slot(
+    uri=POKEMON.hasCatchRate,
+    name="hasCatchRate",
+    curie=POKEMON.curie("hasCatchRate"),
+    model_uri=POKEMON.hasCatchRate,
+    domain=Species,
+    range=Optional[int],
+)
+
+slots.hasShape = Slot(
+    uri=POKEMON.hasShape,
+    name="hasShape",
+    curie=POKEMON.curie("hasShape"),
+    model_uri=POKEMON.hasShape,
+    domain=Species,
+    range=Optional[Union[str, ShapeId]],
+)
+
+slots.learnsMove = Slot(
+    uri=POKEMON.learnsMove,
+    name="learnsMove",
+    curie=POKEMON.curie("learnsMove"),
+    model_uri=POKEMON.learnsMove,
+    domain=MoveLearning,
+    range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]],
+)
+
+slots.locatedIn = Slot(
+    uri=POKEMON.locatedIn,
+    name="locatedIn",
+    curie=POKEMON.curie("locatedIn"),
+    model_uri=POKEMON.locatedIn,
+    domain=Place,
+    range=Optional[Union[Union[str, PlaceId], list[Union[str, PlaceId]]]],
+)
+
+slots.inEggGroup = Slot(
+    uri=POKEMON.inEggGroup,
+    name="inEggGroup",
+    curie=POKEMON.curie("inEggGroup"),
+    model_uri=POKEMON.inEggGroup,
+    domain=Species,
+    range=Optional[Union[Union[str, EggGroupId], list[Union[str, EggGroupId]]]],
+)
+
+slots.mayHaveAbility = Slot(
+    uri=POKEMON.mayHaveAbility,
+    name="mayHaveAbility",
+    curie=POKEMON.curie("mayHaveAbility"),
+    model_uri=POKEMON.mayHaveAbility,
+    domain=Species,
+    range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]],
+)
+
+slots.mayHaveHiddenAbility = Slot(
+    uri=POKEMON.mayHaveHiddenAbility,
+    name="mayHaveHiddenAbility",
+    curie=POKEMON.curie("mayHaveHiddenAbility"),
+    model_uri=POKEMON.mayHaveHiddenAbility,
+    domain=Species,
+    range=Optional[Union[Union[str, AbilityId], list[Union[str, AbilityId]]]],
+)
+
+slots.isAbleToApply = Slot(
+    uri=POKEMON.isAbleToApply,
+    name="isAbleToApply",
+    curie=POKEMON.curie("isAbleToApply"),
+    model_uri=POKEMON.isAbleToApply,
+    domain=None,
+    range=Optional[Union[Union[str, MoveId], list[Union[str, MoveId]]]],
+)
+
+slots.firmness = Slot(
+    uri=POKEMON.firmness,
+    name="firmness",
+    curie=POKEMON.curie("firmness"),
+    model_uri=POKEMON.firmness,
+    domain=Food,
+    range=Optional[int],
+)
+
+slots.accuracy = Slot(
+    uri=POKEMON.accuracy,
+    name="accuracy",
+    curie=POKEMON.curie("accuracy"),
+    model_uri=POKEMON.accuracy,
+    domain=Move,
+    range=Optional[int],
+)
+
+slots.basePower = Slot(
+    uri=POKEMON.basePower,
+    name="basePower",
+    curie=POKEMON.curie("basePower"),
+    model_uri=POKEMON.basePower,
+    domain=Move,
+    range=Optional[int],
+)
+
+slots.basePowerPoints = Slot(
+    uri=POKEMON.basePowerPoints,
+    name="basePowerPoints",
+    curie=POKEMON.curie("basePowerPoints"),
+    model_uri=POKEMON.basePowerPoints,
+    domain=Move,
+    range=Optional[int],
+)
+
+slots.entryNumber = Slot(
+    uri=POKEMON.entryNumber,
+    name="entryNumber",
+    curie=POKEMON.curie("entryNumber"),
+    model_uri=POKEMON.entryNumber,
+    domain=PokedexEntry,
+    range=Optional[int],
+)
+
+slots.hasGenus = Slot(
+    uri=POKEMON.hasGenus,
+    name="hasGenus",
+    curie=POKEMON.curie("hasGenus"),
+    model_uri=POKEMON.hasGenus,
+    domain=Species,
+    range=Optional[str],
+)
+
+slots.maxPowerPoints = Slot(
+    uri=POKEMON.maxPowerPoints,
+    name="maxPowerPoints",
+    curie=POKEMON.curie("maxPowerPoints"),
+    model_uri=POKEMON.maxPowerPoints,
+    domain=Move,
+    range=Optional[int],
+)
+
+slots.minLevelToLearn = Slot(
+    uri=POKEMON.minLevelToLearn,
+    name="minLevelToLearn",
+    curie=POKEMON.curie("minLevelToLearn"),
+    model_uri=POKEMON.minLevelToLearn,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.smoothness = Slot(
+    uri=POKEMON.smoothness,
+    name="smoothness",
+    curie=POKEMON.curie("smoothness"),
+    model_uri=POKEMON.smoothness,
+    domain=Food,
+    range=Optional[int],
+)
+
+slots.depiction = Slot(
+    uri=FOAF.depiction,
+    name="depiction",
+    curie=FOAF.curie("depiction"),
+    model_uri=POKEMON.depiction,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.cmykC = Slot(
+    uri=DBPEDIA.cmykCoordinateCyanic,
+    name="cmykC",
+    curie=DBPEDIA.curie("cmykCoordinateCyanic"),
+    model_uri=POKEMON.cmykC,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.cmykM = Slot(
+    uri=DBPEDIA.cmykCoordinateMagenta,
+    name="cmykM",
+    curie=DBPEDIA.curie("cmykCoordinateMagenta"),
+    model_uri=POKEMON.cmykM,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.cmykY = Slot(
+    uri=DBPEDIA.cmykCoordinateYellow,
+    name="cmykY",
+    curie=DBPEDIA.curie("cmykCoordinateYellow"),
+    model_uri=POKEMON.cmykY,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.cmykK = Slot(
+    uri=DBPEDIA.cmykCoordinateBlack,
+    name="cmykK",
+    curie=DBPEDIA.curie("cmykCoordinateBlack"),
+    model_uri=POKEMON.cmykK,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.wavelength = Slot(
+    uri=DBPEDIA.wavelength,
+    name="wavelength",
+    curie=DBPEDIA.curie("wavelength"),
+    model_uri=POKEMON.wavelength,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.frequency = Slot(
+    uri=DBPEDIA.frequency,
+    name="frequency",
+    curie=DBPEDIA.curie("frequency"),
+    model_uri=POKEMON.frequency,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.colorHexCode = Slot(
+    uri=DBPEDIA.colourHexCode,
+    name="colorHexCode",
+    curie=DBPEDIA.curie("colourHexCode"),
+    model_uri=POKEMON.colorHexCode,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.connotation = Slot(
+    uri=DBPEDIA.connotation,
+    name="connotation",
+    curie=DBPEDIA.curie("connotation"),
+    model_uri=POKEMON.connotation,
+    domain=None,
+    range=Optional[Union[Union[str, ConnotationId], list[Union[str, ConnotationId]]]],
+)
+
+slots.thumbnail = Slot(
+    uri=DBPEDIA.thumbnail,
+    name="thumbnail",
+    curie=DBPEDIA.curie("thumbnail"),
+    model_uri=POKEMON.thumbnail,
+    domain=None,
+    range=Optional[Union[str, URI]],
+)
+
+slots.id = Slot(
+    uri=LINKML_COMMON.identifier,
+    name="id",
+    curie=LINKML_COMMON.curie("identifier"),
+    model_uri=POKEMON.id,
+    domain=None,
+    range=URIRef,
+)
+
+slots.name = Slot(
+    uri=RDFS.label,
+    name="name",
+    curie=RDFS.curie("label"),
+    model_uri=POKEMON.name,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.description = Slot(
+    uri=RDFS.comment,
+    name="description",
+    curie=RDFS.curie("comment"),
+    model_uri=POKEMON.description,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.hasQuantityKind = Slot(
+    uri=QUDT.hasQuantityKind,
+    name="hasQuantityKind",
+    curie=QUDT.curie("hasQuantityKind"),
+    model_uri=POKEMON.hasQuantityKind,
+    domain=None,
+    range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]],
+)
+
+slots.quantityValue = Slot(
+    uri=QUDT.quantityValue,
+    name="quantityValue",
+    curie=QUDT.curie("quantityValue"),
+    model_uri=POKEMON.quantityValue,
+    domain=None,
+    range=Optional[
+        Union[Union[str, QuantityValueId], list[Union[str, QuantityValueId]]]
+    ],
+)
+
+slots.numericValue = Slot(
+    uri=QUDT.value,
+    name="numericValue",
+    curie=QUDT.curie("value"),
+    model_uri=POKEMON.numericValue,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.unit = Slot(
+    uri=QUDT.unit,
+    name="unit",
+    curie=QUDT.curie("unit"),
+    model_uri=POKEMON.unit,
+    domain=None,
+    range=Optional[Union[str, UnitId]],
+)
+
+slots.symbol = Slot(
+    uri=QUDT.symbol,
+    name="symbol",
+    curie=QUDT.curie("symbol"),
+    model_uri=POKEMON.symbol,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.abbreviation = Slot(
+    uri=QUDT.abbreviation,
+    name="abbreviation",
+    curie=QUDT.curie("abbreviation"),
+    model_uri=POKEMON.abbreviation,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.conversionMultiplier = Slot(
+    uri=QUDT.conversionMultiplier,
+    name="conversionMultiplier",
+    curie=QUDT.curie("conversionMultiplier"),
+    model_uri=POKEMON.conversionMultiplier,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.conversionOffset = Slot(
+    uri=QUDT.conversionOffset,
+    name="conversionOffset",
+    curie=QUDT.curie("conversionOffset"),
+    model_uri=POKEMON.conversionOffset,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.hasDimensionVector = Slot(
+    uri=QUDT.hasDimensionVector,
+    name="hasDimensionVector",
+    curie=QUDT.curie("hasDimensionVector"),
+    model_uri=POKEMON.hasDimensionVector,
+    domain=None,
+    range=Optional[Union[str, QuantityKindDimensionVectorId]],
+)
+
+slots.isUnitOfSystem = Slot(
+    uri=QUDT.isUnitOfSystem,
+    name="isUnitOfSystem",
+    curie=QUDT.curie("isUnitOfSystem"),
+    model_uri=POKEMON.isUnitOfSystem,
+    domain=None,
+    range=Optional[
+        Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]
+    ],
+)
+
+slots.applicableSystem = Slot(
+    uri=QUDT.applicableSystem,
+    name="applicableSystem",
+    curie=QUDT.curie("applicableSystem"),
+    model_uri=POKEMON.applicableSystem,
+    domain=None,
+    range=Optional[
+        Union[Union[str, SystemOfUnitsId], list[Union[str, SystemOfUnitsId]]]
+    ],
+)
+
+slots.applicableUnit = Slot(
+    uri=QUDT.applicableUnit,
+    name="applicableUnit",
+    curie=QUDT.curie("applicableUnit"),
+    model_uri=POKEMON.applicableUnit,
+    domain=None,
+    range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]],
+)
+
+slots.prefix = Slot(
+    uri=QUDT.prefix,
+    name="prefix",
+    curie=QUDT.curie("prefix"),
+    model_uri=POKEMON.prefix,
+    domain=None,
+    range=Optional[Union[str, PrefixId]],
+)
+
+slots.scalingOf = Slot(
+    uri=QUDT.scalingOf,
+    name="scalingOf",
+    curie=QUDT.curie("scalingOf"),
+    model_uri=POKEMON.scalingOf,
+    domain=None,
+    range=Optional[Union[str, UnitId]],
+)
+
+slots.ucumCode = Slot(
+    uri=QUDT.ucumCode,
+    name="ucumCode",
+    curie=QUDT.curie("ucumCode"),
+    model_uri=POKEMON.ucumCode,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.latexSymbol = Slot(
+    uri=QUDT.latexSymbol,
+    name="latexSymbol",
+    curie=QUDT.curie("latexSymbol"),
+    model_uri=POKEMON.latexSymbol,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.broader = Slot(
+    uri=QUDT.broader,
+    name="broader",
+    curie=QUDT.curie("broader"),
+    model_uri=POKEMON.broader,
+    domain=None,
+    range=Optional[Union[Union[str, QuantityKindId], list[Union[str, QuantityKindId]]]],
+)
+
+slots.exactMatch = Slot(
+    uri=QUDT.exactMatch,
+    name="exactMatch",
+    curie=QUDT.curie("exactMatch"),
+    model_uri=POKEMON.exactMatch,
+    domain=None,
+    range=Optional[Union[str, list[str]]],
+)
+
+slots.deprecated = Slot(
+    uri=QUDT.deprecated,
+    name="deprecated",
+    curie=QUDT.curie("deprecated"),
+    model_uri=POKEMON.deprecated,
+    domain=None,
+    range=Optional[Union[bool, Bool]],
+)
+
+slots.dimensionExponentForLength = Slot(
+    uri=QUDT.dimensionExponentForLength,
+    name="dimensionExponentForLength",
+    curie=QUDT.curie("dimensionExponentForLength"),
+    model_uri=POKEMON.dimensionExponentForLength,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForMass = Slot(
+    uri=QUDT.dimensionExponentForMass,
+    name="dimensionExponentForMass",
+    curie=QUDT.curie("dimensionExponentForMass"),
+    model_uri=POKEMON.dimensionExponentForMass,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForTime = Slot(
+    uri=QUDT.dimensionExponentForTime,
+    name="dimensionExponentForTime",
+    curie=QUDT.curie("dimensionExponentForTime"),
+    model_uri=POKEMON.dimensionExponentForTime,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForElectricCurrent = Slot(
+    uri=QUDT.dimensionExponentForElectricCurrent,
+    name="dimensionExponentForElectricCurrent",
+    curie=QUDT.curie("dimensionExponentForElectricCurrent"),
+    model_uri=POKEMON.dimensionExponentForElectricCurrent,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForThermodynamicTemperature = Slot(
+    uri=QUDT.dimensionExponentForThermodynamicTemperature,
+    name="dimensionExponentForThermodynamicTemperature",
+    curie=QUDT.curie("dimensionExponentForThermodynamicTemperature"),
+    model_uri=POKEMON.dimensionExponentForThermodynamicTemperature,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForAmountOfSubstance = Slot(
+    uri=QUDT.dimensionExponentForAmountOfSubstance,
+    name="dimensionExponentForAmountOfSubstance",
+    curie=QUDT.curie("dimensionExponentForAmountOfSubstance"),
+    model_uri=POKEMON.dimensionExponentForAmountOfSubstance,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionExponentForLuminousIntensity = Slot(
+    uri=QUDT.dimensionExponentForLuminousIntensity,
+    name="dimensionExponentForLuminousIntensity",
+    curie=QUDT.curie("dimensionExponentForLuminousIntensity"),
+    model_uri=POKEMON.dimensionExponentForLuminousIntensity,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.dimensionlessExponent = Slot(
+    uri=QUDT.dimensionlessExponent,
+    name="dimensionlessExponent",
+    curie=QUDT.curie("dimensionlessExponent"),
+    model_uri=POKEMON.dimensionlessExponent,
+    domain=None,
+    range=Optional[int],
+)
+
+slots.hasBaseUnit = Slot(
+    uri=QUDT.hasBaseUnit,
+    name="hasBaseUnit",
+    curie=QUDT.curie("hasBaseUnit"),
+    model_uri=POKEMON.hasBaseUnit,
+    domain=None,
+    range=Optional[Union[Union[str, UnitId], list[Union[str, UnitId]]]],
+)
+
+slots.prefixMultiplier = Slot(
+    uri=QUDT.prefixMultiplier,
+    name="prefixMultiplier",
+    curie=QUDT.curie("prefixMultiplier"),
+    model_uri=POKEMON.prefixMultiplier,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.hasUnit = Slot(
+    uri=QUDT.hasUnit,
+    name="hasUnit",
+    curie=QUDT.curie("hasUnit"),
+    model_uri=POKEMON.hasUnit,
+    domain=None,
+    range=Optional[Union[str, UnitId]],
+)
+
+slots.standardUncertainty = Slot(
+    uri=QUDT.standardUncertainty,
+    name="standardUncertainty",
+    curie=QUDT.curie("standardUncertainty"),
+    model_uri=POKEMON.standardUncertainty,
+    domain=None,
+    range=Optional[Decimal],
+)
+
+slots.relativeStandardUncertainty = Slot(
+    uri=QUDT.relativeStandardUncertainty,
+    name="relativeStandardUncertainty",
+    curie=QUDT.curie("relativeStandardUncertainty"),
+    model_uri=POKEMON.relativeStandardUncertainty,
+    domain=None,
+    range=Optional[float],
+)
+
+slots.wikidataMatch = Slot(
+    uri=QUDT.wikidataMatch,
+    name="wikidataMatch",
+    curie=QUDT.curie("wikidataMatch"),
+    model_uri=POKEMON.wikidataMatch,
+    domain=None,
+    range=Optional[Union[str, URI]],
+)
+
+slots.isoNormativeReference = Slot(
+    uri=QUDT.isoNormativeReference,
+    name="isoNormativeReference",
+    curie=QUDT.curie("isoNormativeReference"),
+    model_uri=POKEMON.isoNormativeReference,
+    domain=None,
+    range=Optional[Union[Union[str, URI], list[Union[str, URI]]]],
+)
+
+slots.normativeReference = Slot(
+    uri=QUDT.normativeReference,
+    name="normativeReference",
+    curie=QUDT.curie("normativeReference"),
+    model_uri=POKEMON.normativeReference,
+    domain=None,
+    range=Optional[Union[Union[str, URI], list[Union[str, URI]]]],
+)
+
+slots.dbpediaMatch = Slot(
+    uri=QUDT.dbpediaMatch,
+    name="dbpediaMatch",
+    curie=QUDT.curie("dbpediaMatch"),
+    model_uri=POKEMON.dbpediaMatch,
+    domain=None,
+    range=Optional[Union[str, URI]],
+)
+
+slots.informativeReference = Slot(
+    uri=QUDT.informativeReference,
+    name="informativeReference",
+    curie=QUDT.curie("informativeReference"),
+    model_uri=POKEMON.informativeReference,
+    domain=None,
+    range=Optional[Union[Union[str, URI], list[Union[str, URI]]]],
+)
+
+slots.plainTextDescription = Slot(
+    uri=QUDT.plainTextDescription,
+    name="plainTextDescription",
+    curie=QUDT.curie("plainTextDescription"),
+    model_uri=POKEMON.plainTextDescription,
+    domain=None,
+    range=Optional[str],
+)
+
+slots.Connotation_name = Slot(
+    uri=RDFS.label,
+    name="Connotation_name",
+    curie=RDFS.curie("label"),
+    model_uri=POKEMON.Connotation_name,
+    domain=Connotation,
+    range=str,
+)
+
+slots.NamedIndividual_name = Slot(
+    uri=RDFS.label,
+    name="NamedIndividual_name",
+    curie=RDFS.curie("label"),
+    model_uri=POKEMON.NamedIndividual_name,
+    domain=NamedIndividual,
+    range=str,
+)

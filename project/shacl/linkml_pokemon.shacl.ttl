@@ -1182,4 +1182,3 @@ pokemon:Type a sh:NodeShape ;
             sh:order 2 ;
             sh:path rdfs:comment ] ;
     sh:targetClass pokemon:Type .
-

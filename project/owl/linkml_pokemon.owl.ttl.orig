@@ -303,7 +303,7 @@ pokemon:Trainer a owl:Class ;
     rdfs:label "Trainer" ;
     rdfs:subClassOf <http://xmlns.com/foaf/0.1/Person> ;
     rdfs:comment "PokÃ©mon Trainer is a person who catches, occasionally names, and trains different kinds of PokÃ©mon." ;
-                      
+
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:describesPokemon a owl:ObjectProperty,
@@ -328,7 +328,7 @@ pokemon:evolvesTo a owl:ObjectProperty ;
     rdfs:domain pokemon:Species ;
     rdfs:range pokemon:Species ;
     owl:inverseOf pokemon:evolvesFrom ;
-   
+
     skos:inScheme <https://pokemonkg.org/ontology> .
 
 pokemon:locatedIn a owl:AsymmetricProperty,
@@ -599,7 +599,7 @@ pokemon:EggGroup_Fairy a owl:NamedIndividual,
 
 pokemon:EggGroup_Field a owl:NamedIndividual,
                          pokemon:EggGroup ;
-                rdfs:label "Feld"@de,
+                rdfs:label "Field"@de,
                            "Field"@en .
 
 
@@ -771,7 +771,7 @@ pokemon:PokÃ©Type_Dragon a owl:NamedIndividual,
 # https://pokemonkg.org/ontology#PokÃ©Type_Electric
 pokemon:PokÃ©Type_Electric a owl:NamedIndividual,
                             pokemon:Type ;
-                   rdfs:comment "Es gibt relativ wenige Electric PokÃ©mon; tatsÃ¤chlich wurden in der dritten Generation nur vier hinzugefÃ¼gt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de,
+                   rdfs:comment "Es gibt relative wenige Electric PokÃ©mon; tatsÃ¤chlich wurden in der dritten Generation nur vier hinzugefÃ¼gt. Die meisten basieren auf Nagetieren oder unbelebten Objekten."@de,
                                 "There are relatively few Electric PokÃ©mon; in fact only four were added in the third generation. Most are based on rodents or inanimate objects."@en ;
                    rdfs:label "Electric"@en,
                               "Elektro"@de .
@@ -794,7 +794,7 @@ pokemon:PokÃ©Type_Fighting a owl:NamedIndividual,
 # https://pokemonkg.org/ontology#PokÃ©Type_Fire
 pokemon:PokÃ©Type_Fire a owl:NamedIndividual,
                         pokemon:Type ;
-               rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren. Feuerarten sind in den frÃ¼hen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de,
+               rdfs:comment "Feuer ist eine der drei elementaren Grundtypen zusammen mit Wasser und Gras, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht in einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren. Feuerarten sind in den frÃ¼hen Phasen der Spiele notorisch selten, so dass die Wahl der Feuervariation am Start oft von Vorteil ist."@de,
                             "Fire is one of the three basic elemental types along with Water and Grass, which constitute the three starter PokÃ©mon. This creates a simple triangle to explain the type concept easily to new players. Fire types are notoriously rare in the early stages of the games so choosing the Fire variation starter is often a plus."@en ;
                rdfs:label "Feuer"@de,
                           "Fire"@en .
@@ -817,7 +817,7 @@ pokemon:PokÃ©Type_Ghost a owl:NamedIndividual,
 # https://pokemonkg.org/ontology#PokÃ©Type_Grass
 pokemon:PokÃ©Type_Grass a owl:NamedIndividual,
                          pokemon:Type ;
-                rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren."@de,
+                rdfs:comment "Gras ist einer der drei elementaren Grundtypen zusammen mit Feuer und Wasser, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht in einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren."@de,
                              "Grass is one of the three basic elemental types along with Fire and Water, which constitute the three starter PokÃ©mon. This creates a simple triangle to explain the type concept easily to new players."@en ;
                 rdfs:label "Grass"@en,
                            "Pflanze"@de .
@@ -833,7 +833,7 @@ pokemon:PokÃ©Type_Ground a owl:NamedIndividual,
 # https://pokemonkg.org/ontology#PokÃ©Type_Ice
 pokemon:PokÃ©Type_Ice a owl:NamedIndividual,
                        pokemon:Type ;
-              rdfs:label "Eis"@de,
+              rdfs:label "Is"@de,
                          "Ice"@en .
 
 
@@ -883,7 +883,7 @@ pokemon:PokÃ©Type_Steel a owl:NamedIndividual,
 # https://pokemonkg.org/ontology#PokÃ©Type_Water
 pokemon:PokÃ©Type_Water a owl:NamedIndividual,
                          pokemon:Type ;
-                rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht ein einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren. Wasser ist die hÃ¤ufigste Art mit Ã¼ber 100 PokÃ©mon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de,
+                rdfs:comment "Wasser ist einer der drei elementaren Grundtypen zusammen mit Feuer und Gras, die die drei Starter-PokÃ©mon bilden. Dadurch entsteht in einfaches Dreieck, um neuen Spielern das Typkonzept leicht zu erklÃ¤ren. Wasser ist die hÃ¤ufigste Art mit Ã¼ber 100 PokÃ©mon, die auf einer Vielzahl von Fischen und anderen Meeresbewohnern basieren."@de,
                              "Water is one of the three basic elemental types along with Fire and Grass, which constitute the three starter PokÃ©mon. This creates a simple triangle to explain the type concept easily to new players. Water is the most common type with over 100 PokÃ©mon, which are based on a wide variety of fish and other sea-dwelling creatures."@en ;
                 rdfs:label "Wasser"@de,
                            "Water"@en .
