@@ -13,23 +13,30 @@ imports:
   - ./owl
 
 classes:
-  Colour:
+  CmykColor:
+    mixin: true
+    description: >-
+      CMYK color space coordinates (0-100).
+    slots:
+      - cmykC
+      - cmykM
+      - cmykY
+      - cmykK
+
+  Color:
     is_a: Thing
     description: >-
-      Color or colour is the visual perceptual property corresponding in humans
+      Color is the visual perceptual property corresponding in humans
       to the categories called red, yellow, blue and others.
     class_uri: dbpedia:Colour
+    mixins:
+      - CmykColor
     slots:
-      # CMYK coordinates
-      - cyanic
-      - magenta
-      - colourYellow
-      - black
       # Physical properties
       - wavelength
       - frequency
       # Display properties
-      - colourHexCode
+      - colorHexCode
       # Relationships
       - connotation
       - thumbnail
@@ -38,7 +45,7 @@ classes:
     is_a: Thing
     class_uri: owl:Thing
     description: >-
-      Cultural or symbolic meaning associated with a colour.
+      Cultural or symbolic meaning associated with a color.
       Imported from DBpedia as generic owl:Thing resources.
     slot_usage:
       name:
@@ -46,22 +53,22 @@ classes:
 
 slots:
   # CMYK color coordinates (0-100)
-  cyanic:
+  cmykC:
     range: integer
     slot_uri: dbpedia:cmykCoordinateCyanic
     description: Cyan component in CMYK color model (0-100)
 
-  magenta:
+  cmykM:
     range: integer
     slot_uri: dbpedia:cmykCoordinateMagenta
     description: Magenta component in CMYK color model (0-100)
 
-  colourYellow:
+  cmykY:
     range: integer
     slot_uri: dbpedia:cmykCoordinateYellow
     description: Yellow component in CMYK color model (0-100)
 
-  black:
+  cmykK:
     range: integer
     slot_uri: dbpedia:cmykCoordinateBlack
     description: Black (K) component in CMYK color model (0-100)
@@ -78,7 +85,7 @@ slots:
     description: The frequency of the color in Hz
 
   # Display properties
-  colourHexCode:
+  colorHexCode:
     range: string
     slot_uri: dbpedia:colourHexCode
     description: Hexadecimal RGB color code (e.g., "0000FF" for blue)
@@ -89,9 +96,9 @@ slots:
     slot_uri: dbpedia:connotation
     multivalued: true
     inlined: false
-    description: Cultural or symbolic meanings associated with this colour
+    description: Cultural or symbolic meanings associated with this color
 
   thumbnail:
     range: uri
     slot_uri: dbpedia:thumbnail
-    description: URL to a representative image of this colour
+    description: URL to a representative image of this color
