@@ -55,5 +55,8 @@ version_scheme = "no-guess-dev"
 [tool.hatch.build.targets.wheel]
 packages = ["src/linkml_pokemon"]
 
+[tool.codespell]
+ignore-words = ".cspell"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

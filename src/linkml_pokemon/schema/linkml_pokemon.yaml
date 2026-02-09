@@ -1,7 +1,7 @@
 ---
 id: https://pokemonkg.org/ontology
 name: linkml-pokemon
-title: Pokemon Ontology
+title: Pokémon Ontology
 description: |-
   Ontology covering the Pokémon world as it is presented in games and anime television series
 license: MIT
@@ -9,7 +9,7 @@ see_also:
   - https://vladistan.github.io/linkml-pokemon
 created_on: 2019-07-27 00:00:00
 annotations:
-  dcterms:description: Ontology covering the Pokemon world as it is presented in games and anime television series.
+  dcterms:description: Ontology covering the Pokémon world as it is presented in games and anime television series.
   dcterms:issued: 2019-07-27^^xsd:date
 
 prefixes:
@@ -42,8 +42,10 @@ imports:
 classes:
 
   Ability:
-    annotations:
-      rdfs:comment: Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokemon has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokemon and Evolution lines, while others are known by many Pokemon.
+    description: >-
+      Abilities were introduced in Generation III as an all new game mechanic. Each and every Pokémon
+      has an ability, and can only have one at a time. Some abilities are exclusive to certain Pokémon
+      and Evolution lines, while others are known by many Pokémon.
     class_uri: pokemon:Ability
     is_a: Thing
     slots:
@@ -55,23 +57,32 @@ classes:
     is_a: Item
 
   Berry:
-    annotations:
-      rdfs:comment: Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the Pokémon world, with a large range of flavors, names, and effects. First found in the Generation II games, many Berries have since became critical help items in battle, where their various effects include HP and status condition restoration, stat enhancement, and even damage negation.
+    description: >-
+      Berries are small, juicy, fleshy fruit. As in the real world, a large variety exists in the
+      Pokémon world, with a large range of flavors, names, and effects. First found in the Generation
+      II games, many Berries have since became critical help items in battle, where their various
+      effects include HP and status condition restoration, stat enhancement, and even damage negation.
     slots:
       - hasSize
     is_a: Food
 
   EggGroup:
-    annotations:
-      rdfs:comment: Egg group is a category that determines which Pokemon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
+    description: >-
+      Egg group is a category that determines which Pokémon are able to interbreed. The concept was
+      introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to
+      either one or two egg groups.
     is_a: NamedIndividual
 
   Flavor:
-    annotations:
-      rdfs:comment: Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokemon can eat them.
+    description: >-
+      Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of
+      the foods can have more than one flavor, and the flavor determines which Pokémon can eat them.
     is_a: NamedIndividual
 
   Food:
+    description: >-
+      Food items are consumable items in the Pokémon world that can have flavors, firmness, and
+      smoothness attributes.
     slots:
       - hasFlavor
       - firmness
@@ -85,8 +96,10 @@ classes:
 
 
   Generation:
-    annotations:
-      rdfs:comment: Generations refers to the Pokemon game series. It is a group of games that were released at or around the same time. It also means that games in the same generation are compatible with the others, containing the same Pokemon and the number of moves there are to be learned.
+    description: >-
+      Generations refers to the Pokémon game series. It is a group of games that were released at or
+      around the same time. It also means that games in the same generation are compatible with the
+      others, containing the same Pokémon and the number of moves there are to be learned.
     slots:
       - featuresSpecies
     is_a: Thing
@@ -98,8 +111,10 @@ classes:
 
   GymLeader:
     is_a: Trainer
-    annotations:
-      rdfs:comment: A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokemon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
+    description: >-
+      A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders
+      use their gym and their Pokémon to test the skills of trainers that challenge them, and if said
+      trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym.
 
   HM:
     is_a: Item
@@ -108,28 +123,31 @@ classes:
 
   Habitat:
     description: >-
-      A habitat is a type of environment that certain Pokemon belong to.
+      A habitat is a type of environment that certain Pokémon belong to.
     is_a: NamedIndividual
 
   HoldItem:
     is_a: Item
     description: >-
-      A hold item is an item that can be held by a Pokemon.
+      A hold item is an item that can be held by a Pokémon.
 
   Item:
-    annotations:
-      rdfs:comment: An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and use in some manner. They have various uses, including healing, powering up, helping one to catch Pokémon, or to access a new area.
+    description: >-
+      An item is an object in the Pokémon games which the player can pick up, keep in their Bag, and
+      use in some manner. They have various uses, including healing, powering up, helping one to catch
+      Pokémon, or to access a new area.
     is_a: Thing
 
   Pokedex:
     class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9dex"
-    annotations:
-      rdfs:comment: The Pokedex is an electronic device designed to catalog and provide information regarding the various species of Pokemon featured in the Pokemon video game, anime and manga series.
+    description: >-
+      The Pokédex is an electronic device designed to catalog and provide information regarding the
+      various species of Pokémon featured in the Pokémon video game, anime and manga series.
     is_a: Thing
 
   Pokemon:
     class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9mon"
-    description: A Pokemon
+    description: A Pokémon
     annotations:
       rdfs:seeAlso: "<https://dbpedia.org/resource/Pokémon>"
     union_of:
@@ -139,37 +157,38 @@ classes:
   PokedexEntry:
     class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9dexEntry"
     description: >-
-      A pokedex entry is a description of a Pokemon.
+      A Pokédex entry is a description of a Pokémon.
     is_a: Thing
 
   Pokeball:
     class_uri: "https://pokemonkg.org/ontology#Pok%C3%A9ball"
     is_a: Item
-    annotations:
-      rdfs:comment: A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon.
+    description: >-
+      A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and
+      storing Pokémon.
 
   Place:
     is_a: Thing
     abstract: true
-    annotations:
-      rdfs:comment: Entities that have a somewhat fixed, physical extension.
+    description: >-
+      Entities that have a somewhat fixed, physical extension.
 
   Shape:
     description: >-
-      Shapes are categories that certain Pokemon belong to,
-      which determine which Pokemon they can breed with.
+      Shapes are categories that certain Pokémon belong to,
+      which determine which Pokémon they can breed with.
     is_a: NamedIndividual
 
   Region:
     is_a: Place
-    annotations:
-      rdfs:comment: Regions are areas in the Pokémon universe that are smaller parts of a nation.
+    description: >-
+      Regions are areas in the Pokémon universe that are smaller parts of a nation.
 
   Species:
     is_a: NamedIndividual
     class_uri: pokemon:Species
     description: >-
-      A species is a category of Pokemon that share common features.
+      A species is a category of Pokémon that share common features.
     slots:
       - hasColor
       - mayHaveHiddenAbility
@@ -186,8 +205,8 @@ classes:
       - foundIn
 
   Move:
-    annotations:
-      rdfs:comment: A move is a special ability of a Pokemon.
+    description: >-
+      A move is a special ability of a Pokémon.
     slots:
       - effectDescription
       - hasType
@@ -196,7 +215,7 @@ classes:
 
   MoveLearning:
     description: >-
-      A move learning is a way that a Pokemon can learn a move.
+      A move learning is a way that a Pokémon can learn a move.
 
   LearningByLevelingUp:
     is_a: MoveLearning
@@ -211,7 +230,7 @@ classes:
   Medicine:
     is_a: Item
     description: >-
-       Medicine items can heal various afflictions of a Pokemon.
+       Medicine items can heal various afflictions of a Pokémon.
 
   SpecialMove:
     is_a: Move
@@ -232,8 +251,8 @@ classes:
     is_a: Item
     mixins:
      - MoveLearning
-    annotations:
-      rdfs:comment: A Technical Machine is an item that can be used to teach a Pokemon a move.
+    description: >-
+      A Technical Machine is an item that can be used to teach a Pokémon a move.
 
   Town:
     is_a: Place
@@ -243,11 +262,12 @@ classes:
   Trainer:
     is_a: Person
     description: >-
-      A trainer is a person who is able to catch Pokemon.
+      A trainer is a person who is able to catch Pokémon.
 
   Type:
-    annotations:
-      rdfs:comment: All Pokemon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
+    description: >-
+      All Pokémon creatures and their moves are assigned certain types. Each type has several
+      strengths and weaknesses in both attack and defense.
     is_a: NamedIndividual
     class_uri: pokemon:Type
 
@@ -270,8 +290,8 @@ slots:
     inverse: locatedIn
     multivalued: true
     required: false
-    annotations:
-      rdfs:comment: A place is contained to some extent in this place.
+    description: >-
+      A place is contained to some extent in this place.
 
   describedInPokedex:
     slot_uri: "https://pokemonkg.org/ontology#describedInPok%C3%A9dex"
@@ -281,7 +301,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokedex entry is described in a Pokedex"
+      - "A Pokédex entry is described in a Pokédex"
 
   describesPokemon:
     slot_uri: "https://pokemonkg.org/ontology#describesPok%C3%A9mon"
@@ -289,8 +309,8 @@ slots:
     domain: PokedexEntry
     multivalued: true
     required: false
-    annotations:
-      rdfs:comment: A Pokemon that is described by this Pokedex entry.
+    description: >-
+      A Pokémon that is described by this Pokédex entry.
 
   featuresSpecies:
     slot_uri: pokemon:featuresSpecies
@@ -298,7 +318,7 @@ slots:
     multivalued: true
     required: false
     description:
-      - "A Pokedex entry features a species"
+      - "A Pokédex entry features a species"
 
   hasPokedexEntry:
     slot_uri: "https://pokemonkg.org/ontology#hasPok%C3%A9dexEntry"
@@ -306,8 +326,8 @@ slots:
     domain: Pokedex
     multivalued: true
     required: false
-    annotations:
-      rdfs:comment: A Pokedex entry in which this Pokemon is described.
+    description: >-
+      A Pokédex entry in which this Pokémon is described.
 
   evolvesFrom:
     slot_uri: pokemon:evolvesFrom
@@ -316,8 +336,8 @@ slots:
     inverse: evolvesTo
     multivalued: false
     required: false
-    annotations:
-      rdfs:comment: This species evolves the other species.
+    description: >-
+      This species evolves the other species.
 
   evolvesTo:
     slot_uri: pokemon:evolvesTo
@@ -326,8 +346,8 @@ slots:
     multivalued: true
     required: false
     inverse: evolvesFrom
-    annotations:
-      rdfs:comment: A Pokemon evolves to another Pokemon.
+    description: >-
+      A Pokémon evolves to another Pokémon.
 
   foundIn:
     slot_uri: pokemon:foundIn
@@ -343,7 +363,7 @@ slots:
     inlined: false
     multivalued: false
     required: false
-    description: A Pokemon has a color
+    description: A Pokémon has a color
 
   hasFlavor:
     slot_uri: pokemon:hasFlavor
@@ -351,7 +371,7 @@ slots:
     domain: Food
     multivalued: true
     required: false
-    description: A Pokemon has a flavor
+    description: A Pokémon has a flavor
 
   hasType:
     slot_uri: pokemon:hasType
@@ -359,7 +379,7 @@ slots:
     multivalued: true
     required: false
     inlined_as_list: true
-    description: A Pokemon has a type
+    description: A Pokémon has a type
 
   hasSize:
     slot_uri: pokemon:hasSize
@@ -367,6 +387,8 @@ slots:
     multivalued: false
     required: false
     inlined: true
+    description: >-
+      The physical size of an entity, expressed as a quantity with unit.
 
   hasHeight:
     slot_uri: pokemon:hasHeight
@@ -375,6 +397,8 @@ slots:
     inlined: true
     multivalued: false
     required: false
+    description: >-
+      How tall a Pokémon species is, expressed as a quantity with unit.
 
   hasWeight:
     slot_uri: pokemon:hasWeight
@@ -383,6 +407,8 @@ slots:
     inlined: true
     multivalued: false
     required: false
+    description: >-
+      How heavy a Pokémon species is, expressed as a quantity with unit.
 
   hasCatchRate:
     slot_uri: pokemon:hasCatchRate
@@ -390,6 +416,8 @@ slots:
     domain: Species
     multivalued: false
     required: false
+    description: >-
+      Determines how easy a Pokémon species is to catch, with higher values meaning easier capture.
 
   hasShape:
     slot_uri: pokemon:hasShape
@@ -407,10 +435,12 @@ slots:
     domain: MoveLearning
     multivalued: true
     required: false
+    description: >-
+      The move acquired through this particular learning method.
 
   locatedIn:
-    annotations:
-      rdfs:comment: This place is located to some extent in another place.
+    description: >-
+      This place is located to some extent in another place.
     slot_uri: pokemon:locatedIn
     range: Place
     domain: Place
@@ -425,13 +455,15 @@ slots:
     domain: Species
     multivalued: true
     required: false
+    description: >-
+      Which egg group a species belongs to, controlling which Pokémon can breed together.
 
   mayHaveAbility:
     slot_uri: pokemon:mayHaveAbility
     range: Ability
     domain: Species
     multivalued: true
-    description: A Pokemon may have an ability
+    description: A Pokémon may have an ability
 
   mayHaveHiddenAbility:
     slot_uri: pokemon:mayHaveHiddenAbility
@@ -439,47 +471,70 @@ slots:
     domain: Species
     multivalued: true
     subproperty_of: mayHaveAbility
+    description: >-
+      A special ability only obtainable through specific encounters or events, not through normal
+      gameplay.
 
   isAbleToApply:
     slot_uri: pokemon:isAbleToApply
     range: Move
     multivalued: true
     required: false
+    description: >-
+      Moves that a Pokémon can use in battle or in the overworld.
 
   firmness:
     range: integer
     domain: Food
+    description: >-
+      How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making.
 
   accuracy:
     range: integer
     domain: Move
+    description: >-
+      Chance of a move successfully hitting the target, as a percentage.
 
   basePower:
     range: integer
     domain: Move
+    description: >-
+      Base damage output of a move before applying type effectiveness and stat modifiers.
 
   basePowerPoints:
     range: integer
     domain: Move
+    description: >-
+      Starting number of times a move can be used before needing restoration.
 
   entryNumber:
     range: integer
     domain: PokedexEntry
+    description: >-
+      The unique number identifying this entry within a Pokédex.
 
   hasGenus:
     range: string
     domain: Species
+    description: >-
+      The species category label shown in the Pokédex, such as "Seed Pokémon" for Bulbasaur.
 
   maxPowerPoints:
     range: integer
     domain: Move
+    description: >-
+      Maximum times a move can be used after PP-enhancing items are applied.
 
   minLevelToLearn:
     range: integer
+    description: >-
+      The minimum level a Pokémon needs to reach to learn this move.
 
   smoothness:
     range: integer
     domain: Food
+    description: >-
+      How smooth a berry or food item is, affecting its use in Pokéblock or Poffin making.
 
 enums:
 
