@@ -544,19 +544,37 @@ enums:
     permissible_values:
       Cave:
         meaning: pokemon:Habitat_Cave
+        description: >-
+          A hollow underground area, typically formed in rocky or mountainous terrain.
       Forest:
         meaning: pokemon:Habitat_Forest
+        description: >-
+          A dense area covered with trees and undergrowth.
       Grassland:
         meaning: pokemon:Habitat_Grassland
+        description: >-
+          An open area of land covered predominantly with grasses and low vegetation.
       Mountain:
         meaning: pokemon:Habitat_Mountain
+        description: >-
+          A large elevated landform rising steeply above the surrounding terrain.
       Rare:
         meaning: pokemon:Habitat_Rare
+        description: >-
+          An uncommon or hard-to-reach environment with no single fixed location.
       Rough terrain:
         meaning: pokemon:Habitat_RoughTerrain
+        description: >-
+          Harsh, uneven landscape such as deserts, volcanic areas, or rocky wastelands.
       Sea:
         meaning: pokemon:Habitat_Sea
+        description: >-
+          Open deep water far from shore, including oceans and large lakes.
       Urban:
         meaning: pokemon:Habitat_Urban
+        description: >-
+          A densely developed area with buildings, roads, and other human-made structures.
       Water's edge:
         meaning: pokemon:Habitat_WatersEdge
+        description: >-
+          The transitional zone where land meets water, including shorelines, riverbanks, and wetlands.

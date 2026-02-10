@@ -100,4 +100,4 @@ dmypy.json
 
 # Ruff stuff:
 .ruff_cache/
-
+/__marimo__

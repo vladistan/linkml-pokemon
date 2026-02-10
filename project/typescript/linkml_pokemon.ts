@@ -50,10 +50,25 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-
+    
+    /** Pokemon found in caves, tunnels, and underground areas. */
     Cave = "Cave",
+    /** Pokemon found in forests and wooded areas. */
     Forest = "Forest",
+    /** Pokemon found in open grasslands, plains, and meadows. */
     Grassland = "Grassland",
+    /** Pokemon found on mountains and rocky highlands. */
+    Mountain = "Mountain",
+    /** Pokemon that are rarely encountered and have no fixed habitat. */
+    Rare = "Rare",
+    /** Pokemon found in harsh, rugged terrain such as deserts and wastelands. */
+    Rough_terrain = "Rough terrain",
+    /** Pokemon found in oceans and deep water environments. */
+    Sea = "Sea",
+    /** Pokemon found in cities, towns, and human-built environments. */
+    Urban = "Urban",
+    /** Pokemon found along shorelines, riverbanks, and wetlands. */
+    WaterAPOSTROPHEs_edge = "Water's edge",
 };
 
 
@@ -623,3 +638,6 @@ export interface Trainer extends Person {
  */
 export interface Type extends NamedIndividual {
 }
+
+
+
