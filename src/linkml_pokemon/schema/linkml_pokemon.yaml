@@ -548,3 +548,15 @@ enums:
         meaning: pokemon:Habitat_Forest
       Grassland:
         meaning: pokemon:Habitat_Grassland
+      Mountain:
+        meaning: pokemon:Habitat_Mountain
+      Rare:
+        meaning: pokemon:Habitat_Rare
+      Rough terrain:
+        meaning: pokemon:Habitat_RoughTerrain
+      Sea:
+        meaning: pokemon:Habitat_Sea
+      Urban:
+        meaning: pokemon:Habitat_Urban
+      Water's edge:
+        meaning: pokemon:Habitat_WatersEdge
