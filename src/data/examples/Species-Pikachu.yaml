@@ -1,0 +1,15 @@
+# Example Species: Pikachu
+id: pokemon:pikachu
+name: Pikachu
+description: >-
+  Pikachu is an Electric-type Pokémon. It evolves from Pichu when leveled up
+  with high friendship and evolves into Raichu when exposed to a Thunder Stone.
+  Pikachu is the franchise mascot and Ash Ketchum's partner.
+hasColor: dbpedia:Yellow
+hasCatchRate: 190
+hasType:
+  - id: pokemon:Pok%C3%A9Type_Electric
+    name: Electric
+hasGenus: Mouse Pokémon
+foundIn:
+  - pokemon:Habitat_Forest

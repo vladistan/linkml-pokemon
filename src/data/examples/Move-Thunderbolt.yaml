@@ -1,0 +1,11 @@
+# Example Move: Thunderbolt
+id: pokemon:thunderbolt
+name: Thunderbolt
+description: >-
+  Thunderbolt is a damage-dealing Electric-type move introduced in Generation I.
+  It has been TM24 in multiple generations.
+effectDescription:
+  - A strong electric blast crashes down on the target. This may also leave the target with paralysis.
+hasType:
+  - id: pokemon:Pok%C3%A9Type_Electric
+    name: Electric

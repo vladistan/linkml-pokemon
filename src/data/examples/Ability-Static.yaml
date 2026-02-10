@@ -1,0 +1,7 @@
+# Example Ability: Static (Pikachu's ability)
+id: pokemon:static
+name: Static
+description: >-
+  Static is an Ability introduced in Generation III.
+effectDescription:
+  - The Pokémon is charged with static electricity, so contact with it may cause paralysis.

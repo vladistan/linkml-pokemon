@@ -1,0 +1,5 @@
+# Example Color: Yellow (Pikachu's color, from DBpedia)
+id: dbpedia:Yellow
+name: Yellow
+colorHexCode: "FFFF00"
+frequency: 5.21e+14
