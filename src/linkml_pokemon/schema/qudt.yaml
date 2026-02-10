@@ -4,8 +4,8 @@ title: QUDT Pokemon Subset
 id: https://pokemonkg.org/schema/qudt
 version: 0.1.0
 imports:
-- linkml:types
-- ./owl
+  - linkml:types
+  - ./owl
 license: CC-BY-4.0
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -402,4 +402,3 @@ classes:
     description: Decimal prefix (powers of 10)
     class_uri: qudt:DecimalPrefix
     is_a: Prefix
-

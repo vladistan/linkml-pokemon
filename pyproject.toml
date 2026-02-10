@@ -58,5 +58,8 @@ packages = ["src/linkml_pokemon"]
 [tool.codespell]
 ignore-words = ".cspell"
 
+[tool.ruff]
+extend-exclude = ["src/linkml_pokemon/datamodel/"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

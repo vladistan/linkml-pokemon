@@ -250,7 +250,7 @@ classes:
   TM:
     is_a: Item
     mixins:
-     - MoveLearning
+      - MoveLearning
     description: >-
       A Technical Machine is an item that can be used to teach a Pokémon a move.
 
@@ -539,12 +539,12 @@ slots:
 enums:
 
   HabitatEnum:
-   implements:
-     - owl:NamedIndividual
-   permissible_values:
-     Cave:
-       meaning: pokemon:Habitat_Cave
-     Forest:
-       meaning: pokemon:Habitat_Forest
-     Grassland:
-       meaning: pokemon:Habitat_Grassland
+    implements:
+      - owl:NamedIndividual
+    permissible_values:
+      Cave:
+        meaning: pokemon:Habitat_Cave
+      Forest:
+        meaning: pokemon:Habitat_Forest
+      Grassland:
+        meaning: pokemon:Habitat_Grassland

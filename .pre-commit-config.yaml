@@ -18,6 +18,7 @@ repos:
       - id: check-symlinks
       - id: check-toml
       - id: check-yaml
+        args: [--unsafe]
       - id: end-of-file-fixer
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
@@ -27,11 +28,13 @@ repos:
     hooks:
       - id: yamllint
         args: [-c=.yamllint.yaml]
+        exclude: ^(docs/schema/|project/)
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
       - id: codespell
+        exclude: ^(original/|project/|datadict/)
         additional_dependencies:
           - tomli
 
@@ -39,6 +42,7 @@ repos:
     rev: v1.31.1
     hooks:
       - id: typos
+        exclude: ^(original/|project/|datadict/)
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.

@@ -71,7 +71,6 @@ nav:
   - Data Dictionary: datadict.md
   - About: about.md
 site_url: https://vladistan.github.io/linkml-pokemon
-repo_url: https://github.com/vladistan/linkml-pokemon
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.
