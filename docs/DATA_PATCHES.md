@@ -12,10 +12,10 @@ This document describes the SPARQL UPDATE queries needed to fix data issues in t
 
 ## Patch 1: Fix Weight Units
 
-### Problem
+#### Problem
 Pokemon weight values incorrectly use `unit:KiloM` (Kilometer) instead of `unit:KiloGM` (Kilogram).
 
-### Verification Query
+#### Verification Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -30,7 +30,7 @@ SELECT (COUNT(*) as ?count) WHERE {
 }
 ```
 
-### Fix Query
+#### Fix Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -55,7 +55,7 @@ WHERE {
 }
 ```
 
-### Post-Fix Verification
+#### Post-Fix Verification
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -73,14 +73,39 @@ GROUP BY ?unit
 
 Expected result: All weights should use `unit:KiloGM`.
 
+#### Rollback Query
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+
+DELETE {
+  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
+    ?qv qudt:unit unit:KiloGM .
+  }
+}
+INSERT {
+  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
+    ?qv qudt:unit unit:KiloM .
+  }
+}
+WHERE {
+  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
+    ?pokemon pkmn:hasWeight ?qty .
+    ?qty qudt:quantityValue ?qv .
+    ?qv qudt:unit unit:KiloGM .
+  }
+}
+```
+
 ---
 
 ## Patch 2: Add QuantityValue Types
 
-### Problem
+#### Problem
 QuantityValue instances (height/weight values) have no explicit `rdf:type`. They should be typed as `qudt:QuantityValue` for proper ORM materialization.
 
-### Verification Query
+#### Verification Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 
@@ -93,7 +118,7 @@ SELECT (COUNT(*) as ?untyped) WHERE {
 }
 ```
 
-### Fix Query
+#### Fix Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -112,7 +137,7 @@ WHERE {
 }
 ```
 
-### Post-Fix Verification
+#### Post-Fix Verification
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 
@@ -125,16 +150,34 @@ SELECT (COUNT(*) as ?typed) WHERE {
 
 Expected result: ~1,796 QuantityValue instances (898 heights + 898 weights).
 
+#### Rollback Query
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE {
+  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
+    ?qv rdf:type qudt:QuantityValue .
+  }
+}
+WHERE {
+  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
+    ?qv a qudt:QuantityValue .
+    ?qv qudt:value ?val .
+  }
+}
+```
+
 ---
 
 ## Patch 3: Fix Berry Size QuantityKind
 
-### Problem
+#### Problem
 Berry size values use `quantitykind:Height` which is semantically incorrect. Berries are roughly spherical objects, so their size should be expressed as `quantitykind:Diameter` (or alternatively `quantitykind:Length` for a general linear dimension).
 
 All 64 berries consistently use Height, suggesting a deliberate but incorrect mapping decision during ETL from PokeAPI.
 
-### Verification Query
+#### Verification Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -152,7 +195,7 @@ GROUP BY ?quantityKind
 
 Expected result before fix: All 64 berries use `quantitykind:Height`.
 
-### Fix Query
+#### Fix Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -177,7 +220,7 @@ WHERE {
 }
 ```
 
-### Post-Fix Verification
+#### Post-Fix Verification
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -195,7 +238,7 @@ GROUP BY ?quantityKind
 
 Expected result: All 64 berries should use `quantitykind:Diameter`.
 
-### Rollback Query
+#### Rollback Query
 ```sparql
 PREFIX qudt: <http://qudt.org/schema/qudt/>
 PREFIX pkmn: <https://pokemonkg.org/ontology#>
@@ -223,65 +266,13 @@ WHERE {
 ---
 
 ## Execution Instructions
-`
 
-### Using sparql CLI (if UPDATE is supported)
+Using [sparql-cli](https://github.com/vladistan/sparql-cli) with the `supply` profile:
 
 ```bash
 sparql -P supply update -f patch1.sparql
 sparql -P supply update -f patch2.sparql
+sparql -P supply update -f patch3.sparql
 ```
 
-### Manual via Stardog Studio
-
-1. Open Stardog Studio
-2. Connect to `spql-1` database
-3. Run each UPDATE query in sequence
-4. Verify with the post-fix queries
-
----
-
-## Rollback Queries
-
-### Rollback Patch 1 (if needed)
-```sparql
-PREFIX qudt: <http://qudt.org/schema/qudt/>
-PREFIX pkmn: <https://pokemonkg.org/ontology#>
-PREFIX unit: <http://qudt.org/vocab/unit/>
-
-DELETE {
-  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
-    ?qv qudt:unit unit:KiloGM .
-  }
-}
-INSERT {
-  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
-    ?qv qudt:unit unit:KiloM .
-  }
-}
-WHERE {
-  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
-    ?pokemon pkmn:hasWeight ?qty .
-    ?qty qudt:quantityValue ?qv .
-    ?qv qudt:unit unit:KiloGM .
-  }
-}
-```
-
-### Rollback Patch 2 (if needed)
-```sparql
-PREFIX qudt: <http://qudt.org/schema/qudt/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-DELETE {
-  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
-    ?qv rdf:type qudt:QuantityValue .
-  }
-}
-WHERE {
-  GRAPH <https://pokemonkg.org/dataset/bulbapedia> {
-    ?qv a qudt:QuantityValue .
-    ?qv qudt:value ?val .
-  }
-}
-```
+Verify each patch after execution using the post-fix verification queries above.
