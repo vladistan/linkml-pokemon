@@ -48,7 +48,7 @@ The core schema is defined in [`linkml_pokemon.yaml`](src/linkml_pokemon/schema/
 
 And here is a high-level ERD diagram of the schema structure, key classes, and relationships. Note this is a simplified extraction from the larger schema. For a complete reference, see the [Data Dictionary](https://vladistan.github.io/linkml-pokemon/datadict/).
 
-![Simplified ERD Diagram](docs/images/simplified_erd_diagram.svg)
+![Simplified ERD Diagram](https://vladistan.github.io/linkml-pokemon/images/simplified_erd_diagram.svg)
 
 ### Core Entities
 
