@@ -50,7 +50,7 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-    
+
     /** Pokemon found in caves, tunnels, and underground areas. */
     Cave = "Cave",
     /** Pokemon found in forests and wooded areas. */
@@ -638,6 +638,3 @@ export interface Trainer extends Person {
  */
 export interface Type extends NamedIndividual {
 }
-
-
-

@@ -1662,5 +1662,3 @@ pokemon:Species a owl:Class ;
     skos:definition "A species is a category of Pokémon that share common features." ;
     skos:exactMatch pokemon:Species ;
     skos:inScheme <https://pokemonkg.org/ontology> .
-
-

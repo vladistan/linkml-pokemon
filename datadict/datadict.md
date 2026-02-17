@@ -392,8 +392,8 @@ Ability:
 
 #### Referenced by:
 
- *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub> 
- *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub> 
+ *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub>
+ *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub>
 
 
 
@@ -554,7 +554,7 @@ Color:
 
 #### Referenced by:
 
- *  **[Species](#species)** : hasColor  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasColor  <sub>0..1</sub>
 
 
 
@@ -601,7 +601,7 @@ Connotation:
 
 #### Referenced by:
 
- *  **[Color](#color)** : connotation  <sub>0..\*</sub> 
+ *  **[Color](#color)** : connotation  <sub>0..\*</sub>
 
 
 
@@ -789,7 +789,7 @@ EggGroup:
 
 #### Referenced by:
 
- *  **[Species](#species)** : inEggGroup  <sub>0..\*</sub> 
+ *  **[Species](#species)** : inEggGroup  <sub>0..\*</sub>
 
 
 
@@ -834,7 +834,7 @@ Flavor:
 
 #### Referenced by:
 
- *  **[Food](#food)** : hasFlavor  <sub>0..\*</sub> 
+ *  **[Food](#food)** : hasFlavor  <sub>0..\*</sub>
 
 
 
@@ -1145,7 +1145,7 @@ Habitat:
 
 #### Referenced by:
 
- *  **[Species](#species)** : foundIn  <sub>0..\*</sub> 
+ *  **[Species](#species)** : foundIn  <sub>0..\*</sub>
 
 
 
@@ -1403,7 +1403,7 @@ Move:
 
 #### Referenced by:
 
- *  **[Species](#species)** : isAbleToApply  <sub>0..\*</sub> 
+ *  **[Species](#species)** : isAbleToApply  <sub>0..\*</sub>
 
 
 
@@ -1764,8 +1764,8 @@ Prefix:
 
 #### Referenced by:
 
- *  **[SystemOfUnits](#systemofunits)** : prefix  <sub>0..1</sub> 
- *  **[Unit](#unit)** : prefix  <sub>0..1</sub> 
+ *  **[SystemOfUnits](#systemofunits)** : prefix  <sub>0..1</sub>
+ *  **[Unit](#unit)** : prefix  <sub>0..1</sub>
 
 
 
@@ -1830,9 +1830,9 @@ Quantity:
 
 #### Referenced by:
 
- *  **[Species](#species)** : hasHeight  <sub>0..1</sub> 
- *  **[Berry](#berry)** : hasSize  <sub>0..1</sub> 
- *  **[Species](#species)** : hasWeight  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasHeight  <sub>0..1</sub>
+ *  **[Berry](#berry)** : hasSize  <sub>0..1</sub>
+ *  **[Species](#species)** : hasWeight  <sub>0..1</sub>
 
 
 
@@ -1909,9 +1909,9 @@ QuantityKind:
 
 #### Referenced by:
 
- *  **[AbstractQuantityKind](#abstractquantitykind)** : broader  <sub>0..\*</sub> 
- *  **[Quantity](#quantity)** : hasQuantityKind  <sub>0..\*</sub> 
- *  **[Unit](#unit)** : hasQuantityKind  <sub>0..\*</sub> 
+ *  **[AbstractQuantityKind](#abstractquantitykind)** : broader  <sub>0..\*</sub>
+ *  **[Quantity](#quantity)** : hasQuantityKind  <sub>0..\*</sub>
+ *  **[Unit](#unit)** : hasQuantityKind  <sub>0..\*</sub>
 
 
 
@@ -1985,8 +1985,8 @@ QuantityKindDimensionVector:
 
 #### Referenced by:
 
- *  **[QuantityKind](#quantitykind)** : hasDimensionVector  <sub>0..1</sub> 
- *  **[Unit](#unit)** : hasDimensionVector  <sub>0..1</sub> 
+ *  **[QuantityKind](#quantitykind)** : hasDimensionVector  <sub>0..1</sub>
+ *  **[Unit](#unit)** : hasDimensionVector  <sub>0..1</sub>
 
 
 
@@ -2303,7 +2303,7 @@ QuantityValue:
 
 #### Referenced by:
 
- *  **[Quantity](#quantity)** : quantityValue  <sub>0..\*</sub> 
+ *  **[Quantity](#quantity)** : quantityValue  <sub>0..\*</sub>
 
 
 
@@ -2390,7 +2390,7 @@ Shape:
 
 #### Referenced by:
 
- *  **[Species](#species)** : hasShape  <sub>0..1</sub> 
+ *  **[Species](#species)** : hasShape  <sub>0..1</sub>
 
 
 
@@ -2502,7 +2502,7 @@ Species:
 
 #### Referenced by:
 
- *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub> 
+ *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub>
 
 
 
@@ -2598,8 +2598,8 @@ SystemOfUnits:
 
 #### Referenced by:
 
- *  **[Unit](#unit)** : applicableSystem  <sub>0..\*</sub> 
- *  **[Unit](#unit)** : isUnitOfSystem  <sub>0..\*</sub> 
+ *  **[Unit](#unit)** : applicableSystem  <sub>0..\*</sub>
+ *  **[Unit](#unit)** : isUnitOfSystem  <sub>0..\*</sub>
 
 
 
@@ -2782,8 +2782,8 @@ Type:
 
 #### Referenced by:
 
- *  **[Move](#move)** : hasType  <sub>0..\*</sub> 
- *  **[Species](#species)** : hasType  <sub>0..\*</sub> 
+ *  **[Move](#move)** : hasType  <sub>0..\*</sub>
+ *  **[Species](#species)** : hasType  <sub>0..\*</sub>
 
 
 
@@ -2874,11 +2874,11 @@ Unit:
 
 #### Referenced by:
 
- *  **[QuantityKind](#quantitykind)** : applicableUnit  <sub>0..\*</sub> 
- *  **[SystemOfUnits](#systemofunits)** : hasBaseUnit  <sub>0..\*</sub> 
- *  **[Quantifiable](#quantifiable)** : hasUnit  <sub>0..1</sub> 
- *  **[Unit](#unit)** : scalingOf  <sub>0..1</sub> 
- *  **[QuantityValue](#quantityvalue)** : unit  <sub>0..1</sub> 
+ *  **[QuantityKind](#quantitykind)** : applicableUnit  <sub>0..\*</sub>
+ *  **[SystemOfUnits](#systemofunits)** : hasBaseUnit  <sub>0..\*</sub>
+ *  **[Quantifiable](#quantifiable)** : hasUnit  <sub>0..1</sub>
+ *  **[Unit](#unit)** : scalingOf  <sub>0..1</sub>
+ *  **[QuantityValue](#quantityvalue)** : unit  <sub>0..1</sub>
 
 
 
@@ -3156,4 +3156,3 @@ Verifiable:
 | Sea | pokemon:Habitat_Sea | Open deep water far from shore, including oceans and large lakes. |
 | Urban | pokemon:Habitat_Urban | A densely developed area with buildings, roads, and other human-made structures. |
 | Water's edge | pokemon:Habitat_WatersEdge | The transitional zone where land meets water, including shorelines, riverbanks, and wetlands. |
-

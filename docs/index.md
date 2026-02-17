@@ -43,7 +43,7 @@ references and complex data types.
 Knowledge graphs take combined with Large Language Models (LLMs)
 take the agentic development to the next level.  This project provides
 rich ontology and large data set for testing techniques like RAG and
-ontology based agent assistance. 
+ontology based agent assistance.
 
 
 ## Key Concepts
