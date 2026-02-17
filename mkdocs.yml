@@ -1,6 +1,8 @@
 ---
 site_name: Pokemon LinkML Model
 site_description: LinkML model for Pokemon Ontology
+site_author: Vlad Korolev
+site_url: https://vladistan.github.io/linkml-pokemon/
 repo_url: https://github.com/vladistan/linkml-pokemon
 repo_name: vladistan/linkml-pokemon
 
@@ -75,11 +77,15 @@ nav:
   - Data Dictionary: datadict.md
   - Data Patches: DATA_PATCHES.md
   - About: about.md
-site_url: https://vladistan.github.io/linkml-pokemon
 
-# Uncomment this block to enable use of Google Analytics.
-# Replace the property value with your own ID.
-# extra:
-#   analytics:
-#     provider: google
-#     property: G-XXXXXXXXXX
+extra:
+  analytics:
+    provider: google
+    property: G-4KG00QCXJD
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/vladistan/linkml-pokemon
+    - icon: fontawesome/solid/globe
+      link: https://pokemonkg.org
+
+copyright: Copyright &copy; 2025 Vlad Korolev
