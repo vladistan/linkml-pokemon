@@ -501,15 +501,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#rollback-queries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rollback Queries
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -606,15 +597,6 @@
   <a href="#execution-instructions" class="md-nav__link">
     <span class="md-ellipsis">
       Execution Instructions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rollback-queries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rollback Queries
     </span>
   </a>
   
@@ -726,92 +708,93 @@
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">GROUP BY</span> <span class="nv">?unit</span>
 </code></pre></div>
 <p>Expected result: All weights should use <code>unit:KiloGM</code>.</p>
+<h4 id="rollback-query">Rollback Query<a class="headerlink" href="#rollback-query" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">PREFIX</span> <span class="nn">unit</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/unit/&gt;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">DELETE</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloGM</span> <span class="p">.</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  <span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">INSERT</span> <span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloM</span> <span class="p">.</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>  <span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="nv">?pokemon</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasWeight</span> <span class="nv">?qty</span> <span class="p">.</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloGM</span> <span class="p">.</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>  <span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="patch-2-add-quantityvalue-types">Patch 2: Add QuantityValue Types<a class="headerlink" href="#patch-2-add-quantityvalue-types" title="Permanent link">&para;</a></h2>
 <h4 id="problem_1">Problem<a class="headerlink" href="#problem_1" title="Permanent link">&para;</a></h4>
 <p>QuantityValue instances (height/weight values) have no explicit <code>rdf:type</code>. They should be typed as <code>qudt:QuantityValue</code> for proper ORM materialization.</p>
 <h4 id="verification-query_1">Verification Query<a class="headerlink" href="#verification-query_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">SELECT</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?untyped</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">FILTER</span> <span class="nf">NOT EXISTS</span> <span class="p">{</span> <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">}</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  <span class="p">}</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">SELECT</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?untyped</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="k">FILTER</span> <span class="nf">NOT EXISTS</span> <span class="p">{</span> <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">}</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  <span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="fix-query_1">Fix Query<a class="headerlink" href="#fix-query_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">INSERT</span> <span class="p">{</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nv">?qv</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  <span class="p">}</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">FILTER</span> <span class="nf">NOT EXISTS</span> <span class="p">{</span> <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">}</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>  <span class="p">}</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">INSERT</span> <span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="nv">?qv</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  <span class="p">}</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">FILTER</span> <span class="nf">NOT EXISTS</span> <span class="p">{</span> <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>  <span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="post-fix-verification_1">Post-Fix Verification<a class="headerlink" href="#post-fix-verification_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">SELECT</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?typed</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  <span class="p">}</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">SELECT</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?typed</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  <span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="p">}</span>
 </code></pre></div>
 <p>Expected result: ~1,796 QuantityValue instances (898 heights + 898 weights).</p>
+<h4 id="rollback-query_1">Rollback Query<a class="headerlink" href="#rollback-query_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">DELETE</span> <span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="nv">?qv</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  <span class="p">}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  <span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</code></pre></div>
 <hr />
 <h2 id="patch-3-fix-berry-size-quantitykind">Patch 3: Fix Berry Size QuantityKind<a class="headerlink" href="#patch-3-fix-berry-size-quantitykind" title="Permanent link">&para;</a></h2>
 <h4 id="problem_2">Problem<a class="headerlink" href="#problem_2" title="Permanent link">&para;</a></h4>
 <p>Berry size values use <code>quantitykind:Height</code> which is semantically incorrect. Berries are roughly spherical objects, so their size should be expressed as <code>quantitykind:Diameter</code> (or alternatively <code>quantitykind:Length</code> for a general linear dimension).</p>
 <p>All 64 berries consistently use Height, suggesting a deliberate but incorrect mapping decision during ETL from PokeAPI.</p>
 <h4 id="verification-query_2">Verification Query<a class="headerlink" href="#verification-query_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">SELECT</span> <span class="nv">?quantityKind</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?berry</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?count</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nv">?berry</span> <span class="k">a</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">Berry</span> <span class="p">;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>           <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasSize</span> <span class="nv">?sizeQuantity</span> <span class="p">.</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nv">?quantityKind</span> <span class="p">.</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>  <span class="p">}</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">}</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="k">GROUP BY</span> <span class="nv">?quantityKind</span>
-</code></pre></div>
-<p>Expected result before fix: All 64 berries use <code>quantitykind:Height</code>.</p>
-<h4 id="fix-query_2">Fix Query<a class="headerlink" href="#fix-query_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">DELETE</span> <span class="p">{</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  <span class="p">}</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">}</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">INSERT</span> <span class="p">{</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  <span class="p">}</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="nv">?berry</span> <span class="k">a</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">Berry</span> <span class="p">;</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>           <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasSize</span> <span class="nv">?sizeQuantity</span> <span class="p">.</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>  <span class="p">}</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span>
-</code></pre></div>
-<h4 id="post-fix-verification_2">Post-Fix Verification<a class="headerlink" href="#post-fix-verification_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
@@ -825,84 +808,76 @@
 <a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">}</span>
 <a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="k">GROUP BY</span> <span class="nv">?quantityKind</span>
 </code></pre></div>
-<p>Expected result: All 64 berries should use <code>quantitykind:Diameter</code>.</p>
-<h4 id="rollback-query">Rollback Query<a class="headerlink" href="#rollback-query" title="Permanent link">&para;</a></h4>
+<p>Expected result before fix: All 64 berries use <code>quantitykind:Height</code>.</p>
+<h4 id="fix-query_2">Fix Query<a class="headerlink" href="#fix-query_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
 <a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">DELETE</span> <span class="p">{</span>
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  <span class="p">}</span>
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">}</span>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">INSERT</span> <span class="p">{</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
 <a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>  <span class="p">}</span>
 <a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">}</span>
 <a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">WHERE</span> <span class="p">{</span>
 <a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
 <a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>    <span class="nv">?berry</span> <span class="k">a</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">Berry</span> <span class="p">;</span>
 <a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>           <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasSize</span> <span class="nv">?sizeQuantity</span> <span class="p">.</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
 <a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>  <span class="p">}</span>
 <a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="p">}</span>
 </code></pre></div>
-<hr />
-<h2 id="execution-instructions">Execution Instructions<a class="headerlink" href="#execution-instructions" title="Permanent link">&para;</a></h2>
-<h4 id="using-sparql-cli-if-update-is-supported">Using sparql CLI (if UPDATE is supported)<a class="headerlink" href="#using-sparql-cli-if-update-is-supported" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sparql<span class="w"> </span>-P<span class="w"> </span>supply<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>patch1.sparql
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sparql<span class="w"> </span>-P<span class="w"> </span>supply<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>patch2.sparql
+<h4 id="post-fix-verification_2">Post-Fix Verification<a class="headerlink" href="#post-fix-verification_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">SELECT</span> <span class="nv">?quantityKind</span> <span class="p">(</span><span class="nf">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span> <span class="nv">?berry</span><span class="p">)</span> <span class="k">as</span> <span class="nv">?count</span><span class="p">)</span> <span class="k">WHERE</span> <span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="nv">?berry</span> <span class="k">a</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">Berry</span> <span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>           <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasSize</span> <span class="nv">?sizeQuantity</span> <span class="p">.</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nv">?quantityKind</span> <span class="p">.</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>  <span class="p">}</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">}</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="k">GROUP BY</span> <span class="nv">?quantityKind</span>
 </code></pre></div>
-<h4 id="manual-via-stardog-studio">Manual via Stardog Studio<a class="headerlink" href="#manual-via-stardog-studio" title="Permanent link">&para;</a></h4>
-<ol>
-<li>Open Stardog Studio</li>
-<li>Connect to <code>spql-1</code> database</li>
-<li>Run each UPDATE query in sequence</li>
-<li>Verify with the post-fix queries</li>
-</ol>
-<hr />
-<h2 id="rollback-queries">Rollback Queries<a class="headerlink" href="#rollback-queries" title="Permanent link">&para;</a></h2>
-<h4 id="rollback-patch-1-if-needed">Rollback Patch 1 (if needed)<a class="headerlink" href="#rollback-patch-1-if-needed" title="Permanent link">&para;</a></h4>
+<p>Expected result: All 64 berries should use <code>quantitykind:Diameter</code>.</p>
+<h4 id="rollback-query_2">Rollback Query<a class="headerlink" href="#rollback-query_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">PREFIX</span> <span class="nn">pkmn</span><span class="p">:</span> <span class="nl">&lt;https://pokemonkg.org/ontology#&gt;</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">PREFIX</span> <span class="nn">unit</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/unit/&gt;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">PREFIX</span> <span class="nn">qk</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/vocab/quantitykind/&gt;</span>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">DELETE</span> <span class="p">{</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloGM</span> <span class="p">.</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  <span class="p">}</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="p">}</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="k">INSERT</span> <span class="p">{</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloM</span> <span class="p">.</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Height</span> <span class="p">.</span>
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>  <span class="p">}</span>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="p">}</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="nv">?pokemon</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasWeight</span> <span class="nv">?qty</span> <span class="p">.</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>    <span class="nv">?qty</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">quantityValue</span> <span class="nv">?qv</span> <span class="p">.</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">unit</span> <span class="nn">unit</span><span class="p">:</span><span class="nt">KiloGM</span> <span class="p">.</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;http://pokemon.outofbits.com/dataset/pokeapi-co&gt;</span> <span class="p">{</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="nv">?berry</span> <span class="k">a</span> <span class="nn">pkmn</span><span class="p">:</span><span class="nt">Berry</span> <span class="p">;</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>           <span class="nn">pkmn</span><span class="p">:</span><span class="nt">hasSize</span> <span class="nv">?sizeQuantity</span> <span class="p">.</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>    <span class="nv">?sizeQuantity</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">hasQuantityKind</span> <span class="nn">qk</span><span class="p">:</span><span class="nt">Diameter</span> <span class="p">.</span>
 <a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>  <span class="p">}</span>
 <a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="p">}</span>
 </code></pre></div>
-<h4 id="rollback-patch-2-if-needed">Rollback Patch 2 (if needed)<a class="headerlink" href="#rollback-patch-2-if-needed" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">PREFIX</span> <span class="nn">qudt</span><span class="p">:</span> <span class="nl">&lt;http://qudt.org/schema/qudt/&gt;</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">PREFIX</span> <span class="nn">rdf</span><span class="p">:</span> <span class="nl">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">DELETE</span> <span class="p">{</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    <span class="nv">?qv</span> <span class="nn">rdf</span><span class="p">:</span><span class="nt">type</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  <span class="p">}</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">WHERE</span> <span class="p">{</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>  <span class="k">GRAPH</span> <span class="nl">&lt;https://pokemonkg.org/dataset/bulbapedia&gt;</span> <span class="p">{</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="nv">?qv</span> <span class="k">a</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">QuantityValue</span> <span class="p">.</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="nv">?qv</span> <span class="nn">qudt</span><span class="p">:</span><span class="nt">value</span> <span class="nv">?val</span> <span class="p">.</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>  <span class="p">}</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="p">}</span>
+<hr />
+<h2 id="execution-instructions">Execution Instructions<a class="headerlink" href="#execution-instructions" title="Permanent link">&para;</a></h2>
+<p>Using <a href="https://github.com/vladistan/sparql-cli">sparql-cli</a> with the <code>supply</code> profile:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sparql<span class="w"> </span>-P<span class="w"> </span>supply<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>patch1.sparql
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sparql<span class="w"> </span>-P<span class="w"> </span>supply<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>patch2.sparql
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sparql<span class="w"> </span>-P<span class="w"> </span>supply<span class="w"> </span>update<span class="w"> </span>-f<span class="w"> </span>patch3.sparql
 </code></pre></div>
+<p>Verify each patch after execution using the post-fix verification queries above.</p>
 
 
 
