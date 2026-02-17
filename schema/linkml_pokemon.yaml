@@ -1,0 +1,1674 @@
+name: linkml-pokemon
+annotations:
+  dcterms:description:
+    tag: dcterms:description
+    value: Ontology covering the Pokemon world as it is presented in games and anime
+      television series.
+  dcterms:issued:
+    tag: dcterms:issued
+    value: 2019-07-27^^xsd:date
+description: "Ontology covering the Pok\xE9mon world as it is presented in games and\
+  \ anime television series"
+title: Pokemon Ontology
+see_also:
+- https://vladistan.github.io/linkml-pokemon
+created_on: '2019-07-27T00:00:00'
+id: https://pokemonkg.org/ontology
+imports:
+- linkml:types
+- ./foaf
+- ./dbpedia
+- ./owl
+- ./qudt
+license: MIT
+prefixes:
+  linkml_pokemon:
+    prefix_prefix: linkml_pokemon
+    prefix_reference: https://w3id.org/vladistan/linkml-pokemon/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  linkml_common:
+    prefix_prefix: linkml_common
+    prefix_reference: https://w3id.org/linkml/common/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
+  PATO:
+    prefix_prefix: PATO
+    prefix_reference: http://purl.obolibrary.org/obo/PATO_
+  example:
+    prefix_prefix: example
+    prefix_reference: https://example.org/
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
+  rdf:
+    prefix_prefix: rdf
+    prefix_reference: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xml:
+    prefix_prefix: xml
+    prefix_reference: http://www.w3.org/XML/1998/namespace
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+  rdfs:
+    prefix_prefix: rdfs
+    prefix_reference: http://www.w3.org/2000/01/rdf-schema#
+  foaf:
+    prefix_prefix: foaf
+    prefix_reference: http://xmlns.com/foaf/0.1/
+  dbpedia:
+    prefix_prefix: dbpedia
+    prefix_reference: http://dbpedia.org/ontology/
+  pokemon:
+    prefix_prefix: pokemon
+    prefix_reference: https://pokemonkg.org/ontology#
+  qudt:
+    prefix_prefix: qudt
+    prefix_reference: http://qudt.org/schema/qudt/
+default_prefix: pokemon
+default_range: string
+types:
+  string:
+    name: string
+    definition_uri: https://w3id.org/linkml/String
+    description: A character string
+    notes:
+    - In RDF serializations, a slot with range of string is treated as a literal or
+      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
+      referenced with the lower case "string".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    name: integer
+    definition_uri: https://w3id.org/linkml/Integer
+    description: An integer
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "integer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    name: boolean
+    definition_uri: https://w3id.org/linkml/Boolean
+    description: A binary (true or false) value
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "boolean".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+  float:
+    name: float
+    definition_uri: https://w3id.org/linkml/Float
+    description: A real number that conforms to the xsd:float specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "float".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:float
+  double:
+    name: double
+    definition_uri: https://w3id.org/linkml/Double
+    description: A real number that conforms to the xsd:double specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "double".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:Float
+    base: float
+    uri: xsd:double
+  decimal:
+    name: decimal
+    definition_uri: https://w3id.org/linkml/Decimal
+    description: A real number with arbitrary precision that conforms to the xsd:decimal
+      specification
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "decimal".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    broad_mappings:
+    - schema:Number
+    base: Decimal
+    uri: xsd:decimal
+  time:
+    name: time
+    definition_uri: https://w3id.org/linkml/Time
+    description: A time object represents a (local) time of day, independent of any
+      particular day
+    notes:
+    - URI is dateTime because OWL reasoners do not work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "time".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Time
+    base: XSDTime
+    uri: xsd:time
+    repr: str
+  date:
+    name: date
+    definition_uri: https://w3id.org/linkml/Date
+    description: a date (year, month and day) in an idealized calendar
+    notes:
+    - URI is dateTime because OWL reasoners don't work with straight date or time
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:Date
+    base: XSDDate
+    uri: xsd:date
+    repr: str
+  datetime:
+    name: datetime
+    definition_uri: https://w3id.org/linkml/Datetime
+    description: The combination of a date and time
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    exact_mappings:
+    - schema:DateTime
+    base: XSDDateTime
+    uri: xsd:dateTime
+    repr: str
+  date_or_datetime:
+    name: date_or_datetime
+    definition_uri: https://w3id.org/linkml/DateOrDatetime
+    description: Either a date or a datetime
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "date_or_datetime".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: linkml:DateOrDatetime
+    repr: str
+  uriorcurie:
+    name: uriorcurie
+    definition_uri: https://w3id.org/linkml/Uriorcurie
+    description: a URI or a CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uriorcurie".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: URIorCURIE
+    uri: xsd:anyURI
+    repr: str
+  curie:
+    name: curie
+    definition_uri: https://w3id.org/linkml/Curie
+    conforms_to: https://www.w3.org/TR/curie/
+    description: a compact URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "curie".
+    comments:
+    - in RDF serializations this MUST be expanded to a URI
+    - in non-RDF serializations MAY be serialized as the compact representation
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: Curie
+    uri: xsd:string
+    repr: str
+  uri:
+    name: uri
+    definition_uri: https://w3id.org/linkml/Uri
+    conforms_to: https://www.ietf.org/rfc/rfc3987.txt
+    description: a complete URI
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "uri".
+    comments:
+    - in RDF serializations a slot with range of uri is treated as a literal or type
+      xsd:anyURI unless it is an identifier or a reference to an identifier, in which
+      case it is translated directly to a node
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    close_mappings:
+    - schema:URL
+    base: URI
+    uri: xsd:anyURI
+    repr: str
+  ncname:
+    name: ncname
+    definition_uri: https://w3id.org/linkml/Ncname
+    description: Prefix part of CURIE
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "ncname".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NCName
+    uri: xsd:string
+    repr: str
+  objectidentifier:
+    name: objectidentifier
+    definition_uri: https://w3id.org/linkml/Objectidentifier
+    description: A URI or CURIE that represents an object in the model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "objectidentifier".
+    comments:
+    - Used for inheritance and type checking
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: ElementIdentifier
+    uri: shex:iri
+    repr: str
+  nodeidentifier:
+    name: nodeidentifier
+    definition_uri: https://w3id.org/linkml/Nodeidentifier
+    description: A URI, CURIE or BNODE that represents a node in a model.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "nodeidentifier".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: NodeIdentifier
+    uri: shex:nonLiteral
+    repr: str
+  jsonpointer:
+    name: jsonpointer
+    definition_uri: https://w3id.org/linkml/Jsonpointer
+    conforms_to: https://datatracker.ietf.org/doc/html/rfc6901
+    description: A string encoding a JSON Pointer. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to a valid object within the current
+      instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpointer".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  jsonpath:
+    name: jsonpath
+    definition_uri: https://w3id.org/linkml/Jsonpath
+    conforms_to: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+    description: A string encoding a JSON Path. The value of the string MUST conform
+      to JSON Point syntax and SHOULD dereference to zero or more valid objects within
+      the current instance document when encoded in tree form.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "jsonpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+  sparqlpath:
+    name: sparqlpath
+    definition_uri: https://w3id.org/linkml/Sparqlpath
+    conforms_to: https://www.w3.org/TR/sparql11-query/#propertypaths
+    description: A string encoding a SPARQL Property Path. The value of the string
+      MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects
+      within the current instance document when encoded as RDF.
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the
+      lower case "sparqlpath".
+    from_schema: https://w3id.org/linkml/types
+    imported_from: linkml:types
+    base: str
+    uri: xsd:string
+    repr: str
+enums:
+  HabitatEnum:
+    name: HabitatEnum
+    definition_uri: https://pokemonkg.org/ontology#HabitatEnum
+    implements:
+    - owl:NamedIndividual
+    from_schema: https://pokemonkg.org/ontology
+    permissible_values:
+      Cave:
+        text: Cave
+        meaning: pokemon:Habitat_Cave
+      Forest:
+        text: Forest
+        meaning: pokemon:Habitat_Forest
+      Grassland:
+        text: Grassland
+        meaning: pokemon:Habitat_Grassland
+slots:
+  effectDescription:
+    name: effectDescription
+    definition_uri: https://pokemonkg.org/ontology#effectDescription
+    description: A description of the effect of the entity
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:effectDescription
+    slot_uri: pokemon:effectDescription
+    owner: Move
+    domain_of:
+    - Ability
+    - Move
+    range: string
+    required: false
+    multivalued: true
+  containsPlace:
+    name: containsPlace
+    definition_uri: https://pokemonkg.org/ontology#containsPlace
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A place is contained to some extent in this place.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:contains_place
+    domain: Place
+    slot_uri: pokemon:contains_place
+    owner: containsPlace
+    asymmetric: true
+    transitive: true
+    inverse: locatedIn
+    range: Place
+    required: false
+    multivalued: true
+  describedInPokedex:
+    name: describedInPokedex
+    definition_uri: https://pokemonkg.org/ontology#describedInPokedex
+    description: '[''A Pokedex entry is described in a Pokedex'']'
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:describedInPokedex
+    domain: Species
+    slot_uri: pokemon:describedInPokedex
+    owner: describedInPokedex
+    inverse: describesPokemon
+    range: PokedexEntry
+    required: false
+    multivalued: true
+  describesPokemon:
+    name: describesPokemon
+    definition_uri: https://pokemonkg.org/ontology#describesPokemon
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A Pokemon that is described by this Pokedex entry.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:describesPokemon
+    domain: PokedexEntry
+    slot_uri: pokemon:describesPokemon
+    owner: describesPokemon
+    inverse: describedInPokedex
+    range: Species
+    required: false
+    multivalued: true
+  featuresSpecies:
+    name: featuresSpecies
+    definition_uri: https://pokemonkg.org/ontology#featuresSpecies
+    description: '[''A Pokedex entry features a species'']'
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:featuresSpecies
+    slot_uri: pokemon:featuresSpecies
+    owner: Generation
+    domain_of:
+    - Generation
+    range: Species
+    required: false
+    multivalued: true
+  hasPokedexEntry:
+    name: hasPokedexEntry
+    definition_uri: https://pokemonkg.org/ontology#hasPokedexEntry
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A Pokedex entry in which this Pokemon is described.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasPokedexEntry
+    domain: Pokedex
+    slot_uri: pokemon:hasPokedexEntry
+    owner: hasPokedexEntry
+    range: PokedexEntry
+    required: false
+    multivalued: true
+  evolvesFrom:
+    name: evolvesFrom
+    definition_uri: https://pokemonkg.org/ontology#evolvesFrom
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: This species evolves the other species.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:evolvesFrom
+    domain: Species
+    slot_uri: pokemon:evolvesFrom
+    owner: evolvesFrom
+    inverse: evolvesTo
+    range: Species
+    required: false
+    multivalued: false
+  evolvesTo:
+    name: evolvesTo
+    definition_uri: https://pokemonkg.org/ontology#evolvesTo
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A Pokemon evolves to another Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:evolvesTo
+    domain: Species
+    slot_uri: pokemon:evolvesTo
+    owner: evolvesTo
+    inverse: evolvesFrom
+    range: Species
+    required: false
+    multivalued: true
+  foundIn:
+    name: foundIn
+    definition_uri: https://pokemonkg.org/ontology#foundIn
+    description: A place is found in a location
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:foundIn
+    domain: Species
+    slot_uri: pokemon:foundIn
+    owner: Species
+    domain_of:
+    - Species
+    range: Habitat
+    required: false
+    multivalued: true
+  hasColour:
+    name: hasColour
+    definition_uri: https://pokemonkg.org/ontology#hasColour
+    description: A Pokemon has a color
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasColour
+    slot_uri: pokemon:hasColour
+    owner: Species
+    domain_of:
+    - Species
+    range: Colour
+    required: false
+    multivalued: false
+    inlined: false
+  hasFlavor:
+    name: hasFlavor
+    definition_uri: https://pokemonkg.org/ontology#hasFlavor
+    description: A Pokemon has a flavor
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasFlavor
+    domain: Food
+    slot_uri: pokemon:hasFlavor
+    owner: Food
+    domain_of:
+    - Food
+    range: Flavor
+    required: false
+    multivalued: true
+  hasType:
+    name: hasType
+    definition_uri: https://pokemonkg.org/ontology#hasType
+    description: A Pokemon has a type
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasType
+    slot_uri: pokemon:hasType
+    owner: Move
+    domain_of:
+    - Species
+    - Move
+    range: Type
+    required: false
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  hasSize:
+    name: hasSize
+    definition_uri: https://pokemonkg.org/ontology#hasSize
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasSize
+    slot_uri: pokemon:hasSize
+    owner: Berry
+    domain_of:
+    - Berry
+    range: string
+    required: false
+    multivalued: false
+    inlined: true
+  hasHeight:
+    name: hasHeight
+    definition_uri: https://pokemonkg.org/ontology#hasHeight
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasHeight
+    domain: Species
+    slot_uri: pokemon:hasHeight
+    owner: Species
+    domain_of:
+    - Species
+    range: Quantity
+    required: false
+    multivalued: false
+    inlined: true
+    inlined_as_list: false
+  hasWeight:
+    name: hasWeight
+    definition_uri: https://pokemonkg.org/ontology#hasWeight
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasWeight
+    domain: Species
+    slot_uri: pokemon:hasWeight
+    owner: Species
+    domain_of:
+    - Species
+    range: Quantity
+    required: false
+    multivalued: false
+    inlined: true
+    inlined_as_list: false
+  hasCatchRate:
+    name: hasCatchRate
+    definition_uri: https://pokemonkg.org/ontology#hasCatchRate
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasCatchRate
+    domain: Species
+    slot_uri: pokemon:hasCatchRate
+    owner: Species
+    domain_of:
+    - Species
+    range: integer
+    required: false
+    multivalued: false
+  hasShape:
+    name: hasShape
+    definition_uri: https://pokemonkg.org/ontology#hasShape
+    description: The shape of a berry is a measure of how good it  is for making a
+      Potion.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:hasShape
+    domain: Species
+    slot_uri: pokemon:hasShape
+    owner: Species
+    domain_of:
+    - Species
+    range: Shape
+    required: false
+    multivalued: false
+  learnsMove:
+    name: learnsMove
+    definition_uri: https://pokemonkg.org/ontology#learnsMove
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:learnsMove
+    domain: MoveLearning
+    slot_uri: pokemon:learnsMove
+    owner: learnsMove
+    range: Move
+    required: false
+    multivalued: true
+  locatedIn:
+    name: locatedIn
+    definition_uri: https://pokemonkg.org/ontology#locatedIn
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: This place is located to some extent in another place.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:locatedIn
+    domain: Place
+    slot_uri: pokemon:locatedIn
+    owner: locatedIn
+    asymmetric: true
+    transitive: true
+    inverse: containsPlace
+    range: Place
+    required: false
+    multivalued: true
+  inEggGroup:
+    name: inEggGroup
+    definition_uri: https://pokemonkg.org/ontology#inEggGroup
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:inEggGroup
+    domain: Species
+    slot_uri: pokemon:inEggGroup
+    owner: Species
+    domain_of:
+    - Species
+    range: EggGroup
+    required: false
+    multivalued: true
+  mayHaveAbility:
+    name: mayHaveAbility
+    definition_uri: https://pokemonkg.org/ontology#mayHaveAbility
+    description: A Pokemon may have an ability
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:mayHaveAbility
+    domain: Species
+    slot_uri: pokemon:mayHaveAbility
+    owner: Species
+    domain_of:
+    - Species
+    range: Ability
+    multivalued: true
+  mayHaveHiddenAbility:
+    name: mayHaveHiddenAbility
+    definition_uri: https://pokemonkg.org/ontology#mayHaveHiddenAbility
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:mayHaveHiddenAbility
+    domain: Species
+    slot_uri: pokemon:mayHaveHiddenAbility
+    owner: Species
+    domain_of:
+    - Species
+    subproperty_of: mayHaveAbility
+    range: Ability
+    multivalued: true
+  isAbleToApply:
+    name: isAbleToApply
+    definition_uri: https://pokemonkg.org/ontology#isAbleToApply
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:isAbleToApply
+    slot_uri: pokemon:isAbleToApply
+    owner: Species
+    domain_of:
+    - Species
+    range: Move
+    required: false
+    multivalued: true
+  firmness:
+    name: firmness
+    definition_uri: https://pokemonkg.org/ontology#firmness
+    from_schema: https://pokemonkg.org/ontology
+    domain: Food
+    slot_uri: pokemon:firmness
+    owner: Food
+    domain_of:
+    - Food
+    range: integer
+  accuracy:
+    name: accuracy
+    definition_uri: https://pokemonkg.org/ontology#accuracy
+    from_schema: https://pokemonkg.org/ontology
+    domain: Move
+    slot_uri: pokemon:accuracy
+    owner: accuracy
+    range: integer
+  basePower:
+    name: basePower
+    definition_uri: https://pokemonkg.org/ontology#basePower
+    from_schema: https://pokemonkg.org/ontology
+    domain: Move
+    slot_uri: pokemon:basePower
+    owner: basePower
+    range: integer
+  basePowerPoints:
+    name: basePowerPoints
+    definition_uri: https://pokemonkg.org/ontology#basePowerPoints
+    from_schema: https://pokemonkg.org/ontology
+    domain: Move
+    slot_uri: pokemon:basePowerPoints
+    owner: basePowerPoints
+    range: integer
+  entryNumber:
+    name: entryNumber
+    definition_uri: https://pokemonkg.org/ontology#entryNumber
+    from_schema: https://pokemonkg.org/ontology
+    domain: PokedexEntry
+    slot_uri: pokemon:entryNumber
+    owner: entryNumber
+    range: integer
+  hasGenus:
+    name: hasGenus
+    definition_uri: https://pokemonkg.org/ontology#hasGenus
+    from_schema: https://pokemonkg.org/ontology
+    domain: Species
+    slot_uri: pokemon:hasGenus
+    owner: Species
+    domain_of:
+    - Species
+    range: string
+  maxPowerPoints:
+    name: maxPowerPoints
+    definition_uri: https://pokemonkg.org/ontology#maxPowerPoints
+    from_schema: https://pokemonkg.org/ontology
+    domain: Move
+    slot_uri: pokemon:maxPowerPoints
+    owner: maxPowerPoints
+    range: integer
+  minLevelToLearn:
+    name: minLevelToLearn
+    definition_uri: https://pokemonkg.org/ontology#minLevelToLearn
+    from_schema: https://pokemonkg.org/ontology
+    slot_uri: pokemon:minLevelToLearn
+    range: integer
+  smoothness:
+    name: smoothness
+    definition_uri: https://pokemonkg.org/ontology#smoothness
+    from_schema: https://pokemonkg.org/ontology
+    domain: Food
+    slot_uri: pokemon:smoothness
+    owner: Food
+    domain_of:
+    - Food
+    range: integer
+  depiction:
+    name: depiction
+    definition_uri: http://xmlns.com/foaf/0.1//depiction
+    description: A depiction of the person
+    from_schema: http://xmlns.com/foaf/0.1/
+    mappings:
+    - foaf:depiction
+    slot_uri: foaf:depiction
+    owner: Person
+    domain_of:
+    - Species
+    - Person
+    range: string
+  black:
+    name: black
+    definition_uri: https://dbpedia.org/ontology//black
+    description: Black component in CMYK color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:cmykCoordinateBlack
+    slot_uri: dbpedia:cmykCoordinateBlack
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  cyanic:
+    name: cyanic
+    definition_uri: https://dbpedia.org/ontology//cyanic
+    description: Cyan component in CMYK color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:cmykCoordinateCyanic
+    slot_uri: dbpedia:cmykCoordinateCyanic
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  magenta:
+    name: magenta
+    definition_uri: https://dbpedia.org/ontology//magenta
+    description: Magenta component in CMYK color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:cmykCoordinateMagenta
+    slot_uri: dbpedia:cmykCoordinateMagenta
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  yellow:
+    name: yellow
+    definition_uri: https://dbpedia.org/ontology//yellow
+    description: Yellow component in CMYK color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:cmykCoordinateYellow
+    slot_uri: dbpedia:cmykCoordinateYellow
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  hue:
+    name: hue
+    definition_uri: https://dbpedia.org/ontology//hue
+    description: Hue component in HSV color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:hsvCoordinateHue
+    slot_uri: dbpedia:hsvCoordinateHue
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  saturation:
+    name: saturation
+    definition_uri: https://dbpedia.org/ontology//saturation
+    description: Saturation component in HSV color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:hsvCoordinateSaturation
+    slot_uri: dbpedia:hsvCoordinateSaturation
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  value:
+    name: value
+    definition_uri: https://dbpedia.org/ontology//value
+    description: Value/Lightness component in HSV color model
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:hsvCoordinateLightness
+    slot_uri: dbpedia:hsvCoordinateLightness
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  red:
+    name: red
+    definition_uri: https://dbpedia.org/ontology//red
+    description: Red component in RGB color model (0-255)
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:rgbCoordinateRed
+    slot_uri: dbpedia:rgbCoordinateRed
+    owner: Colour
+    domain_of:
+    - Colour
+    range: integer
+  green:
+    name: green
+    definition_uri: https://dbpedia.org/ontology//green
+    description: Green component in RGB color model (0-255)
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:rgbCoordinateGreen
+    slot_uri: dbpedia:rgbCoordinateGreen
+    owner: Colour
+    domain_of:
+    - Colour
+    range: integer
+  blue:
+    name: blue
+    definition_uri: https://dbpedia.org/ontology//blue
+    description: Blue component in RGB color model (0-255)
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:rgbCoordinateBlue
+    slot_uri: dbpedia:rgbCoordinateBlue
+    owner: Colour
+    domain_of:
+    - Colour
+    range: integer
+  wavelength:
+    name: wavelength
+    definition_uri: https://dbpedia.org/ontology//wavelength
+    description: The wavelength of the color in nanometers
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:wavelength
+    slot_uri: dbpedia:wavelength
+    owner: Colour
+    domain_of:
+    - Colour
+    range: float
+  id:
+    name: id
+    definition_uri: http://www.w3.org/2002/07/owl#id
+    description: A unique identifier
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - linkml_common:identifier
+    slot_uri: linkml_common:identifier
+    identifier: true
+    owner: Thing
+    domain_of:
+    - Thing
+    range: uri
+    required: true
+  name:
+    name: name
+    definition_uri: http://www.w3.org/2002/07/owl#name
+    description: Human-readable label for the entity
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - rdfs:label
+    slot_uri: rdfs:label
+    owner: Thing
+    domain_of:
+    - Thing
+    range: string
+  description:
+    name: description
+    definition_uri: http://www.w3.org/2002/07/owl#description
+    description: A description of the entity
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - rdfs:comment
+    slot_uri: rdfs:comment
+    owner: Thing
+    domain_of:
+    - Thing
+    range: string
+  hasQuantityKind:
+    name: hasQuantityKind
+    definition_uri: http://qudt.org/2.1/vocab/unit/hasQuantityKind
+    description: The kind of quantity (e.g., Length, Mass, Time).
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:hasQuantityKind
+    slot_uri: qudt:hasQuantityKind
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: string
+    multivalued: false
+  hasUnit:
+    name: hasUnit
+    definition_uri: http://qudt.org/2.1/vocab/unit/hasUnit
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:hasUnit
+    slot_uri: qudt:hasUnit
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: Unit
+    multivalued: true
+  hasValue:
+    name: hasValue
+    definition_uri: http://qudt.org/2.1/vocab/unit/hasValue
+    description: The numeric value of the quantity.
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:quantityValue
+    slot_uri: qudt:quantityValue
+    owner: Quantity
+    domain_of:
+    - Quantity
+    range: string
+    multivalued: false
+  NamedIndividual_name:
+    name: NamedIndividual_name
+    definition_uri: http://www.w3.org/2002/07/owl#name
+    description: Human-readable label for the entity
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - rdfs:label
+    is_a: name
+    domain: NamedIndividual
+    slot_uri: rdfs:label
+    alias: name
+    owner: NamedIndividual
+    domain_of:
+    - NamedIndividual
+    is_usage_slot: true
+    usage_slot_name: name
+    range: string
+    required: true
+  Quantity_hasQuantityKind:
+    name: Quantity_hasQuantityKind
+    definition_uri: http://qudt.org/2.1/vocab/unit/hasQuantityKind
+    description: The kind of quantity (e.g., Length, Mass, Time).
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:hasQuantityKind
+    is_a: hasQuantityKind
+    domain: Quantity
+    slot_uri: qudt:hasQuantityKind
+    alias: hasQuantityKind
+    owner: Quantity
+    domain_of:
+    - Quantity
+    is_usage_slot: true
+    usage_slot_name: hasQuantityKind
+    range: QuantityKind
+    required: false
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+classes:
+  Ability:
+    name: Ability
+    definition_uri: https://pokemonkg.org/ontology#Ability
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: Abilities were introduced in Generation III as an all new game mechanic.
+          Each and every Pokemon has an ability, and can only have one at a time.
+          Some abilities are exclusive to certain Pokemon and Evolution lines, while
+          others are known by many Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:Ability
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    - effectDescription
+    class_uri: pokemon:Ability
+  BattleItem:
+    name: BattleItem
+    definition_uri: https://pokemonkg.org/ontology#BattleItem
+    description: Battle items are items that can be used during battles.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:BattleItem
+  Berry:
+    name: Berry
+    definition_uri: https://pokemonkg.org/ontology#Berry
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "Berries are small, juicy, fleshy fruit. As in the real world, a large\
+          \ variety exists in the Pok\xE9mon world, with a large range of flavors,\
+          \ names, and effects. First found in the Generation II games, many Berries\
+          \ have since became critical help items in battle, where their various effects\
+          \ include HP and status condition restoration, stat enhancement, and even\
+          \ damage negation."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Food
+    slots:
+    - id
+    - name
+    - description
+    - hasFlavor
+    - firmness
+    - smoothness
+    - hasSize
+    class_uri: pokemon:Berry
+  EggGroup:
+    name: EggGroup
+    definition_uri: https://pokemonkg.org/ontology#EggGroup
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "Egg group is a category that determines which Pokemon are able to\
+          \ interbreed. The concept was introduced in Generation II, along with breeding.\
+          \ Similar to types, a Pok\xE9mon may belong to either one or two egg groups."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    class_uri: pokemon:EggGroup
+  Flavor:
+    name: Flavor
+    definition_uri: https://pokemonkg.org/ontology#Flavor
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "Flavor is a special set of attributes that certain foods in the Pok\xE9\
+          mon world have. Most of the foods can have more than one flavor, and the\
+          \ flavor determines which Pokemon can eat them."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    class_uri: pokemon:Flavor
+  Food:
+    name: Food
+    definition_uri: https://pokemonkg.org/ontology#Food
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    - hasFlavor
+    - firmness
+    - smoothness
+    class_uri: pokemon:Food
+  Game:
+    name: Game
+    definition_uri: https://pokemonkg.org/ontology#Game
+    description: A game is a type of media that can be played by people.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Game
+  Generation:
+    name: Generation
+    definition_uri: https://pokemonkg.org/ontology#Generation
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: Generations refers to the Pokemon game series. It is a group of games
+          that were released at or around the same time. It also means that games
+          in the same generation are compatible with the others, containing the same
+          Pokemon and the number of moves there are to be learned.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    - featuresSpecies
+    class_uri: pokemon:Generation
+  Gym:
+    name: Gym
+    definition_uri: https://pokemonkg.org/ontology#Gym
+    description: A gym is a location that can be battled at.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Place
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Gym
+  GymLeader:
+    name: GymLeader
+    definition_uri: https://pokemonkg.org/ontology#GymLeader
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "A gym leader is the highest ranking member and owner of an official\
+          \ Pok\xE9mon gym. Gym leaders use their gym and their Pokemon to test the\
+          \ skills of trainers that challenge them, and if said trainers win a battle,\
+          \ the gym leader will gift them a badge that's unique to that specific gym."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Trainer
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    - depiction
+    class_uri: pokemon:GymLeader
+  HM:
+    name: HM
+    definition_uri: https://pokemonkg.org/ontology#HM
+    description: Hidden Machine
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:HM
+  Habitat:
+    name: Habitat
+    definition_uri: https://pokemonkg.org/ontology#Habitat
+    description: A habitat is a type of environment that certain Pokemon belong to.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    class_uri: pokemon:Habitat
+  HoldItem:
+    name: HoldItem
+    definition_uri: https://pokemonkg.org/ontology#HoldItem
+    description: A hold item is an item that can be held by a Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:HoldItem
+  Item:
+    name: Item
+    definition_uri: https://pokemonkg.org/ontology#Item
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "An item is an object in the Pok\xE9mon games which the player can\
+          \ pick up, keep in their Bag, and use in some manner. They have various\
+          \ uses, including healing, powering up, helping one to catch Pok\xE9mon,\
+          \ or to access a new area."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Item
+  Pokedex:
+    name: Pokedex
+    definition_uri: https://pokemonkg.org/ontology#Pokedex
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: The Pokedex is an electronic device designed to catalogue and provide
+          information regarding the various species of Pokemon featured in the Pokemon
+          video game, anime and manga series.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Pokedex
+  Pokemon:
+    name: Pokemon
+    definition_uri: https://pokemonkg.org/ontology#Pokemon
+    annotations:
+      rdfs:seeAlso:
+        tag: rdfs:seeAlso
+        value: "<https://dbpedia.org/resource/Pok\xE9mon>"
+    description: A Pokemon
+    from_schema: https://pokemonkg.org/ontology
+    class_uri: pokemon:Pokemon
+    union_of:
+    - Pokedex
+    - Type
+  PokedexEntry:
+    name: PokedexEntry
+    definition_uri: https://pokemonkg.org/ontology#PokedexEntry
+    description: A pokedex entry is a description of a Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:PokedexEntry
+  Pokeball:
+    name: Pokeball
+    definition_uri: https://pokemonkg.org/ontology#Pokeball
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "A Pok\xE9 Ball is a type of item that is critical to a Trainer's quest,\
+          \ used for catching and storing Pok\xE9mon."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Pokeball
+  Place:
+    name: Place
+    definition_uri: https://pokemonkg.org/ontology#Place
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: Entities that have a somewhat fixed, physical extension.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Thing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Place
+  Shape:
+    name: Shape
+    definition_uri: https://pokemonkg.org/ontology#Shape
+    description: Shapes are categories that certain Pokemon belong to, which determine
+      which Pokemon they can breed with.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    class_uri: pokemon:Shape
+  Region:
+    name: Region
+    definition_uri: https://pokemonkg.org/ontology#Region
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: "Regions are areas in the Pok\xE9mon universe that are smaller parts\
+          \ of a nation."
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Place
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Region
+  Species:
+    name: Species
+    definition_uri: https://pokemonkg.org/ontology#Species
+    description: A species is a category of Pokemon that share common features.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:Species
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    - hasColour
+    - mayHaveHiddenAbility
+    - mayHaveAbility
+    - isAbleToApply
+    - hasHeight
+    - hasWeight
+    - depiction
+    - inEggGroup
+    - hasType
+    - hasShape
+    - hasGenus
+    - hasCatchRate
+    - foundIn
+    class_uri: pokemon:Species
+  Move:
+    name: Move
+    definition_uri: https://pokemonkg.org/ontology#Move
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A move is a special ability of a Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:Move
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    - effectDescription
+    - hasType
+    class_uri: pokemon:Move
+  MoveLearning:
+    name: MoveLearning
+    definition_uri: https://pokemonkg.org/ontology#MoveLearning
+    description: A move learning is a way that a Pokemon can learn a move.
+    from_schema: https://pokemonkg.org/ontology
+    class_uri: pokemon:MoveLearning
+  LearningByLevelingUp:
+    name: LearningByLevelingUp
+    definition_uri: https://pokemonkg.org/ontology#LearningByLevelingUp
+    description: A move that is learned by leveling up.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: MoveLearning
+    class_uri: pokemon:LearningByLevelingUp
+  LearningThroughBreeding:
+    name: LearningThroughBreeding
+    definition_uri: https://pokemonkg.org/ontology#LearningThroughBreeding
+    description: A move that is learned by breeding.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: MoveLearning
+    class_uri: pokemon:LearningThroughBreeding
+  Medicine:
+    name: Medicine
+    definition_uri: https://pokemonkg.org/ontology#Medicine
+    description: Medicine items can heal various afflictions of a Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Medicine
+  SpecialMove:
+    name: SpecialMove
+    definition_uri: https://pokemonkg.org/ontology#SpecialMove
+    description: A special move is a type of move that can be used during battles.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Move
+    slots:
+    - id
+    - name
+    - description
+    - effectDescription
+    - hasType
+    class_uri: pokemon:SpecialMove
+  PhysicalMove:
+    name: PhysicalMove
+    definition_uri: https://pokemonkg.org/ontology#PhysicalMove
+    description: A physical move is a type of move that can be used during battles.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Move
+    slots:
+    - id
+    - name
+    - description
+    - effectDescription
+    - hasType
+    class_uri: pokemon:PhysicalMove
+  StatusMove:
+    name: StatusMove
+    definition_uri: https://pokemonkg.org/ontology#StatusMove
+    description: A status move is a type of move that can be used during battles.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Move
+    slots:
+    - id
+    - name
+    - description
+    - effectDescription
+    - hasType
+    class_uri: pokemon:StatusMove
+  TM:
+    name: TM
+    definition_uri: https://pokemonkg.org/ontology#TM
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: A Technical Machine is an item that can be used to teach a Pokemon
+          a move.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Item
+    mixins:
+    - MoveLearning
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:TM
+  Town:
+    name: Town
+    definition_uri: https://pokemonkg.org/ontology#Town
+    description: A town is a type of place that can be visited.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Place
+    slots:
+    - id
+    - name
+    - description
+    class_uri: pokemon:Town
+  Trainer:
+    name: Trainer
+    definition_uri: https://pokemonkg.org/ontology#Trainer
+    description: A trainer is a person who is able to catch Pokemon.
+    from_schema: https://pokemonkg.org/ontology
+    is_a: Person
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    - depiction
+    class_uri: pokemon:Trainer
+  Type:
+    name: Type
+    definition_uri: https://pokemonkg.org/ontology#Type
+    annotations:
+      rdfs:comment:
+        tag: rdfs:comment
+        value: All Pokemon creatures and their moves are assigned certain types. Each
+          type has several strengths and weaknesses in both attack and defense.
+    from_schema: https://pokemonkg.org/ontology
+    mappings:
+    - pokemon:Type
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    class_uri: pokemon:Type
+  Person:
+    name: Person
+    definition_uri: http://xmlns.com/foaf/0.1//Person
+    description: A person is a human being
+    from_schema: http://xmlns.com/foaf/0.1/
+    mappings:
+    - foaf:Person
+    is_a: NamedIndividual
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    - depiction
+    class_uri: foaf:Person
+  Colour:
+    name: Colour
+    definition_uri: https://dbpedia.org/ontology//Colour
+    description: Color or colour is the visual perceptual property corresponding in
+      humans to the categories called red, yellow, blue and others.
+    from_schema: https://dbpedia.org/ontology/
+    mappings:
+    - dbpedia:Colour
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    - black
+    - cyanic
+    - magenta
+    - yellow
+    - hue
+    - saturation
+    - value
+    - red
+    - green
+    - blue
+    - wavelength
+    class_uri: dbpedia:Colour
+  Thing:
+    name: Thing
+    definition_uri: http://www.w3.org/2002/07/owl#Thing
+    description: An rdfs:Resource that defines name and description
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - owl:Thing
+    abstract: true
+    slots:
+    - id
+    - name
+    - description
+    class_uri: owl:Thing
+  NamedIndividual:
+    name: NamedIndividual
+    definition_uri: http://www.w3.org/2002/07/owl#NamedIndividual
+    description: A Thing that requires a name
+    from_schema: http://www.w3.org/2002/07/owl
+    mappings:
+    - owl:NamedIndividual
+    is_a: Thing
+    abstract: true
+    slots:
+    - id
+    - description
+    - NamedIndividual_name
+    slot_usage:
+      name:
+        name: name
+        required: true
+    class_uri: owl:NamedIndividual
+  Quantity:
+    name: Quantity
+    definition_uri: http://qudt.org/2.1/vocab/unit/Quantity
+    description: A physical quantity.
+    comments:
+    - "<p class=\\\"lm-para\\\">A <b>quantity</b> is the measurement of an observable\
+      \ property of a particular object, event, or physical system. \n  A quantity\
+      \ is always associated with the context of measurement (i.e. the thing measured,\
+      \ the measured value, the accuracy of measurement, etc.) whereas the \n  underlying\
+      \ <b>quantity kind</b> is independent of any particular measurement. Thus, length\
+      \ is a quantity kind while the height of a rocket is a specific \n  quantity\
+      \ of length; its magnitude that may be expressed in meters, feet, inches, etc.\
+      \ Examples of physical quantities include physical constants, such as \n  the\
+      \ speed of light in a vacuum, Planck's constant, the electric permittivity of\
+      \ free space, and the fine structure constant. </p>\n<p class=\\\"lm-para\\\"\
+      >In other words, quantities are quantifiable aspects of the world, such as the\
+      \ duration of a movie, the distance between two points, \nvelocity of a car,\
+      \ the pressure of the atmosphere, and a person's weight; and units are used\
+      \ to describe their numerical measure.</p> \n<p class=\\\"lm-para\\\">Many <b>quantity\
+      \ kinds</b> are related to each other by various physical laws, and as a result,\
+      \ the associated units of some quantity \nkinds can be expressed as products\
+      \ (or ratios) of powers of other quantity kinds (e.g., momentum is mass times\
+      \ velocity and velocity is defined as distance \ndivided by time). In this way,\
+      \ some quantities can be calculated from other measured quantities using their\
+      \ associations to the quantity kinds in these \nexpressions. These quantity\
+      \ kind relationships are also discussed in dimensional analysis. Those that\
+      \ cannot be so expressed can be regarded \nas \\\"fundamental\\\" in this sense.</p>\n\
+      <p class=\\\"lm-para\\\">A quantity is distinguished from a \\\"quantity kind\\\
+      \" in that the former carries a value and the latter is a type specifier.</p>^^rdf:HTML"
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:Quantity
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    - hasUnit
+    - Quantity_hasQuantityKind
+    - hasValue
+    slot_usage:
+      hasQuantityKind:
+        name: hasQuantityKind
+        range: QuantityKind
+        required: false
+    class_uri: qudt:Quantity
+  QuantityKind:
+    name: QuantityKind
+    definition_uri: http://qudt.org/2.1/vocab/unit/QuantityKind
+    comments:
+    - A <b>Quantity Kind</b> is any observable property that can be  measured and
+      quantified numerically. Familiar examples include physical properties such as
+      length, mass, time, force, energy, power, electric charge, etc. Less familiar
+      examples include currency, interest rate, price to earning ratio, and information
+      capacity.^^rdf:HTML
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:QuantityKind
+    class_uri: qudt:QuantityKind
+  Unit:
+    name: Unit
+    definition_uri: http://qudt.org/2.1/vocab/unit/Unit
+    description: A unit of measure.
+    comments:
+    - A <b>Unit</b> is a particular quantity value that has been chosen as a scale
+      for measuring other quantities of the same kind (e.g., meter for length, kilogram
+      for mass, second for time).
+    from_schema: http://qudt.org/2.1/vocab/unit
+    mappings:
+    - qudt:Unit
+    is_a: Thing
+    slots:
+    - id
+    - name
+    - description
+    class_uri: qudt:Unit
+metamodel_version: 1.7.0
+source_file: linkml_pokemon.yaml
+source_file_date: '2025-09-08T11:54:51'
+source_file_size: 12469
+generation_date: '2026-01-10T10:44:22'

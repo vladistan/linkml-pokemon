@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="er" role="graphics-document document" viewBox="0 0 357.63525390625 395" height="395" width="357.63525390625" id="container">
+  <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .entityBox{fill:#ECECFF;stroke:#9370DB;}#container .attributeBoxOdd{fill:#ffffff;stroke:#9370DB;}#container .attributeBoxEven{fill:#f2f2f2;stroke:#9370DB;}#container .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#container .relationshipLabelBox rect{opacity:0.5;}#container .relationshipLine{stroke:#333333;}#container .entityTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container #MD_PARENT_START{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container #MD_PARENT_END{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+  <g/>
+  <defs>
+    <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="0" id="MD_PARENT_START">
+      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="19" id="MD_PARENT_END">
+      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="0" id="ONLY_ONE_START">
+      <path d="M9,0 L9,18 M15,0 L15,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="18" id="ONLY_ONE_END">
+      <path d="M3,0 L3,18 M9,0 L9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="0" id="ZERO_OR_ONE_START">
+      <circle r="6" cy="9" cx="21" fill="white" stroke="gray"/>
+      <path d="M9,0 L9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="30" id="ZERO_OR_ONE_END">
+      <circle r="6" cy="9" cx="9" fill="white" stroke="gray"/>
+      <path d="M21,0 L21,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="18" id="ONE_OR_MORE_START">
+      <path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="27" id="ONE_OR_MORE_END">
+      <path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="18" id="ZERO_OR_MORE_START">
+      <circle r="6" cy="18" cx="48" fill="white" stroke="gray"/>
+      <path d="M0,18 Q18,0 36,18 Q18,36 0,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="39" id="ZERO_OR_MORE_END">
+      <circle r="6" cy="18" cx="9" fill="white" stroke="gray"/>
+      <path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M74.409,182L74.409,190.333C74.409,198.667,74.409,215.333,83.477,232.048C92.545,248.762,110.681,265.525,119.749,273.906L128.818,282.287" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M283.226,170.5L283.226,180.75C283.226,191,283.226,211.5,274.158,230.131C265.09,248.762,246.954,265.525,237.886,273.906L228.818,282.287" class="er relationshipLine"/>
+  <g transform="translate(20,20 )" id="entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6">
+    <rect height="162" width="108.817626953125" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(54.4088134765625,12)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6" class="er entityLabel">Berry</text>
+    <rect height="23" width="42.60578918457031" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="66.21183776855469" y="24" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,35.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-1-name" class="er entityLabel">hasSize</text>
+    <rect height="23" width="42.60578918457031" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="66.21183776855469" y="47" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,58.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-2-name" class="er entityLabel">id</text>
+    <rect height="23" width="42.60578918457031" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="66.21183776855469" y="70" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,81.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-3-name" class="er entityLabel">name</text>
+    <rect height="23" width="42.60578918457031" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-4-type" class="er entityLabel">string</text>
+    <rect height="23" width="66.21183776855469" y="93" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,104.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-4-name" class="er entityLabel">description</text>
+    <rect height="23" width="42.60578918457031" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-5-type" class="er entityLabel">integer</text>
+    <rect height="23" width="66.21183776855469" y="116" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,127.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-5-name" class="er entityLabel">firmness</text>
+    <rect height="23" width="42.60578918457031" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-6-type" class="er entityLabel">integer</text>
+    <rect height="23" width="66.21183776855469" y="139" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,150.5)" y="0" x="0" id="text-entity-Berry-3e0f1977-9020-56f0-aa75-f9bb671f99c6-attr-6-name" class="er entityLabel">smoothness</text>
+  </g>
+  <g transform="translate(128.817626953125,282 )" id="entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed" class="er entityLabel">Flavor</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Flavor-4a3ec64e-97d0-5233-99ab-a8eaa56fe3ed-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(228.817626953125,31.5 )" id="entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79">
+    <rect height="139" width="108.817626953125" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(54.4088134765625,12)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79" class="er entityLabel">Food</text>
+    <rect height="23" width="42.60578918457031" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-1-type" class="er entityLabel">integer</text>
+    <rect height="23" width="66.21183776855469" y="24" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,35.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-1-name" class="er entityLabel">firmness</text>
+    <rect height="23" width="42.60578918457031" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-2-type" class="er entityLabel">integer</text>
+    <rect height="23" width="66.21183776855469" y="47" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,58.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-2-name" class="er entityLabel">smoothness</text>
+    <rect height="23" width="42.60578918457031" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-3-type" class="er entityLabel">uri</text>
+    <rect height="23" width="66.21183776855469" y="70" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,81.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-3-name" class="er entityLabel">id</text>
+    <rect height="23" width="42.60578918457031" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-4-type" class="er entityLabel">string</text>
+    <rect height="23" width="66.21183776855469" y="93" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,104.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-4-name" class="er entityLabel">name</text>
+    <rect height="23" width="42.60578918457031" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-5-type" class="er entityLabel">string</text>
+    <rect height="23" width="66.21183776855469" y="116" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,127.5)" y="0" x="0" id="text-entity-Food-3723180b-0a8a-546d-bb94-8c4a5baedd79-attr-5-name" class="er entityLabel">description</text>
+  </g>
+  <rect height="14" width="52.484344482421875" y="232.06224060058594" x="61.53679656982422" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="239.06224060058594" x="87.77896881103516" id="rel1" class="er relationshipLabel">hasFlavor</text>
+  <rect height="14" width="52.484344482421875" y="226.94488525390625" x="245.9226531982422" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="233.94488525390625" x="272.1648254394531" id="rel2" class="er relationshipLabel">hasFlavor</text>
+</svg>

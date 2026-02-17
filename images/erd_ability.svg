@@ -1,0 +1,686 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="er" role="graphics-document document" viewBox="-40.50208854675293 0 3524.71728515625 2165" height="2165" width="3524.71728515625" id="container">
+  <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .entityBox{fill:#ECECFF;stroke:#9370DB;}#container .attributeBoxOdd{fill:#ffffff;stroke:#9370DB;}#container .attributeBoxEven{fill:#f2f2f2;stroke:#9370DB;}#container .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#container .relationshipLabelBox rect{opacity:0.5;}#container .relationshipLine{stroke:#333333;}#container .entityTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container #MD_PARENT_START{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container #MD_PARENT_END{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+  <g/>
+  <defs>
+    <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="0" id="MD_PARENT_START">
+      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="19" id="MD_PARENT_END">
+      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="0" id="ONLY_ONE_START">
+      <path d="M9,0 L9,18 M15,0 L15,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="18" id="ONLY_ONE_END">
+      <path d="M3,0 L3,18 M9,0 L9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="0" id="ZERO_OR_ONE_START">
+      <circle r="6" cy="9" cx="21" fill="white" stroke="gray"/>
+      <path d="M9,0 L9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="30" id="ZERO_OR_ONE_END">
+      <circle r="6" cy="9" cx="9" fill="white" stroke="gray"/>
+      <path d="M21,0 L21,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="18" id="ONE_OR_MORE_START">
+      <path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="27" id="ONE_OR_MORE_END">
+      <path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="18" id="ZERO_OR_MORE_START">
+      <circle r="6" cy="18" cx="48" fill="white" stroke="gray"/>
+      <path d="M0,18 Q18,0 36,18 Q18,36 0,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <defs>
+    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="39" id="ZERO_OR_MORE_END">
+      <circle r="6" cy="18" cx="9" fill="white" stroke="gray"/>
+      <path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"/>
+    </marker>
+  </defs>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M81.418,752L81.418,760.333C81.418,768.667,81.418,785.333,81.418,815.417C81.418,845.5,81.418,889,81.418,910.75L81.418,932.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M231.418,1023.214L192.002,1045.345C152.585,1067.476,73.751,1111.738,34.335,1163.369C-5.082,1215,-5.082,1274,-5.082,1333C-5.082,1392,-5.082,1451,-5.082,1506.167C-5.082,1561.333,-5.082,1612.667,-5.082,1664C-5.082,1715.333,-5.082,1766.667,37.911,1816.213C80.904,1865.76,166.89,1913.519,209.883,1937.399L252.876,1961.279" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M237.788,1106L233.039,1114.333C228.289,1122.667,218.791,1139.333,214.041,1177.167C209.292,1215,209.292,1274,209.292,1333C209.292,1392,209.292,1451,209.292,1506.167C209.292,1561.333,209.292,1612.667,209.292,1664C209.292,1715.333,209.292,1766.667,260.362,1813.468C311.431,1860.268,413.57,1902.537,464.639,1923.671L515.708,1944.805" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M309.539,1106L309.498,1114.333C309.457,1122.667,309.375,1139.333,361.104,1171.2C412.834,1203.068,516.376,1250.135,568.147,1273.669L619.918,1297.203" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M381.291,1106L385.958,1114.333C390.625,1122.667,399.958,1139.333,404.625,1177.167C409.292,1215,409.292,1274,409.292,1333C409.292,1392,409.292,1451,494.32,1502.634C579.348,1554.269,749.403,1598.537,834.431,1620.672L919.459,1642.806" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M388.915,993.284L538.422,1020.404C687.929,1047.523,986.943,1101.761,1136.45,1158.381C1285.957,1215,1285.957,1274,1285.957,1333C1285.957,1392,1285.957,1451,1293.738,1494.583C1301.519,1538.167,1317.08,1566.333,1324.861,1580.417L1332.642,1594.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2032.814,113L2032.814,121.333C2032.814,129.667,2032.814,146.333,2032.814,163C2032.814,179.667,2032.814,196.333,2032.814,204.667L2032.814,213" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2807.509,671.5L2807.509,693.25C2807.509,715,2807.509,758.5,2842.727,804.105C2877.946,849.711,2948.383,897.422,2983.602,921.277L3018.82,945.132" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2364.826,671.5L2364.826,693.25C2364.826,715,2364.826,758.5,2473.825,807.655C2582.824,856.81,2800.822,911.619,2909.821,939.024L3018.82,966.429" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1457.847,648.5L1445.866,674.083C1433.884,699.667,1409.921,750.833,1397.939,805.917C1385.957,861,1385.957,920,1385.957,979C1385.957,1038,1385.957,1097,1385.957,1156C1385.957,1215,1385.957,1274,1385.957,1333C1385.957,1392,1385.957,1451,1335.346,1500.74C1284.735,1550.48,1183.513,1590.96,1132.902,1611.2L1082.291,1631.441" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1535.886,648.5L1580.947,674.083C1626.007,699.667,1716.129,750.833,1761.19,798.167C1806.251,845.5,1806.251,889,1806.251,910.75L1806.251,932.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1000.875,1768L1000.875,1776.333C1000.875,1784.667,1000.875,1801.333,969.708,1827.147C938.541,1852.961,876.206,1887.923,845.039,1905.404L813.872,1922.884" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1082.291,1608.079L1093.958,1600.066C1105.624,1592.053,1128.958,1576.026,1143.541,1568.013C1158.124,1560,1163.958,1560,1169.791,1577.333C1175.624,1594.667,1181.458,1629.333,1181.458,1664C1181.458,1698.667,1175.624,1733.333,1169.791,1750.667C1163.958,1768,1158.124,1768,1143.541,1759.987C1128.958,1751.974,1105.624,1735.947,1093.958,1727.934L1082.291,1719.921" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1058.333,1560L1062.937,1551.667C1067.541,1543.333,1076.749,1526.667,1029.93,1494.832C983.11,1462.997,880.262,1415.993,828.839,1392.491L777.415,1368.99" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1806.251,1025.5L1806.251,1047.25C1806.251,1069,1806.251,1112.5,1634.778,1161.653C1463.306,1210.805,1120.36,1265.61,948.888,1293.013L777.415,1320.415" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M3050.191,671.5L3050.191,693.25C3050.191,715,3050.191,758.5,3052.481,802C3054.77,845.5,3059.348,889,3061.637,910.75L3063.926,932.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1975.109,297.874L1659.494,319.062C1343.879,340.249,712.649,382.625,397.033,412.146C81.418,441.667,81.418,458.333,81.418,466.667L81.418,475" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1975.109,307.533L1891.631,327.111C1808.153,346.689,1641.196,385.844,1557.717,431.006C1474.239,476.167,1474.239,527.333,1474.239,552.917L1474.239,578.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1975.109,316.768L1929.392,334.807C1883.674,352.846,1792.238,388.923,1746.52,430.628C1700.803,472.333,1700.803,519.667,1700.803,543.333L1700.803,567" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1975.109,362.305L1966.282,372.754C1957.454,383.203,1939.799,404.102,1930.971,436.301C1922.144,468.5,1922.144,512,1922.144,533.75L1922.144,555.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2090.519,362.305L2099.347,372.754C2108.175,383.203,2125.83,404.102,2134.657,438.217C2143.485,472.333,2143.485,519.667,2143.485,543.333L2143.485,567" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2090.519,307.661L2173.127,327.217C2255.735,346.774,2420.952,385.887,2503.56,429.11C2586.168,472.333,2586.168,519.667,2586.168,543.333L2586.168,567" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2090.519,303.758L2210.018,323.965C2329.516,344.172,2568.512,384.586,2688.011,426.543C2807.509,468.5,2807.509,512,2807.509,533.75L2807.509,555.5" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M2090.519,299.281L2319.469,320.234C2548.418,341.187,3006.317,383.094,3235.266,435.464C3464.215,487.833,3464.215,550.667,3464.215,613.5C3464.215,676.333,3464.215,739.167,3406.649,796.353C3349.084,853.539,3233.952,905.078,3176.386,930.848L3118.82,956.617" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M3292.874,671.5L3292.874,693.25C3292.874,715,3292.874,758.5,3263.865,803.167C3234.856,847.834,3176.838,893.667,3147.829,916.584L3118.82,939.501" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M1371.04,1733.5L1371.04,1747.583C1371.04,1761.667,1371.04,1789.833,1211.818,1832.866C1052.596,1875.899,734.152,1933.798,574.93,1962.748L415.708,1991.697" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1292.291,1598.476L1274.569,1583.73C1256.846,1568.984,1221.402,1539.492,1135.589,1500.013C1049.776,1460.535,913.596,1411.069,845.505,1386.337L777.415,1361.604" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M619.918,1406.944L601.626,1424.12C583.334,1441.296,546.751,1475.648,528.459,1518.491C510.167,1561.333,510.167,1612.667,510.167,1664C510.167,1715.333,510.167,1766.667,494.424,1809.207C478.681,1851.746,447.194,1885.493,431.451,1902.366L415.708,1919.239" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M635.167,1460L631,1468.333C626.833,1476.667,618.5,1493.333,614.334,1527.333C610.167,1561.333,610.167,1612.667,610.167,1664C610.167,1715.333,610.167,1766.667,612.582,1800.667C614.997,1834.667,619.826,1851.333,622.241,1859.667L624.656,1868" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M777.415,1303.929L821.628,1287.608C865.841,1271.286,954.267,1238.643,1009.533,1222.322C1064.799,1206,1086.906,1206,1109.012,1227.167C1131.119,1248.333,1153.225,1290.667,1153.225,1333C1153.225,1375.333,1131.119,1417.667,1109.012,1438.833C1086.906,1460,1064.799,1460,1009.533,1443.678C954.267,1427.357,865.841,1394.714,821.628,1378.392L777.415,1362.071" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M736.127,1460L738.585,1468.333C741.043,1476.667,745.959,1493.333,776.514,1518.975C807.07,1544.616,863.264,1579.232,891.361,1596.54L919.459,1613.848" class="er relationshipLine"/>
+  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M777.415,1381.517L812.172,1402.931C846.929,1424.345,916.443,1467.172,1002.256,1509.004C1088.068,1550.836,1190.18,1591.672,1241.235,1612.089L1292.291,1632.507" class="er relationshipLine"/>
+  <g transform="translate(1850.8025016784668,555.5 )" id="entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930">
+    <rect height="116" width="142.68255615234375" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(71.34127807617188,12)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930" class="er entityLabel">Ability</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-1-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="89.4713134765625" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-1-name" class="er entityLabel">effectDescription</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="89.4713134765625" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-2-name" class="er entityLabel">id</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-3-name" class="er entityLabel">name</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-4-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930-attr-4-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(20,475 )" id="entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346">
+    <rect height="277" width="122.83660888671875" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(61.418304443359375,12)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346" class="er entityLabel">Colour</text>
+    <rect height="23" width="42.60578918457031" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-1-type" class="er entityLabel">integer</text>
+    <rect height="23" width="80.23081970214844" y="24" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,35.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-1-name" class="er entityLabel">black</text>
+    <rect height="23" width="42.60578918457031" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="80.23081970214844" y="47" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,58.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-2-name" class="er entityLabel">colourHexCode</text>
+    <rect height="23" width="42.60578918457031" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-3-type" class="er entityLabel">integer</text>
+    <rect height="23" width="80.23081970214844" y="70" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,81.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-3-name" class="er entityLabel">colourYellow</text>
+    <rect height="23" width="42.60578918457031" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-4-type" class="er entityLabel">integer</text>
+    <rect height="23" width="80.23081970214844" y="93" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,104.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-4-name" class="er entityLabel">cyanic</text>
+    <rect height="23" width="42.60578918457031" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-5-type" class="er entityLabel">float</text>
+    <rect height="23" width="80.23081970214844" y="116" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,127.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-5-name" class="er entityLabel">frequency</text>
+    <rect height="23" width="42.60578918457031" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-6-type" class="er entityLabel">integer</text>
+    <rect height="23" width="80.23081970214844" y="139" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,150.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-6-name" class="er entityLabel">magenta</text>
+    <rect height="23" width="42.60578918457031" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-7-type" class="er entityLabel">uri</text>
+    <rect height="23" width="80.23081970214844" y="162" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,173.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-7-name" class="er entityLabel">thumbnail</text>
+    <rect height="23" width="42.60578918457031" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-8-type" class="er entityLabel">float</text>
+    <rect height="23" width="80.23081970214844" y="185" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,196.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-8-name" class="er entityLabel">wavelength</text>
+    <rect height="23" width="42.60578918457031" y="208" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,219.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-9-type" class="er entityLabel">uri</text>
+    <rect height="23" width="80.23081970214844" y="208" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,219.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-9-name" class="er entityLabel">id</text>
+    <rect height="23" width="42.60578918457031" y="231" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,242.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-10-type" class="er entityLabel">string</text>
+    <rect height="23" width="80.23081970214844" y="231" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,242.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-10-name" class="er entityLabel">name</text>
+    <rect height="23" width="42.60578918457031" y="254" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,265.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-11-type" class="er entityLabel">string</text>
+    <rect height="23" width="80.23081970214844" y="254" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,265.5)" y="0" x="0" id="text-entity-Colour-8f581955-fab7-54c2-bd12-b02cd1156346-attr-11-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(31.418304443359375,932.5 )" id="entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf" class="er entityLabel">Connotation</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-1-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-2-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(231.41830444335938,852 )" id="entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194">
+    <rect height="254" width="157.4971160888672" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(78.7485580444336,12)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194" class="er entityLabel">DerivedUnit</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-1-name" class="er entityLabel">abbreviation</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-2-type" class="er entityLabel">double</text>
+    <rect height="23" width="109.62095642089844" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-2-name" class="er entityLabel">conversionMultiplier</text>
+    <rect height="23" width="47.87615966796875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-3-type" class="er entityLabel">double</text>
+    <rect height="23" width="109.62095642089844" y="70" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,81.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-3-name" class="er entityLabel">conversionOffset</text>
+    <rect height="23" width="47.87615966796875" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-4-type" class="er entityLabel">uri</text>
+    <rect height="23" width="109.62095642089844" y="93" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,104.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-4-name" class="er entityLabel">dbpediaMatch</text>
+    <rect height="23" width="47.87615966796875" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-5-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="109.62095642089844" y="116" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,127.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-5-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-6-type" class="er entityLabel">uriList</text>
+    <rect height="23" width="109.62095642089844" y="139" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,150.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-6-name" class="er entityLabel">informativeReference</text>
+    <rect height="23" width="47.87615966796875" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-7-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="162" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,173.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-7-name" class="er entityLabel">latexSymbol</text>
+    <rect height="23" width="47.87615966796875" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-8-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="185" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,196.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-8-name" class="er entityLabel">plainTextDescription</text>
+    <rect height="23" width="47.87615966796875" y="208" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,219.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-9-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="208" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,219.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-9-name" class="er entityLabel">symbol</text>
+    <rect height="23" width="47.87615966796875" y="231" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,242.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-10-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="231" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,242.5)" y="0" x="0" id="text-entity-DerivedUnit-bdc4cbce-f642-5972-9894-64c40501a194-attr-10-name" class="er entityLabel">ucumCode</text>
+  </g>
+  <g transform="translate(2093.4850578308105,567 )" id="entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054" class="er entityLabel">EggGroup</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(1982.8144187927246,20 )" id="entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8" class="er entityLabel">Generation</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(2536.1676139831543,567 )" id="entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f" class="er entityLabel">Habitat</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(2736.1676139831543,555.5 )" id="entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de">
+    <rect height="116" width="142.68255615234375" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(71.34127807617188,12)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de" class="er entityLabel">Move</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-1-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="89.4713134765625" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-1-name" class="er entityLabel">effectDescription</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="89.4713134765625" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-2-name" class="er entityLabel">id</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-3-name" class="er entityLabel">name</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-4-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de-attr-4-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(2293.4850578308105,555.5 )" id="entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8">
+    <rect height="116" width="142.68255615234375" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(71.34127807617188,12)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8" class="er entityLabel">PhysicalMove</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="89.4713134765625" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-3-name" class="er entityLabel">description</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-4-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="89.4713134765625" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-PhysicalMove-702f5ade-aecc-5cec-a598-de3a77db61b8-attr-4-name" class="er entityLabel">effectDescription</text>
+  </g>
+  <g transform="translate(252.87606811523438,1902.5 )" id="entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86">
+    <rect height="208" width="162.8321990966797" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(81.41609954833984,12)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86" class="er entityLabel">Prefix</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="109.62095642089844" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-1-name" class="er entityLabel">dbpediaMatch</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-2-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="109.62095642089844" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-2-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-3-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="109.62095642089844" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-3-name" class="er entityLabel">exactMatch</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-4-type" class="er entityLabel">uriList</text>
+    <rect height="23" width="109.62095642089844" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-4-name" class="er entityLabel">informativeReference</text>
+    <rect height="23" width="53.21124267578125" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-5-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="116" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,127.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-5-name" class="er entityLabel">plainTextDescription</text>
+    <rect height="23" width="53.21124267578125" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-6-type" class="er entityLabel">double</text>
+    <rect height="23" width="109.62095642089844" y="139" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,150.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-6-name" class="er entityLabel">prefixMultiplier</text>
+    <rect height="23" width="53.21124267578125" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-7-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="162" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,173.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-7-name" class="er entityLabel">symbol</text>
+    <rect height="23" width="53.21124267578125" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-8-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="185" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,196.5)" y="0" x="0" id="text-entity-Prefix-f6d97b99-faee-5974-b12e-390868d79e86-attr-8-name" class="er entityLabel">ucumCode</text>
+  </g>
+  <g transform="translate(1397.6754875183105,578.5 )" id="entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785">
+    <rect height="70" width="153.12701416015625" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(76.56350708007812,12)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785" class="er entityLabel">Quantity</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785-attr-1-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="105.2508544921875" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785-attr-1-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="105.2508544921875" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785-attr-2-name" class="er entityLabel">plainTextDescription</text>
+  </g>
+  <g transform="translate(919.458812713623,1560 )" id="entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff">
+    <rect height="208" width="162.8321990966797" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(81.41609954833984,12)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff" class="er entityLabel">QuantityKind</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-1-name" class="er entityLabel">abbreviation</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="109.62095642089844" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-2-name" class="er entityLabel">dbpediaMatch</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-3-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="109.62095642089844" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-3-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-4-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="109.62095642089844" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-4-name" class="er entityLabel">exactMatch</text>
+    <rect height="23" width="53.21124267578125" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-5-type" class="er entityLabel">uriList</text>
+    <rect height="23" width="109.62095642089844" y="116" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,127.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-5-name" class="er entityLabel">informativeReference</text>
+    <rect height="23" width="53.21124267578125" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-6-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="139" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,150.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-6-name" class="er entityLabel">latexSymbol</text>
+    <rect height="23" width="53.21124267578125" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-7-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="162" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,173.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-7-name" class="er entityLabel">plainTextDescription</text>
+    <rect height="23" width="53.21124267578125" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-8-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="185" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,196.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff-attr-8-name" class="er entityLabel">symbol</text>
+  </g>
+  <g transform="translate(515.7082672119141,1868 )" id="entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b">
+    <rect height="277" width="298.16371154785156" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(149.08185577392578,12)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b" class="er entityLabel">QuantityKindDimensionVector</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-1-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="250.2875518798828" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-1-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-2-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-2-name" class="er entityLabel">dimensionExponentForAmountOfSubstance</text>
+    <rect height="23" width="47.87615966796875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-3-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="70" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,81.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-3-name" class="er entityLabel">dimensionExponentForElectricCurrent</text>
+    <rect height="23" width="47.87615966796875" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-4-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="93" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,104.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-4-name" class="er entityLabel">dimensionExponentForLength</text>
+    <rect height="23" width="47.87615966796875" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-5-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="116" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,127.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-5-name" class="er entityLabel">dimensionExponentForLuminousIntensity</text>
+    <rect height="23" width="47.87615966796875" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-6-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="139" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,150.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-6-name" class="er entityLabel">dimensionExponentForMass</text>
+    <rect height="23" width="47.87615966796875" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-7-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="162" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,173.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-7-name" class="er entityLabel">dimensionExponentForThermodynamicTemperature</text>
+    <rect height="23" width="47.87615966796875" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-8-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="185" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,196.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-8-name" class="er entityLabel">dimensionExponentForTime</text>
+    <rect height="23" width="47.87615966796875" y="208" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,219.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-9-type" class="er entityLabel">integer</text>
+    <rect height="23" width="250.2875518798828" y="208" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,219.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-9-name" class="er entityLabel">dimensionlessExponent</text>
+    <rect height="23" width="47.87615966796875" y="231" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,242.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-10-type" class="er entityLabel">string</text>
+    <rect height="23" width="250.2875518798828" y="231" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,242.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-10-name" class="er entityLabel">latexSymbol</text>
+    <rect height="23" width="47.87615966796875" y="254" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,265.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-11-type" class="er entityLabel">string</text>
+    <rect height="23" width="250.2875518798828" y="254" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,265.5)" y="0" x="0" id="text-entity-QuantityKindDimensionVector-bfa1bf26-fcae-516f-8f63-2f454f3dac1b-attr-11-name" class="er entityLabel">plainTextDescription</text>
+  </g>
+  <g transform="translate(1729.6874046325684,932.5 )" id="entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b">
+    <rect height="93" width="153.12701416015625" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(76.56350708007812,12)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b" class="er entityLabel">QuantityValue</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-1-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="105.2508544921875" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-1-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-2-type" class="er entityLabel">double</text>
+    <rect height="23" width="105.2508544921875" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-2-name" class="er entityLabel">numericValue</text>
+    <rect height="23" width="47.87615966796875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="105.2508544921875" y="70" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,81.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b-attr-3-name" class="er entityLabel">plainTextDescription</text>
+  </g>
+  <g transform="translate(1650.8025016784668,567 )" id="entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372" class="er entityLabel">Shape</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(2978.850170135498,555.5 )" id="entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a">
+    <rect height="116" width="142.68255615234375" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(71.34127807617188,12)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a" class="er entityLabel">SpecialMove</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="89.4713134765625" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-3-name" class="er entityLabel">description</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-4-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="89.4713134765625" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-SpecialMove-87420a98-00ca-56c7-88a9-09f7ae718d9a-attr-4-name" class="er entityLabel">effectDescription</text>
+  </g>
+  <g transform="translate(1975.1094703674316,213 )" id="entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c">
+    <rect height="162" width="115.40989685058594" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(57.70494842529297,12)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c" class="er entityLabel">Species</text>
+    <rect height="23" width="42.60578918457031" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="72.80410766601562" y="24" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,35.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-1-name" class="er entityLabel">depiction</text>
+    <rect height="23" width="42.60578918457031" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-2-type" class="er entityLabel">integer</text>
+    <rect height="23" width="72.80410766601562" y="47" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,58.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-2-name" class="er entityLabel">hasCatchRate</text>
+    <rect height="23" width="42.60578918457031" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="72.80410766601562" y="70" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,81.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-3-name" class="er entityLabel">hasGenus</text>
+    <rect height="23" width="42.60578918457031" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-4-type" class="er entityLabel">uri</text>
+    <rect height="23" width="72.80410766601562" y="93" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,104.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-4-name" class="er entityLabel">id</text>
+    <rect height="23" width="42.60578918457031" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-5-type" class="er entityLabel">string</text>
+    <rect height="23" width="72.80410766601562" y="116" x="42.60578918457031" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,127.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-5-name" class="er entityLabel">name</text>
+    <rect height="23" width="42.60578918457031" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-6-type" class="er entityLabel">string</text>
+    <rect height="23" width="72.80410766601562" y="139" x="42.60578918457031" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(47.60578918457031,150.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c-attr-6-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(3221.532726287842,555.5 )" id="entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4">
+    <rect height="116" width="142.68255615234375" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(71.34127807617188,12)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4" class="er entityLabel">StatusMove</text>
+    <rect height="23" width="53.21124267578125" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="89.4713134765625" y="24" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,35.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="53.21124267578125" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="47" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,58.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="53.21124267578125" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="89.4713134765625" y="70" x="53.21124267578125" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,81.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-3-name" class="er entityLabel">description</text>
+    <rect height="23" width="53.21124267578125" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-4-type" class="er entityLabel">stringList</text>
+    <rect height="23" width="89.4713134765625" y="93" x="53.21124267578125" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(58.21124267578125,104.5)" y="0" x="0" id="text-entity-StatusMove-8b80d57f-b477-5ce2-92ce-fe27591d8ff4-attr-4-name" class="er entityLabel">effectDescription</text>
+  </g>
+  <g transform="translate(1292.2910118103027,1594.5 )" id="entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d">
+    <rect height="139" width="157.4971160888672" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(78.7485580444336,12)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d" class="er entityLabel">SystemOfUnits</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-1-name" class="er entityLabel">abbreviation</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-2-type" class="er entityLabel">uri</text>
+    <rect height="23" width="109.62095642089844" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-2-name" class="er entityLabel">dbpediaMatch</text>
+    <rect height="23" width="47.87615966796875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-3-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="109.62095642089844" y="70" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,81.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-3-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-4-type" class="er entityLabel">uriList</text>
+    <rect height="23" width="109.62095642089844" y="93" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,104.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-4-name" class="er entityLabel">informativeReference</text>
+    <rect height="23" width="47.87615966796875" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-5-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="116" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,127.5)" y="0" x="0" id="text-entity-SystemOfUnits-f7f1da8e-a5af-50e1-94d0-c2e741f40e1d-attr-5-name" class="er entityLabel">plainTextDescription</text>
+  </g>
+  <g transform="translate(3018.8200454711914,932.5 )" id="entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829">
+    <rect height="93" width="100" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,12)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829" class="er entityLabel">Type</text>
+    <rect height="23" width="37.291229248046875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-1-type" class="er entityLabel">uri</text>
+    <rect height="23" width="62.708770751953125" y="24" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,35.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-1-name" class="er entityLabel">id</text>
+    <rect height="23" width="37.291229248046875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-2-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="47" x="37.291229248046875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,58.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-2-name" class="er entityLabel">name</text>
+    <rect height="23" width="37.291229248046875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-3-type" class="er entityLabel">string</text>
+    <rect height="23" width="62.708770751953125" y="70" x="37.291229248046875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(42.291229248046875,81.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829-attr-3-name" class="er entityLabel">description</text>
+  </g>
+  <g transform="translate(619.9178886413574,1206 )" id="entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739">
+    <rect height="254" width="157.4971160888672" y="0" x="0" class="er entityBox"/>
+    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(78.7485580444336,12)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739" class="er entityLabel">Unit</text>
+    <rect height="23" width="47.87615966796875" y="24" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,35.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-1-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="24" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,35.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-1-name" class="er entityLabel">abbreviation</text>
+    <rect height="23" width="47.87615966796875" y="47" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,58.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-2-type" class="er entityLabel">double</text>
+    <rect height="23" width="109.62095642089844" y="47" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,58.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-2-name" class="er entityLabel">conversionMultiplier</text>
+    <rect height="23" width="47.87615966796875" y="70" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,81.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-3-type" class="er entityLabel">double</text>
+    <rect height="23" width="109.62095642089844" y="70" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,81.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-3-name" class="er entityLabel">conversionOffset</text>
+    <rect height="23" width="47.87615966796875" y="93" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,104.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-4-type" class="er entityLabel">uri</text>
+    <rect height="23" width="109.62095642089844" y="93" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,104.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-4-name" class="er entityLabel">dbpediaMatch</text>
+    <rect height="23" width="47.87615966796875" y="116" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,127.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-5-type" class="er entityLabel">boolean</text>
+    <rect height="23" width="109.62095642089844" y="116" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,127.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-5-name" class="er entityLabel">deprecated</text>
+    <rect height="23" width="47.87615966796875" y="139" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,150.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-6-type" class="er entityLabel">uriList</text>
+    <rect height="23" width="109.62095642089844" y="139" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,150.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-6-name" class="er entityLabel">informativeReference</text>
+    <rect height="23" width="47.87615966796875" y="162" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,173.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-7-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="162" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,173.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-7-name" class="er entityLabel">latexSymbol</text>
+    <rect height="23" width="47.87615966796875" y="185" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,196.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-8-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="185" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,196.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-8-name" class="er entityLabel">plainTextDescription</text>
+    <rect height="23" width="47.87615966796875" y="208" x="0" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,219.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-9-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="208" x="47.87615966796875" class="er attributeBoxOdd"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,219.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-9-name" class="er entityLabel">symbol</text>
+    <rect height="23" width="47.87615966796875" y="231" x="0" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(5,242.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-10-type" class="er entityLabel">string</text>
+    <rect height="23" width="109.62095642089844" y="231" x="47.87615966796875" class="er attributeBoxEven"/>
+    <text style="dominant-baseline: middle; font-size: 10.2px;" transform="translate(52.87615966796875,242.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739-attr-10-name" class="er entityLabel">ucumCode</text>
+  </g>
+  <rect height="14" width="66.109375" y="835.25" x="48.363311767578125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="842.25" x="81.41799926757812" id="rel1" class="er relationshipLabel">connotation</text>
+  <rect height="14" width="30.840179443359375" y="1492.361572265625" x="-20.502089023590088" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1499.361572265625" x="-5.0819993019104" id="rel2" class="er relationshipLabel">prefix</text>
+  <rect height="14" width="111.84872436523438" y="1601.7542724609375" x="153.36764526367188" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1608.7542724609375" x="209.29200744628906" id="rel3" class="er relationshipLabel">hasDimensionVector</text>
+  <rect height="14" width="51.104339599609375" y="1211.0904541015625" x="423.66612243652344" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1218.0904541015625" x="449.2182922363281" id="rel4" class="er relationshipLabel">scalingOf</text>
+  <rect height="14" width="90.4375" y="1499.614013671875" x="455.84771728515625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1506.614013671875" x="501.06646728515625" id="rel5" class="er relationshipLabel">hasQuantityKind</text>
+  <rect height="14" width="184.671875" y="1114.639404296875" x="926.9798583984375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1121.639404296875" x="1019.3157958984375" id="rel6" class="er relationshipLabel">applicableSystem, isUnitOfSystem</text>
+  <rect height="14" width="86.448486328125" y="156" x="1989.5897216796875" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="163" x="2032.81396484375" id="rel7" class="er relationshipLabel">featuresSpecies</text>
+  <rect height="14" width="44.34375" y="828.6665649414062" x="2849.6708984375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="835.6665649414062" x="2871.8427734375" id="rel8" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="44.34375" y="863.0393676757812" x="2630.210693359375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="870.0393676757812" x="2652.382568359375" id="rel9" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="90.4375" y="1211.332275390625" x="1340.73828125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1218.332275390625" x="1385.95703125" id="rel10" class="er relationshipLabel">hasQuantityKind</text>
+  <rect height="14" width="75.265625" y="750.5478515625" x="1676.2752685546875" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="757.5478515625" x="1713.9080810546875" id="rel11" class="er relationshipLabel">quantityValue</text>
+  <rect height="14" width="111.8487548828125" y="1852.4901123046875" x="867.51416015625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1859.4901123046875" x="923.4385375976562" id="rel12" class="er relationshipLabel">hasDimensionVector</text>
+  <rect height="14" width="43.5322265625" y="1657" x="1159.69189453125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1664" x="1181.4580078125" id="rel13" class="er relationshipLabel">broader</text>
+  <rect height="14" width="80.3125" y="1439.2496337890625" x="902.4923095703125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1446.2496337890625" x="942.6485595703125" id="rel14" class="er relationshipLabel">applicableUnit</text>
+  <rect height="14" width="22.400146484375" y="1222.1463623046875" x="1315.2999267578125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1229.1463623046875" x="1326.5" id="rel15" class="er relationshipLabel">unit</text>
+  <rect height="14" width="44.34375" y="795.2399291992188" x="3030.322021484375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="802.2399291992188" x="3052.493896484375" id="rel16" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="54.9803466796875" y="356.1023254394531" x="992.1270141601562" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="363.1023254394531" x="1019.6171875" id="rel17" class="er relationshipLabel">hasColour</text>
+  <rect height="14" width="117.872802734375" y="377.2436218261719" x="1616.6094970703125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="384.2436218261719" x="1675.5458984375" id="rel18" class="er relationshipLabel">hasHeight, hasWeight</text>
+  <rect height="14" width="52.8125" y="392.4126892089844" x="1763.5147705078125" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="399.4126892089844" x="1789.9210205078125" id="rel19" class="er relationshipLabel">hasShape</text>
+  <rect height="14" width="212.9534912109375" y="445.3352355957031" x="1820.9274291992188" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="452.3352355957031" x="1927.4041748046875" id="rel20" class="er relationshipLabel">mayHaveAbility, mayHaveHiddenAbility</text>
+  <rect height="14" width="62.046875" y="451.1356201171875" x="2107.659912109375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="458.1356201171875" x="2138.683349609375" id="rel21" class="er relationshipLabel">inEggGroup</text>
+  <rect height="14" width="42.6875" y="375.6913757324219" x="2362.046630859375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="382.6913757324219" x="2383.390380859375" id="rel22" class="er relationshipLabel">foundIn</text>
+  <rect height="14" width="76.068603515625" y="367.71490478515625" x="2448.3206787109375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="374.71490478515625" x="2486.35498046875" id="rel23" class="er relationshipLabel">isAbleToApply</text>
+  <rect height="14" width="44.34375" y="400.2765808105469" x="3063.787109375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="407.2765808105469" x="3085.958984375" id="rel24" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="44.34375" y="821.1415405273438" x="3222.79638671875" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="828.1415405273438" x="3244.96826171875" id="rel25" class="er relationshipLabel">hasType</text>
+  <rect height="14" width="30.8402099609375" y="1891.8677978515625" x="899.3218383789062" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1898.8677978515625" x="914.741943359375" id="rel26" class="er relationshipLabel">prefix</text>
+  <rect height="14" width="68.25244140625" y="1454.2747802734375" x="1010.218505859375" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1461.2747802734375" x="1044.3447265625" id="rel27" class="er relationshipLabel">hasBaseUnit</text>
+  <rect height="14" width="30.84014892578125" y="1652.033447265625" x="494.74920654296875" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1659.033447265625" x="510.1692810058594" id="rel28" class="er relationshipLabel">prefix</text>
+  <rect height="14" width="111.84869384765625" y="1655.7681884765625" x="554.2431945800781" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1662.7681884765625" x="610.1675415039062" id="rel29" class="er relationshipLabel">hasDimensionVector</text>
+  <rect height="14" width="51.1043701171875" y="1326.0001220703125" x="1127.6727905273438" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1333.0001220703125" x="1153.2249755859375" id="rel30" class="er relationshipLabel">scalingOf</text>
+  <rect height="14" width="90.4375" y="1541.3707275390625" x="770.9385375976562" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1548.3707275390625" x="816.1572875976562" id="rel31" class="er relationshipLabel">hasQuantityKind</text>
+  <rect height="14" width="184.671875" y="1514.23095703125" x="935.5045166015625" class="er relationshipLabelBox"/>
+  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="1521.23095703125" x="1027.8404541015625" id="rel32" class="er relationshipLabel">applicableSystem, isUnitOfSystem</text>
+</svg>
