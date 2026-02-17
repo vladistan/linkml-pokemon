@@ -486,48 +486,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Schema Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#main-schema" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Schema
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#imported-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Imported Schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#class-hierarchy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Class Hierarchy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#knowledge-graph" class="md-nav__link">
     <span class="md-ellipsis">
       Knowledge Graph
@@ -537,9 +495,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generated-artifacts" class="md-nav__link">
+  <a href="#interoperability" class="md-nav__link">
     <span class="md-ellipsis">
-      Generated Artifacts
+      Interoperability
     </span>
   </a>
   
@@ -549,6 +507,15 @@
   <a href="#technology-stack" class="md-nav__link">
     <span class="md-ellipsis">
       Technology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
     </span>
   </a>
   
@@ -607,48 +574,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#schema-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Schema Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#main-schema" class="md-nav__link">
-    <span class="md-ellipsis">
-      Main Schema
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#imported-schemas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Imported Schemas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#class-hierarchy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Class Hierarchy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#knowledge-graph" class="md-nav__link">
     <span class="md-ellipsis">
       Knowledge Graph
@@ -658,9 +583,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generated-artifacts" class="md-nav__link">
+  <a href="#interoperability" class="md-nav__link">
     <span class="md-ellipsis">
-      Generated Artifacts
+      Interoperability
     </span>
   </a>
   
@@ -670,6 +595,15 @@
   <a href="#technology-stack" class="md-nav__link">
     <span class="md-ellipsis">
       Technology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
     </span>
   </a>
   
@@ -705,72 +639,11 @@
 
 <h1 id="about">About<a class="headerlink" href="#about" title="Permanent link">&para;</a></h1>
 <h2 id="project-background">Project Background<a class="headerlink" href="#project-background" title="Permanent link">&para;</a></h2>
-<p>The Pokemon LinkML Model adapts the <a href="https://pokemonkg.org/">Pokemon Knowledge Graph Ontology</a> into a <a href="https://linkml.io/">LinkML</a> schema. The original ontology was created in 2019 to provide a structured, semantic representation of the Pokemon universe sourced from Bulbapedia and PokeAPI.</p>
-<p>LinkML adds a practical modeling layer on top of the ontology, enabling code generation, data validation, and multi-format serialization from a single YAML schema definition.</p>
-<h2 id="schema-architecture">Schema Architecture<a class="headerlink" href="#schema-architecture" title="Permanent link">&para;</a></h2>
-<h3 id="main-schema">Main Schema<a class="headerlink" href="#main-schema" title="Permanent link">&para;</a></h3>
-<p>The core schema (<code>linkml_pokemon.yaml</code>) defines all Pokemon-domain classes and relationships. It uses the <code>pokemon:</code> prefix namespace (<code>https://pokemonkg.org/ontology#</code>) to stay aligned with the upstream ontology URIs.</p>
-<h3 id="imported-schemas">Imported Schemas<a class="headerlink" href="#imported-schemas" title="Permanent link">&para;</a></h3>
-<p>The model composes several external vocabularies to reuse established standards rather than reinvent them:</p>
-<table>
-<thead>
-<tr>
-<th>Import</th>
-<th>Namespace</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://xmlns.com/foaf/spec/"><strong>FOAF</strong></a></td>
-<td><code>http://xmlns.com/foaf/0.1/</code></td>
-<td>Person and agent modeling (Trainers, Gym Leaders)</td>
-</tr>
-<tr>
-<td><a href="https://dbpedia.org/ontology/"><strong>DBpedia</strong></a></td>
-<td><code>http://dbpedia.org/ontology/</code></td>
-<td>Color definitions, real-world concept references</td>
-</tr>
-<tr>
-<td><a href="https://www.w3.org/TR/owl2-overview/"><strong>OWL</strong></a></td>
-<td><code>http://www.w3.org/2002/07/owl#</code></td>
-<td>Named individuals, thing hierarchy</td>
-</tr>
-<tr>
-<td><a href="https://qudt.org/"><strong>QUDT</strong></a></td>
-<td><code>http://qudt.org/schema/qudt/</code></td>
-<td>Units of measurement for height, weight, and size quantities</td>
-</tr>
-<tr>
-<td><a href="https://linkml.io/linkml-model/docs/types/"><strong>LinkML types</strong></a></td>
-<td><code>https://w3id.org/linkml/</code></td>
-<td>Built-in type definitions (string, integer, boolean, etc.)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="class-hierarchy">Class Hierarchy<a class="headerlink" href="#class-hierarchy" title="Permanent link">&para;</a></h3>
-<p>The schema follows a layered inheritance structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Thing (name, description)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  +-- NamedIndividual (requires name)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  |     +-- Species
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  |     +-- Type
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  |     +-- EggGroup, Habitat, Shape, Flavor
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  +-- Move
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  |     +-- SpecialMove, PhysicalMove, StatusMove
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  +-- Item
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  |     +-- Pokeball, HoldItem, Medicine, HM, TM
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  |     +-- Food
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  |           +-- Berry
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>  +-- Generation, Game
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>  +-- Place (abstract)
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>  |     +-- Region, Town, Gym
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  +-- Pokedex, PokedexEntry
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>Person (from FOAF)
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>  +-- Trainer
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        +-- GymLeader
-</code></pre></div>
+<p>The Pokemon LinkML Model adapts the <a href="https://pokemonkg.org/">Pokemon Knowledge Graph</a> ontology into a <a href="https://linkml.io/">LinkML</a> schema. The original ontology was created in 2019 by <a href="mailto:contact@kevinhaller.dev">Kevin Haller</a> to provide a structured, semantic representation of the Pokemon universe, with data sourced from community platforms including Bulbapedia, PokeWiki, PokeAPI, and PokemonDB.</p>
+<p>This project serves three purposes: as an educational resource for learning LinkML and knowledge graph technologies, as a test bed for LinkML tooling development, and as a playground for AI agent development with rich ontology-backed data.</p>
 <h2 id="knowledge-graph">Knowledge Graph<a class="headerlink" href="#knowledge-graph" title="Permanent link">&para;</a></h2>
-<p>The schema is backed by a live Pokemon Knowledge Graph containing data from multiple sources:</p>
+<p>The <a href="https://pokemonkg.org/">Pokemon Knowledge Graph</a> (PokemonKG) by Kevin Haller provides a comprehensive RDF dataset covering the Pokemon universe. This project adapts the original OWL ontology into <a href="https://linkml.io/">LinkML</a> (Linked Data Modeling Language), a schema language that enables code generation, data validation, and multi-format serialization from a single YAML definition.</p>
+<p>The knowledge graph contains data from multiple sources:</p>
 <table>
 <thead>
 <tr>
@@ -792,62 +665,43 @@
 </tr>
 </tbody>
 </table>
-<p>The knowledge graph contains approximately 900 species, 770+ moves, 18 types, and 300+ abilities, all represented as RDF triples queryable via SPARQL.</p>
-<h2 id="generated-artifacts">Generated Artifacts<a class="headerlink" href="#generated-artifacts" title="Permanent link">&para;</a></h2>
-<p>From the single YAML schema, the following artifacts are generated:</p>
+<p>In total, the graph holds over 100,000 RDF triples covering approximately 900 species, 770+ moves, 18 types, and 300+ abilities, all queryable via SPARQL.</p>
+<p>The LinkML adaptation preserves the original ontology's URI namespace (<code>https://pokemonkg.org/ontology#</code>) ensuring compatibility with the upstream knowledge graph while adding features like type-safe code generation, built-in validation, and multi-format artifact output.</p>
+<h2 id="interoperability">Interoperability<a class="headerlink" href="#interoperability" title="Permanent link">&para;</a></h2>
+<p>The schema imports and builds on several established external ontologies and vocabularies:</p>
 <table>
 <thead>
 <tr>
-<th>Artifact</th>
-<th>Format</th>
-<th>Use Case</th>
+<th>Ontology</th>
+<th>Namespace</th>
+<th>Role in this Schema</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Pydantic models</td>
-<td>Python</td>
-<td>Type-safe data access, validation, serialization</td>
+<td><a href="http://xmlns.com/foaf/spec/">FOAF</a> (Friend of a Friend)</td>
+<td><code>http://xmlns.com/foaf/0.1/</code></td>
+<td>Person modeling for Trainers and Gym Leaders. Provides the <code>Person</code> base class with properties like <code>name</code> and <code>depiction</code>.</td>
 </tr>
 <tr>
-<td>JSON Schema</td>
-<td>JSON</td>
-<td>Data validation in any language</td>
+<td><a href="https://dbpedia.org/ontology/">DBpedia</a></td>
+<td><code>http://dbpedia.org/ontology/</code></td>
+<td>Real-world concept references. Used for color definitions (e.g., <code>dbpedia:Yellow</code>) and connotations linking Pokemon concepts to encyclopedia entries.</td>
 </tr>
 <tr>
-<td>OWL ontology</td>
-<td>Turtle RDF</td>
-<td>Semantic web reasoning and integration</td>
+<td><a href="https://www.w3.org/TR/owl2-overview/">OWL</a> (Web Ontology Language)</td>
+<td><code>http://www.w3.org/2002/07/owl#</code></td>
+<td>Provides <code>Thing</code> as the root class and <code>NamedIndividual</code> for enumerated instances like Types, Habitats, and Egg Groups.</td>
 </tr>
 <tr>
-<td>SHACL shapes</td>
-<td>Turtle RDF</td>
-<td>RDF data validation</td>
+<td><a href="https://vladistan.github.io/linkml-qudt/">QUDT</a> (Quantities, Units, Dimensions, Types)</td>
+<td><code>http://qudt.org/schema/qudt/</code></td>
+<td>Units of measurement for physical attributes. Pokemon height uses meters, weight uses kilograms, and berry size uses diameter, all expressed as QUDT Quantity values with proper units and quantity kinds.</td>
 </tr>
 <tr>
-<td>TypeScript types</td>
-<td>TypeScript</td>
-<td>Web application development</td>
-</tr>
-<tr>
-<td>SQL DDL</td>
-<td>SQL</td>
-<td>Relational database schema</td>
-</tr>
-<tr>
-<td>JSON-LD context</td>
-<td>JSON-LD</td>
-<td>Linked data interoperability</td>
-</tr>
-<tr>
-<td>ShEx</td>
-<td>ShEx</td>
-<td>RDF shape constraints</td>
-</tr>
-<tr>
-<td>Protobuf</td>
-<td>Proto3</td>
-<td>Efficient binary serialization</td>
+<td><a href="https://linkml.io/linkml-model/docs/types/">LinkML types</a></td>
+<td><code>https://w3id.org/linkml/</code></td>
+<td>Built-in primitive type definitions (string, integer, boolean, uri, etc.) that form the base range types for slots.</td>
 </tr>
 </tbody>
 </table>
@@ -890,6 +744,8 @@
 </tr>
 </tbody>
 </table>
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>This is an independent open source project and is not affiliated with, endorsed by, or connected to <a href="https://www.pokemon.com/">The Pokemon Company</a> or <a href="https://www.nintendo.com/">Nintendo</a> in any way. Pokemon and all related names, characters, and imagery are trademarks of The Pokemon Company and Nintendo, the original creators of the Pokemon world. This project is intended solely for educational and research purposes.</p>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>This project is licensed under the MIT License.</p>
 

@@ -411,15 +411,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-at-a-glance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema at a Glance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       Purpose
@@ -462,13 +453,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-concepts" class="md-nav__link">
+  <a href="#schema-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts
+      Schema Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key Concepts">
+    <nav class="md-nav" aria-label="Schema Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -500,6 +491,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generated Artifacts
+    </span>
+  </a>
   
 </li>
       
@@ -631,15 +640,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#schema-at-a-glance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema at a Glance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       Purpose
@@ -682,13 +682,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-concepts" class="md-nav__link">
+  <a href="#schema-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Concepts
+      Schema Overview
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key Concepts">
+    <nav class="md-nav" aria-label="Schema Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -720,6 +720,24 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Files
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generated Artifacts
+    </span>
+  </a>
   
 </li>
       
@@ -772,43 +790,6 @@
 <h1 id="pokemon-linkml-model">Pokemon LinkML Model<a class="headerlink" href="#pokemon-linkml-model" title="Permanent link">&para;</a></h1>
 <p>This is the <a href="https://linkml.io/">LinkML</a>  adaptation of the <a href="https://pokemonkg.org/">Pokemon Knowledge Graph</a> ontology, providing a structured schema for representing Pokemon-related data. The model captures the rich relationships and attributes of Pokemon species, moves, types, abilities, items, and their interactions in the Pokemon universe.
 A schema for the ontology, covering the Pokemon world as it is presented in games and anime television series.</p>
-<h2 id="schema-at-a-glance">Schema at a Glance<a class="headerlink" href="#schema-at-a-glance" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align: right;">Total</th>
-<th style="text-align: right;">Pokemon Domain</th>
-<th style="text-align: right;">Imported</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Classes</strong></td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">24</td>
-</tr>
-<tr>
-<td><strong>Slots</strong></td>
-<td style="text-align: right;">83</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">51</td>
-</tr>
-<tr>
-<td><strong>Enums</strong></td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr>
-<td><strong>Imported schemas</strong></td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;"></td>
-<td style="text-align: right;">FOAF, DBpedia, OWL, QUDT</td>
-</tr>
-</tbody>
-</table>
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
 <p>This project was created for the following reasons:</p>
 <h3 id="educational-and-training">Educational and Training<a class="headerlink" href="#educational-and-training" title="Permanent link">&para;</a></h3>
@@ -833,8 +814,48 @@ references and complex data types.</p>
 take the agentic development to the next level.  This project provides
 rich ontology and large data set for testing techniques like RAG and
 ontology based agent assistance.</p>
-<h2 id="key-concepts">Key Concepts<a class="headerlink" href="#key-concepts" title="Permanent link">&para;</a></h2>
+<h2 id="schema-overview">Schema Overview<a class="headerlink" href="#schema-overview" title="Permanent link">&para;</a></h2>
+<p>The core schema is defined in <a href="https://github.com/vladistan/linkml-pokemon/blob/main/src/linkml_pokemon/schema/linkml_pokemon.yaml"><code>linkml_pokemon.yaml</code></a>. The table below summarizes its components, including how many are specific to the Pokemon domain versus imported from external schemas.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">Total</th>
+<th style="text-align: right;">Pokemon Domain</th>
+<th style="text-align: right;">Imported</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="datadict/#classes"><strong>Classes</strong></a></td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr>
+<td><a href="datadict/#slots"><strong>Slots</strong></a></td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr>
+<td><a href="datadict/#enums"><strong>Enums</strong></a></td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td><strong>Imported schemas</strong></td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><a href="http://xmlns.com/foaf/spec/">FOAF</a>, <a href="https://dbpedia.org/ontology/">DBpedia</a>, <a href="https://www.w3.org/TR/owl2-overview/">OWL</a>, <a href="https://vladistan.github.io/linkml-qudt/">QUDT</a></td>
+</tr>
+</tbody>
+</table>
+<p>And here is a high-level ERD diagram of the schema structure, key classes, and relationships. Note this is a simplified extraction from the larger schema. For a complete reference, see the <a href="datadict/">Data Dictionary</a>.</p>
+<p><img alt="Simplified ERD Diagram" src="images/simplified_erd_diagram.svg" /></p>
 <h3 id="core-entities">Core Entities<a class="headerlink" href="#core-entities" title="Permanent link">&para;</a></h3>
+<p>The core entities in the schema represent the fundamental concepts of the Pokemon world:</p>
 <table>
 <thead>
 <tr>
@@ -844,23 +865,23 @@ ontology based agent assistance.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong>Species</strong></td>
+<td><a href="datadict/#species"><strong>Species</strong></a></td>
 <td>A Pokemon species with stats, types, abilities, height, weight, color, habitat</td>
 </tr>
 <tr>
-<td><strong>Move</strong></td>
+<td><a href="datadict/#move"><strong>Move</strong></a></td>
 <td>Battle moves with base power, accuracy, PP, type, and effect descriptions</td>
 </tr>
 <tr>
-<td><strong>Type</strong></td>
+<td><a href="datadict/#type"><strong>Type</strong></a></td>
 <td>The 18 Pokemon types (Fire, Water, Grass, etc.) with strengths and weaknesses</td>
 </tr>
 <tr>
-<td><strong>Ability</strong></td>
+<td><a href="datadict/#ability"><strong>Ability</strong></a></td>
 <td>Special abilities that each Pokemon can have, including hidden abilities</td>
 </tr>
 <tr>
-<td><strong>Item</strong></td>
+<td><a href="datadict/#item"><strong>Item</strong></a></td>
 <td>Objects the player can use - Poke Balls, medicines, hold items, berries, TMs/HMs</td>
 </tr>
 </tbody>
@@ -890,6 +911,102 @@ ontology based agent assistance.</p>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nt">foundIn</span><span class="p">:</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pokemon:Habitat_Forest</span>
 </code></pre></div>
+<h2 id="data-files">Data Files<a class="headerlink" href="#data-files" title="Permanent link">&para;</a></h2>
+<p>The knowledge graph data originates from the <a href="https://pokemonkg.org/">Pokemon Knowledge Graph</a> project. A copy of the original dataset is included in the <a href="https://github.com/vladistan/linkml-pokemon/tree/main/original"><code>original/</code></a> directory:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>poke-a.nq</code></td>
+<td>Full knowledge graph dump in N-Quads format (~29 MB)</td>
+</tr>
+<tr>
+<td><code>pokemon-ontology.ttl</code></td>
+<td>Original Pokemon ontology in Turtle format</td>
+</tr>
+</tbody>
+</table>
+<p>The original data contains several errors that have been identified and patched. See <a href="DATA_PATCHES/">Data Patches</a> for full details.</p>
+<table>
+<thead>
+<tr>
+<th>Patch</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="DATA_PATCHES/#patch-1-fix-weight-units">Patch 1</a></td>
+<td>Fix weight units from KiloM (Kilometer) to KiloGM (Kilogram)</td>
+</tr>
+<tr>
+<td><a href="DATA_PATCHES/#patch-2-add-quantityvalue-types">Patch 2</a></td>
+<td>Add missing rdf:type to QuantityValue nodes</td>
+</tr>
+<tr>
+<td><a href="DATA_PATCHES/#patch-3-fix-berry-size-quantitykind">Patch 3</a></td>
+<td>Fix berry size quantityKind from Height to Diameter</td>
+</tr>
+</tbody>
+</table>
+<h2 id="generated-artifacts">Generated Artifacts<a class="headerlink" href="#generated-artifacts" title="Permanent link">&para;</a></h2>
+<p>The following artifacts are generated from the schema and available in the <a href="https://github.com/vladistan/linkml-pokemon/tree/main/project"><code>project/</code></a> directory:</p>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GraphQL</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/graphql/linkml_pokemon.graphql"><code>linkml_pokemon.graphql</code></a></td>
+<td>GraphQL schema definition</td>
+</tr>
+<tr>
+<td>OWL</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/owl/linkml_pokemon.owl.ttl"><code>linkml_pokemon.owl.ttl</code></a></td>
+<td>OWL ontology in Turtle format</td>
+</tr>
+<tr>
+<td>Pydantic</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/pydantic/linkml_pokemon.py"><code>linkml_pokemon.py</code></a></td>
+<td>Python Pydantic v2 models</td>
+</tr>
+<tr>
+<td>TypeScript</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/typescript/linkml_pokemon.ts"><code>linkml_pokemon.ts</code></a></td>
+<td>TypeScript type definitions</td>
+</tr>
+<tr>
+<td>JSON Schema</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/jsonschema/linkml_pokemon.schema.json"><code>linkml_pokemon.schema.json</code></a></td>
+<td>JSON Schema for data validation</td>
+</tr>
+<tr>
+<td>JSON-LD</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/jsonld/linkml_pokemon.context.jsonld"><code>linkml_pokemon.context.jsonld</code></a></td>
+<td>JSON-LD context for linked data</td>
+</tr>
+<tr>
+<td>SHACL</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/shacl/linkml_pokemon.shacl.ttl"><code>linkml_pokemon.shacl.ttl</code></a></td>
+<td>SHACL shapes for RDF validation</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td><a href="https://github.com/vladistan/linkml-pokemon/blob/main/project/sqlschema/linkml_pokemon.sql"><code>linkml_pokemon.sql</code></a></td>
+<td>SQL DDL for relational databases</td>
+</tr>
+</tbody>
+</table>
 <h2 id="data-dictionary">Data Dictionary<a class="headerlink" href="#data-dictionary" title="Permanent link">&para;</a></h2>
 <p>The <a href="datadict/">Data Dictionary</a> provides the complete reference for all classes, slots, enumerations, and type definitions in the schema, including class diagrams and ERD visualizations.</p>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
