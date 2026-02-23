@@ -50,7 +50,7 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-
+    
     /** A hollow underground area, typically formed in rocky or mountainous terrain. */
     Cave = "Cave",
     /** A dense area covered with trees and undergrowth. */
@@ -638,3 +638,6 @@ export interface Trainer extends Person {
  */
 export interface Type extends NamedIndividual {
 }
+
+
+

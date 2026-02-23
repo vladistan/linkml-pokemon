@@ -463,6 +463,7 @@ slots:
     range: Ability
     domain: Species
     multivalued: true
+    inlined_as_list: true
     description: A Pokémon may have an ability
 
   mayHaveHiddenAbility:
@@ -470,6 +471,7 @@ slots:
     range: Ability
     domain: Species
     multivalued: true
+    inlined_as_list: true
     subproperty_of: mayHaveAbility
     description: >-
       A special ability only obtainable through specific encounters or events, not through normal
@@ -480,6 +482,7 @@ slots:
     range: Move
     multivalued: true
     required: false
+    inlined_as_list: true
     description: >-
       Moves that a Pokémon can use in battle or in the overworld.
 
