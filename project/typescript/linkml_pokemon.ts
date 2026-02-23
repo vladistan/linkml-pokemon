@@ -51,23 +51,23 @@ export type TypeId = string;
 
 export enum HabitatEnum {
 
-    /** Pokemon found in caves, tunnels, and underground areas. */
+    /** A hollow underground area, typically formed in rocky or mountainous terrain. */
     Cave = "Cave",
-    /** Pokemon found in forests and wooded areas. */
+    /** A dense area covered with trees and undergrowth. */
     Forest = "Forest",
-    /** Pokemon found in open grasslands, plains, and meadows. */
+    /** An open area of land covered predominantly with grasses and low vegetation. */
     Grassland = "Grassland",
-    /** Pokemon found on mountains and rocky highlands. */
+    /** A large elevated landform rising steeply above the surrounding terrain. */
     Mountain = "Mountain",
-    /** Pokemon that are rarely encountered and have no fixed habitat. */
+    /** An uncommon or hard-to-reach environment with no single fixed location. */
     Rare = "Rare",
-    /** Pokemon found in harsh, rugged terrain such as deserts and wastelands. */
+    /** Harsh, uneven landscape such as deserts, volcanic areas, or rocky wastelands. */
     Rough_terrain = "Rough terrain",
-    /** Pokemon found in oceans and deep water environments. */
+    /** Open deep water far from shore, including oceans and large lakes. */
     Sea = "Sea",
-    /** Pokemon found in cities, towns, and human-built environments. */
+    /** A densely developed area with buildings, roads, and other human-made structures. */
     Urban = "Urban",
-    /** Pokemon found along shorelines, riverbanks, and wetlands. */
+    /** The transitional zone where land meets water, including shorelines, riverbanks, and wetlands. */
     WaterAPOSTROPHEs_edge = "Water's edge",
 };
 

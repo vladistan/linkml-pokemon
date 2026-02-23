@@ -51,7 +51,7 @@ gen-schema:
 testdoc: _serve
 
 gen-python:
-  uv run --group dev gen-pydantic --meta FULL {{source_schema_path}} > {{pymodel}}/{{schema_name}}.py
+  uv run --group dev gen-pydantic --meta full {{source_schema_path}} > {{pymodel}}/{{schema_name}}.py
 
 # Generate project files including Python data model
 [group('model development')]
