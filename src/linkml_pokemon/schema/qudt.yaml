@@ -26,12 +26,14 @@ slots:
     slot_uri: qudt:hasQuantityKind
     range: QuantityKind
     multivalued: true
+    inlined_as_list: true
 
   quantityValue:
     description: The value component of a quantity
     slot_uri: qudt:quantityValue
     range: QuantityValue
     multivalued: true
+    inlined_as_list: true
 
   numericValue:
     description: Numeric value of a quantity
@@ -42,6 +44,7 @@ slots:
     description: Unit of measurement
     slot_uri: qudt:unit
     range: Unit
+    inlined: true
 
   # --- Unit properties ---
   symbol:

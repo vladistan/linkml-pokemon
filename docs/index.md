@@ -108,6 +108,12 @@ The original data contains several errors that have been identified and patched.
 | [Patch 1](DATA_PATCHES.md#patch-1-fix-weight-units) | Fix weight units from KiloM (Kilometer) to KiloGM (Kilogram) |
 | [Patch 2](DATA_PATCHES.md#patch-2-add-quantityvalue-types) | Add missing rdf:type to QuantityValue nodes |
 | [Patch 3](DATA_PATCHES.md#patch-3-fix-berry-size-quantitykind) | Fix berry size quantityKind from Height to Diameter |
+| [Patch 4](DATA_PATCHES.md#patch-4-fix-shape-uris) | Fix hasShape URIs from colon to underscore separator |
+| [Patch 5](DATA_PATCHES.md#patch-5-fix-habitat-uris) | Fix foundIn/Habitat URIs from colon to underscore separator |
+| [Patch 6](DATA_PATCHES.md#patch-6-fix-egggroup-uris) | Fix inEggGroup URIs from colon to underscore separator |
+| [Patch 7](DATA_PATCHES.md#patch-7-add-berry-labels) | Add rdfs:label to all 64 Berry instances |
+| [Patch 8](DATA_PATCHES.md#patch-8-add-quantityvalue-types-pokeapi-co) | Add missing rdf:type to QuantityValue nodes in pokeapi-co graph |
+| [Patch 9](DATA_PATCHES.md#patch-9-add-shape-labels) | Add rdfs:label to all 14 Shape instances |
 
 ## Generated Artifacts
 

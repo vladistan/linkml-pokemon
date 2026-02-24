@@ -107,6 +107,12 @@ The original data contains several errors that have been identified and patched.
 | [Patch 1](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-1-fix-weight-units) | Fix weight units from KiloM (Kilometer) to KiloGM (Kilogram) |
 | [Patch 2](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-2-add-quantityvalue-types) | Add missing rdf:type to QuantityValue nodes |
 | [Patch 3](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-3-fix-berry-size-quantitykind) | Fix berry size quantityKind from Height to Diameter |
+| [Patch 4](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-4-fix-shape-uris) | Fix hasShape URIs from colon to underscore separator |
+| [Patch 5](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-5-fix-habitat-uris) | Fix foundIn/Habitat URIs from colon to underscore separator |
+| [Patch 6](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-6-fix-egggroup-uris) | Fix inEggGroup URIs from colon to underscore separator |
+| [Patch 7](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-7-add-berry-labels) | Add rdfs:label to all 64 Berry instances |
+| [Patch 8](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-8-add-quantityvalue-types-pokeapi-co) | Add missing rdf:type to QuantityValue nodes in pokeapi-co graph |
+| [Patch 9](https://vladistan.github.io/linkml-pokemon/DATA_PATCHES/#patch-9-add-shape-labels) | Add rdfs:label to all 14 Shape instances |
 
 ## Generated Artifacts
 

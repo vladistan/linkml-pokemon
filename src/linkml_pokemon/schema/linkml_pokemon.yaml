@@ -355,12 +355,13 @@ slots:
     domain: Species
     multivalued: true
     required: false
+    inlined_as_list: true
     description: A place is found in a location
 
   hasColor:
     slot_uri: pokemon:hasColour
     range: Color
-    inlined: false
+    inlined: true
     multivalued: false
     required: false
     description: A Pokémon has a color
@@ -425,6 +426,7 @@ slots:
     domain: Species
     multivalued: false
     required: false
+    inlined: true
     description: >-
       The shape of a berry is a measure of how good it
       is for making a Potion.
@@ -455,6 +457,7 @@ slots:
     domain: Species
     multivalued: true
     required: false
+    inlined_as_list: true
     description: >-
       Which egg group a species belongs to, controlling which Pokémon can breed together.
 

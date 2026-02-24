@@ -9,6 +9,12 @@ This document describes the SPARQL UPDATE queries needed to fix data issues in t
 | 1 | Fix weight units (KiloM → KiloGM) | 898 | bulbapedia |
 | 2 | Add rdf:type to QuantityValue nodes | ~1,796 | bulbapedia |
 | 3 | Fix berry size quantityKind (Height → Diameter) | 64 | pokeapi-co |
+| 4 | Fix hasShape URIs (colon → underscore) | 14 | pokeapi-co, bulbapedia |
+| 5 | Fix foundIn/Habitat URIs (colon → underscore) | 8 | pokeapi-co |
+| 6 | Fix inEggGroup URIs (colon → underscore) | 15 | pokeapi-co, bulbapedia |
+| 7 | Add rdfs:label to Berry instances | 64 | pokeapi-co |
+| 8 | Add rdf:type to QuantityValue nodes (pokeapi-co) | 64 | pokeapi-co |
+| 9 | Add rdfs:label to Shape instances | 14 | default |
 
 ## Patch 1: Fix Weight Units
 
@@ -265,6 +271,454 @@ WHERE {
 
 ---
 
+## Patch 4: Fix Shape URIs
+
+#### Problem
+Species reference shapes via `hasShape` using colon-separated URIs (e.g., `Shape:Upright`) but the actual Shape instances use underscore URIs (`Shape_Upright`). This means all 14 `hasShape` references are dangling — they point to URIs with no corresponding `rdf:type` declaration.
+
+The mismatch exists in two named graphs: `pokeapi-co` and `bulbapedia`.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?shape WHERE {
+  GRAPH ?g { ?s pkmn:hasShape ?shape }
+  FILTER(CONTAINS(STR(?shape), "Shape:"))
+}
+ORDER BY ?shape
+```
+
+Expected result before fix: 14 URIs with colon separator (`Shape:Armor`, `Shape:Arms`, etc.).
+
+#### Fix Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH ?g { ?s pkmn:hasShape ?oldShape }
+}
+INSERT {
+  GRAPH ?g { ?s pkmn:hasShape ?newShape }
+}
+WHERE {
+  VALUES ?g {
+    <http://pokemon.outofbits.com/dataset/pokeapi-co>
+    <https://pokemonkg.org/dataset/bulbapedia>
+  }
+  GRAPH ?g { ?s pkmn:hasShape ?oldShape }
+  FILTER(CONTAINS(STR(?oldShape), "Shape:"))
+  BIND(IRI(REPLACE(STR(?oldShape), "Shape:", "Shape_")) AS ?newShape)
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?shape WHERE {
+  ?s pkmn:hasShape ?shape .
+  ?shape a pkmn:Shape .
+}
+ORDER BY ?shape
+```
+
+Expected result: 14 Shape URIs with underscore separator, all resolving to actual Shape instances.
+
+#### Rollback Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH ?g { ?s pkmn:hasShape ?oldShape }
+}
+INSERT {
+  GRAPH ?g { ?s pkmn:hasShape ?newShape }
+}
+WHERE {
+  VALUES ?g {
+    <http://pokemon.outofbits.com/dataset/pokeapi-co>
+    <https://pokemonkg.org/dataset/bulbapedia>
+  }
+  GRAPH ?g { ?s pkmn:hasShape ?oldShape }
+  FILTER(CONTAINS(STR(?oldShape), "Shape_"))
+  BIND(IRI(REPLACE(STR(?oldShape), "Shape_", "Shape:")) AS ?newShape)
+}
+```
+
+---
+
+## Patch 5: Fix Habitat URIs
+
+#### Problem
+Species reference habitats via `foundIn` using colon-separated URIs (e.g., `Habitat:Cave`) but the actual Habitat instances use underscore URIs (`Habitat_Cave`). All 8 referenced habitats are dangling references.
+
+The mismatch exists only in the `pokeapi-co` graph. Note: `Habitat_Rare` exists as a declared instance but has no Species references.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?habitat WHERE {
+  GRAPH ?g { ?s pkmn:foundIn ?habitat }
+  FILTER(CONTAINS(STR(?habitat), "Habitat:"))
+}
+ORDER BY ?habitat
+```
+
+Expected result before fix: 8 URIs with colon separator (`Habitat:Cave`, `Habitat:Forest`, etc.).
+
+#### Fix Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?oldHabitat
+  }
+}
+INSERT {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?newHabitat
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?oldHabitat
+  }
+  FILTER(CONTAINS(STR(?oldHabitat), "Habitat:"))
+  BIND(IRI(REPLACE(STR(?oldHabitat), "Habitat:", "Habitat_")) AS ?newHabitat)
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?habitat WHERE {
+  ?s pkmn:foundIn ?habitat .
+  ?habitat a pkmn:Habitat .
+}
+ORDER BY ?habitat
+```
+
+Expected result: 8 Habitat URIs with underscore separator, all resolving to actual Habitat instances.
+
+#### Rollback Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?oldHabitat
+  }
+}
+INSERT {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?newHabitat
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?s pkmn:foundIn ?oldHabitat
+  }
+  FILTER(CONTAINS(STR(?oldHabitat), "Habitat_"))
+  BIND(IRI(REPLACE(STR(?oldHabitat), "Habitat_", "Habitat:")) AS ?newHabitat)
+}
+```
+
+---
+
+## Patch 6: Fix EggGroup URIs
+
+#### Problem
+Species reference egg groups via `inEggGroup` using colon-separated URIs (e.g., `EggGroup:Bug`) but the actual EggGroup instances use underscore URIs (`EggGroup_Bug`). All 15 referenced egg groups are dangling references. Species can belong to multiple egg groups, so there are more triples affected than the 15 distinct values.
+
+The mismatch exists in two named graphs: `pokeapi-co` and `bulbapedia`.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?eg WHERE {
+  GRAPH ?g { ?s pkmn:inEggGroup ?eg }
+  FILTER(CONTAINS(STR(?eg), "EggGroup:"))
+}
+ORDER BY ?eg
+```
+
+Expected result before fix: 15 URIs with colon separator (`EggGroup:Amorphous`, `EggGroup:Bug`, etc.).
+
+#### Fix Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH ?g { ?s pkmn:inEggGroup ?oldEg }
+}
+INSERT {
+  GRAPH ?g { ?s pkmn:inEggGroup ?newEg }
+}
+WHERE {
+  VALUES ?g {
+    <http://pokemon.outofbits.com/dataset/pokeapi-co>
+    <https://pokemonkg.org/dataset/bulbapedia>
+  }
+  GRAPH ?g { ?s pkmn:inEggGroup ?oldEg }
+  FILTER(CONTAINS(STR(?oldEg), "EggGroup:"))
+  BIND(IRI(REPLACE(STR(?oldEg), "EggGroup:", "EggGroup_")) AS ?newEg)
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT DISTINCT ?eg WHERE {
+  ?s pkmn:inEggGroup ?eg .
+  ?eg a pkmn:EggGroup .
+}
+ORDER BY ?eg
+```
+
+Expected result: 15 EggGroup URIs with underscore separator, all resolving to actual EggGroup instances.
+
+#### Rollback Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+DELETE {
+  GRAPH ?g { ?s pkmn:inEggGroup ?oldEg }
+}
+INSERT {
+  GRAPH ?g { ?s pkmn:inEggGroup ?newEg }
+}
+WHERE {
+  VALUES ?g {
+    <http://pokemon.outofbits.com/dataset/pokeapi-co>
+    <https://pokemonkg.org/dataset/bulbapedia>
+  }
+  GRAPH ?g { ?s pkmn:inEggGroup ?oldEg }
+  FILTER(CONTAINS(STR(?oldEg), "EggGroup_"))
+  BIND(IRI(REPLACE(STR(?oldEg), "EggGroup_", "EggGroup:")) AS ?newEg)
+}
+```
+
+---
+
+## Patch 7: Add Berry Labels
+
+#### Problem
+Berry instances have no `rdfs:label` property. The only way to identify a berry by name is to parse the URI local name (e.g., `berry/cheri` → "Cheri"). This makes it difficult to display berry names in query results or UI.
+
+All 64 berries are affected, all in the `pokeapi-co` graph.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(*) as ?unlabeled) WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry a pkmn:Berry .
+    FILTER NOT EXISTS { ?berry rdfs:label ?label }
+  }
+}
+```
+
+Expected result before fix: 64 unlabeled berries.
+
+#### Fix Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry rdfs:label ?label .
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry a pkmn:Berry .
+    FILTER NOT EXISTS { ?berry rdfs:label ?any }
+  }
+  BIND(REPLACE(STR(?berry), ".*/", "") AS ?rawName)
+  BIND(CONCAT(UCASE(SUBSTR(?rawName, 1, 1)), SUBSTR(?rawName, 2)) AS ?label)
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?berry ?label WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry a pkmn:Berry ;
+           rdfs:label ?label .
+  }
+}
+ORDER BY ?label
+```
+
+Expected result: 64 berries with capitalized labels (Aguav, Apicot, Aspear, ..., Yache).
+
+#### Rollback Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry rdfs:label ?label .
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?berry a pkmn:Berry ;
+           rdfs:label ?label .
+  }
+}
+```
+
+---
+
+## Patch 9: Add Shape Labels
+
+#### Problem
+Shape instances have no `rdfs:label` property. When `hasShape` is inlined, the ORM tries to materialize Shape objects but fails validation because `name` (mapped from `rdfs:label`) is required. The 14 Shape instances live in the default graph.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT (COUNT(*) as ?unlabeled) WHERE {
+  ?shape a pkmn:Shape .
+  FILTER NOT EXISTS { ?shape rdfs:label ?label }
+}
+```
+
+Expected result before fix: 14 unlabeled Shape instances.
+
+#### Fix Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+  ?shape rdfs:label ?label .
+}
+WHERE {
+  ?shape a pkmn:Shape .
+  FILTER NOT EXISTS { ?shape rdfs:label ?any }
+  BIND(REPLACE(STR(?shape), ".*Shape_", "") AS ?label)
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?shape ?label WHERE {
+  ?shape a pkmn:Shape ;
+         rdfs:label ?label .
+}
+ORDER BY ?label
+```
+
+Expected result: 14 Shapes with labels (Armor, Arms, Ball, Blob, BugWings, Fish, Heads, Humanoid, Legs, Quadruped, Squiggle, Tentacles, Upright, Wings).
+
+#### Rollback Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+DELETE {
+  ?shape rdfs:label ?label .
+}
+WHERE {
+  ?shape a pkmn:Shape ;
+         rdfs:label ?label .
+}
+```
+
+---
+
+## Patch 8: Add QuantityValue Types (pokeapi-co)
+
+#### Problem
+QuantityValue nodes for berry sizes in the `pokeapi-co` graph have no explicit `rdf:type`. This is the same issue as Patch 2, but Patch 2 only covered the `bulbapedia` graph (Species height/weight). Berry size data lives in `pokeapi-co`, so those 64 QuantityValue nodes remain untyped, preventing ORM materialization.
+
+#### Verification Query
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT (COUNT(*) as ?untyped) WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qty qudt:quantityValue ?qv .
+    ?qv qudt:value ?val .
+    FILTER NOT EXISTS { ?qv a qudt:QuantityValue }
+  }
+}
+```
+
+Expected result before fix: 64 untyped QuantityValue nodes.
+
+#### Fix Query
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+INSERT {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qv rdf:type qudt:QuantityValue .
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qty qudt:quantityValue ?qv .
+    ?qv qudt:value ?val .
+    FILTER NOT EXISTS { ?qv a qudt:QuantityValue }
+  }
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+
+SELECT (COUNT(*) as ?typed) WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qv a qudt:QuantityValue .
+  }
+}
+```
+
+Expected result: 64 typed QuantityValue instances.
+
+#### Rollback Query
+```sparql
+PREFIX qudt: <http://qudt.org/schema/qudt/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qv rdf:type qudt:QuantityValue .
+  }
+}
+WHERE {
+  GRAPH <http://pokemon.outofbits.com/dataset/pokeapi-co> {
+    ?qv a qudt:QuantityValue .
+    ?qv qudt:value ?val .
+  }
+}
+```
+
+---
+
 ## Execution Instructions
 
 Using [sparql-cli](https://github.com/vladistan/sparql-cli) with the `supply` profile:
@@ -273,6 +727,12 @@ Using [sparql-cli](https://github.com/vladistan/sparql-cli) with the `supply` pr
 sparql -P supply update -f patch1.sparql
 sparql -P supply update -f patch2.sparql
 sparql -P supply update -f patch3.sparql
+sparql -P supply update -f patch4.sparql
+sparql -P supply update -f patch5.sparql
+sparql -P supply update -f patch6.sparql
+sparql -P supply update -f patch7.sparql
+sparql -P supply update -f patch8.sparql
+sparql -P supply update -f patch9.sparql
 ```
 
 Verify each patch after execution using the post-fix verification queries above.

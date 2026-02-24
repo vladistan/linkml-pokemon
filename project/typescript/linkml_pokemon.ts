@@ -50,7 +50,7 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-    
+
     /** A hollow underground area, typically formed in rocky or mountainous terrain. */
     Cave = "Cave",
     /** A dense area covered with trees and undergrowth. */
@@ -195,7 +195,7 @@ export interface Verifiable extends Aspect {
  */
 export interface Quantity extends Concept, Quantifiable {
     /** Associates a quantity with its kind (e.g., Height, Weight) */
-    hasQuantityKind?: QuantityKindId[],
+    hasQuantityKind?: QuantityKind[],
     /** The value component of a quantity */
     quantityValue?: QuantityValueId[],
 }
@@ -208,7 +208,7 @@ export interface QuantityValue extends Concept {
     /** Numeric value of a quantity */
     numericValue?: number,
     /** Unit of measurement */
-    unit?: UnitId,
+    unit?: Unit,
 }
 
 
@@ -253,7 +253,7 @@ export interface Unit extends Concept, Verifiable {
     /** Dimension vector for a unit or quantity kind */
     hasDimensionVector?: QuantityKindDimensionVectorId,
     /** Associates a quantity with its kind (e.g., Height, Weight) */
-    hasQuantityKind?: QuantityKindId[],
+    hasQuantityKind?: QuantityKind[],
     /** System of units this unit belongs to */
     isUnitOfSystem?: SystemOfUnitsId[],
     /** Systems where this unit is applicable */
@@ -524,7 +524,7 @@ export interface Region extends Place {
  */
 export interface Species extends NamedIndividual {
     /** A Pokémon has a color */
-    hasColor?: ColorId,
+    hasColor?: Color,
     /** A special ability only obtainable through specific encounters or events, not through normal gameplay. */
     mayHaveHiddenAbility?: ("mayHaveAbility")[],
     /** A Pokémon may have an ability */
@@ -542,13 +542,13 @@ export interface Species extends NamedIndividual {
     /** A Pokémon has a type */
     hasType?: Type[],
     /** The shape of a berry is a measure of how good it is for making a Potion. */
-    hasShape?: ShapeId,
+    hasShape?: Shape,
     /** The species category label shown in the Pokédex, such as "Seed Pokémon" for Bulbasaur. */
     hasGenus?: string,
     /** Determines how easy a Pokémon species is to catch, with higher values meaning easier capture. */
     hasCatchRate?: number,
     /** A place is found in a location */
-    foundIn?: HabitatId[],
+    foundIn?: Habitat[],
 }
 
 
@@ -638,6 +638,3 @@ export interface Trainer extends Person {
  */
 export interface Type extends NamedIndividual {
 }
-
-
-
