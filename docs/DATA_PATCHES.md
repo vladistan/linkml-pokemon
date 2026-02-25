@@ -15,6 +15,7 @@ This document describes the SPARQL UPDATE queries needed to fix data issues in t
 | 7 | Add rdfs:label to Berry instances | 64 | pokeapi-co |
 | 8 | Add rdf:type to QuantityValue nodes (pokeapi-co) | 64 | pokeapi-co |
 | 9 | Add rdfs:label to Shape instances | 14 | default |
+| 10 | Rename PokeType_Water → PokéType_Water | 6 triples | default |
 
 ## Patch 1: Fix Weight Units
 
@@ -736,3 +737,81 @@ sparql -P supply update -f patch9.sparql
 ```
 
 Verify each patch after execution using the post-fix verification queries above.
+
+---
+
+## Patch 10: Rename PokeType_Water → PokéType_Water
+
+#### Problem
+The Water type instance URI uses `PokeType_Water` (no accent) while all other 17 type instances use `PokéType_*` (with accent). Meanwhile, 321 species reference `PokéType_Water` (with accent) via `hasType`, creating a dangling reference — the species point to a URI that has no instance data.
+
+This causes Pydantic validation failures during ORM hydration because the deserializer cannot resolve `PokéType_Water` into a `Type` object.
+
+#### Verification Query
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT
+  (COUNT(DISTINCT ?ref) AS ?species_referencing_accented)
+WHERE {
+  ?ref pkmn:hasType <https://pokemonkg.org/ontology#PokéType_Water> .
+}
+```
+
+Confirm the non-accented instance exists:
+```sparql
+SELECT ?p ?o WHERE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+```
+
+Expected: 321 species reference the accented URI; the non-accented URI has ~6 triples.
+
+#### Fix Query
+```sparql
+DELETE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+INSERT {
+  <https://pokemonkg.org/ontology#PokéType_Water> ?p ?o .
+}
+WHERE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+```
+
+#### Post-Fix Verification
+```sparql
+PREFIX pkmn: <https://pokemonkg.org/ontology#>
+
+SELECT ?type WHERE {
+  ?type a pkmn:Type .
+  FILTER(CONTAINS(STR(?type), "Water"))
+}
+```
+
+Expected: Only `PokéType_Water` (accented) should exist as a Type instance. No `PokeType_Water` (non-accented) should remain.
+
+```sparql
+SELECT (COUNT(*) AS ?cnt) WHERE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+```
+
+Expected: 0 triples for the old URI.
+
+#### Rollback Query
+```sparql
+DELETE {
+  <https://pokemonkg.org/ontology#PokéType_Water> ?p ?o .
+}
+INSERT {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+WHERE {
+  <https://pokemonkg.org/ontology#PokéType_Water> ?p ?o .
+  FILTER(?p != <https://pokemonkg.org/ontology#hasType>)
+}
+```
+
+Note: The rollback uses a FILTER to only move back the instance's own triples (rdf:type, rdfs:label, rdfs:comment), not the `hasType` references from species.

@@ -1,0 +1,9 @@
+DELETE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
+INSERT {
+  <https://pokemonkg.org/ontology#PokéType_Water> ?p ?o .
+}
+WHERE {
+  <https://pokemonkg.org/ontology#PokeType_Water> ?p ?o .
+}
