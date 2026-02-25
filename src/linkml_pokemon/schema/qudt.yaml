@@ -13,6 +13,7 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   xsd: http://www.w3.org/2001/XMLSchema#
+  skos: http://www.w3.org/2004/02/skos/core#
   dcterms: http://purl.org/dc/terms/
 default_prefix: qudt
 
@@ -113,13 +114,14 @@ slots:
   # --- QuantityKind properties ---
   broader:
     description: Broader/parent quantity kind
-    slot_uri: qudt:broader
+    slot_uri: skos:broader
     range: QuantityKind
     multivalued: true
+    inlined_as_list: true
 
   exactMatch:
     description: Equivalent quantity kind or unit
-    slot_uri: qudt:exactMatch
+    slot_uri: skos:exactMatch
     multivalued: true
 
   deprecated:

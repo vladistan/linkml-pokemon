@@ -292,7 +292,9 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                                        'hasShape',
                                        'hasGenus',
                                        'hasCatchRate',
-                                       'foundIn']},
+                                       'foundIn',
+                                       'evolvesFrom',
+                                       'evolvesTo']},
                  'StatusMove': {'description': 'A status move is a type of move '
                                                'that can be used during battles.',
                                 'from_schema': 'https://pokemonkg.org/ontology',
@@ -477,6 +479,8 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
                   'schema': {'prefix_prefix': 'schema',
                              'prefix_reference': 'http://schema.org/'},
+                  'skos': {'prefix_prefix': 'skos',
+                           'prefix_reference': 'http://www.w3.org/2004/02/skos/core#'},
                   'xml': {'prefix_prefix': 'xml',
                           'prefix_reference': 'http://www.w3.org/XML/1998/namespace'},
                   'xsd': {'prefix_prefix': 'xsd',
@@ -551,7 +555,9 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                'evolvesFrom': {'description': 'This species evolves the other '
                                               'species.',
                                'domain': 'Species',
+                               'domain_of': ['Species'],
                                'from_schema': 'https://pokemonkg.org/ontology',
+                               'inlined': True,
                                'inverse': 'evolvesTo',
                                'multivalued': False,
                                'name': 'evolvesFrom',
@@ -560,7 +566,10 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                                'slot_uri': 'pokemon:evolvesFrom'},
                'evolvesTo': {'description': 'A Pokémon evolves to another Pokémon.',
                              'domain': 'Species',
+                             'domain_of': ['Species'],
                              'from_schema': 'https://pokemonkg.org/ontology',
+                             'inlined': True,
+                             'inlined_as_list': True,
                              'inverse': 'evolvesFrom',
                              'multivalued': True,
                              'name': 'evolvesTo',
@@ -918,13 +927,16 @@ class Person(NamedIndividual):
          'name': 'Person',
          'slots': ['depiction']})
 
-    depiction: Optional[str] = Field(default=None, description="""A depiction of the person""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
-         'description': 'A depiction of the person',
+    depiction: Optional[list[Artwork]] = Field(default=None, description="""Visual artwork depicting this entity""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
+         'description': 'Visual artwork depicting this entity',
          'domain_of': ['Person', 'Species'],
          'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'inlined_as_list': True,
+         'inverse': 'depicts',
+         'multivalued': True,
          'name': 'depiction',
          'owner': 'Person',
-         'range': 'string',
+         'range': 'Artwork',
          'slot_uri': 'foaf:depiction'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'description': 'A unique identifier',
@@ -951,6 +963,59 @@ class Person(NamedIndividual):
          'from_schema': 'http://www.w3.org/2002/07/owl',
          'name': 'description',
          'owner': 'Person',
+         'range': 'string',
+         'slot_uri': 'rdfs:comment'} })
+
+
+class Artwork(NamedIndividual):
+    """
+    A visual representation or artwork depicting an entity. In the Pokémon context, this includes official artwork, sprites, and other visual media.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'foaf:Image',
+         'description': 'A visual representation or artwork depicting an entity. In '
+                        'the Pokémon context, this includes official artwork, sprites, '
+                        'and other visual media.',
+         'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'is_a': 'NamedIndividual',
+         'name': 'Artwork',
+         'slots': ['depicts']})
+
+    depicts: Optional[list[NamedIndividual]] = Field(default=None, description="""The entity depicted in this artwork""", json_schema_extra = { "linkml_meta": {'alias': 'depicts',
+         'description': 'The entity depicted in this artwork',
+         'domain_of': ['Artwork'],
+         'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'inlined_as_list': True,
+         'inverse': 'depiction',
+         'multivalued': True,
+         'name': 'depicts',
+         'owner': 'Artwork',
+         'range': 'NamedIndividual',
+         'slot_uri': 'foaf:depicts'} })
+    id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'description': 'A unique identifier',
+         'domain_of': ['Thing'],
+         'from_schema': 'http://www.w3.org/2002/07/owl',
+         'identifier': True,
+         'name': 'id',
+         'owner': 'Artwork',
+         'range': 'uri',
+         'required': True,
+         'slot_uri': 'linkml_common:identifier'} })
+    name: str = Field(default=..., description="""Human-readable label for the entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
+         'description': 'Human-readable label for the entity',
+         'domain_of': ['Thing'],
+         'from_schema': 'http://www.w3.org/2002/07/owl',
+         'name': 'name',
+         'owner': 'Artwork',
+         'range': 'string',
+         'required': True,
+         'slot_uri': 'rdfs:label'} })
+    description: Optional[str] = Field(default=None, description="""A description of the entity""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'description': 'A description of the entity',
+         'domain_of': ['Thing'],
+         'from_schema': 'http://www.w3.org/2002/07/owl',
+         'name': 'description',
+         'owner': 'Artwork',
          'range': 'string',
          'slot_uri': 'rdfs:comment'} })
 
@@ -1549,15 +1614,16 @@ class AbstractQuantityKind(Concept):
          'owner': 'AbstractQuantityKind',
          'range': 'string',
          'slot_uri': 'qudt:symbol'} })
-    broader: Optional[list[str]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'alias': 'broader',
+    broader: Optional[list[QuantityKind]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'alias': 'broader',
          'description': 'Broader/parent quantity kind',
          'domain_of': ['AbstractQuantityKind'],
          'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'inlined_as_list': True,
          'multivalued': True,
          'name': 'broader',
          'owner': 'AbstractQuantityKind',
          'range': 'QuantityKind',
-         'slot_uri': 'qudt:broader'} })
+         'slot_uri': 'skos:broader'} })
     abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'alias': 'abbreviation',
          'description': 'Short alphanumeric abbreviation for a unit',
          'domain_of': ['Concept'],
@@ -1655,7 +1721,7 @@ class QuantityKind(AbstractQuantityKind, Verifiable):
          'name': 'exactMatch',
          'owner': 'QuantityKind',
          'range': 'string',
-         'slot_uri': 'qudt:exactMatch'} })
+         'slot_uri': 'skos:exactMatch'} })
     dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'dbpediaMatch',
          'description': 'DBpedia URI for this entity',
          'domain_of': ['Verifiable'],
@@ -1707,15 +1773,17 @@ class QuantityKind(AbstractQuantityKind, Verifiable):
          'owner': 'QuantityKind',
          'range': 'string',
          'slot_uri': 'qudt:symbol'} })
-    broader: Optional[list[str]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'alias': 'broader',
+    broader: Optional[list[QuantityKind]] = Field(default=None, description="""Broader/parent quantity kind""", json_schema_extra = { "linkml_meta": {'alias': 'broader',
          'description': 'Broader/parent quantity kind',
          'domain_of': ['AbstractQuantityKind'],
          'from_schema': 'https://pokemonkg.org/schema/qudt',
+         'inlined': True,
+         'inlined_as_list': True,
          'multivalued': True,
          'name': 'broader',
          'owner': 'QuantityKind',
          'range': 'QuantityKind',
-         'slot_uri': 'qudt:broader'} })
+         'slot_uri': 'skos:broader'} })
     abbreviation: Optional[str] = Field(default=None, description="""Short alphanumeric abbreviation for a unit""", json_schema_extra = { "linkml_meta": {'alias': 'abbreviation',
          'description': 'Short alphanumeric abbreviation for a unit',
          'domain_of': ['Concept'],
@@ -2979,7 +3047,7 @@ class Prefix(Verifiable, Concept):
          'name': 'exactMatch',
          'owner': 'Prefix',
          'range': 'string',
-         'slot_uri': 'qudt:exactMatch'} })
+         'slot_uri': 'skos:exactMatch'} })
     dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'dbpediaMatch',
          'description': 'DBpedia URI for this entity',
          'domain_of': ['Verifiable'],
@@ -3117,7 +3185,7 @@ class DecimalPrefix(Prefix):
          'name': 'exactMatch',
          'owner': 'DecimalPrefix',
          'range': 'string',
-         'slot_uri': 'qudt:exactMatch'} })
+         'slot_uri': 'skos:exactMatch'} })
     dbpediaMatch: Optional[str] = Field(default=None, description="""DBpedia URI for this entity""", json_schema_extra = { "linkml_meta": {'alias': 'dbpediaMatch',
          'description': 'DBpedia URI for this entity',
          'domain_of': ['Verifiable'],
@@ -4075,7 +4143,9 @@ class Species(NamedIndividual):
                    'hasShape',
                    'hasGenus',
                    'hasCatchRate',
-                   'foundIn']})
+                   'foundIn',
+                   'evolvesFrom',
+                   'evolvesTo']})
 
     hasColor: Optional[Color] = Field(default=None, description="""A Pokémon has a color""", json_schema_extra = { "linkml_meta": {'alias': 'hasColor',
          'description': 'A Pokémon has a color',
@@ -4149,13 +4219,17 @@ class Species(NamedIndividual):
          'range': 'Quantity',
          'required': False,
          'slot_uri': 'pokemon:hasWeight'} })
-    depiction: Optional[str] = Field(default=None, description="""A depiction of the person""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
-         'description': 'A depiction of the person',
+    depiction: Optional[list[Artwork]] = Field(default=None, description="""Visual artwork depicting this entity""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
+         'description': 'Visual artwork depicting this entity',
          'domain_of': ['Person', 'Species'],
          'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'inlined': True,
+         'inlined_as_list': True,
+         'inverse': 'depicts',
+         'multivalued': True,
          'name': 'depiction',
          'owner': 'Species',
-         'range': 'string',
+         'range': 'Artwork',
          'slot_uri': 'foaf:depiction'} })
     inEggGroup: Optional[list[EggGroup]] = Field(default=None, description="""Which egg group a species belongs to, controlling which Pokémon can breed together.""", json_schema_extra = { "linkml_meta": {'alias': 'inEggGroup',
          'description': 'Which egg group a species belongs to, controlling which '
@@ -4227,6 +4301,32 @@ class Species(NamedIndividual):
          'range': 'Habitat',
          'required': False,
          'slot_uri': 'pokemon:foundIn'} })
+    evolvesFrom: Optional[Species] = Field(default=None, description="""This species evolves the other species.""", json_schema_extra = { "linkml_meta": {'alias': 'evolvesFrom',
+         'description': 'This species evolves the other species.',
+         'domain': 'Species',
+         'domain_of': ['Species'],
+         'from_schema': 'https://pokemonkg.org/ontology',
+         'inlined': True,
+         'inverse': 'evolvesTo',
+         'multivalued': False,
+         'name': 'evolvesFrom',
+         'owner': 'Species',
+         'range': 'Species',
+         'required': False,
+         'slot_uri': 'pokemon:evolvesFrom'} })
+    evolvesTo: Optional[list[Species]] = Field(default=None, description="""A Pokémon evolves to another Pokémon.""", json_schema_extra = { "linkml_meta": {'alias': 'evolvesTo',
+         'description': 'A Pokémon evolves to another Pokémon.',
+         'domain': 'Species',
+         'domain_of': ['Species'],
+         'from_schema': 'https://pokemonkg.org/ontology',
+         'inlined_as_list': True,
+         'inverse': 'evolvesFrom',
+         'multivalued': True,
+         'name': 'evolvesTo',
+         'owner': 'Species',
+         'range': 'Species',
+         'required': False,
+         'slot_uri': 'pokemon:evolvesTo'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'description': 'A unique identifier',
          'domain_of': ['Thing'],
@@ -4654,13 +4754,17 @@ class Trainer(Person):
          'is_a': 'Person',
          'name': 'Trainer'})
 
-    depiction: Optional[str] = Field(default=None, description="""A depiction of the person""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
-         'description': 'A depiction of the person',
+    depiction: Optional[list[Artwork]] = Field(default=None, description="""Visual artwork depicting this entity""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
+         'description': 'Visual artwork depicting this entity',
          'domain_of': ['Person', 'Species'],
          'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'inlined': True,
+         'inlined_as_list': True,
+         'inverse': 'depicts',
+         'multivalued': True,
          'name': 'depiction',
          'owner': 'Trainer',
-         'range': 'string',
+         'range': 'Artwork',
          'slot_uri': 'foaf:depiction'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'description': 'A unique identifier',
@@ -4704,13 +4808,17 @@ class GymLeader(Trainer):
          'is_a': 'Trainer',
          'name': 'GymLeader'})
 
-    depiction: Optional[str] = Field(default=None, description="""A depiction of the person""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
-         'description': 'A depiction of the person',
+    depiction: Optional[list[Artwork]] = Field(default=None, description="""Visual artwork depicting this entity""", json_schema_extra = { "linkml_meta": {'alias': 'depiction',
+         'description': 'Visual artwork depicting this entity',
          'domain_of': ['Person', 'Species'],
          'from_schema': 'http://xmlns.com/foaf/0.1/',
+         'inlined': True,
+         'inlined_as_list': True,
+         'inverse': 'depicts',
+         'multivalued': True,
          'name': 'depiction',
          'owner': 'GymLeader',
-         'range': 'string',
+         'range': 'Artwork',
          'slot_uri': 'foaf:depiction'} })
     id: str = Field(default=..., description="""A unique identifier""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'description': 'A unique identifier',
@@ -4787,6 +4895,7 @@ class Type(NamedIndividual):
 Thing.model_rebuild()
 NamedIndividual.model_rebuild()
 Person.model_rebuild()
+Artwork.model_rebuild()
 CmykColor.model_rebuild()
 Color.model_rebuild()
 Connotation.model_rebuild()

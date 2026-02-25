@@ -28,6 +28,7 @@ prefixes:
   dbpedia: http://dbpedia.org/ontology/
   pokemon: https://pokemonkg.org/ontology#
   qudt: http://qudt.org/schema/qudt/
+  skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: pokemon
 default_range: string
@@ -203,6 +204,8 @@ classes:
       - hasGenus
       - hasCatchRate
       - foundIn
+      - evolvesFrom
+      - evolvesTo
 
   Move:
     description: >-
@@ -335,6 +338,7 @@ slots:
     domain: Species
     inverse: evolvesTo
     multivalued: false
+    inlined: true
     required: false
     description: >-
       This species evolves the other species.
@@ -344,6 +348,7 @@ slots:
     range: Species
     domain: Species
     multivalued: true
+    inlined_as_list: true
     required: false
     inverse: evolvesFrom
     description: >-
