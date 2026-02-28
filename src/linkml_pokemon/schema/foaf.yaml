@@ -19,9 +19,28 @@ classes:
     slots:
       - depiction
 
+  Artwork:
+    is_a: NamedIndividual
+    class_uri: foaf:Image
+    description: >-
+      A visual representation or artwork depicting an entity. In the Pokémon context,
+      this includes official artwork, sprites, and other visual media.
+    slots:
+      - depicts
+
 slots:
   depiction:
-    range: string
-    multivalued:
+    range: Artwork
+    multivalued: true
     slot_uri: foaf:depiction
-    description: A depiction of the person
+    inverse: depicts
+    inlined_as_list: true
+    description: Visual artwork depicting this entity
+
+  depicts:
+    range: NamedIndividual
+    slot_uri: foaf:depicts
+    multivalued: true
+    inlined_as_list: true
+    inverse: depiction
+    description: The entity depicted in this artwork

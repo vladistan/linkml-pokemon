@@ -457,6 +457,8 @@ linkml_meta = LinkMLMeta({'annotations': {'dcterms:description': {'tag': 'dcterm
                            'prefix_reference': 'http://purl.obolibrary.org/obo/PATO_'},
                   'dbpedia': {'prefix_prefix': 'dbpedia',
                               'prefix_reference': 'http://dbpedia.org/ontology/'},
+                  'dbr': {'prefix_prefix': 'dbr',
+                          'prefix_reference': 'http://dbpedia.org/resource/'},
                   'example': {'prefix_prefix': 'example',
                               'prefix_reference': 'https://example.org/'},
                   'foaf': {'prefix_prefix': 'foaf',
