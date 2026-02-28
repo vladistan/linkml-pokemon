@@ -1,0 +1,52 @@
+@prefix pokemon: <https://pokemonkg.org/ontology#> .
+@prefix inst: <https://pokemonkg.org/instance/pokemon/> .
+
+# === Kanto Starters ===
+
+# Bulbasaur line (3-stage)
+inst:ivysaur pokemon:evolvesFrom inst:bulbasaur .
+inst:bulbasaur pokemon:evolvesTo inst:ivysaur .
+inst:venusaur pokemon:evolvesFrom inst:ivysaur .
+inst:ivysaur pokemon:evolvesTo inst:venusaur .
+
+# Charmander line (3-stage)
+inst:charmeleon pokemon:evolvesFrom inst:charmander .
+inst:charmander pokemon:evolvesTo inst:charmeleon .
+inst:charizard pokemon:evolvesFrom inst:charmeleon .
+inst:charmeleon pokemon:evolvesTo inst:charizard .
+
+# Squirtle line (3-stage)
+inst:wartortle pokemon:evolvesFrom inst:squirtle .
+inst:squirtle pokemon:evolvesTo inst:wartortle .
+inst:blastoise pokemon:evolvesFrom inst:wartortle .
+inst:wartortle pokemon:evolvesTo inst:blastoise .
+
+# === Bug line (3-stage) ===
+inst:metapod pokemon:evolvesFrom inst:caterpie .
+inst:caterpie pokemon:evolvesTo inst:metapod .
+inst:butterfree pokemon:evolvesFrom inst:metapod .
+inst:metapod pokemon:evolvesTo inst:butterfree .
+
+# === Electric line (2-stage) ===
+inst:raichu pokemon:evolvesFrom inst:pikachu .
+inst:pikachu pokemon:evolvesTo inst:raichu .
+
+# === Eevee branching evolutions (1-to-many) ===
+inst:vaporeon pokemon:evolvesFrom inst:eevee .
+inst:jolteon pokemon:evolvesFrom inst:eevee .
+inst:flareon pokemon:evolvesFrom inst:eevee .
+inst:eevee pokemon:evolvesTo inst:vaporeon .
+inst:eevee pokemon:evolvesTo inst:jolteon .
+inst:eevee pokemon:evolvesTo inst:flareon .
+
+# === Geodude line (3-stage, for variety) ===
+inst:graveler pokemon:evolvesFrom inst:geodude .
+inst:geodude pokemon:evolvesTo inst:graveler .
+inst:golem pokemon:evolvesFrom inst:graveler .
+inst:graveler pokemon:evolvesTo inst:golem .
+
+# === Abra line (3-stage, psychic) ===
+inst:kadabra pokemon:evolvesFrom inst:abra .
+inst:abra pokemon:evolvesTo inst:kadabra .
+inst:alakazam pokemon:evolvesFrom inst:kadabra .
+inst:kadabra pokemon:evolvesTo inst:alakazam .
