@@ -44,8 +44,8 @@ just clean            # Remove generated files
 Part of the LinkML workspace with editable installs via `[tool.uv.sources]`:
 
 ```toml
-linkml-runtime = { path = "../linkml-runtime", editable = true }
-linkml = { path = "../linkml", editable = true }
+linkml-runtime = { path = "../linkml/packages/linkml_runtime", editable = true }
+linkml = { path = "../linkml/packages/linkml", editable = true }
 ```
 
 - `linkml-runtime` — Runtime dependency (loaders, SchemaView)
