@@ -1,156 +1,512 @@
-<svg xmlns="http://www.w3.org/2000/svg" aria-roledescription="er" role="graphics-document document" viewBox="0 0 1545.823974609375 640" height="640" width="1545.823974609375" id="container">
-  <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .entityBox{fill:#ECECFF;stroke:#9370DB;}#container .attributeBoxOdd{fill:#ffffff;stroke:#9370DB;}#container .attributeBoxEven{fill:#f2f2f2;stroke:#9370DB;}#container .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#container .relationshipLabelBox rect{opacity:0.5;}#container .relationshipLine{stroke:#333333;}#container .entityTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container #MD_PARENT_START{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container #MD_PARENT_END{fill:#f5f5f5!important;stroke:#333333!important;stroke-width:1;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
-  <g/>
-  <defs>
-    <marker orient="auto" markerHeight="240" markerWidth="190" refY="7" refX="0" id="MD_PARENT_START">
-      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="28" markerWidth="20" refY="7" refX="19" id="MD_PARENT_END">
-      <path d="M 18,7 L9,13 L1,7 L9,1 Z"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="0" id="ONLY_ONE_START">
-      <path d="M9,0 L9,18 M15,0 L15,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="18" markerWidth="18" refY="9" refX="18" id="ONLY_ONE_END">
-      <path d="M3,0 L3,18 M9,0 L9,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="0" id="ZERO_OR_ONE_START">
-      <circle r="6" cy="9" cx="21" fill="white" stroke="gray"/>
-      <path d="M9,0 L9,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="18" markerWidth="30" refY="9" refX="30" id="ZERO_OR_ONE_END">
-      <circle r="6" cy="9" cx="9" fill="white" stroke="gray"/>
-      <path d="M21,0 L21,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="18" id="ONE_OR_MORE_START">
-      <path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="36" markerWidth="45" refY="18" refX="27" id="ONE_OR_MORE_END">
-      <path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="18" id="ZERO_OR_MORE_START">
-      <circle r="6" cy="18" cx="48" fill="white" stroke="gray"/>
-      <path d="M0,18 Q18,0 36,18 Q18,36 0,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <defs>
-    <marker orient="auto" markerHeight="36" markerWidth="57" refY="18" refX="39" id="ZERO_OR_MORE_END">
-      <circle r="6" cy="18" cx="9" fill="white" stroke="gray"/>
-      <path d="M21,18 Q39,0 57,18 Q39,36 21,18" fill="none" stroke="gray"/>
-    </marker>
-  </defs>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M270,445L270,453.333C270,461.667,270,478.333,270,495C270,511.667,270,528.333,270,536.667L270,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M720.348,95L720.348,103.333C720.348,111.667,720.348,128.333,720.348,145C720.348,161.667,720.348,178.333,720.348,186.667L720.348,195" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M1175.824,445L1175.824,453.333C1175.824,461.667,1175.824,478.333,1208.95,498.319C1242.076,518.304,1308.327,541.608,1341.452,553.26L1374.578,564.912" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M820,422.066L778.275,434.222C736.551,446.378,653.102,470.689,611.377,491.178C569.652,511.667,569.652,528.333,569.652,536.667L569.652,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M848.72,445L843.992,453.333C839.263,461.667,829.805,478.333,825.076,495C820.348,511.667,820.348,528.333,820.348,536.667L820.348,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M920,435.867L937.372,445.722C954.743,455.578,989.487,475.289,1006.859,493.478C1024.23,511.667,1024.23,528.333,1024.23,536.667L1024.23,545" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M670.348,242.215L603.623,255.179C536.898,268.143,403.449,294.072,336.725,315.369C270,336.667,270,353.333,270,361.667L270,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M770.348,261.734L786.956,271.445C803.565,281.156,836.783,300.578,853.391,318.622C870,336.667,870,353.333,870,361.667L870,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_ONE_END)" d="M770.348,239.175L871.26,252.645C972.173,266.116,1173.999,293.058,1274.911,314.862C1375.824,336.667,1375.824,353.333,1375.824,361.667L1375.824,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M670.348,239.227L570.29,252.689C470.232,266.151,270.116,293.076,170.058,314.871C70,336.667,70,353.333,70,361.667L70,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M670.348,249.976L636.956,261.646C603.565,273.317,536.783,296.659,503.391,316.663C470,336.667,470,353.333,470,361.667L470,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M698.77,270L693.975,278.333C689.18,286.667,679.59,303.333,674.795,320C670,336.667,670,353.333,670,361.667L670,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M770.348,242.105L837.927,255.088C905.507,268.07,1040.665,294.035,1108.245,315.351C1175.824,336.667,1175.824,353.333,1175.824,361.667L1175.824,370" class="er relationshipLine"/>
-  <path style="stroke: gray; fill: none;" marker-start="url(#ONLY_ONE_START)" marker-end="url(#ZERO_OR_MORE_END)" d="M770.348,237.932L896.26,251.61C1022.173,265.288,1273.999,292.644,1399.911,320.905C1525.824,349.167,1525.824,378.333,1525.824,407.5C1525.824,436.667,1525.824,465.833,1516.182,488.75C1506.539,511.667,1487.254,528.333,1477.612,536.667L1467.969,545" class="er relationshipLine"/>
-  <g transform="translate(20,370 )" id="entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Ability-2d2f7f5a-3104-5479-9445-4db74fe18930" class="er entityLabel">Ability</text>
+<svg xmlns="http://www.w3.org/2000/svg" id="container" width="2365.08447265625" class="erDiagram" height="676" viewBox="0 0 2365.08447265625 676" role="graphics-document document" aria-roledescription="er">
+  <style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#container .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#container .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#container .error-icon{fill:#552222;}#container .error-text{fill:#552222;stroke:#552222;}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#333333;stroke:#333333;}#container .marker.cross{stroke:#333333;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .entityBox{fill:#ECECFF;stroke:#9370DB;}#container .relationshipLabelBox{fill:hsl(80, 100%, 96.2745098039%);opacity:0.7;background-color:hsl(80, 100%, 96.2745098039%);}#container .relationshipLabelBox rect{opacity:0.5;}#container .labelBkg{background-color:rgba(248.6666666666, 255, 235.9999999999, 0.5);}#container .edgeLabel .label{fill:#9370DB;font-size:14px;}#container .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#container .edge-pattern-dashed{stroke-dasharray:8,8;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#container .relationshipLine{stroke:#333333;stroke-width:1;fill:none;}#container .marker{fill:none!important;stroke:#333333!important;stroke-width:1;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style>
+  <g>
+    <defs>
+      <marker id="container_er-onlyOneStart" class="marker onlyOne er" refX="0" refY="9" markerWidth="18" markerHeight="18" orient="auto">
+        <path d="M9,0 L9,18 M15,0 L15,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-onlyOneEnd" class="marker onlyOne er" refX="18" refY="9" markerWidth="18" markerHeight="18" orient="auto">
+        <path d="M3,0 L3,18 M9,0 L9,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-zeroOrOneStart" class="marker zeroOrOne er" refX="0" refY="9" markerWidth="30" markerHeight="18" orient="auto">
+        <circle fill="white" cx="21" cy="9" r="6"/>
+        <path d="M9,0 L9,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-zeroOrOneEnd" class="marker zeroOrOne er" refX="30" refY="9" markerWidth="30" markerHeight="18" orient="auto">
+        <circle fill="white" cx="9" cy="9" r="6"/>
+        <path d="M21,0 L21,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-oneOrMoreStart" class="marker oneOrMore er" refX="18" refY="18" markerWidth="45" markerHeight="36" orient="auto">
+        <path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-oneOrMoreEnd" class="marker oneOrMore er" refX="27" refY="18" markerWidth="45" markerHeight="36" orient="auto">
+        <path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-zeroOrMoreStart" class="marker zeroOrMore er" refX="18" refY="18" markerWidth="57" markerHeight="36" orient="auto">
+        <circle fill="white" cx="48" cy="18" r="6"/>
+        <path d="M0,18 Q18,0 36,18 Q18,36 0,18"/>
+      </marker>
+    </defs>
+    <defs>
+      <marker id="container_er-zeroOrMoreEnd" class="marker zeroOrMore er" refX="39" refY="18" markerWidth="57" markerHeight="36" orient="auto">
+        <circle fill="white" cx="9" cy="18" r="6"/>
+        <path d="M21,18 Q39,0 57,18 Q39,36 21,18"/>
+      </marker>
+    </defs>
+    <g class="root">
+      <g class="clusters"/>
+      <g class="edgePaths">
+        <path d="M1911.217,483L1911.217,491.417C1911.217,499.833,1911.217,516.667,1911.217,533.5C1911.217,550.333,1911.217,567.167,1911.217,575.583L1911.217,584" id="id_entity-Artwork-1_entity-NamedIndividual-11_0" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Artwork-1_entity-NamedIndividual-11_0" data-points="W3sieCI6MTkxMS4yMTcxODc1MDE0OTAxLCJ5Ijo0ODN9LHsieCI6MTkxMS4yMTcxODc1MDE0OTAxLCJ5Ijo1MzMuNX0seyJ4IjoxOTExLjIxNzE4NzUwMTQ5MDEsInkiOjU4NH1d" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M348,483L348,491.417C348,499.833,348,516.667,348,533.5C348,550.333,348,567.167,348,575.583L348,584" id="id_entity-Color-2_entity-Connotation-12_1" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Color-2_entity-Connotation-12_1" data-points="W3sieCI6MzQ4LCJ5Ijo0ODN9LHsieCI6MzQ4LCJ5Ijo1MzMuNX0seyJ4IjozNDgsInkiOjU4NH1d" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1540.378,92L1540.378,100.417C1540.378,108.833,1540.378,125.667,1540.378,142.5C1540.378,159.333,1540.378,176.167,1540.378,184.583L1540.378,193" id="id_entity-Generation-4_entity-Species-9_2" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Generation-4_entity-Species-9_2" data-points="W3sieCI6MTU0MC4zNzgxMjUwMDA3NDUsInkiOjkyfSx7IngiOjE1NDAuMzc4MTI1MDAwNzQ1LCJ5IjoxNDIuNX0seyJ4IjoxNTQwLjM3ODEyNTAwMDc0NSwieSI6MTkzfV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M2151.217,483L2151.217,491.417C2151.217,499.833,2151.217,516.667,2168.862,535.555C2186.506,554.442,2221.795,575.385,2239.44,585.856L2257.084,596.327" id="id_entity-Move-6_entity-Type-10_3" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Move-6_entity-Type-10_3" data-points="W3sieCI6MjE1MS4yMTcxODc1MDE0OSwieSI6NDgzfSx7IngiOjIxNTEuMjE3MTg3NTAxNDksInkiOjUzMy41fSx7IngiOjIyNTcuMDg0Mzc1MDAxNDksInkiOjU5Ni4zMjczMDE4ODk2Mjk2fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M729.961,467.527L708.757,478.522C687.552,489.518,645.143,511.509,623.939,530.921C602.734,550.333,602.734,567.167,602.734,575.583L602.734,584" id="id_entity-Quantity-7_entity-Unit-13_4" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Quantity-7_entity-Unit-13_4" data-points="W3sieCI6NzI5Ljk2MDkzNzUsInkiOjQ2Ny41MjY5NTY1OTc5MDY1fSx7IngiOjYwMi43MzQzNzUsInkiOjUzMy41fSx7IngiOjYwMi43MzQzNzUsInkiOjU4NH1d" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrOneEnd)"/>
+        <path d="M817.083,483L824.291,491.417C831.498,499.833,845.913,516.667,853.121,533.5C860.328,550.333,860.328,567.167,860.328,575.583L860.328,584" id="id_entity-Quantity-7_entity-QuantityKind-14_5" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Quantity-7_entity-QuantityKind-14_5" data-points="W3sieCI6ODE3LjA4MzIzNDc5NzI5NzMsInkiOjQ4M30seyJ4Ijo4NjAuMzI4MTI1LCJ5Ijo1MzMuNX0seyJ4Ijo4NjAuMzI4MTI1LCJ5Ijo1ODR9XQ==" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M832.273,454.228L883.367,467.44C934.461,480.652,1036.648,507.076,1087.742,528.705C1138.836,550.333,1138.836,567.167,1138.836,575.583L1138.836,584" id="id_entity-Quantity-7_entity-QuantityValue-15_6" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Quantity-7_entity-QuantityValue-15_6" data-points="W3sieCI6ODMyLjI3MzQzNzUsInkiOjQ1NC4yMjgxMzgzNzY4NjczfSx7IngiOjExMzguODM1OTM3NSwieSI6NTMzLjV9LHsieCI6MTEzOC44MzU5Mzc1LCJ5Ijo1ODR9XQ==" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1490.378,239.319L1299.982,255.766C1109.585,272.213,728.793,305.106,538.396,331.72C348,358.333,348,378.667,348,388.833L348,399" id="id_entity-Species-9_entity-Color-2_7" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Color-2_7" data-points="W3sieCI6MTQ5MC4zNzgxMjUwMDA3NDUsInkiOjIzOS4zMTkwOTk2OTgzNDE3NH0seyJ4IjozNDgsInkiOjMzOH0seyJ4IjozNDgsInkiOjM5OX1d" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrOneEnd)"/>
+        <path d="M1490.378,241.783L1372.168,257.819C1253.958,273.855,1017.538,305.928,899.327,332.13C781.117,358.333,781.117,378.667,781.117,388.833L781.117,399" id="id_entity-Species-9_entity-Quantity-7_8" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Quantity-7_8" data-points="W3sieCI6MTQ5MC4zNzgxMjUwMDA3NDUsInkiOjI0MS43ODI5MTE4MzY1NDQ5fSx7IngiOjc4MS4xMTcxODc1LCJ5IjozMzh9LHsieCI6NzgxLjExNzE4NzUsInkiOjM5OX1d" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrOneEnd)"/>
+        <path d="M1590.378,274.361L1603.851,284.968C1617.324,295.574,1644.271,316.787,1657.744,337.56C1671.217,358.333,1671.217,378.667,1671.217,388.833L1671.217,399" id="id_entity-Species-9_entity-Shape-8_9" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Shape-8_9" data-points="W3sieCI6MTU5MC4zNzgxMjUwMDA3NDUsInkiOjI3NC4zNjEzMzM2OTkzMzUyfSx7IngiOjE2NzEuMjE3MTg3NTAxNDkwMSwieSI6MzM4fSx7IngiOjE2NzEuMjE3MTg3NTAxNDkwMSwieSI6Mzk5fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrOneEnd)"/>
+        <path d="M1508.079,277L1500.26,287.167C1492.441,297.333,1476.804,317.667,1468.986,344.992C1461.167,372.317,1461.167,406.633,1461.167,423.792L1461.167,440.95" id="entity-Species-9-cyclic-special-1" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="entity-Species-9-cyclic-special-1" data-points="W3sieCI6MTUwOC4wNzg1MTk0MTgyMjA4LCJ5IjoyNzd9LHsieCI6MTQ2MS4xNjcxODc1MDA3NDUsInkiOjMzOH0seyJ4IjoxNDYxLjE2NzE4NzUwMDc0NSwieSI6NDQwLjk0OTk5OTk5OTI1NDk0fV0=" marker-start="url(#container_er-onlyOneStart)"/>
+        <path d="M1461.167,441.05L1461.167,456.458C1461.167,471.867,1461.167,502.683,1474.502,533.5C1487.836,564.317,1514.505,595.133,1527.839,610.542L1541.174,625.95" id="entity-Species-9-cyclic-special-mid" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="entity-Species-9-cyclic-special-mid" data-points="W3sieCI6MTQ2MS4xNjcxODc1MDA3NDUsInkiOjQ0MS4wNTAwMDAwMDA3NDUwNn0seyJ4IjoxNDYxLjE2NzE4NzUwMDc0NSwieSI6NTMzLjV9LHsieCI6MTU0MS4xNzM5MTcyMzA1NzQ3LCJ5Ijo2MjUuOTQ5OTk5OTk5MjU0OX1d"/>
+        <path d="M1541.217,625.95L1541.217,610.542C1541.217,595.133,1541.217,564.317,1541.217,533.492C1541.217,502.667,1541.217,471.833,1541.217,439.25C1541.217,406.667,1541.217,372.333,1541.134,345C1541.052,317.667,1540.886,297.333,1540.803,287.167L1540.72,277" id="entity-Species-9-cyclic-special-2" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="entity-Species-9-cyclic-special-2" data-points="W3sieCI6MTU0MS4yMTcxODc1MDE0OTAxLCJ5Ijo2MjUuOTQ5OTk5OTk5MjU0OX0seyJ4IjoxNTQxLjIxNzE4NzUwMTQ5MDEsInkiOjUzMy41fSx7IngiOjE1NDEuMjE3MTg3NTAxNDkwMSwieSI6NDQxfSx7IngiOjE1NDEuMjE3MTg3NTAxNDkwMSwieSI6MzM4fSx7IngiOjE1NDAuNzIwMjY2OTkxMzQwMiwieSI6Mjc3fV0=" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1490.378,238.595L1259.982,255.163C1029.585,271.73,568.793,304.865,338.396,331.599C108,358.333,108,378.667,108,388.833L108,399" id="id_entity-Species-9_entity-Ability-0_11" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Ability-0_11" data-points="W3sieCI6MTQ5MC4zNzgxMjUwMDA3NDUsInkiOjIzOC41OTU0MTkzMzEwNDk0fSx7IngiOjEwOCwieSI6MzM4fSx7IngiOjEwOCwieSI6Mzk5fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1590.378,248.887L1643.851,263.74C1697.324,278.592,1804.271,308.296,1857.744,333.315C1911.217,358.333,1911.217,378.667,1911.217,388.833L1911.217,399" id="id_entity-Species-9_entity-Artwork-1_12" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Artwork-1_12" data-points="W3sieCI6MTU5MC4zNzgxMjUwMDA3NDUsInkiOjI0OC44ODc0MjU4OTY0ODIxfSx7IngiOjE5MTEuMjE3MTg3NTAxNDkwMSwieSI6MzM4fSx7IngiOjE5MTEuMjE3MTg3NTAxNDkwMSwieSI6Mzk5fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1490.378,245.026L1413.098,260.521C1335.817,276.017,1181.256,307.009,1103.976,332.671C1026.695,358.333,1026.695,378.667,1026.695,388.833L1026.695,399" id="id_entity-Species-9_entity-EggGroup-3_13" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-EggGroup-3_13" data-points="W3sieCI6MTQ5MC4zNzgxMjUwMDA3NDUsInkiOjI0NS4wMjU2NDIwMzk1NDY2fSx7IngiOjEwMjYuNjk1MzEyNSwieSI6MzM4fSx7IngiOjEwMjYuNjk1MzEyNSwieSI6Mzk5fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1490.378,254.126L1453.835,268.105C1417.291,282.084,1344.204,310.042,1307.661,334.188C1271.117,358.333,1271.117,378.667,1271.117,388.833L1271.117,399" id="id_entity-Species-9_entity-Habitat-5_14" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Habitat-5_14" data-points="W3sieCI6MTQ5MC4zNzgxMjUwMDA3NDUsInkiOjI1NC4xMjY0MjgyNDM5MjUxfSx7IngiOjEyNzEuMTE3MTg3NSwieSI6MzM4fSx7IngiOjEyNzEuMTE3MTg3NSwieSI6Mzk5fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1590.378,243.431L1683.851,259.193C1777.324,274.954,1964.271,306.477,2057.744,332.405C2151.217,358.333,2151.217,378.667,2151.217,388.833L2151.217,399" id="id_entity-Species-9_entity-Move-6_15" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Move-6_15" data-points="W3sieCI6MTU5MC4zNzgxMjUwMDA3NDUsInkiOjI0My40MzEwMjU5NzA5MjYyfSx7IngiOjIxNTEuMjE3MTg3NTAxNDksInkiOjMzOH0seyJ4IjoyMTUxLjIxNzE4NzUwMTQ5LCJ5IjozOTl9XQ==" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+        <path d="M1590.378,241.717L1709.829,257.764C1829.28,273.811,2068.182,305.906,2187.633,339.12C2307.084,372.333,2307.084,406.667,2307.084,439.25C2307.084,471.833,2307.084,502.667,2307.084,526.5C2307.084,550.333,2307.084,567.167,2307.084,575.583L2307.084,584" id="id_entity-Species-9_entity-Type-10_17" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Species-9_entity-Type-10_17" data-points="W3sieCI6MTU5MC4zNzgxMjUwMDA3NDUsInkiOjI0MS43MTcwNDQ1MDA0MTMzfSx7IngiOjIzMDcuMDg0Mzc1MDAxNDksInkiOjMzOH0seyJ4IjoyMzA3LjA4NDM3NTAwMTQ5LCJ5Ijo0NDF9LHsieCI6MjMwNy4wODQzNzUwMDE0OSwieSI6NTMzLjV9LHsieCI6MjMwNy4wODQzNzUwMDE0OSwieSI6NTg0fV0=" marker-start="url(#container_er-onlyOneStart)" marker-end="url(#container_er-zeroOrMoreEnd)"/>
+      </g>
+      <g class="edgeLabels">
+        <g class="edgeLabel" transform="translate(1911.2171875014901, 533.5)">
+          <g class="label" data-id="id_entity-Artwork-1_entity-NamedIndividual-11_0" transform="translate(-23.28125, -10.5)">
+            <foreignObject width="46.5625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>depicts</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(348, 533.5)">
+          <g class="label" data-id="id_entity-Color-2_entity-Connotation-12_1" transform="translate(-38.5703125, -10.5)">
+            <foreignObject width="77.140625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>connotation</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1540.378125000745, 142.5)">
+          <g class="label" data-id="id_entity-Generation-4_entity-Species-9_2" transform="translate(-50.203125, -10.5)">
+            <foreignObject width="100.40625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>featuresSpecies</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(2151.21718750149, 533.5)">
+          <g class="label" data-id="id_entity-Move-6_entity-Type-10_3" transform="translate(-25.8671875, -10.5)">
+            <foreignObject width="51.734375" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasType</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(602.734375, 533.5)">
+          <g class="label" data-id="id_entity-Quantity-7_entity-Unit-13_4" transform="translate(-24.3515625, -10.5)">
+            <foreignObject width="48.703125" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasUnit</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(860.328125, 533.5)">
+          <g class="label" data-id="id_entity-Quantity-7_entity-QuantityKind-14_5" transform="translate(-52.7578125, -10.5)">
+            <foreignObject width="105.515625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasQuantityKind</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1138.8359375, 533.5)">
+          <g class="label" data-id="id_entity-Quantity-7_entity-QuantityValue-15_6" transform="translate(-43.8984375, -10.5)">
+            <foreignObject width="87.796875" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>quantityValue</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(348, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Color-2_7" transform="translate(-27.7890625, -10.5)">
+            <foreignObject width="55.578125" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasColor</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(781.1171875, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Quantity-7_8" transform="translate(-68.375, -10.5)">
+            <foreignObject width="136.75" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasHeight, hasWeight</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1671.2171875014901, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Shape-8_9" transform="translate(-30.8125, -10.5)">
+            <foreignObject width="61.625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasShape</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="entity-Species-9-cyclic-special-1" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1461.167187500745, 533.5)">
+          <g class="label" data-id="entity-Species-9-cyclic-special-mid" transform="translate(-31.1015625, -10.5)">
+            <foreignObject width="62.203125" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>evolvesTo</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel">
+          <g class="label" data-id="entity-Species-9-cyclic-special-2" transform="translate(0, 0)">
+            <foreignObject width="0" height="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(108, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Ability-0_11" transform="translate(-100, -21)">
+            <foreignObject width="200" height="42">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;">
+                <span class="edgeLabel">
+                  <p>mayHaveAbility, mayHaveHiddenAbility</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1911.2171875014901, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Artwork-1_12" transform="translate(-30.171875, -10.5)">
+            <foreignObject width="60.34375" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>depiction</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1026.6953125, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-EggGroup-3_13" transform="translate(-36.1953125, -10.5)">
+            <foreignObject width="72.390625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>inEggGroup</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(1271.1171875, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Habitat-5_14" transform="translate(-24.8984375, -10.5)">
+            <foreignObject width="49.796875" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>foundIn</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(2151.21718750149, 338)">
+          <g class="label" data-id="id_entity-Species-9_entity-Move-6_15" transform="translate(-44.3203125, -10.5)">
+            <foreignObject width="88.640625" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>isAbleToApply</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="edgeLabel" transform="translate(2307.08437500149, 441)">
+          <g class="label" data-id="id_entity-Species-9_entity-Type-10_17" transform="translate(-25.8671875, -10.5)">
+            <foreignObject width="51.734375" height="21">
+              <div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="edgeLabel">
+                  <p>hasType</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+      </g>
+      <g class="nodes">
+        <g class="node default" id="entity-Ability-0" transform="translate(108, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-22.9765625, -12)">
+            <rect/>
+            <foreignObject width="45.953125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Ability</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Artwork-1" transform="translate(1911.2171875014901, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-28.15625, -12)">
+            <rect/>
+            <foreignObject width="56.3125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Artwork</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Color-2" transform="translate(348, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-19.0625, -12)">
+            <rect/>
+            <foreignObject width="38.125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Color</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-EggGroup-3" transform="translate(1026.6953125, 441)">
+          <rect class="basic label-container" style="" x="-54.421875" y="-42" width="108.84375" height="84"/>
+          <g class="label" style="" transform="translate(-34.421875, -12)">
+            <rect/>
+            <foreignObject width="68.84375" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>EggGroup</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Generation-4" transform="translate(1540.378125000745, 50)">
+          <rect class="basic label-container" style="" x="-60.125" y="-42" width="120.25" height="84"/>
+          <g class="label" style="" transform="translate(-40.125, -12)">
+            <rect/>
+            <foreignObject width="80.25" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Generation</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Habitat-5" transform="translate(1271.1171875, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-26.875, -12)">
+            <rect/>
+            <foreignObject width="53.75" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Habitat</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Move-6" transform="translate(2151.21718750149, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-19.1328125, -12)">
+            <rect/>
+            <foreignObject width="38.265625" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Move</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Quantity-7" transform="translate(781.1171875, 441)">
+          <rect class="basic label-container" style="" x="-51.15625" y="-42" width="102.3125" height="84"/>
+          <g class="label" style="" transform="translate(-31.15625, -12)">
+            <rect/>
+            <foreignObject width="62.3125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Quantity</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Shape-8" transform="translate(1671.2171875014901, 441)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-22.515625, -12)">
+            <rect/>
+            <foreignObject width="45.03125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Shape</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Species-9" transform="translate(1540.378125000745, 235)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-27.6484375, -12)">
+            <rect/>
+            <foreignObject width="55.296875" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Species</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Type-10" transform="translate(2307.08437500149, 626)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-16.8671875, -12)">
+            <rect/>
+            <foreignObject width="33.734375" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Type</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-NamedIndividual-11" transform="translate(1911.2171875014901, 626)">
+          <rect class="basic label-container" style="" x="-82.15625" y="-42" width="164.3125" height="84"/>
+          <g class="label" style="" transform="translate(-62.15625, -12)">
+            <rect/>
+            <foreignObject width="124.3125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>NamedIndividual</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Connotation-12" transform="translate(348, 626)">
+          <rect class="basic label-container" style="" x="-64.734375" y="-42" width="129.46875" height="84"/>
+          <g class="label" style="" transform="translate(-44.734375, -12)">
+            <rect/>
+            <foreignObject width="89.46875" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Connotation</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-Unit-13" transform="translate(602.734375, 626)">
+          <rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"/>
+          <g class="label" style="" transform="translate(-15.1328125, -12)">
+            <rect/>
+            <foreignObject width="30.265625" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>Unit</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-QuantityKind-14" transform="translate(860.328125, 626)">
+          <rect class="basic label-container" style="" x="-67.59375" y="-42" width="135.1875" height="84"/>
+          <g class="label" style="" transform="translate(-47.59375, -12)">
+            <rect/>
+            <foreignObject width="95.1875" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>QuantityKind</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="node default" id="entity-QuantityValue-15" transform="translate(1138.8359375, 626)">
+          <rect class="basic label-container" style="" x="-70.9140625" y="-42" width="141.828125" height="84"/>
+          <g class="label" style="" transform="translate(-50.9140625, -12)">
+            <rect/>
+            <foreignObject width="101.828125" height="24">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;">
+                <span class="nodeLabel">
+                  <p>QuantityValue</p>
+                </span>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="label edgeLabel" id="entity-Species-9---entity-Species-9---1" transform="translate(1461.167187500745, 441)">
+          <rect width="0.1" height="0.1"/>
+          <g class="label" style="" transform="translate(0, 0)">
+            <rect/>
+            <foreignObject width="0" height="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 10px; text-align: center;">
+                <span class="nodeLabel"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+        <g class="label edgeLabel" id="entity-Species-9---entity-Species-9---2" transform="translate(1541.2171875014901, 626)">
+          <rect width="0.1" height="0.1"/>
+          <g class="label" style="" transform="translate(0, 0)">
+            <rect/>
+            <foreignObject width="0" height="0">
+              <div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 10px; text-align: center;">
+                <span class="nodeLabel"/>
+              </div>
+            </foreignObject>
+          </g>
+        </g>
+      </g>
+    </g>
   </g>
-  <g transform="translate(220,370 )" id="entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Color-a87c14b4-f514-5b2d-8f61-d2c0041c1ff1" class="er entityLabel">Color</text>
-  </g>
-  <g transform="translate(420,370 )" id="entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-EggGroup-c5db389d-db45-5e12-82f2-480735f26054" class="er entityLabel">EggGroup</text>
-  </g>
-  <g transform="translate(670.34765625,20 )" id="entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Generation-82bf1c90-7400-5eb2-9271-49b7ba7af3e8" class="er entityLabel">Generation</text>
-  </g>
-  <g transform="translate(620,370 )" id="entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Habitat-84f61ec1-d040-5890-9c99-5be822c3ae6f" class="er entityLabel">Habitat</text>
-  </g>
-  <g transform="translate(1125.82421875,370 )" id="entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Move-bc8e2787-9ebf-5c38-8a4b-9e7696d2d8de" class="er entityLabel">Move</text>
-  </g>
-  <g transform="translate(820,370 )" id="entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Quantity-46f11547-7eaf-5ee9-bc9f-a9eb227f8785" class="er entityLabel">Quantity</text>
-  </g>
-  <g transform="translate(1325.82421875,370 )" id="entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Shape-f18345e8-3e84-511e-91ab-fbc05e2ad372" class="er entityLabel">Shape</text>
-  </g>
-  <g transform="translate(670.34765625,195 )" id="entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Species-5fb7bd14-1f92-5321-a2f8-29eca518f07c" class="er entityLabel">Species</text>
-  </g>
-  <g transform="translate(1374.578125,545 )" id="entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Type-9ddd46db-41c2-5534-b189-1a81570d0829" class="er entityLabel">Type</text>
-  </g>
-  <g transform="translate(220,545 )" id="entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Connotation-126db13f-ef35-55a2-9d41-1185b75f50cf" class="er entityLabel">Connotation</text>
-  </g>
-  <g transform="translate(519.65234375,545 )" id="entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739">
-    <rect height="75" width="100" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50,37.5)" y="0" x="0" id="text-entity-Unit-c57ac1ea-0a24-509a-a80e-23f8c03ca739" class="er entityLabel">Unit</text>
-  </g>
-  <g transform="translate(769.65234375,545 )" id="entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff">
-    <rect height="75" width="101.390625" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(50.6953125,37.5)" y="0" x="0" id="text-entity-QuantityKind-6f79b338-e354-5d95-8035-8883644476ff" class="er entityLabel">QuantityKind</text>
-  </g>
-  <g transform="translate(971.04296875,545 )" id="entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b">
-    <rect height="75" width="106.375" y="0" x="0" class="er entityBox"/>
-    <text style="dominant-baseline: middle; text-anchor: middle; font-size: 12px;" transform="translate(53.1875,37.5)" y="0" x="0" id="text-entity-QuantityValue-f2bc13d2-1961-5e2a-9bfe-ab6a05a5860b" class="er entityLabel">QuantityValue</text>
-  </g>
-  <rect height="14" width="66.109375" y="488" x="236.9453125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="495" x="270" id="rel1" class="er relationshipLabel">connotation</text>
-  <rect height="14" width="86.44854736328125" y="138" x="677.1237487792969" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="145" x="720.3480224609375" id="rel2" class="er relationshipLabel">featuresSpecies</text>
-  <rect height="14" width="44.34375" y="515.4642944335938" x="1237.050048828125" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="522.4642944335938" x="1259.221923828125" id="rel3" class="er relationshipLabel">hasType</text>
-  <rect height="14" width="42.40423583984375" y="457.6390380859375" x="658.3035583496094" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="464.6390380859375" x="679.5056762695312" id="rel4" class="er relationshipLabel">hasUnit</text>
-  <rect height="14" width="90.4375" y="485.583251953125" x="780.5755615234375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="492.583251953125" x="825.7943115234375" id="rel5" class="er relationshipLabel">hasQuantityKind</text>
-  <rect height="14" width="75.265625" y="470.7847595214844" x="950.896728515625" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="477.7847595214844" x="988.529541015625" id="rel6" class="er relationshipLabel">quantityValue</text>
-  <rect height="14" width="47.996307373046875" y="278.0964050292969" x="432.5995635986328" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="285.0964050292969" x="456.59771728515625" id="rel7" class="er relationshipLabel">hasColor</text>
-  <rect height="14" width="117.87274169921875" y="296.58563232421875" x="777.5870056152344" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="303.58563232421875" x="836.5233764648438" id="rel8" class="er relationshipLabel">hasHeight, hasWeight</text>
-  <rect height="14" width="52.8125" y="275.3954772949219" x="1058.6068115234375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.3954772949219" x="1085.0130615234375" id="rel9" class="er relationshipLabel">hasShape</text>
-  <rect height="14" width="212.95346069335938" y="275.4400329589844" x="251.7370147705078" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="282.4400329589844" x="358.2137451171875" id="rel10" class="er relationshipLabel">mayHaveAbility, mayHaveHiddenAbility</text>
-  <rect height="14" width="62.046875" y="285.4281311035156" x="523.1910400390625" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="292.4281311035156" x="554.2144775390625" id="rel11" class="er relationshipLabel">inEggGroup</text>
-  <rect height="14" width="42.6875" y="310.5221862792969" x="654.1987915039062" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="317.5221862792969" x="675.5425415039062" id="rel12" class="er relationshipLabel">foundIn</text>
-  <rect height="14" width="76.0684814453125" y="277.9967346191406" x="948.5771484375" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="284.9967346191406" x="986.6113891601562" id="rel13" class="er relationshipLabel">isAbleToApply</text>
-  <rect height="14" width="44.34375" y="287.2335205078125" x="1224.7926025390625" class="er relationshipLabelBox"/>
-  <text style="text-anchor: middle; dominant-baseline: middle; font-size: 12px;" y="294.2335205078125" x="1246.9644775390625" id="rel14" class="er relationshipLabel">hasType</text>
 </svg>

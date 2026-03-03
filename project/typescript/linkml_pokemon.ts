@@ -1,6 +1,7 @@
 export type ThingId = string;
 export type NamedIndividualId = string;
 export type PersonId = string;
+export type ArtworkId = string;
 export type ColorId = string;
 export type ConnotationId = string;
 export type ConceptId = string;
@@ -50,7 +51,7 @@ export type TrainerId = string;
 export type TypeId = string;
 
 export enum HabitatEnum {
-
+    
     /** A hollow underground area, typically formed in rocky or mountainous terrain. */
     Cave = "Cave",
     /** A dense area covered with trees and undergrowth. */
@@ -96,8 +97,17 @@ export interface NamedIndividual extends Thing {
  * A person is a human being
  */
 export interface Person extends NamedIndividual {
-    /** A depiction of the person */
-    depiction?: string,
+    /** Visual artwork depicting this entity */
+    depiction?: Artwork[],
+}
+
+
+/**
+ * A visual representation or artwork depicting an entity. In the Pokémon context, this includes official artwork, sprites, and other visual media.
+ */
+export interface Artwork extends NamedIndividual {
+    /** The entity depicted in this artwork */
+    depicts?: NamedIndividual[],
 }
 
 
@@ -219,7 +229,7 @@ export interface AbstractQuantityKind extends Concept {
     /** Symbol for a unit (e.g., "m" for meter) */
     symbol?: string,
     /** Broader/parent quantity kind */
-    broader?: QuantityKindId[],
+    broader?: QuantityKind[],
 }
 
 
@@ -535,8 +545,8 @@ export interface Species extends NamedIndividual {
     hasHeight?: Quantity,
     /** How heavy a Pokémon species is, expressed as a quantity with unit. */
     hasWeight?: Quantity,
-    /** A depiction of the person */
-    depiction?: string,
+    /** Visual artwork depicting this entity */
+    depiction?: Artwork[],
     /** Which egg group a species belongs to, controlling which Pokémon can breed together. */
     inEggGroup?: EggGroupId[],
     /** A Pokémon has a type */
@@ -549,6 +559,10 @@ export interface Species extends NamedIndividual {
     hasCatchRate?: number,
     /** A place is found in a location */
     foundIn?: Habitat[],
+    /** This species evolves the other species. */
+    evolvesFrom?: Species,
+    /** A Pokémon evolves to another Pokémon. */
+    evolvesTo?: Species[],
 }
 
 
@@ -638,3 +652,6 @@ export interface Trainer extends Person {
  */
 export interface Type extends NamedIndividual {
 }
+
+
+

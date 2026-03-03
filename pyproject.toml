@@ -19,7 +19,6 @@ dependencies = [ ]
 [tool.uv.sources]
 linkml = { path = "../linkml/packages/linkml", editable = true }
 linkml-runtime = { path = "../linkml/packages/linkml_runtime", editable = true }
-grip = { git = "https://github.com/vladistan/grip.git", branch = "handle-test-sensitive-anchors" }
 
 [dependency-groups]
 dev = [

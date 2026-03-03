@@ -51,13 +51,11 @@ These classes are completely isolated with no relationships and are not used as 
 | [BattleItem](#battleitem) | Battle items are items that can be used during battles. |
 | [DecimalPrefix](#decimalprefix) | Decimal prefix (powers of 10) |
 | [Gym](#gym) | A gym is a location that can be battled at. |
-| [GymLeader](#gymleader) | A gym leader is the highest ranking member and owner of an official Pokémon gym. Gym leaders use their gym and their Pokémon to test the skills of trainers that challenge them, and if said trainers win a battle, the gym leader will gift them a badge that's unique to that specific gym. |
 | [HM](#hm) | Hidden Machine |
 | [HoldItem](#holditem) | A hold item is an item that can be held by a Pokémon. |
 | [LearningByLevelingUp](#learningbylevelingup) | A move that is learned by leveling up. |
 | [LearningThroughBreeding](#learningthroughbreeding) | A move that is learned by breeding. |
 | [Medicine](#medicine) | Medicine items can heal various afflictions of a Pokémon. |
-| [Person](#person) | A person is a human being |
 | [Pokeball](#pokeball) | A Poké Ball is a type of item that is critical to a Trainer's quest, used for catching and storing Pokémon. |
 | [Pokemon](#pokemon) | A Pokémon |
 | [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs) | CGS dimension vector |
@@ -67,7 +65,6 @@ These classes are completely isolated with no relationships and are not used as 
 | [Region](#region) | Regions are areas in the Pokémon universe that are smaller parts of a nation. |
 | [TM](#tm) | A Technical Machine is an item that can be used to teach a Pokémon a move. |
 | [Town](#town) | A town is a type of place that can be visited. |
-| [Trainer](#trainer) | A trainer is a person who is able to catch Pokémon. |
 
 ## Abstract Classes
 
@@ -211,10 +208,7 @@ NamedIndividual:
 ```
 </details>
 
-
-#### Local class diagram
-
-![class_namedindividual_local](images/class_namedindividual_local.svg)
+![class_namedindividual_erd](images/class_namedindividual_erd.svg)
 
 #### Attributes
 
@@ -230,6 +224,7 @@ NamedIndividual:
 
 #### Children
 
+ * [Artwork](#artwork) - A visual representation or artwork depicting an entity. In the Pokémon context, this includes official artwork, sprites, and other visual media.
  * [EggGroup](#egggroup) - Egg group is a category that determines which Pokémon are able to interbreed. The concept was introduced in Generation II, along with breeding. Similar to types, a Pokémon may belong to either one or two egg groups.
  * [Flavor](#flavor) - Flavor is a special set of attributes that certain foods in the Pokémon world have. Most of the foods can have more than one flavor, and the flavor determines which Pokémon can eat them.
  * [Habitat](#habitat) - A habitat is a type of environment that certain Pokémon belong to.
@@ -237,6 +232,10 @@ NamedIndividual:
  * [Shape](#shape) - Shapes are categories that certain Pokémon belong to, which determine which Pokémon they can breed with.
  * [Species](#species) - A species is a category of Pokémon that share common features.
  * [Type](#type) - All Pokémon creatures and their moves are assigned certain types. Each type has several strengths and weaknesses in both attack and defense.
+
+#### Referenced by:
+
+ *  **[Artwork](#artwork)** : depicts  <sub>0..\*</sub> 
 
 
 
@@ -394,6 +393,53 @@ Ability:
 
  *  **[Species](#species)** : mayHaveAbility  <sub>0..\*</sub> 
  *  **[Species](#species)** : mayHaveHiddenAbility  <sub>0..\*</sub> 
+
+
+
+
+### Artwork
+
+A visual representation or artwork depicting an entity. In the Pokémon context, this includes official artwork, sprites, and other visual media.
+
+
+#### YAML Definition
+
+<details>
+<summary>Click to expand</summary>
+
+```yaml
+Artwork:
+  is_a: NamedIndividual
+  description: "A visual representation or artwork depicting an entity. In the Pok\xE9\
+    mon context, this includes official artwork, sprites, and other visual media."
+  slots:
+  - id
+  - description
+  - NamedIndividual_name
+  - depicts
+
+```
+</details>
+
+![class_artwork_erd](images/class_artwork_erd.svg)
+
+#### Attributes
+
+| Name | Cardinality: | Type | Description |
+| --- | --- | --- | --- |
+| **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
+| **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
+| **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
+| **[depicts](#depicts)** | <sub>0..\*</sub> | [NamedIndividual](#namedindividual) | The entity depicted in this artwork |
+
+#### Parents
+
+ * [NamedIndividual](#namedindividual) - A Thing that requires a name
+
+#### Referenced by:
+
+ *  **[Person](#person)** : depiction  <sub>0..\*</sub> 
+ *  **[Species](#species)** : depiction  <sub>0..\*</sub> 
 
 
 
@@ -1043,10 +1089,7 @@ GymLeader:
 ```
 </details>
 
-
-#### Local class diagram
-
-![class_gymleader_local](images/class_gymleader_local.svg)
+![class_gymleader_erd](images/class_gymleader_erd.svg)
 
 #### Attributes
 
@@ -1055,7 +1098,7 @@ GymLeader:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+| **[depiction](#depiction)** | <sub>0..\*</sub> | [Artwork](#artwork) | Visual artwork depicting this entity |
 
 #### Parents
 
@@ -1468,10 +1511,7 @@ Person:
 ```
 </details>
 
-
-#### Local class diagram
-
-![class_person_local](images/class_person_local.svg)
+![class_person_erd](images/class_person_erd.svg)
 
 #### Attributes
 
@@ -1480,7 +1520,7 @@ Person:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+| **[depiction](#depiction)** | <sub>0..\*</sub> | [Artwork](#artwork) | Visual artwork depicting this entity |
 
 #### Parents
 
@@ -2469,6 +2509,8 @@ Species:
   - hasGenus
   - hasCatchRate
   - foundIn
+  - evolvesFrom
+  - evolvesTo
 
 ```
 </details>
@@ -2482,7 +2524,9 @@ Species:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+| **[depiction](#depiction)** | <sub>0..\*</sub> | [Artwork](#artwork) | Visual artwork depicting this entity |
+| **[evolvesFrom](#evolvesfrom)** | <sub>0..1</sub> | [Species](#species) | This species evolves the other species. |
+| **[evolvesTo](#evolvesto)** | <sub>0..\*</sub> | [Species](#species) | A Pokémon evolves to another Pokémon. |
 | **[foundIn](#foundin)** | <sub>0..\*</sub> | [Habitat](#habitat) | A place is found in a location |
 | **[hasCatchRate](#hascatchrate)** | <sub>0..1</sub> | integer | Determines how easy a Pokémon species is to catch, with higher values meaning easier capture. |
 | **[hasColor](#hascolor)** | <sub>0..1</sub> | [Color](#color) | A Pokémon has a color |
@@ -2502,6 +2546,8 @@ Species:
 
 #### Referenced by:
 
+ *  **[Species](#species)** : evolvesFrom  <sub>0..1</sub> 
+ *  **[Species](#species)** : evolvesTo  <sub>0..\*</sub> 
  *  **[Generation](#generation)** : featuresSpecies  <sub>0..\*</sub> 
 
 
@@ -2718,10 +2764,7 @@ Trainer:
 ```
 </details>
 
-
-#### Local class diagram
-
-![class_trainer_local](images/class_trainer_local.svg)
+![class_trainer_erd](images/class_trainer_erd.svg)
 
 #### Attributes
 
@@ -2730,7 +2773,7 @@ Trainer:
 | **[id](#id)** | <sub>1..1</sub> | uri | A unique identifier |
 | **[name](#name)** | <sub>1..1</sub> | string | Human-readable label for the entity |
 | **[description](#description)** | <sub>0..1</sub> | string | A description of the entity |
-| **[depiction](#depiction)** | <sub>0..1</sub> | string | A depiction of the person |
+| **[depiction](#depiction)** | <sub>0..\*</sub> | [Artwork](#artwork) | Visual artwork depicting this entity |
 
 #### Parents
 
@@ -3052,9 +3095,9 @@ Verifiable:
 
 | Name | Cardinality/Range | Used By |
 | --- | --- | --- |
-| <a id="id"></a>**id**<br/>A unique identifier | <sub>1..1</sub><br/>uri | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
-| <a id="name"></a>**name**<br/>Human-readable label for the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
-| <a id="description"></a>**description**<br/>A description of the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="id"></a>**id**<br/>A unique identifier | <sub>1..1</sub><br/>uri | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Artwork](#artwork), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="name"></a>**name**<br/>Human-readable label for the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Artwork](#artwork), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
+| <a id="description"></a>**description**<br/>A description of the entity | <sub>0..1</sub><br/>string | [Ability](#ability), [AbstractQuantityKind](#abstractquantitykind), [Artwork](#artwork), [BattleItem](#battleitem), [Berry](#berry), [Color](#color), [Concept](#concept), [Connotation](#connotation), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [EggGroup](#egggroup), [Flavor](#flavor), [Food](#food), [Game](#game), [Generation](#generation), [Gym](#gym), [GymLeader](#gymleader), [HM](#hm), [Habitat](#habitat), [HoldItem](#holditem), [Item](#item), [Medicine](#medicine), [Move](#move), [NamedIndividual](#namedindividual), [Person](#person), [PhysicalMove](#physicalmove), [Place](#place), [Pokeball](#pokeball), [Pokedex](#pokedex), [PokedexEntry](#pokedexentry), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [Region](#region), [Shape](#shape), [SpecialMove](#specialmove), [Species](#species), [StatusMove](#statusmove), [SystemOfUnits](#systemofunits), [TM](#tm), [Thing](#thing), [Town](#town), [Trainer](#trainer), [Type](#type), [Unit](#unit) |
 | <a id="connotation_name"></a>**Connotation_name**<br/>Human-readable label for the entity | <sub>1..1</sub><br/>string |  |
 | <a id="namedindividual_name"></a>**NamedIndividual_name**<br/>Human-readable label for the entity | <sub>1..1</sub><br/>string |  |
 | <a id="abbreviation"></a>**abbreviation**<br/>Short alphanumeric abbreviation for a unit | <sub>0..1</sub><br/>string | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits), [Unit](#unit) |
@@ -3074,7 +3117,8 @@ Verifiable:
 | <a id="conversionmultiplier"></a>**conversionMultiplier**<br/>Multiplier to convert to base unit | <sub>0..1</sub><br/>double | [DerivedUnit](#derivedunit), [Unit](#unit) |
 | <a id="conversionoffset"></a>**conversionOffset**<br/>Offset to convert to base unit | <sub>0..1</sub><br/>double | [DerivedUnit](#derivedunit), [Unit](#unit) |
 | <a id="dbpediamatch"></a>**dbpediaMatch**<br/>DBpedia URI for this entity | <sub>0..1</sub><br/>uri | [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [QuantityKind](#quantitykind), [Unit](#unit), [Verifiable](#verifiable) |
-| <a id="depiction"></a>**depiction**<br/>A depiction of the person | <sub>0..1</sub><br/>string | [GymLeader](#gymleader), [Person](#person), [Species](#species), [Trainer](#trainer) |
+| <a id="depiction"></a>**depiction**<br/>Visual artwork depicting this entity | <sub>0..\*</sub><br/>[Artwork](#artwork) | [GymLeader](#gymleader), [Person](#person), [Species](#species), [Trainer](#trainer) |
+| <a id="depicts"></a>**depicts**<br/>The entity depicted in this artwork | <sub>0..\*</sub><br/>[NamedIndividual](#namedindividual) | [Artwork](#artwork) |
 | <a id="deprecated"></a>**deprecated**<br/>Whether this entity is deprecated | <sub>0..1</sub><br/>boolean | [AbstractQuantityKind](#abstractquantitykind), [Concept](#concept), [DecimalPrefix](#decimalprefix), [DerivedUnit](#derivedunit), [Prefix](#prefix), [Quantity](#quantity), [QuantityKind](#quantitykind), [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi), [QuantityValue](#quantityvalue), [SystemOfUnits](#systemofunits), [Unit](#unit) |
 | <a id="describedinpokedex"></a>**describedInPokedex**<br/>['A Pokédex entry is described in a Pokédex'] | <sub>0..\*</sub><br/>[PokedexEntry](#pokedexentry) |  |
 | <a id="describespokemon"></a>**describesPokemon**<br/>A Pokémon that is described by this Pokédex entry. | <sub>0..\*</sub><br/>[Species](#species) |  |
@@ -3088,8 +3132,8 @@ Verifiable:
 | <a id="dimensionlessexponent"></a>**dimensionlessExponent**<br/>Dimensionless exponent | <sub>0..1</sub><br/>integer | [QuantityKindDimensionVector](#quantitykinddimensionvector), [QuantityKindDimensionVectorCGS](#quantitykinddimensionvectorcgs), [QuantityKindDimensionVectorISO](#quantitykinddimensionvectoriso), [QuantityKindDimensionVectorImperial](#quantitykinddimensionvectorimperial), [QuantityKindDimensionVectorSI](#quantitykinddimensionvectorsi) |
 | <a id="effectdescription"></a>**effectDescription**<br/>A description of the effect of the entity | <sub>0..\*</sub><br/>string | [Ability](#ability), [Move](#move), [PhysicalMove](#physicalmove), [SpecialMove](#specialmove), [StatusMove](#statusmove) |
 | <a id="entrynumber"></a>**entryNumber**<br/>The unique number identifying this entry within a Pokédex. | <sub>0..1</sub><br/>integer |  |
-| <a id="evolvesfrom"></a>**evolvesFrom**<br/>This species evolves the other species. | <sub>0..1</sub><br/>[Species](#species) |  |
-| <a id="evolvesto"></a>**evolvesTo**<br/>A Pokémon evolves to another Pokémon. | <sub>0..\*</sub><br/>[Species](#species) |  |
+| <a id="evolvesfrom"></a>**evolvesFrom**<br/>This species evolves the other species. | <sub>0..1</sub><br/>[Species](#species) | [Species](#species) |
+| <a id="evolvesto"></a>**evolvesTo**<br/>A Pokémon evolves to another Pokémon. | <sub>0..\*</sub><br/>[Species](#species) | [Species](#species) |
 | <a id="exactmatch"></a>**exactMatch**<br/>Equivalent quantity kind or unit | <sub>0..\*</sub><br/>string | [DecimalPrefix](#decimalprefix), [Prefix](#prefix), [QuantityKind](#quantitykind) |
 | <a id="featuresspecies"></a>**featuresSpecies**<br/>['A Pokédex entry features a species'] | <sub>0..\*</sub><br/>[Species](#species) | [Generation](#generation) |
 | <a id="firmness"></a>**firmness**<br/>How firm a berry or food item feels, affecting its use in Pokéblock or Poffin making. | <sub>0..1</sub><br/>integer | [Berry](#berry), [Food](#food) |
